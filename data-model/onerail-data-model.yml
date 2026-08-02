@@ -1,0 +1,220 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/_original/onerail-delivery-api-openapi.json (49 components.schemas), openapi/_original/onerail-operations-api-openapi.json
+  (355 paths)
+summary: 'The OneRail domain is order-first: a shipper submits an Order, OneRail generates one or more
+  Deliveries from it, each Delivery moves Containers of Items between a pickup LocationInfo and a drop-off
+  LocationInfo, and is either dispatched to a logistics partner from the carrier network or sequenced
+  onto a Route for an internal fleet. Around that core, the Operations API models the shipper account:
+  Organization owns Locations, Users, Teams, Markets, FleetAssets, ShipperContracts and their SLAs, ServiceLevels,
+  and the ApiAuth credential records used to call the Delivery API.'
+id_conventions:
+  onerail_ids: UUID v4 for platform-generated identifiers (deliveryId, organizationId, id path parameters)
+  shipper_ids: orderId, shipmentId, storeNumber, shipperContainerId and identifier are shipper-supplied
+    strings echoed back on responses and webhook events
+  money: integer cents (netAmount, priceCent, contractedShipperCostCent)
+  carrier_ids: carrierCode and SCAC (Standard Carrier Alpha Code) identify carriers
+entities:
+- name: Order
+  schema: OrderData / OrderCreate / v2OrderRequest
+  description: A shipper transaction containing items, customer details and instructions. Synchronized
+    in from e-commerce/ERP systems. Precedes and generates deliveries.
+  key: orderId (shipper-supplied)
+- name: Delivery
+  schema: Delivery / OrderDelivery / DeliveryCreated
+  description: Movement of goods from a pickup location to a drop-off location, with SLA commitment, carrier
+    assignment and routing requirements.
+  key: deliveryId (UUID)
+- name: ReturnDelivery
+  schema: ReturnDeliveryCreate / ReturnDelivery
+  description: A return leg attached to an existing order.
+- name: Container
+  schema: Containers / PredefinedContainer / CustomContainer
+  description: Physical packaging unit; supports up to three levels of nesting (container, child, grandchild)
+    in both predefined and custom variants.
+  key: shipperContainerId
+- name: OrderItem
+  schema: OrderItem / ContainerOrderItem
+  description: Line item with description, dimensions, weight, quantity, price in cents, NMFC code, freight
+    class and optional hazardous-material details.
+- name: HazardousMaterialDetails
+  schema: HazardousMaterialOrderItemDetails / HazardousMaterialContainerDetails
+  description: DOT hazmat descriptors carried on items and containers.
+- name: LocationInfo
+  schema: LocationInfo / AvailabilityLocationInfo / OriginLocation
+  description: Pickup or drop-off address with contact, instructions, access code, store number and due
+    date.
+- name: Location
+  schema: Operations /v1/location
+  description: A configured pickup/drop-off site on the organization, with geopoint, service hours, holidays,
+    cut-off time, loading dock flag and preferences. Must exist before deliveries can be dispatched from
+    it.
+- name: CustomerData
+  schema: CustomerData
+  description: End recipient name, phone and email.
+- name: Organization
+  schema: Operations /v1/organization
+  description: The shipper tenant. Owns every other Operations entity and the webhook URL.
+- name: User
+  schema: Operations /v1/user
+  description: Platform user with roles (Location/Ops User, View Only, Global Admin), optional driver
+    profile, team membership.
+- name: ApiAuth
+  schema: Operations /v1/api-auth
+  description: The App ID / API Key credential record that authenticates machine-to-machine calls for
+    an application.
+- name: Carrier / LogisticsPartner
+  schema: Operations /v1/carrier, /v1/lp-market, /v1/lp-configuration
+  description: A network carrier and its market coverage and configuration.
+- name: ShipperContract
+  schema: Operations /v1/shipper-contract, /v1/shipper-contract-sla
+  description: Commercial contract between OneRail and the shipper, with SLA definitions and templates.
+- name: ServiceLevel
+  schema: Operations /v1/service-level
+  description: Named service commitment (e.g. Same Day) matched against contracts at dispatch time.
+- name: Market
+  schema: Operations /v1/market, /v1/lp-market
+  description: Geographic operating area with market hours that bound route length.
+- name: FleetAsset / OwnFleetVehicle
+  schema: Operations /v1/fleet-assets, /v1/own-fleet-vehicle
+  description: Internal fleet vehicle with capacity, weight limits and vehicle type, linked to a market.
+- name: Route
+  schema: Delivery /v1/routes, Operations /v1/route
+  description: An ordered sequence of stops across one or more orders, with a skipOptimizer flag controlling
+    whether OneRail resequences.
+- name: DeliveryAttempt
+  schema: Operations /v1/delivery-attempt
+  description: A carrier attempt on a delivery; carries Costs including externally-produced adjustments.
+- name: Cost
+  schema: Operations /v1/delivery-attempt/{id}/costs
+  description: Cost row on a delivery attempt. Adjustment costs are ingested idempotently on sourceCostId.
+- name: ShippingLabel
+  schema: LabelInfo / ContainerLabelInfo
+  description: Generated label for a delivery or an individual container.
+- name: ScanData
+  schema: ScanData
+  description: Scan records captured against containers on a delivery.
+- name: DeliveryEvent
+  schema: asyncapi/onerail-delivery-events-webhooks.yml
+  description: Status change pushed to the shipper webhook endpoint.
+- name: VisibilityDelivery
+  schema: Delivery /visibility/create
+  description: Tracking-only shipment fulfilled outside the OneRail booking process, identified by orderId
+    + SCAC and optionally a truckload-level shipmentId.
+relationships:
+- from: Order
+  to: Delivery
+  type: has_many
+  via: deliveries[]
+- from: Order
+  to: ReturnDelivery
+  type: has_many
+  via: POST /order/add-return
+- from: Order
+  to: OrderItem
+  type: has_many
+  via: orderData.items[]
+- from: Order
+  to: Container
+  type: has_many
+  via: orderData.containers[]
+- from: Container
+  to: OrderItem
+  type: has_many
+  via: containers[].items[]
+- from: Container
+  to: Container
+  type: has_many
+  via: child/grandchild container nesting
+- from: OrderItem
+  to: HazardousMaterialDetails
+  type: has_one
+  via: hazardousMaterialDetails
+- from: Delivery
+  to: LocationInfo
+  type: has_one
+  via: pickUpData
+- from: Delivery
+  to: LocationInfo
+  type: has_one
+  via: dropOffData
+- from: Delivery
+  to: CustomerData
+  type: has_one
+  via: customerData
+- from: Delivery
+  to: ShippingLabel
+  type: has_many
+  via: GET /shipping-label/{id}
+- from: Delivery
+  to: ScanData
+  type: has_many
+  via: POST /delivery/{deliveryId}/scanData
+- from: Delivery
+  to: DeliveryEvent
+  type: has_many
+  via: webhook eventType stream keyed on deliveryId
+- from: Delivery
+  to: DeliveryAttempt
+  type: has_many
+  via: delivery-attempt
+- from: DeliveryAttempt
+  to: Cost
+  type: has_many
+  via: costs
+- from: Delivery
+  to: ShipperContract
+  type: belongs_to
+  via: contractId
+- from: Delivery
+  to: ServiceLevel
+  type: belongs_to
+  via: serviceLevel
+- from: Delivery
+  to: Carrier
+  type: belongs_to
+  via: carrierCode / carrierServiceName
+- from: Route
+  to: Order
+  type: has_many
+  via: routes[].orders[]
+- from: Organization
+  to: Location
+  type: has_many
+  via: organizationId
+- from: Organization
+  to: User
+  type: has_many
+  via: organizationId
+- from: Organization
+  to: ApiAuth
+  type: has_many
+  via: organizationId
+- from: Organization
+  to: ShipperContract
+  type: has_many
+  via: organizationId
+- from: Organization
+  to: FleetAsset
+  type: has_many
+  via: organizationId
+- from: Organization
+  to: DeliveryEvent
+  type: has_one
+  via: webhookUrl
+- from: FleetAsset
+  to: Market
+  type: belongs_to
+  via: market linkage
+- from: Carrier
+  to: Market
+  type: has_many
+  via: lp-market
+- from: User
+  to: Location
+  type: belongs_to
+  via: primaryContactId / location assignment
+- from: VisibilityDelivery
+  to: Carrier
+  type: belongs_to
+  via: SCAC

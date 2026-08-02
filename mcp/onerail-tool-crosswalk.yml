@@ -1,0 +1,194 @@
+generated: '2026-08-02'
+method: derived
+source: mcp/onerail-mcp.yml, openapi/_original/onerail-delivery-api-openapi.json
+note: OneRail publishes no MCP server and no GraphQL endpoint, so this crosswalk binds the CANDIDATE tool
+  set in mcp/onerail-mcp.yml to its backing REST operations. Every binding is one-to-one and high confidence
+  because each candidate tool was derived from the operation it maps to; each tool inherits that operation
+  parameters and requestBody as its real inputSchema. There are no mcp_only rows because there is no live
+  MCP surface to diverge.
+surfaces:
+  openapi:
+    file: openapi/onerail-delivery-api-openapi.yml
+    operations: 31
+    gated: false
+    discovered_at: https://onerail-delivery-api-prod.azurewebsites.net/api-docs/swagger-ui-init.js
+  openapi_operations:
+    file: openapi/onerail-operations-api-openapi.yml
+    operations: 438
+    gated: false
+    discovered_at: https://onerail-operations-prod.azurewebsites.net/api-docs/swagger-ui-init.js
+  graphql: null
+  mcp: null
+  a2a: null
+crosswalk:
+- tool: get_delivery_rates
+  category: rating
+  rest:
+  - getDeliveryRates
+  binding: rest
+  confidence: high
+- tool: check_delivery_availability
+  category: rating
+  rest:
+  - checkDeliveryAvailability
+  binding: rest
+  confidence: high
+- tool: create_order
+  category: order
+  rest:
+  - create
+  binding: rest
+  confidence: high
+- tool: create_order_v2
+  category: order
+  rest:
+  - createV2
+  binding: rest
+  confidence: high
+- tool: add_delivery_to_order
+  category: order
+  rest:
+  - addDelivery
+  binding: rest
+  confidence: high
+- tool: add_return_to_order
+  category: order
+  rest:
+  - addReturn
+  binding: rest
+  confidence: high
+- tool: patch_order
+  category: order
+  rest:
+  - patchPartialUpdate
+  binding: rest
+  confidence: high
+- tool: replace_order
+  category: order
+  rest:
+  - putPartialUpdate
+  binding: rest
+  confidence: high
+- tool: create_delivery
+  category: delivery
+  rest:
+  - createDelivery
+  binding: rest
+  confidence: high
+- tool: prevalidate_delivery
+  category: delivery
+  rest:
+  - preValidateDelivery
+  binding: rest
+  confidence: high
+- tool: prevalidate_delivery_slas
+  category: delivery
+  rest:
+  - preValidateDeliverySlas
+  binding: rest
+  confidence: high
+- tool: get_delivery_details
+  category: delivery
+  rest:
+  - getDetails
+  binding: rest
+  confidence: high
+- tool: get_delivery_documents
+  category: delivery
+  rest:
+  - getDocuments
+  binding: rest
+  confidence: high
+- tool: cancel_delivery
+  category: delivery
+  rest:
+  - cancelDelivery
+  binding: rest
+  confidence: high
+- tool: reschedule_delivery
+  category: delivery
+  rest:
+  - rescheduleDelivery
+  binding: rest
+  confidence: high
+- tool: update_shipment_id
+  category: delivery
+  rest:
+  - updateShipmentId
+  binding: rest
+  confidence: high
+- tool: get_historical_delivery_rates
+  category: rating
+  rest:
+  - getHistoricalDeliveryRates
+  binding: rest
+  confidence: high
+- tool: create_scan_data
+  category: delivery
+  rest:
+  - createScanData
+  binding: rest
+  confidence: high
+- tool: get_shipping_label
+  category: label
+  rest:
+  - labelInfo
+  binding: rest
+  confidence: high
+- tool: get_container_label
+  category: label
+  rest:
+  - containerLabelInfo
+  binding: rest
+  confidence: high
+- tool: generate_shipping_label
+  category: rating
+  rest:
+  - getLabelCached
+  binding: rest
+  confidence: high
+- tool: close_manifest
+  category: label
+  rest:
+  - closeManifest
+  binding: rest
+  confidence: high
+- tool: create_routes
+  category: routing
+  rest:
+  - createRoutes
+  binding: rest
+  confidence: high
+- tool: create_visibility_delivery
+  category: visibility
+  rest:
+  - createVisibility
+  binding: rest
+  confidence: high
+- tool: add_visibility_deliveries
+  category: visibility
+  rest:
+  - addVisibility
+  binding: rest
+  confidence: high
+mcp_only: []
+rest_only:
+- group: delivery-api-internal
+  operations:
+  - index
+  - viewImage
+  - setPayload
+  - authenticate
+  - issueToken
+  reason: health, static assets, internal cache and credential exchange - deliberately excluded from the
+    tool set
+- group: operations-api
+  operations: 438 account-administration operations across organization, location, user, carrier, contract,
+    SLA, market, fleet, route and api-auth resources
+  reason: no candidate tools derived - administrative surface, not agent-facing
+coverage:
+  tools_named: 25
+  tools_bound: 25
+  mcp_only: 0
+  rest_ops_total: 469
+  rest_ops_with_tool: 25

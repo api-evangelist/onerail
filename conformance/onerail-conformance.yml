@@ -1,0 +1,101 @@
+generated: '2026-08-02'
+method: searched
+source: https://www.onerail.com/ai/data-privacy-security/, https://trust.onerail.com/, openapi/_original/*.json
+standards:
+- id: oauth2
+  conforms: true
+  evidence: Operations API declares an oauth2 securityScheme (authorizationCode flow); Delivery API exposes
+    POST /oauth2/token for client-credentials exchange. Note the spec states the authorizationUrl/tokenUrl
+    values are placeholders and the real IdP is customer-configured.
+  confidence: medium
+- id: oidc
+  conforms: false
+  evidence: No openIdConnect securityScheme and no /.well-known/openid-configuration on any OneRail host.
+- id: http-bearer-jwt
+  conforms: true
+  evidence: Operations API declares an http/bearer scheme described as a JWT validated against the shared
+    Core access token secret.
+- id: api-key-header
+  conforms: true
+  evidence: Both APIs declare apiKey-in-header schemes X-ONERAIL-APP-ID and X-ONERAIL-API-KEY.
+- id: openapi-3.0
+  conforms: true
+  evidence: Both live documents declare openapi 3.0.1 and are served from /api-docs/swagger-ui-init.js
+    on the production API hosts.
+- id: asyncapi
+  conforms: false
+  evidence: A real webhook event surface is documented but no AsyncAPI document is published.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are application/json with a custom {code,message,errors,errorDetails} envelope, not
+    application/problem+json.
+- id: rfc6901-json-pointer
+  conforms: true
+  evidence: Error.errorDetails[].pointer is documented as "A JSON Pointer [RFC6901] to the associated
+    entity in the request document".
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation headers declared; no deprecation policy published.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on every OneRail host.
+- id: idempotency-key-header
+  conforms: false
+  evidence: No Idempotency-Key header. A body-level natural key (sourceCostId) provides idempotency on
+    one Operations endpoint only. See conventions/onerail-conventions.yml.
+- id: pagination-limit-offset
+  conforms: true
+  evidence: Operations API collection endpoints accept limit, offset, sortby, order, filter, search query
+    parameters.
+- id: json-api
+  conforms: false
+  evidence: No application/vnd.api+json media type or JSON:API document structure.
+- id: odata
+  conforms: false
+- id: scac
+  conforms: true
+  evidence: Visibility deliveries require a SCAC (Standard Carrier Alpha Code) from the shipper to identify
+    the carrier reporting events.
+  confidence: high
+- id: nmfc-freight-class
+  conforms: true
+  evidence: Order items and containers carry nmfc and freightClass fields (NMFC commodity codes and NMFTA
+    freight classes).
+- id: dot-hazmat
+  conforms: true
+  evidence: hazardousMaterialDetails carries identificationNumber, properShippingName, packagingGroup,
+    packagingType, hazardClass, hazardSubClass, technicalName and dotLabeling.
+- id: iso-8601
+  conforms: true
+  evidence: All timestamps are declared as string/date-time and documented as ISO 8601.
+compliance_programs:
+- id: soc2-type-ii
+  conforms: true
+  evidence: OneRail publishes SOC 2 Type II compliance across all five Trust Services Criteria (Security,
+    Availability, Processing Integrity, Confidentiality, Privacy), stating five years running with no
+    major exceptions three years in a row.
+  source: https://www.onerail.com/ai/data-privacy-security/
+- id: iso-27001-2022
+  conforms: true
+  evidence: Certified to the ISO/IEC 27001:2022 standard.
+  source: https://www.onerail.com/ai/data-privacy-security/
+- id: gdpr
+  conforms: true
+  evidence: Stated GDPR compliant.
+  source: https://www.onerail.com/ai/data-privacy-security/
+- id: cis-cisa-disa-cobit
+  conforms: true
+  evidence: States the security program follows CIS, CISA, DISA and COBIT standards.
+  source: https://www.onerail.com/ai/data-privacy-security/
+- id: pci-dss
+  conforms: false
+  evidence: Not claimed.
+- id: hipaa
+  conforms: false
+  evidence: Not claimed, despite a pharma vertical.
+- id: fedramp
+  conforms: false
+  evidence: Not claimed.
+hosting: Microsoft Azure (both API surfaces run on Azure App Service; OneRail states the platform is architected
+  on the Microsoft Azure platform).
+trust_center: https://trust.onerail.com/

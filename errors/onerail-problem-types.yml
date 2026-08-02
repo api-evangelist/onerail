@@ -1,0 +1,126 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/_original/onerail-delivery-api-openapi.json, openapi/_original/onerail-operations-api-openapi.json
+docs: https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+format: custom-json
+rfc9457: false
+summary: OneRail does not use RFC 9457 application/problem+json. Every error across both APIs is returned
+  as application/json using a single Error envelope with a numeric code, a required human-readable message,
+  a free-form errors object, and an optional errorDetails array. The errorDetails entries borrow RFC 6901
+  JSON Pointer semantics to point at the offending field in the request document, which is the closest
+  thing OneRail publishes to a machine-actionable error contract. Validation failures on some Delivery
+  API endpoints use a second shape with a top-level 'Validation errors' message and an errors[] array
+  carrying a location object.
+envelope:
+  media_type: application/json
+  schema: openapi/onerail-delivery-api-openapi.yml#/components/schemas/Error
+  fields:
+  - field: code
+    type: integer
+    required: false
+    description: Numeric error code
+  - field: message
+    type: string
+    required: true
+    description: Human-readable error message
+  - field: errors
+    type: object
+    required: false
+    description: Free-form map of field errors
+  - field: errorDetails
+    type: array
+    required: false
+    description: Array of detail/pointer objects
+  - field: errorDetails[].detail
+    type: string
+    required: true
+    description: A human-readable explanation specific to this occurrence of the problem
+  - field: errorDetails[].pointer
+    type: string
+    required: false
+    description: A JSON Pointer (RFC 6901) to the associated entity in the request document
+validation_envelope:
+  source: https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  fields:
+  - field: message
+    type: string
+    description: 'Fixed value: Validation errors'
+  - field: errors[].message
+    type: string
+    description: Field-level validation message
+  - field: errors[].location.in
+    type: string
+    description: Where the error occurred, e.g. request
+  - field: errors[].location.name
+    type: string
+    description: Which part, e.g. body
+  - field: errors[].location.docPath
+    type: string
+    description: Path within the schema document
+  - field: errors[].location.path
+    type: string
+    description: Path to the specific request field that caused the error
+problems:
+- status: 400
+  title: Bad Request
+  description: Malformed request or failed field-level validation. Inspect errors[] / errorDetails[] for
+    the offending field.
+  occurrences:
+    delivery_api: 11
+    operations_api: 25
+- status: 401
+  title: Unauthorized
+  description: Missing or invalid credentials. Applies to both organization auth (X-ONERAIL-APP-ID + X-ONERAIL-API-KEY)
+    and user auth (POST /user/authenticate returns 401 on invalid credentials).
+  occurrences:
+    delivery_api: 2
+    operations_api: 5
+- status: 403
+  title: Forbidden
+  description: Caller is authenticated but not permitted. Documented on service-to-service endpoints that
+    accept only a OneRail-organization API key - JWT and non-OneRail API keys are rejected with 403.
+  occurrences:
+    operations_api: 3
+- status: 404
+  title: Not Found
+  description: The requested delivery, order, location, user, or other resource does not exist.
+  occurrences:
+    delivery_api: 5
+    operations_api: 107
+- status: 422
+  title: Unprocessable Entity
+  description: Returned by Delivery API operations as "Unexpected error" with the standard Error envelope;
+    covers semantically invalid delivery/order payloads that pass schema validation.
+  occurrences:
+    delivery_api: 13
+- status: 500
+  title: Internal Server Error
+  description: Unexpected server-side failure.
+  occurrences:
+    operations_api: 6
+- status: 503
+  title: Service Unavailable
+  description: Dependency or downstream service unavailable.
+  occurrences:
+    operations_api: 1
+- status: 512
+  title: Non-standard extension status
+  description: Four Operations API operations declare a 512 response. 512 is not an IANA-registered HTTP
+    status code; it is a OneRail-specific extension.
+  occurrences:
+    operations_api: 4
+  deviation: true
+- status: default
+  title: Unexpected error
+  description: Catch-all documented on operations across both APIs, always returning the Error envelope.
+  occurrences:
+    delivery_api: 19
+    operations_api: 419
+domain_failure_events:
+  note: Some failures surface as webhook events rather than HTTP errors. NO_MATCHING_SLA_SHIPPER_CONTRACTS
+    is emitted when an order is created without a valid service level and cannot be dispatched.
+  source: asyncapi/onerail-delivery-events-webhooks.yml
+gaps:
+- No RFC 9457 problem+json media type
+- No stable machine-readable error type URIs or a documented error-code registry
+- The numeric "code" field is untyped in the spec and has no published enumeration

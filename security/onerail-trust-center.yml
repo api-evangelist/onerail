@@ -1,0 +1,41 @@
+generated: '2026-08-02'
+method: searched
+probe: true
+source: https://trust.onerail.com/
+url: https://trust.onerail.com/
+vendor: Vanta
+certifications:
+- SOC 2 Type II
+- ISO/IEC 27001:2022
+- GDPR
+detail:
+  soc2: SOC 2 Type II across all five Trust Services Criteria - Security, Availability, Processing Integrity,
+    Confidentiality, Privacy. OneRail states five consecutive years of SOC 2 Type II compliance and no
+    major exceptions three years in a row.
+  iso27001: Certified to ISO/IEC 27001:2022.
+  gdpr: Stated GDPR compliant.
+  frameworks_followed:
+  - CIS
+  - CISA
+  - DISA
+  - COBIT
+  hosting: Microsoft Azure
+evidence:
+- source: https://trust.onerail.com/
+  http_status: 200
+  note: Vanta-hosted OneRail Trust Center; the page is a JavaScript application so control detail is not
+    machine-readable anonymously.
+- source: https://www.onerail.com/ai/data-privacy-security/
+  http_status: 200
+  keywords:
+  - soc 2 type ii
+  - iso/iec 27001:2022
+  - gdpr
+  - trust services criteria
+  - cis
+  - cisa
+  - disa
+  - cobit
+vulnerability_disclosure: none published - no security.txt, no /security or responsible-disclosure page,
+  and no bug bounty program was found on any OneRail host
+fetched: '2026-08-02'

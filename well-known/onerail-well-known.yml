@@ -1,0 +1,60 @@
+generated: '2026-08-02'
+method: probed
+source: live HTTPS probes of every apis.yml host and every OpenAPI base host
+summary: >-
+  No /.well-known/ discovery documents are published on any OneRail host. The corporate site
+  (www.onerail.com), the Zendesk-hosted developer portal (developer.onerail.io) and both Azure App
+  Service API hosts return 404 for every probed path. app.onerail.io is a single-page application whose
+  catch-all route answers 200 with the same 4,806-byte HTML shell for every path, including paths that
+  do not exist - those 200s are recorded below as false positives, not as discovery documents.
+hosts:
+- host: https://www.onerail.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+- host: https://developer.onerail.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+- host: https://onerail-delivery-api-prod.azurewebsites.net
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+  - {path: /api-docs, status: 200, note: Swagger UI - the live OpenAPI 3.0.1 document is inlined in /api-docs/swagger-ui-init.js}
+- host: https://onerail-operations-prod.azurewebsites.net
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+  - {path: /api-docs, status: 200, note: Swagger UI - the live OpenAPI 3.0.1 document is inlined in /api-docs/swagger-ui-init.js}
+- host: https://app.onerail.io
+  note: SPA catch-all - every path returns the same 4806-byte HTML shell. 200s below are NOT discovery documents.
+  documents:
+  - {path: /.well-known/openid-configuration, status: 200, content_type: text/html, accepted: false, reason: html-spa-catchall}
+  - {path: /.well-known/oauth-authorization-server, status: 200, content_type: text/html, accepted: false, reason: html-spa-catchall}
+  - {path: /.well-known/api-catalog, status: 200, content_type: text/html, accepted: false, reason: html-spa-catchall}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+security_txt: none
+agent_card: none

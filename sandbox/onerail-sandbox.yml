@@ -1,0 +1,56 @@
+generated: '2026-08-02'
+method: searched
+source: https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+summary: 'OneRail publishes named non-production environments rather than a self-serve sandbox. Every
+  documented endpoint is given three times - staging, UAT and production - on separate Azure App Service
+  hosts, and the Developer Hub quickstart is written against staging/UAT. There is no public test-key
+  prefix scheme, no magic test values, no test clock, and no self-serve signup: credentials for every
+  environment are minted per shipper by the OneRail customer success/product team.'
+self_serve: false
+environments:
+- name: staging
+  delivery_api: https://onerail-delivery-api-staging.azurewebsites.net
+  operations_api: https://onerail-operations-staging.azurewebsites.net
+- name: uat
+  delivery_api: https://onerail-delivery-api-uat.azurewebsites.net
+  operations_api: https://onerail-operations-uat.azurewebsites.net
+- name: production
+  delivery_api: https://onerail-delivery-api-prod.azurewebsites.net
+  operations_api: https://onerail-operations-prod.azurewebsites.net
+credentials:
+  model: per-environment App ID / API Key pair
+  headers:
+  - X-ONERAIL-APP-ID
+  - X-ONERAIL-API-KEY
+  issuance: contact the OneRail customer success team or support@onerail.io; no self-serve key generation
+  test_key_prefix: null
+in_api_test_affordances:
+- name: DRAFT state
+  detail: Deliveries and availability checks accept state DRAFT (vs READY_TO_DISPATCH) so an order can
+    be staged without dispatching.
+  source: CheckAvailabilityRequest / OrderRequest state enum
+- name: saveDraftDelivery flag
+  detail: POST /delivery/get-rates accepts saveDraftDelivery - when false, rates are returned without
+    creating a delivery.
+  operation: openapi/onerail-delivery-api-openapi.yml#getDeliveryRates
+- name: Pre-validation endpoints
+  detail: POST /delivery/pre-validation and /delivery/pre-validation-multiple validate a delivery payload
+    before creation.
+  operation: openapi/onerail-delivery-api-openapi.yml#preValidateDelivery
+- name: Availability probe
+  detail: POST /delivery/check-availability supports progressive input - a minimal pickup/drop-off request
+    returns top-level availability with dataCompleteness MINIMAL and no pricing.
+  operation: openapi/onerail-delivery-api-openapi.yml#checkDeliveryAvailability
+- name: skipOptimizer
+  detail: POST /v1/routes accepts skipOptimizer to bypass route optimization and honour a caller-supplied
+    stop sequence, which makes routing behaviour deterministic under test.
+  operation: openapi/onerail-delivery-api-openapi.yml#createRoutes
+test_data:
+  test_cards: null
+  magic_values: null
+  test_clock: null
+  note: OneRail publishes no magic test identifiers or simulation values. The Developer Hub examples use
+    illustrative addresses (e.g. a Las Vegas pickup and a Henderson drop-off) but does not designate them
+    as reserved test values, so they are NOT recorded here as fixtures.
+prerequisite: Pickup locations must be configured on the organization (POST /v1/location on the Operations
+  API, or through the Organization > Locations UI) before deliveries can be executed end to end.

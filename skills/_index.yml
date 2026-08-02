@@ -1,0 +1,38 @@
+generated: '2026-08-02'
+method: generated
+source: https://developer.onerail.io/hc/en-us/categories/50712147847067-Developer-Hub + openapi/
+note: OneRail publishes no AGENTS.md or provider-authored skill files. These are API Evangelist generated
+  skills, every step grounded in a verified operationId from the harvested OpenAPI documents.
+skills:
+- file: onerail-rate-shop-and-dispatch.md
+  name: Rate shop a delivery and dispatch it through the OneRail network
+  api: openapi/onerail-delivery-api-openapi.yml
+  operations:
+  - checkDeliveryAvailability
+  - getDeliveryRates
+  - create
+  - patchPartialUpdate
+  - getDetails
+- file: onerail-track-delivery-events.md
+  name: Receive and interpret OneRail delivery events
+  api: openapi/onerail-operations-api-openapi.yml
+  operations:
+  - updateWebhookUrl
+  - getAllDeliveryNotificationStatuses
+  - updateDeliveryNotificationStatus
+  - retryPendingDeliveryEvents
+  - getDetails
+- file: onerail-visibility-only-tracking.md
+  name: Track a shipment fulfilled outside the OneRail network
+  api: openapi/onerail-delivery-api-openapi.yml
+  operations:
+  - createVisibility
+  - addVisibility
+  - getDetails
+- file: onerail-route-internal-fleet.md
+  name: Build and optimize a multi-stop route for an internal fleet
+  api: openapi/onerail-delivery-api-openapi.yml
+  operations:
+  - createRoutes
+  - create
+  - getDetails

@@ -1,0 +1,131 @@
+generated: '2026-08-02'
+method: derived
+status: candidate
+source: openapi/_original/onerail-delivery-api-openapi.json
+published_server: null
+search_note: No official or community MCP server for OneRail was found on the Developer Hub, the corporate
+  site, npm, or public MCP registries as of 2026-08-02. There is no GitHub organization for OneRail (github.com/onerail
+  is an empty personal account with 0 public repositories). The tool list below is a CANDIDATE derived
+  one-to-one from real Delivery API operationIds - it is not something OneRail publishes.
+server:
+  name: onerail
+  transport: http
+  url: null
+  auth: Organization API key pair - X-ONERAIL-APP-ID and X-ONERAIL-API-KEY headers, provisioned per shipper
+    by OneRail
+tools:
+- name: get_delivery_rates
+  description: Fetch rates from every qualified carrier for a prospective delivery, optionally saving
+    a draft delivery.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#getDeliveryRates
+  http: POST /delivery/get-rates
+- name: check_delivery_availability
+  description: Check whether a delivery can be fulfilled between a pickup and drop-off location, with
+    optional service-level and price detail.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#checkDeliveryAvailability
+  http: POST /delivery/check-availability
+- name: create_order
+  description: Create an order with its deliveries.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#create
+  http: POST /order/create
+- name: create_order_v2
+  description: Create an order with deliveries and returns (v2).
+  source_operation: openapi/onerail-delivery-api-openapi.yml#createV2
+  http: POST /v2/order
+- name: add_delivery_to_order
+  description: Add a delivery to an existing order.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#addDelivery
+  http: POST /order/add-delivery
+- name: add_return_to_order
+  description: Add a return delivery to an existing order.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#addReturn
+  http: POST /order/add-return
+- name: patch_order
+  description: Partially update an order, appending items and containers.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#patchPartialUpdate
+  http: PATCH /order/{orderId}/partial-update
+- name: replace_order
+  description: Partially update an order, replacing items and containers.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#putPartialUpdate
+  http: PUT /order/{orderId}/partial-update
+- name: create_delivery
+  description: Create a delivery directly.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#createDelivery
+  http: POST /delivery/create
+- name: prevalidate_delivery
+  description: Validate a delivery payload before creation.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#preValidateDelivery
+  http: POST /delivery/pre-validation
+- name: prevalidate_delivery_slas
+  description: Validate a delivery against multiple SLAs before creation.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#preValidateDeliverySlas
+  http: POST /delivery/pre-validation-multiple
+- name: get_delivery_details
+  description: Return the current details of a delivery.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#getDetails
+  http: GET /delivery/{id}/details
+- name: get_delivery_documents
+  description: Retrieve all documents associated with a delivery.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#getDocuments
+  http: GET /delivery/{id}/documents
+- name: cancel_delivery
+  description: Cancel a delivery by id with a reason.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#cancelDelivery
+  http: POST /delivery/{id}/cancel
+- name: reschedule_delivery
+  description: Reschedule a delivery.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#rescheduleDelivery
+  http: POST /delivery/{deliveryId}/reschedule
+- name: update_shipment_id
+  description: Update the shipmentId on a delivery.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#updateShipmentId
+  http: POST /delivery/{id}/shipment-id
+- name: get_historical_delivery_rates
+  description: Get historical rates for a delivery.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#getHistoricalDeliveryRates
+  http: GET /delivery/get-historical-rates
+- name: create_scan_data
+  description: Create scan data records for containers on a delivery.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#createScanData
+  http: POST /delivery/{deliveryId}/scanData
+- name: get_shipping_label
+  description: Return labels for all containers of a delivery.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#labelInfo
+  http: GET /shipping-label/{id}
+- name: get_container_label
+  description: Return the label for a specific container.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#containerLabelInfo
+  http: GET /shipping-label/{id}/{containerId}
+- name: generate_shipping_label
+  description: Generate/return cached labels for all containers of a delivery.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#getLabelCached
+  http: GET /shipping-label/generate/{deliveryId}
+- name: close_manifest
+  description: Close a carrier manifest.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#closeManifest
+  http: POST /close-manifest
+- name: create_routes
+  description: Create new orders within one or more routes, with optional optimizer bypass.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#createRoutes
+  http: POST /v1/routes
+- name: create_visibility_delivery
+  description: Create a visibility-only delivery for a shipment fulfilled outside the OneRail network.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#createVisibility
+  http: POST /visibility/create
+- name: add_visibility_deliveries
+  description: Add visibility deliveries to an existing visibility order.
+  source_operation: openapi/onerail-delivery-api-openapi.yml#addVisibility
+  http: POST /visibility/{orderId}/add-deliveries
+excluded_operations:
+- operationId: index
+  reason: root health/version probe, not an agent capability
+- operationId: viewImage
+  reason: static asset proxy
+- operationId: setPayload
+  reason: internal redis key setter
+- operationId: authenticate
+  reason: credential exchange - handled by the transport, not exposed as a tool
+- operationId: issueToken
+  reason: OAuth token exchange - handled by the transport, not exposed as a tool
+operations_api: Not modelled as tools. The Operations API (438 operations) is account administration and
+  is a poor fit for agent exposure without a curated allow-list.

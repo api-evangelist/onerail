@@ -1,0 +1,87 @@
+generated: '2026-08-02'
+method: searched
+source: https://developer.onerail.io/hc/en-us/articles/50726344844315-Delivery-Events-and-Webhooks
+spec_type: Webhooks
+asyncapi_published: false
+summary: >-
+  OneRail publishes no AsyncAPI document, but it does document a real webhook event surface. Delivery
+  and order status changes are pushed to a shipper-supplied webhook endpoint that must be registered
+  with OneRail before any events are sent. The event catalog below is captured verbatim from the
+  Developer Hub "Delivery Events and Webhooks" article; the delivery-notification management
+  endpoints come from the Operations OpenAPI.
+delivery:
+  transport: https-webhook
+  direction: outbound
+  registration: >-
+    A webhook endpoint (URL) must be provided to OneRail and configured on the organization BEFORE any
+    events are sent. Without this configuration no event notifications are delivered. The URL can also be
+    set programmatically on the organization record.
+  registration_operation: openapi/onerail-operations-api-openapi.yml#updateWebhookUrl
+  custom_events: >-
+    OneRail states that custom delivery events and webhooks are available on request per organization
+    implementation.
+  security: not documented (no published signing scheme, shared secret, or replay protection)
+envelope:
+  common_fields:
+  - {field: deliveryId, description: OneRail internal delivery identifier}
+  - {field: eventType, description: The delivery event type}
+  - {field: orderId, description: Client/shipper unique order identifier}
+  - {field: eventOn, description: ISO 8601 timestamp of the event}
+  - {field: vin, description: Vehicle VIN, when known}
+  - {field: from.storeNumber, description: Originating store number}
+  - {field: shipper.contractedShipperCostCent, description: Contracted shipper cost in cents}
+  - {field: shipper.computedDistanceMile, description: Computed delivery distance in miles}
+events:
+- name: ACCEPTED_BY_LP
+  description: >-
+    The logistics provider (LP) has accepted the delivery request. Confirms that a carrier has taken
+    ownership of the delivery and it is queued for driver assignment.
+  extra_fields: [routeId, createDeliveryAttemptData.lpName]
+- name: CANCELED_BY_ONERAIL
+  description: The delivery was canceled by OneRail.
+- name: CANCELED_BY_SHIPPER
+  description: The delivery was canceled by the shipper.
+- name: DRIVER_ASSIGNED
+  description: >-
+    A driver has been assigned to the delivery. The event payload includes the driver's name, phone
+    number, and the originating store number.
+  extra_fields: [driverName, driverPhone]
+- name: EN_ROUTE_TO_PICKUP
+  description: The assigned driver is traveling to the pickup location.
+- name: ARRIVED_FOR_PICKUP
+  description: >-
+    The driver has arrived at the pickup location and is ready to collect the order. No items have been
+    picked up at this stage.
+- name: PICKED_UP
+  description: The driver has collected the order from the pickup location.
+- name: EN_ROUTE_TO_DELIVERY
+  description: The driver is traveling to the customer's delivery address with the order on board.
+- name: ARRIVED_FOR_DELIVERY
+  description: The driver has arrived at the customer's delivery address and is preparing to complete the handoff.
+- name: DELIVERED
+  description: The order has been successfully delivered to the customer.
+  extra_fields: [podUrl, signature]
+- name: NO_MATCHING_SLA_SHIPPER_CONTRACTS
+  description: >-
+    Order created did not include a valid service level and the delivery needs to be addressed before a
+    successful dispatch can occur.
+visibility_events:
+  source: https://developer.onerail.io/hc/en-us/articles/50726327516571-API-Use-Case-Visibility
+  description: >-
+    Deliveries created outside the OneRail booking process are tracked as "visibility" deliveries. The
+    assigned logistics partner posts events back to OneRail on POST /visibility/{orderId}/event.
+  events:
+  - {name: PICKED_UP, description: The truckload is loaded at the origin.}
+  - {name: EN_ROUTE_TO_DELIVERY, description: The truck is in transit to the destination.}
+  - {name: DELIVERED, description: The order has been successfully delivered.}
+  - {name: GEO, description: Real-time GPS location updates, when supported by the logistics partner.}
+management_operations:
+- {operationId: updateWebhookUrl, path: 'PATCH /v1/organization/{organizationId}/webhook-url', source: openapi/onerail-operations-api-openapi.yml}
+- {operationId: getAllDeliveryNotificationStatuses, path: GET /v1/delivery/notification-statuses, source: openapi/onerail-operations-api-openapi.yml}
+- {operationId: createDeliveryNotificationStatus, path: POST /v1/delivery/notification-statuses/create, source: openapi/onerail-operations-api-openapi.yml}
+- {operationId: updateDeliveryNotificationStatus, path: POST /v1/delivery/notification-statuses/update, source: openapi/onerail-operations-api-openapi.yml}
+- {operationId: retryPendingDeliveryEvents, path: POST /v1/delivery/notification-statuses/retry-pending, source: openapi/onerail-operations-api-openapi.yml}
+delivery_semantics:
+  retries: >-
+    OneRail records each webhook attempt as a delivery notification status (success or failure with an
+    error) and runs a scheduled retry of pending delivery notification statuses.

@@ -1,0 +1,33 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/onerail-operations-api-openapi.yml
+schemes:
+- name: OAuth
+  source: openapi/onerail-operations-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://dummy-unused-url.com
+    tokenUrl: https://dummy-unused-url.com
+  description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+    integrations). Clients obtain tokens from their own IdP outside of this API
+
+    and call endpoints with `Authorization: OAuth <access_token>`. The
+
+    `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+    satisfy the OpenAPI schema; this service does not call them directly and the
+
+    real IdP URLs are configured via environment and introspection logic in code.'
+scopes: []
+docs: null
+note: 'The Operations API declares an oauth2 securityScheme but publishes ZERO scopes: the flow object
+  is empty and no operation carries an oauth2 security requirement with scopes. The spec itself states
+  the authorizationUrl and tokenUrl values ("https://dummy-unused-url.com") are placeholders present only
+  to satisfy the OpenAPI schema - OneRail validates access tokens minted by the customer''s own IdP (e.g.
+  Okta) and the real IdP URLs are configured out of band per deployment. No scopes or permissions reference
+  page exists on the OneRail Developer Hub. The practical authorization model is the organization App
+  ID / API Key pair plus platform roles (Location/Ops User, View Only, Global Admin) assigned in the UI
+  - see authentication/onerail-authentication.yml.'
+placeholder_urls: true
+searched: https://developer.onerail.io/hc/en-us - no scopes/permissions reference published

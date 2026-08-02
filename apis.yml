@@ -1,23 +1,177 @@
 aid: onerail
 name: OneRail
-description: 'OneRail is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  OneRail is an Orlando, Florida based last-mile delivery orchestration company whose OmniPoint platform unifies
+  fragmented delivery ecosystems into a single decisioning and execution layer for enterprise shippers. The platform
+  rate-shops and dispatches orders across a courier marketplace of 1,000+ connected carriers and 12M+ drivers,
+  optimizes multi-stop routes for internal fleets under vehicle-capacity, market-hours and appointment-window
+  constraints, and streams delivery events back to the shipper for end-to-end visibility and proof of delivery.
+  Developers integrate through two documented REST surfaces published from the OneRail Developer Hub - the Delivery
+  API (order creation, rate shopping, partial updates, cancellation, shipping labels, routes, and visibility-only
+  tracking for shipments fulfilled outside the OneRail network) and the Operations API (organizations, locations,
+  users, markets, fleet assets, contracts, SLAs, and API credentials). Both are authenticated with an organization
+  App ID / API Key header pair, and delivery status changes are pushed to shipper-configured webhook endpoints.
+  OneRail is embedded in the IBM Sterling Order Management and Fulfillment Suite and in SAP environments, and serves
+  wholesale, retail, automotive, pharma, industrial, grocery, furniture, and food and beverage shippers.
+accessModel:
+  pricing: unknown
+  onboarding: sales-assisted
+  trial: false
+  try_now: false
+  public: false
+  label: Contact sales
+  confidence: high
+  source:
+  - https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  - https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  note: >-
+    OneRail publishes no pricing page and no self-serve signup. The App ID / API Key pair is created for
+    each shipper organization by the OneRail product team and distributed via customer success
+    (support@onerail.io); platform users must already exist before they can authenticate. Access starts
+    with a demo request.
+  generated: '2026-08-02'
+  method: searched
+image: https://www.onerail.com/wp-content/themes/customtheme/images/logo.png
 url: https://raw.githubusercontent.com/api-evangelist/onerail/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
-- Company
-apis: []
+- last-mile-delivery
+- delivery-orchestration
+- logistics
+- supply-chain
+- route-optimization
+- courier-network
+- shipping
+- fleet-management
+- transportation
+- order-management
+- webhooks
+- final-mile
+apis:
+- name: OneRail Delivery API
+  description: >-
+    The OmniPoint Delivery API lets authorized shippers request, price, update, and track deliveries through the
+    OneRail carrier network. It covers rate shopping across qualified carriers, order and delivery creation
+    (order-first and delivery-first), progressive partial updates on draft orders, availability checks, delivery
+    pre-validation, rescheduling, cancellation, shipping-label and manifest generation, scan data, multi-stop route
+    creation with an optional optimizer bypass, and visibility-only tracking for shipments fulfilled outside the
+    OneRail booking process.
+  humanURL: https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - last-mile-delivery
+  - delivery-orchestration
+  - shipping
+  - route-optimization
+  - order-management
+  - courier-network
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-delivery-api-openapi.yml
+  - type: Documentation
+    url: https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  - type: APIReference
+    url: https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  - type: GettingStarted
+    url: https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  - type: MCPServer
+    url: mcp/onerail-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/onerail-tool-crosswalk.yml
+  - type: Overlay
+    url: overlays/onerail-delivery-api-overlay.yaml
+- name: OneRail Operations API
+  description: >-
+    The OmniPoint Operations (Operation Dashboard) API administers the shipper account behind the Delivery API:
+    organizations and their preferences, pickup and drop-off locations with service hours and cut-off times, users
+    and roles, teams, markets and zones, fleet assets and vehicles, drivers, logistics partners and carrier
+    contracts, service levels and SLAs, holidays, notifications, and the App ID / API Key credential records used to
+    authenticate machine-to-machine integrations.
+  humanURL: https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  baseURL: https://onerail-operations-prod.azurewebsites.net
+  tags:
+  - logistics
+  - fleet-management
+  - transportation
+  - supply-chain
+  - order-management
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-operations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: Overlay
+    url: overlays/onerail-operations-api-overlay.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/onerail-agentic-access.yml
 - type: Website
-  url: https://forgeglobal.com/onerail_stock/
+  url: https://www.onerail.com/
+- type: DeveloperPortal
+  url: https://developer.onerail.io/hc/en-us
+- type: Documentation
+  url: https://developer.onerail.io/hc/en-us/categories/50712147847067-Developer-Hub
+- type: APIReference
+  url: https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+- type: GettingStarted
+  url: https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+- type: Support
+  url: https://knowledge.onerail.io/hc/en-us
+- type: Blog
+  url: https://www.onerail.com/blog/
+- type: Login
+  url: https://app.onerail.io/
+- type: TermsOfService
+  url: https://www.onerail.com/terms/
+- type: PrivacyPolicy
+  url: https://www.onerail.com/privacy-policy/
+- type: Compliance
+  url: https://www.onerail.com/ai/data-privacy-security/
+- type: TrustCenter
+  url: security/onerail-trust-center.yml
+- type: StatusPage
+  url: https://onerail.cronitorstatus.com
+- type: Authentication
+  url: authentication/onerail-authentication.yml
+- type: OAuthScopes
+  url: scopes/onerail-scopes.yml
+- type: DomainSecurity
+  url: security/onerail-domain-security.yml
+- type: Conventions
+  url: conventions/onerail-conventions.yml
+- type: Idempotency
+  url: conventions/onerail-conventions.yml
+- type: Sandbox
+  url: sandbox/onerail-sandbox.yml
+- type: ErrorCatalog
+  url: errors/onerail-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/onerail-lifecycle.yml
+- type: Conformance
+  url: conformance/onerail-conformance.yml
+- type: DataModel
+  url: data-model/onerail-data-model.yml
+- type: WellKnown
+  url: well-known/onerail-well-known.yml
+- type: Webhooks
+  url: asyncapi/onerail-delivery-events-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/onerail-llms.txt
+x-enrichment:
+  date: '2026-08-02'
+  status: enriched
+  artifacts_added: 27
+  pass: local-v1

@@ -1,0 +1,49 @@
+generated: '2026-08-02'
+method: searched
+source: https://developer.onerail.io/hc/en-us/categories/50712147847067-Developer-Hub
+versioning:
+  scheme: uri-path
+  current:
+    delivery_api: mixed - unversioned, /v1/routes, /v2/order (info.version 0.0.3)
+    operations_api: /v1/ (info.version 1.0.0)
+  policy_published: false
+  notes: No published API versioning policy; version facts are derived from the live OpenAPI documents.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  rfc8594: false
+  notes: No deprecation or sunset policy is published, and neither spec declares Sunset or Deprecation
+    response headers. Two Operations API operations are flagged deprecated in the spec itself.
+deprecated_operations:
+- openapi/onerail-operations-api-openapi.yml#explainLPList
+- openapi/onerail-operations-api-openapi.yml#updateDecisionWeightDefault
+environments:
+- name: staging
+  delivery_api: https://onerail-delivery-api-staging.azurewebsites.net
+  operations_api: https://onerail-operations-staging.azurewebsites.net
+- name: uat
+  delivery_api: https://onerail-delivery-api-uat.azurewebsites.net
+  operations_api: https://onerail-operations-uat.azurewebsites.net
+- name: production
+  delivery_api: https://onerail-delivery-api-prod.azurewebsites.net
+  operations_api: https://onerail-operations-prod.azurewebsites.net
+status_page: https://onerail.cronitorstatus.com
+status_page_source: https://developer.onerail.io/hc/en-us/articles/50726230588443-OneRail-Platform-Status
+status_page_vendor: Cronitor
+health_endpoints:
+- openapi/onerail-operations-api-openapi.yml#getReadinessCheck
+- openapi/onerail-delivery-api-openapi.yml#index
+sla:
+  published_url: null
+  notes: No public uptime SLA is published. SLAs in the OneRail product sense are per-shipper contract
+    objects (pickup/drop-off commitments, buffer times, end-of-day deadlines) configured through the Operations
+    API and enforced by the routing engine, not a platform availability commitment.
+changelog:
+  published: false
+  notes: No dated public API changelog or release-notes page was found on the Developer Hub or the corporate
+    site.
+support:
+  email: support@onerail.io
+  help_center: https://knowledge.onerail.io/hc/en-us
+  developer_hub: https://developer.onerail.io/hc/en-us

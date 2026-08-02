@@ -1,0 +1,115 @@
+generated: '2026-08-02'
+method: searched
+source: https://developer.onerail.io/hc/en-us/categories/50712147847067-Developer-Hub
+derived_from:
+- openapi/_original/onerail-delivery-api-openapi.json
+- openapi/_original/onerail-operations-api-openapi.json
+summary: Cross-cutting request/response semantics for the OneRail OmniPoint APIs, searched from the OneRail
+  Developer Hub and derived from the two live OpenAPI 3.0.1 documents served at /api-docs on the Delivery
+  and Operations hosts.
+authentication:
+  primary: Organization API key pair sent as two headers on every request
+  headers:
+  - X-ONERAIL-APP-ID
+  - X-ONERAIL-API-KEY
+  provisioning: 'App ID and API Key are minted per shipper organization by the OneRail product/customer
+    success team and distributed for production use; there is no self-serve key issuance. Support contact:
+    support@onerail.io'
+  alternatives:
+  - name: User-based token
+    how: POST /user/authenticate with username + password returns a token; the client then acts on behalf
+      of that user. The user must already exist on the OneRail platform.
+  - name: JWT bearer
+    how: 'Authorization: Bearer <jwt> - standard JWT bearer used by authenticated OmniPoint users and
+      internal service-to-service calls against the Operations API.'
+  - name: OAuth 2.0
+    how: 'Authorization: OAuth <access_token> - the Operations API validates tokens minted by the customer
+      IdP (e.g. Okta). The authorizationUrl/tokenUrl in the spec are explicit placeholders; the real IdP
+      URLs are configured out of band.'
+  - name: Client credentials
+    how: POST /oauth2/token on the Delivery API exchanges a clientId + clientSecret for a token.
+  artifact: authentication/onerail-authentication.yml
+idempotency:
+  supported: true
+  scope: partial - documented on the cost-adjustment ingest endpoint only, not platform-wide
+  mechanism: request-body natural key (not an Idempotency-Key header)
+  key_field: sourceCostId
+  operation: openapi/onerail-operations-api-openapi.yml#createDeliveryAttemptAdjustmentCost
+  semantics: If a Cost row already exists with the supplied sourceCostId, the endpoint returns 200 with
+    the existing record instead of creating a duplicate; otherwise a new Cost is inserted and returned
+    with 201. The unique index counts soft-deleted rows, so a previously soft-deleted match also returns
+    200 rather than resurrecting the row.
+  retention: indefinite - enforced by a unique database index on Costs.sourceCostId, not by a time-boxed
+    key store
+  header: null
+  notes: The Delivery API exposes no Idempotency-Key header. Shipper-supplied orderId / shipmentId values
+    are the practical correlation keys for order creation and are echoed on every webhook event, but OneRail
+    does not publish replay-safe create semantics for them.
+  gap: No general-purpose Idempotency-Key header across order/delivery creation, which is the surface
+    most in need of it.
+pagination:
+  style: limit/offset
+  applies_to: Operations API collection endpoints
+  request_params:
+  - name: limit
+    in: query
+    description: Page size
+  - name: offset
+    in: query
+    description: Zero-based record offset
+  - name: sortby
+    in: query
+    description: Field to sort by
+  - name: order
+    in: query
+    description: Sort direction
+  - name: filter
+    in: query
+    description: Filter expression
+  - name: search
+    in: query
+    description: Free-text search
+  cursor: false
+  notes: The Delivery API is command-shaped (create/update/cancel/rate) and exposes no paginated collections.
+field_expansion:
+  supported: false
+  notes: No expand / fields / sparse-fieldset parameters in either spec.
+metadata:
+  supported: true
+  mechanism: shipperExtraData free-form objects on orders, deliveries and containers, plus shipperContainerId
+    and shipperLocationExtraData
+  notes: Untyped JSON objects, so no schema is published for their contents.
+request_tracing:
+  supported: false
+  notes: No X-Request-Id / correlation-id / trace header is declared in either OpenAPI or documented in
+    the Developer Hub.
+versioning:
+  scheme: uri-path, inconsistently applied
+  detail: The Delivery API mixes unversioned paths (/order/create, /delivery/get-rates, /delivery/{id}/cancel)
+    with /v1/ (routes) and /v2/ (order). The Operations API is uniformly /v1/. The Delivery API document
+    declares info.version 0.0.3; the Operations API declares 1.0.0.
+  artifact: lifecycle/onerail-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  shape: '{code, message, errors, errorDetails[{detail, pointer}]}'
+  rfc9457: false
+  artifact: errors/onerail-problem-types.yml
+rate_limiting:
+  documented: false
+  notes: No rate-limit headers, quotas, or throttling policy are declared in either spec or published
+    in the Developer Hub.
+content_negotiation:
+  request: application/json
+  response: application/json (application/zip on two Operations export endpoints)
+units_and_locale:
+  measurement: numericSystem query/body parameter with IMPERIAL (default) and METRIC
+  money: integer cents - netAmount, priceCent, contractedShipperCostCent
+  time: ISO 8601 date-time strings
+  locale: organization/location preferences carry locale, measurementSystem, dateFormat, timeFormat, currency
+async_surface: asyncapi/onerail-delivery-events-webhooks.yml
+cross_links:
+  authentication: authentication/onerail-authentication.yml
+  errors: errors/onerail-problem-types.yml
+  lifecycle: lifecycle/onerail-lifecycle.yml
+  sandbox: sandbox/onerail-sandbox.yml
+  data_model: data-model/onerail-data-model.yml

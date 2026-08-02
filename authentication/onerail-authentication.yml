@@ -1,0 +1,58 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/onerail-delivery-api-openapi.yml, openapi/onerail-operations-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: ApiKey
+  type: apiKey
+  in: header
+  parameter: X-ONERAIL-API-KEY
+  sources:
+  - openapi/onerail-delivery-api-openapi.yml
+  - openapi/onerail-operations-api-openapi.yml
+- name: AppId
+  type: apiKey
+  in: header
+  parameter: X-ONERAIL-APP-ID
+  sources:
+  - openapi/onerail-delivery-api-openapi.yml
+  - openapi/onerail-operations-api-openapi.yml
+- name: ApiKeyAndAppId
+  type: apiKey
+  in: header
+  parameter: X-ONERAIL-API-KEY-AND-APP-ID
+  sources:
+  - openapi/onerail-delivery-api-openapi.yml
+- name: bearer
+  type: http
+  scheme: bearer
+  description: |-
+    Standard JWT bearer token used for authenticated OmniPoint users
+    and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+    and the token is validated using the shared Core access token secret.
+  sources:
+  - openapi/onerail-operations-api-openapi.yml
+- name: OAuth
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://dummy-unused-url.com
+    tokenUrl: https://dummy-unused-url.com
+    scopes: 0
+  description: |-
+    OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+    integrations). Clients obtain tokens from their own IdP outside of this API
+    and call endpoints with `Authorization: OAuth <access_token>`. The
+    `authorizationUrl` and `tokenUrl` values below are placeholders only to
+    satisfy the OpenAPI schema; this service does not call them directly and the
+    real IdP URLs are configured vi
+  sources:
+  - openapi/onerail-operations-api-openapi.yml

@@ -1,0 +1,36 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for OneRail Operation Dashboard
+  version: 1.0.0
+extends: openapi/onerail-operations-api-openapi.yml
+x-generated: '2026-08-02'
+x-method: generated
+actions:
+- target: $.info
+  update:
+    x-apievangelist-slug: onerail
+    x-apievangelist-harvested: '2026-08-02'
+    x-apievangelist-source: https://onerail-operations-prod.azurewebsites.net/api-docs/swagger-ui-init.js
+    x-apievangelist-note: Harvested verbatim from the live Swagger UI bootstrap on the production Azure
+      App Service host; the provider publishes no standalone /openapi.json or /swagger.json.
+- target: $
+  update:
+    servers:
+    - url: https://onerail-operations-prod.azurewebsites.net
+      description: Production
+    - url: https://onerail-operations-uat.azurewebsites.net
+      description: UAT
+    - url: https://onerail-operations-staging.azurewebsites.net
+      description: Staging
+  x-note: The harvested document declares no servers (Delivery API) or only a relative "/" server (Operations
+    API). These three hosts are published verbatim in the OneRail Developer Hub CapacityConnect quickstart.
+- target: $.info
+  update:
+    x-apievangelist-artifacts:
+      authentication: authentication/onerail-authentication.yml
+      conventions: conventions/onerail-conventions.yml
+      errors: errors/onerail-problem-types.yml
+      lifecycle: lifecycle/onerail-lifecycle.yml
+      data_model: data-model/onerail-data-model.yml
+      webhooks: asyncapi/onerail-delivery-events-webhooks.yml
+      skills: skills/_index.yml
