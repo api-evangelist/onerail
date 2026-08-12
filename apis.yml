@@ -54,13 +54,14 @@ tags:
 apis:
 - name: OneRail Delivery API
   description: >-
-    The OmniPoint Delivery API lets authorized shippers request, price, update, and track deliveries through the
-    OneRail carrier network. It covers rate shopping across qualified carriers, order and delivery creation
-    (order-first and delivery-first), progressive partial updates on draft orders, availability checks, delivery
-    pre-validation, rescheduling, cancellation, shipping-label and manifest generation, scan data, multi-stop route
-    creation with an optional optimizer bypass, and visibility-only tracking for shipments fulfilled outside the
-    OneRail booking process.
-  humanURL: https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+    The OmniPoint Delivery API lets authorized shippers request, price, update, and track deliveries through
+    the OneRail carrier network. It covers rate shopping across qualified carriers, order and delivery
+    creation (order-first and delivery-first), progressive partial updates on draft orders, availability
+    checks, delivery pre-validation, rescheduling, cancellation, shipping-label and manifest generation,
+    scan data, multi-stop route creation with an optional optimizer bypass, and visibility-only tracking
+    for shipments fulfilled outside the OneRail booking process.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
   - last-mile-delivery
@@ -73,41 +74,1286 @@ apis:
   - type: OpenAPI
     url: openapi/onerail-delivery-api-openapi.yml
   - type: Documentation
-    url: https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   - type: APIReference
-    url: https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   - type: GettingStarted
-    url: https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   - type: MCPServer
     url: mcp/onerail-mcp.yml
   - type: ToolCrosswalk
     url: mcp/onerail-tool-crosswalk.yml
   - type: Overlay
     url: overlays/onerail-delivery-api-overlay.yaml
-- name: OneRail Operations API
-  description: >-
-    The OmniPoint Operations (Operation Dashboard) API administers the shipper account behind the Delivery API:
-    organizations and their preferences, pickup and drop-off locations with service hours and cut-off times, users
-    and roles, teams, markets and zones, fleet assets and vehicles, drivers, logistics partners and carrier
-    contracts, service levels and SLAs, holidays, notifications, and the App ID / API Key credential records used to
-    authenticate machine-to-machine integrations.
-  humanURL: https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
-  baseURL: https://onerail-operations-prod.azurewebsites.net
+- aid: onerail:onerail-api-auth-api
+  name: OneRail Api Auth API
+  description: The Api Auth API from OneRail — 3 operation(s) for api auth.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
-  - logistics
-  - fleet-management
-  - transportation
-  - supply-chain
-  - order-management
+  - Api Auth
   properties:
   - type: OpenAPI
-    url: openapi/onerail-operations-api-openapi.yml
+    url: openapi/onerail-api-auth-api-openapi.yml
   - type: Documentation
-    url: https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
   - type: GettingStarted
-    url: https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
-  - type: Overlay
-    url: overlays/onerail-operations-api-overlay.yaml
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-assets-api
+  name: OneRail Assets API
+  description: The Assets API from OneRail — 1 operation(s) for assets.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-assets-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-associatedlocation-api
+  name: OneRail Associated Location API
+  description: The AssociatedLocation API from OneRail — 1 operation(s) for associatedlocation.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - AssociatedLocation
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-associatedlocation-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-authentication-api
+  name: OneRail Authentication API
+  description: The Authentication API from OneRail — 13 operation(s) for authentication.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-authentication-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-blob-storage-api-api
+  name: OneRail Blob Storage API API
+  description: The Blob Storage API API from OneRail — 3 operation(s) for blob storage api.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Blob Storage API
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-blob-storage-api-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-box-api
+  name: OneRail Box API
+  description: The Box API from OneRail — 4 operation(s) for box.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Box
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-box-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-bulk-approve-sla-template-api
+  name: OneRail Bulk Approve SLA Template API
+  description: >-
+    The Bulk Approve SLA Template API from OneRail — 1 operation(s) for bulk approve sla template.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Bulk Approve SLA Template
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-bulk-approve-sla-template-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-bulk-send-sla-template-api
+  name: OneRail Bulk Send SLA Template API
+  description: The Bulk Send SLA Template API from OneRail — 1 operation(s) for bulk send sla template.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Bulk Send SLA Template
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-bulk-send-sla-template-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-bulk-uploads-api
+  name: OneRail Bulk Uploads API
+  description: The Bulk Uploads API from OneRail — 2 operation(s) for bulk uploads.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Bulk Uploads
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-bulk-uploads-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-cancellation-reason-api
+  name: OneRail Cancellation Reason API
+  description: The Cancellation Reason API from OneRail — 1 operation(s) for cancellation reason.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Cancellation Reason
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-cancellation-reason-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-carrier-api
+  name: OneRail Carrier API
+  description: The Carrier API from OneRail — 10 operation(s) for carrier.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Carrier
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-carrier-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-client-users-api
+  name: OneRail Client Users API
+  description: The Client Users API from OneRail — 1 operation(s) for client users.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Client Users
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-client-users-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-controltower-api
+  name: OneRail Control Tower API
+  description: The ControlTower API from OneRail — 2 operation(s) for controltower.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - ControlTower
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-controltower-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-cost-api
+  name: OneRail Cost API
+  description: The Cost API from OneRail — 1 operation(s) for cost.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Cost
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-cost-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-decision-weight-api
+  name: OneRail Decision Weight API
+  description: The Decision Weight API from OneRail — 4 operation(s) for decision weight.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Decision Weight
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-decision-weight-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-decision-weight-default-api
+  name: OneRail Decision Weight Default API
+  description: >-
+    The Decision Weight Default API from OneRail — 3 operation(s) for decision weight default.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Decision Weight Default
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-decision-weight-default-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-delivery-attempt-api
+  name: OneRail Delivery Attempt API
+  description: The Delivery Attempt API from OneRail — 5 operation(s) for delivery attempt.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Delivery Attempt
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-delivery-attempt-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-delivery-exception-api
+  name: OneRail Delivery Exception API
+  description: The Delivery Exception API from OneRail — 4 operation(s) for delivery exception.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Delivery Exception
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-delivery-exception-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-delivery-rating-api
+  name: OneRail Delivery Rating API
+  description: The Delivery Rating API from OneRail — 1 operation(s) for delivery rating.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Delivery Rating
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-delivery-rating-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-deliverynote-api
+  name: OneRail Delivery Note API
+  description: The DeliveryNote API from OneRail — 3 operation(s) for deliverynote.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - DeliveryNote
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-deliverynote-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-deliverynotificationstatuses-api
+  name: OneRail Delivery Notification Statuses API
+  description: >-
+    The DeliveryNotificationStatuses API from OneRail — 6 operation(s) for deliverynotificationstatuses.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - DeliveryNotificationStatuses
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-deliverynotificationstatuses-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-deliveryviewing-api
+  name: OneRail Delivery Viewing API
+  description: The DeliveryViewing API from OneRail — 2 operation(s) for deliveryviewing.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - DeliveryViewing
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-deliveryviewing-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-dispatch-platform-api
+  name: OneRail Dispatch Platform API
+  description: The Dispatch Platform API from OneRail — 6 operation(s) for dispatch platform.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Dispatch Platform
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-dispatch-platform-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-dispatch-platform-setting-api
+  name: OneRail Dispatch Platform Setting API
+  description: >-
+    The Dispatch Platform Setting API from OneRail — 1 operation(s) for dispatch platform setting.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Dispatch Platform Setting
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-dispatch-platform-setting-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-dobo-api
+  name: OneRail DOBO API
+  description: The DOBO API from OneRail — 1 operation(s) for dobo.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - DOBO
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-dobo-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-documents-api
+  name: OneRail Documents API
+  description: The Documents API from OneRail — 1 operation(s) for documents.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-documents-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-drivers-api
+  name: OneRail Drivers API
+  description: The Drivers API from OneRail — 1 operation(s) for drivers.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Drivers
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-drivers-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-dynamicroutingconfig-api
+  name: OneRail Dynamic Routing Config API
+  description: The DynamicRoutingConfig API from OneRail — 1 operation(s) for dynamicroutingconfig.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - DynamicRoutingConfig
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-dynamicroutingconfig-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-exception-alert-api
+  name: OneRail Exception Alert API
+  description: The Exception Alert API from OneRail — 4 operation(s) for exception alert.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Exception Alert
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-exception-alert-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-file-type-api
+  name: OneRail File Type API
+  description: The File Type API from OneRail — 1 operation(s) for file type.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - File Type
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-file-type-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-fleet-assets-api
+  name: OneRail Fleet Assets API
+  description: The Fleet Assets API from OneRail — 1 operation(s) for fleet assets.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Fleet Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-fleet-assets-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-freight-audit-pay-api
+  name: OneRail Freight Audit & Pay API
+  description: The Freight Audit & Pay API from OneRail — 2 operation(s) for freight audit & pay.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Freight Audit & Pay
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-freight-audit-pay-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-healthcheck-api
+  name: OneRail Health Check API
+  description: The HealthCheck API from OneRail — 1 operation(s) for healthcheck.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - HealthCheck
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-healthcheck-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-holiday-api
+  name: OneRail Holiday API
+  description: The Holiday API from OneRail — 1 operation(s) for holiday.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Holiday
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-holiday-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-home-api
+  name: OneRail Home API
+  description: The Home API from OneRail — 1 operation(s) for home.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Home
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-home-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-location-api
+  name: OneRail Location API
+  description: The Location API from OneRail — 12 operation(s) for location.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Location
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-location-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-locations-api
+  name: OneRail Locations API
+  description: The Locations API from OneRail — 1 operation(s) for locations.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-locations-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-lp-contract-sla-api
+  name: OneRail LP Contract SLA API
+  description: The LP Contract SLA API from OneRail — 12 operation(s) for lp contract sla.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - LP Contract SLA
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-lp-contract-sla-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-lp-market-api
+  name: OneRail LP Market API
+  description: The LP Market API from OneRail — 6 operation(s) for lp market.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - LP Market
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-lp-market-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-lp-self-onboarding-api
+  name: OneRail LP Self Onboarding API
+  description: The LP Self Onboarding API from OneRail — 2 operation(s) for lp self onboarding.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - LP Self Onboarding
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-lp-self-onboarding-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-lpconfiguration-api
+  name: OneRail Lp Configuration API
+  description: The LpConfiguration API from OneRail — 3 operation(s) for lpconfiguration.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - LpConfiguration
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-lpconfiguration-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-manifest-api
+  name: OneRail Manifest API
+  description: The Manifest API from OneRail — 2 operation(s) for manifest.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Manifest
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-manifest-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-market-modifier-api
+  name: OneRail Market Modifier API
+  description: The Market Modifier API from OneRail — 2 operation(s) for market modifier.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Market Modifier
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-market-modifier-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-memwatch-api
+  name: OneRail Mem Watch API
+  description: The MemWatch API from OneRail — 1 operation(s) for memwatch.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - MemWatch
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-memwatch-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-oauth2-api
+  name: OneRail O Auth2 API
+  description: The OAuth2 API from OneRail — 1 operation(s) for oauth2.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - OAuth2
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-oauth2-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-order-api
+  name: OneRail Order API
+  description: The Order API from OneRail — 22 operation(s) for order.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Order
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-order-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-organization-api
+  name: OneRail Organization API
+  description: The Organization API from OneRail — 80 operation(s) for organization.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Organization
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-organization-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-organizations-api
+  name: OneRail Organizations API
+  description: The Organizations API from OneRail — 1 operation(s) for organizations.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-organizations-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-originpickupassociations-api
+  name: OneRail Origin Pickup Associations API
+  description: >-
+    The OriginPickupAssociations API from OneRail — 1 operation(s) for originpickupassociations.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - OriginPickupAssociations
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-originpickupassociations-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-own-fleet-vehicle-api
+  name: OneRail Own Fleet Vehicle API
+  description: The Own Fleet Vehicle API from OneRail — 4 operation(s) for own fleet vehicle.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Own Fleet Vehicle
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-own-fleet-vehicle-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-pod-rating-api
+  name: OneRail Pod Rating API
+  description: The Pod Rating API from OneRail — 1 operation(s) for pod rating.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Pod Rating
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-pod-rating-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-powerbi-api
+  name: OneRail Power Bi API
+  description: The PowerBi API from OneRail — 1 operation(s) for powerbi.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - PowerBi
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-powerbi-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-preference-api
+  name: OneRail Preference API
+  description: The Preference API from OneRail — 6 operation(s) for preference.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Preference
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-preference-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-product-api
+  name: OneRail Product API
+  description: The Product API from OneRail — 2 operation(s) for product.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Product
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-product-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-profiler-api
+  name: OneRail Profiler API
+  description: The Profiler API from OneRail — 1 operation(s) for profiler.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Profiler
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-profiler-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-ratecards-market-api
+  name: OneRail Ratecards Market API
+  description: The Ratecards Market API from OneRail — 2 operation(s) for ratecards market.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Ratecards Market
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-ratecards-market-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-readiness-check-api
+  name: OneRail Readiness Check API
+  description: The Readiness Check API from OneRail — 1 operation(s) for readiness check.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Readiness Check
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-readiness-check-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-role-api
+  name: OneRail Role API
+  description: The Role API from OneRail — 2 operation(s) for role.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Role
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-role-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-route-api
+  name: OneRail Route API
+  description: The Route API from OneRail — 9 operation(s) for route.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Route
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-route-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-routes-api
+  name: OneRail Routes API
+  description: The Routes API from OneRail — 1 operation(s) for routes.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Routes
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-routes-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-routestopnote-api
+  name: OneRail Route Stop Note API
+  description: The RouteStopNote API from OneRail — 1 operation(s) for routestopnote.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - RouteStopNote
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-routestopnote-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-service-level-exception-conditions-api
+  name: OneRail Service Level Exception Conditions API
+  description: >-
+    The Service Level Exception Conditions API from OneRail — 2 operation(s) for service level exception
+    conditions.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Service Level Exception Conditions
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-service-level-exception-conditions-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-service-level-triggers-api
+  name: OneRail Service Level Triggers API
+  description: The Service Level Triggers API from OneRail — 3 operation(s) for service level triggers.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Service Level Triggers
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-service-level-triggers-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-set-redis-key-api
+  name: OneRail Set Redis Key API
+  description: The Set Redis Key API from OneRail — 1 operation(s) for set redis key.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Set Redis Key
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-set-redis-key-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-shipmentid-api
+  name: OneRail Shipment ID API
+  description: The shipmentId API from OneRail — 1 operation(s) for shipmentid.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - shipmentId
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-shipmentid-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-shipper-contract-api
+  name: OneRail Shipper Contract API
+  description: The Shipper Contract API from OneRail — 9 operation(s) for shipper contract.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Shipper Contract
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-shipper-contract-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-shipper-contract-sla-api
+  name: OneRail Shipper Contract SLA API
+  description: The Shipper Contract SLA API from OneRail — 11 operation(s) for shipper contract sla.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Shipper Contract SLA
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-shipper-contract-sla-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-shipper-contract-sla-template-api
+  name: OneRail Shipper Contract SLA Template API
+  description: >-
+    The Shipper Contract SLA Template API from OneRail — 6 operation(s) for shipper contract sla template.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Shipper Contract SLA Template
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-shipper-contract-sla-template-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-shipping-label-api
+  name: OneRail Shipping Label API
+  description: The Shipping Label API from OneRail — 3 operation(s) for shipping label.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Shipping Label
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-shipping-label-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-team-api
+  name: OneRail Team API
+  description: The Team API from OneRail — 2 operation(s) for team.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Team
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-team-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-uploads-api
+  name: OneRail Uploads API
+  description: The Uploads API from OneRail — 2 operation(s) for uploads.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Uploads
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-uploads-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-user-api
+  name: OneRail User API
+  description: The User API from OneRail — 17 operation(s) for user.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-user-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-vehicle-status-api
+  name: OneRail Vehicle Status API
+  description: The Vehicle Status API from OneRail — 1 operation(s) for vehicle status.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Vehicle Status
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-vehicle-status-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+- aid: onerail:onerail-visibility-api
+  name: OneRail Visibility API
+  description: The Visibility API from OneRail — 4 operation(s) for visibility.
+  humanURL: >-
+    https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
+  baseURL: https://onerail-delivery-api-prod.azurewebsites.net
+  tags:
+  - Visibility
+  properties:
+  - type: OpenAPI
+    url: openapi/onerail-visibility-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
+  - type: GettingStarted
+    url: >-
+      https://developer.onerail.io/hc/en-us/articles/53169025821339-CapacityConnect-API-Quickstart-Guide
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
