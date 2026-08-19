@@ -1,0 +1,124 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Dispatch Platform Setting API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Dispatch Platform Setting
+paths:
+  /v1/dispatch-platform-setting/{dispatchPlatformSettingId}:
+    parameters:
+    - name: dispatchPlatformSettingId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: DispatchPlatformSetting
+      summary: Get Dispatch platform setting
+      operationId: getDispatchPlatformSetting
+      tags:
+      - Dispatch Platform Setting
+      responses:
+        '200':
+          description: Dispatch platform setting
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1dispatch-platform~1%7BdispatchPlatformId%7D~1setting/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: DispatchPlatformSetting
+      summary: Update a Dispatch platform setting
+      operationId: updateDispatchPlatformSetting
+      tags:
+      - Dispatch Platform Setting
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1dispatch-platform~1%7BdispatchPlatformId%7D~1setting/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: Dispatch platform setting
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1dispatch-platform~1%7BdispatchPlatformId%7D~1setting/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: DispatchPlatformSetting
+      summary: Remove a dispatch platform setting
+      operationId: removeDispatchPlatformSetting
+      tags:
+      - Dispatch Platform Setting
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

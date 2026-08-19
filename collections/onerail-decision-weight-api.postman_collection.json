@@ -1,0 +1,680 @@
+{
+  "item": [
+    {
+      "id": "f28ed0e6-7109-484f-be19-fbf0856505dd",
+      "name": "Decision Weight",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9dbce5bb-5b53-4f8f-b78c-ddc9c1821e5a",
+          "name": "Get Decision Weights",
+          "request": {
+            "name": "Get Decision Weights",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "decision-weights"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organizationId",
+                  "value": "<uuid>",
+                  "description": "Organization Id"
+                },
+                {
+                  "disabled": false,
+                  "key": "marketModifierId",
+                  "value": "<uuid>",
+                  "description": "Market Modifier Id"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6968e59b-2131-44f5-9311-8d10fb2a00fc",
+              "name": "Decision Weights",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "decision-weights"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "marketModifierId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"6f837901-3f7d-4591-f7e0-a28223cdc39d\",\n    \"factor\": \"ONERAIL_BIAS\",\n    \"value\": 6169.766353987483,\n    \"marketModifierId\": null,\n    \"organizationId\": \"8eae24c3-aa14-32fb-4ecd-03a1b2f3fb09\"\n  },\n  {\n    \"id\": \"828b3c20-7f1c-cf8f-34c8-1856954fbef3\",\n    \"factor\": \"CANCELLATION_RATE_INST\",\n    \"value\": 5774.6067241174405,\n    \"marketModifierId\": null,\n    \"organizationId\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e76e4f2e-19b3-41b2-aca9-7010c002ac8e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "decision-weights"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "marketModifierId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1954d4f7-92af-49d2-9aba-cd7a0c351981",
+          "name": "Bulk Create Decision Weights",
+          "request": {
+            "name": "Bulk Create Decision Weights",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "decision-weight",
+                "bulk-create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"organizationId\": \"<string,null-uuid>\",\n    \"marketModifierId\": \"<string,null-uuid>\"\n  },\n  {\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"organizationId\": \"<string,null-uuid>\",\n    \"marketModifierId\": \"<string,null-uuid>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2891bddb-09e6-4a57-8939-e768a3c2b854",
+              "name": "Decision Weights",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "decision-weight",
+                    "bulk-create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"organizationId\": \"<string,null-uuid>\",\n    \"marketModifierId\": \"<string,null-uuid>\"\n  },\n  {\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"organizationId\": \"<string,null-uuid>\",\n    \"marketModifierId\": \"<string,null-uuid>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"6a920afb-19f1-2efe-2359-4e2995738578\",\n    \"factor\": \"SLA_MET_RATE\",\n    \"value\": 5529.565979008819,\n    \"marketModifierId\": \"21f15269-ea18-c4ed-341b-cc3c0de7c833\",\n    \"organizationId\": \"28f30e96-4e95-6e65-c44b-57f42f6682b6\"\n  },\n  {\n    \"id\": \"a9a420c9-f1fc-aba9-5cbf-ab3c6294e029\",\n    \"factor\": \"SLA_MET_RATE\",\n    \"value\": 561.3549743095069,\n    \"marketModifierId\": null,\n    \"organizationId\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b62352c9-47f7-4d99-8d8c-bbd443e75c26",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "decision-weight",
+                    "bulk-create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"organizationId\": \"<string,null-uuid>\",\n    \"marketModifierId\": \"<string,null-uuid>\"\n  },\n  {\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"organizationId\": \"<string,null-uuid>\",\n    \"marketModifierId\": \"<string,null-uuid>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5614c14-35ab-4bce-afe6-8eedd16d8632",
+          "name": "Bulk Delete Decision Weights",
+          "request": {
+            "name": "Bulk Delete Decision Weights",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "decision-weight",
+                "bulk-delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<uuid>\",\n  \"<uuid>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41c10199-007b-49b6-81a6-74b8905ddff6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "decision-weight",
+                    "bulk-delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<uuid>\",\n  \"<uuid>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7747cd8-44fa-4e6d-8127-eafcba2f6ea1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "decision-weight",
+                    "bulk-delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<uuid>\",\n  \"<uuid>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "966e76af-f58c-442a-bb5d-068e9f0fc125",
+          "name": "Bulk Update Decision Weights",
+          "request": {
+            "name": "Bulk Update Decision Weights",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "decision-weight",
+                "bulk-update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"marketModifierId\": \"<string,null-uuid>\",\n    \"organizationId\": \"<string,null-uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"marketModifierId\": \"<string,null-uuid>\",\n    \"organizationId\": \"<string,null-uuid>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f5c4a62e-0ea8-487f-abdc-82d596a78e3d",
+              "name": "Decision Weights",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "decision-weight",
+                    "bulk-update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"marketModifierId\": \"<string,null-uuid>\",\n    \"organizationId\": \"<string,null-uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"marketModifierId\": \"<string,null-uuid>\",\n    \"organizationId\": \"<string,null-uuid>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"6a920afb-19f1-2efe-2359-4e2995738578\",\n    \"factor\": \"SLA_MET_RATE\",\n    \"value\": 5529.565979008819,\n    \"marketModifierId\": \"21f15269-ea18-c4ed-341b-cc3c0de7c833\",\n    \"organizationId\": \"28f30e96-4e95-6e65-c44b-57f42f6682b6\"\n  },\n  {\n    \"id\": \"a9a420c9-f1fc-aba9-5cbf-ab3c6294e029\",\n    \"factor\": \"SLA_MET_RATE\",\n    \"value\": 561.3549743095069,\n    \"marketModifierId\": null,\n    \"organizationId\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bec6053-e22c-43f5-9209-bd98ad886e83",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "decision-weight",
+                    "bulk-update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"marketModifierId\": \"<string,null-uuid>\",\n    \"organizationId\": \"<string,null-uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"factor\": \"<string>\",\n    \"value\": \"<float>\",\n    \"marketModifierId\": \"<string,null-uuid>\",\n    \"organizationId\": \"<string,null-uuid>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "03ab963d-3fba-48f8-b773-f4450657799d",
+    "name": "OneRail Operation Dashboard Decision Weight API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

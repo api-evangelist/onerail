@@ -1,0 +1,926 @@
+{
+  "item": [
+    {
+      "id": "b68c27e7-97b5-4713-80d2-1e2a7deb74e9",
+      "name": "Own Fleet Vehicle",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c64df6a-d078-4393-b8c2-9c09e16722a1",
+          "name": "Gets multiple Own Fleet Vehicles",
+          "request": {
+            "name": "Gets multiple Own Fleet Vehicles",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organization",
+                ":organizationId",
+                "lp-market",
+                ":lpMarketId",
+                "own-fleet-vehicles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "lpMarketId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8b358a3-456e-48f2-aec1-316ae5d33ffd",
+              "name": "Own Fleet Vehicle",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "lp-market",
+                    ":lpMarketId",
+                    "own-fleet-vehicles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "lpMarketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": null,\n    \"name\": \"string\",\n    \"maxWeightLbs\": 6966,\n    \"vin\": \"string\",\n    \"costPerMileCent\": 3307,\n    \"lpMarketId\": \"ff12be0e-714e-2e2d-ed99-4e14de47fed6\",\n    \"currentRouteId\": \"8954bda6-cd3d-309a-bd9d-3535f904fc0f\",\n    \"currentRoute\": {\n      \"id\": \"e310d23e-3bee-78ed-b7db-1f72ff8d1dcf\",\n      \"userId\": null,\n      \"orgSourcedIdentifier\": \"string\"\n    },\n    \"fleetVehicleId\": null,\n    \"fleetVehicleCompartments\": [\n      {\n        \"id\": null,\n        \"openingWidthIn\": 3816,\n        \"openingHeightIn\": 3086,\n        \"compartmentLengthIn\": 8030,\n        \"compartmentWidthIn\": 1262,\n        \"compartmentHeightIn\": 1010,\n        \"fleetVehicleId\": \"5c5920ed-6f9b-a7b7-bdc1-5bf33028100e\",\n        \"ownFleetVehicleId\": \"8bbf815c-396d-4460-d3f7-e205a2983075\"\n      },\n      {\n        \"id\": \"4dd1dc84-0f97-eb9d-4d5c-685ed272b79d\",\n        \"openingWidthIn\": 1434,\n        \"openingHeightIn\": 414,\n        \"compartmentLengthIn\": 9637,\n        \"compartmentWidthIn\": 8665,\n        \"compartmentHeightIn\": 2344,\n        \"fleetVehicleId\": \"907e62e9-aa2a-6b30-95c3-5953e2a76cd1\",\n        \"ownFleetVehicleId\": \"f38b5a3a-58b5-036e-9f6e-023fb95c253d\"\n      }\n    ],\n    \"active\": true\n  },\n  {\n    \"id\": \"ce26c952-215a-b1e1-965f-d0b0e3c5f6fe\",\n    \"name\": \"string\",\n    \"maxWeightLbs\": 3238,\n    \"vin\": \"string\",\n    \"costPerMileCent\": 8162,\n    \"lpMarketId\": \"6820cc21-9a6a-cce3-5a2d-ed87e4ef3505\",\n    \"currentRouteId\": \"9fa4697f-0f3c-663d-78a5-d6f01bb03a13\",\n    \"currentRoute\": {\n      \"id\": \"073764aa-f7dc-87c1-5beb-fb4ae8f88f9a\",\n      \"userId\": null,\n      \"orgSourcedIdentifier\": \"string\"\n    },\n    \"fleetVehicleId\": \"abe046ce-88ac-98d2-b230-238993204e23\",\n    \"fleetVehicleCompartments\": [\n      {\n        \"id\": \"7855947b-af41-8671-5497-c2997e10aa49\",\n        \"openingWidthIn\": 5702,\n        \"openingHeightIn\": 4014,\n        \"compartmentLengthIn\": 1029,\n        \"compartmentWidthIn\": 3211,\n        \"compartmentHeightIn\": 7314,\n        \"fleetVehicleId\": \"9593ad28-0200-f4d0-da22-b3f195419fce\",\n        \"ownFleetVehicleId\": \"c79d1006-e8d5-40c1-f23a-eb0be63f22ce\"\n      },\n      {\n        \"id\": \"a0cbac9a-0ca2-2d5d-be1c-b76641c24708\",\n        \"openingWidthIn\": 2214,\n        \"openingHeightIn\": 9636,\n        \"compartmentLengthIn\": 1589,\n        \"compartmentWidthIn\": 2655,\n        \"compartmentHeightIn\": 147,\n        \"fleetVehicleId\": \"59003167-e9a8-dbbd-349a-82496d0517ac\",\n        \"ownFleetVehicleId\": \"005b3291-2641-d56a-f225-c78e0a3600dd\"\n      }\n    ],\n    \"active\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c45b74e-16d8-498d-8f64-ae3f4d28fc77",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "lp-market",
+                    ":lpMarketId",
+                    "own-fleet-vehicles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "lpMarketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecd1f3be-427e-4766-b927-ff3608da3bd6",
+          "name": "Removes a vehicle",
+          "request": {
+            "name": "Removes a vehicle",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "own-fleet-vehicle",
+                ":ownFleetVehicleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "ownFleetVehicleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "486f5bc0-47cb-4db2-a48c-a16d8c47881d",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "own-fleet-vehicle",
+                    ":ownFleetVehicleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "ownFleetVehicleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0a3255c0-0726-48bb-bf84-4a07fbfa5319",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "own-fleet-vehicle",
+                    ":ownFleetVehicleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "ownFleetVehicleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81ebf719-93f3-4ecc-8d0e-f1ee7059683c",
+          "name": "Gets a single Own Fleet Vehicle",
+          "request": {
+            "name": "Gets a single Own Fleet Vehicle",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "own-fleet-vehicle",
+                ":ownFleetVehicleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "ownFleetVehicleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d79794c-5b8d-420b-8dea-81c808b33ede",
+              "name": "Own Fleet Vehicle",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "own-fleet-vehicle",
+                    ":ownFleetVehicleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "ownFleetVehicleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": null,\n  \"name\": \"string\",\n  \"maxWeightLbs\": 1222,\n  \"vin\": \"string\",\n  \"costPerMileCent\": 8818,\n  \"lpMarketId\": \"25c7e59c-be21-6421-a302-dc00e3f3b5b1\",\n  \"currentRouteId\": \"a0a5904b-489b-8224-7496-2217fa26871f\",\n  \"currentRoute\": {\n    \"id\": \"691c75cf-a1a8-7f39-c001-808732dc4509\",\n    \"userId\": null,\n    \"orgSourcedIdentifier\": null\n  },\n  \"fleetVehicleId\": \"2556cb53-e836-8ddc-3c97-ece92daf340e\",\n  \"fleetVehicleCompartments\": [\n    {\n      \"id\": null,\n      \"openingWidthIn\": 2866,\n      \"openingHeightIn\": 3372,\n      \"compartmentLengthIn\": 3162,\n      \"compartmentWidthIn\": 5820,\n      \"compartmentHeightIn\": 4673,\n      \"fleetVehicleId\": null,\n      \"ownFleetVehicleId\": \"dee432f4-e972-ae60-97c4-2530e5455cfc\"\n    },\n    {\n      \"id\": null,\n      \"openingWidthIn\": 1746,\n      \"openingHeightIn\": 837,\n      \"compartmentLengthIn\": 9048,\n      \"compartmentWidthIn\": 8645,\n      \"compartmentHeightIn\": 3617,\n      \"fleetVehicleId\": null,\n      \"ownFleetVehicleId\": \"a46fb6bc-6931-3851-590b-e6045d845b3b\"\n    }\n  ],\n  \"active\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9b1fe96-24e1-4afc-ac49-c848328f3404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "own-fleet-vehicle",
+                    ":ownFleetVehicleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "ownFleetVehicleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ebb2021-55ea-4f7d-b8d1-8315c4ea8eb1",
+          "name": "Creates an Own Fleet Vehicle",
+          "request": {
+            "name": "Creates an Own Fleet Vehicle",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "own-fleet-vehicle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"maxWeightLbs\": \"<integer>\",\n  \"vin\": \"<string>\",\n  \"costPerMileCent\": \"<integer>\",\n  \"lpMarketId\": \"<uuid>\",\n  \"fleetVehicleCompartments\": [\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    },\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    }\n  ],\n  \"fleetVehicleId\": \"<uuid>\",\n  \"active\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "547ca617-954e-46a4-85eb-81bee1f6c5f8",
+              "name": "Own fleet vehicle created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "own-fleet-vehicle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"maxWeightLbs\": \"<integer>\",\n  \"vin\": \"<string>\",\n  \"costPerMileCent\": \"<integer>\",\n  \"lpMarketId\": \"<uuid>\",\n  \"fleetVehicleCompartments\": [\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    },\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    }\n  ],\n  \"fleetVehicleId\": \"<uuid>\",\n  \"active\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"81dbc1d0-cb70-3078-d033-044b07c77bba\",\n  \"name\": \"string\",\n  \"maxWeightLbs\": 9666,\n  \"vin\": \"string\",\n  \"costPerMileCent\": 699,\n  \"lpMarketId\": \"16efbba9-895e-fc51-47cc-97bec1cb5c08\",\n  \"fleetVehicleId\": \"0b6843cc-e221-5804-d62e-76327a76871d\",\n  \"fleetVehicleCompartments\": [\n    {\n      \"id\": \"278d79b4-bfca-284b-381b-0b7ba074e386\",\n      \"openingWidthIn\": 2732,\n      \"openingHeightIn\": 6122,\n      \"compartmentLengthIn\": 2089,\n      \"compartmentWidthIn\": 8587,\n      \"compartmentHeightIn\": 2079,\n      \"fleetVehicleId\": \"4e877442-ba70-28b1-c13c-985729ba92a5\",\n      \"ownFleetVehicleId\": \"55084beb-25ba-3994-374a-1e7beff07a0d\"\n    },\n    {\n      \"id\": \"06958ffb-2f72-2a89-9660-9e269fc6de8a\",\n      \"openingWidthIn\": 3236,\n      \"openingHeightIn\": 6164,\n      \"compartmentLengthIn\": 4659,\n      \"compartmentWidthIn\": 8471,\n      \"compartmentHeightIn\": 8219,\n      \"fleetVehicleId\": \"fd0157fa-2f5a-60a1-d18c-8fee8d954f1b\",\n      \"ownFleetVehicleId\": \"f26ead3e-18f7-d360-5d07-b33c1cf9f9f2\"\n    }\n  ],\n  \"active\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7786907-5749-4ba8-aff9-ec092b936db2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "own-fleet-vehicle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"maxWeightLbs\": \"<integer>\",\n  \"vin\": \"<string>\",\n  \"costPerMileCent\": \"<integer>\",\n  \"lpMarketId\": \"<uuid>\",\n  \"fleetVehicleCompartments\": [\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    },\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    }\n  ],\n  \"fleetVehicleId\": \"<uuid>\",\n  \"active\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f96e653c-6259-4e66-88b6-40242b5c30c2",
+          "name": "Updates an Own Fleet Vehicle",
+          "request": {
+            "name": "Updates an Own Fleet Vehicle",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "own-fleet-vehicle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uuid>\",\n  \"lpMarketId\": \"<uuid>\",\n  \"organizationId\": \"<uuid>\",\n  \"fleetVehicleCompartments\": [\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    },\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    }\n  ],\n  \"fleetVehicleId\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"maxWeightLbs\": \"<integer>\",\n  \"vin\": \"<string>\",\n  \"costPerMileCent\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "828ee763-2751-4535-994e-5003ef76ffa9",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "own-fleet-vehicle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"lpMarketId\": \"<uuid>\",\n  \"organizationId\": \"<uuid>\",\n  \"fleetVehicleCompartments\": [\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    },\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    }\n  ],\n  \"fleetVehicleId\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"maxWeightLbs\": \"<integer>\",\n  \"vin\": \"<string>\",\n  \"costPerMileCent\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4f9037b6-8c2d-aa45-ad5a-f94b07790edc\",\n  \"name\": \"string\",\n  \"maxWeightLbs\": 1948,\n  \"vin\": \"string\",\n  \"costPerMileCent\": 3965,\n  \"lpMarketId\": \"09e5627c-2b46-c568-46f7-b2b6907339e1\",\n  \"fleetVehicleId\": \"740aad01-5865-4128-8467-fce4aeb7ec80\",\n  \"fleetVehicleCompartments\": [\n    {\n      \"id\": null,\n      \"openingWidthIn\": 8070,\n      \"openingHeightIn\": 565,\n      \"compartmentLengthIn\": 4126,\n      \"compartmentWidthIn\": 3432,\n      \"compartmentHeightIn\": 6350,\n      \"fleetVehicleId\": null,\n      \"ownFleetVehicleId\": \"a771792f-368a-957e-45b4-6aa9691dc0e3\"\n    },\n    {\n      \"id\": \"7a935672-e0e7-618f-4c0c-0d3511401fe8\",\n      \"openingWidthIn\": 3995,\n      \"openingHeightIn\": 5858,\n      \"compartmentLengthIn\": 8542,\n      \"compartmentWidthIn\": 8331,\n      \"compartmentHeightIn\": 1236,\n      \"fleetVehicleId\": null,\n      \"ownFleetVehicleId\": \"377416c2-20a4-906e-2a53-57fbe54eadcd\"\n    }\n  ],\n  \"active\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95f58e2a-d095-499f-aefb-bd969fe5e14b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "own-fleet-vehicle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"lpMarketId\": \"<uuid>\",\n  \"organizationId\": \"<uuid>\",\n  \"fleetVehicleCompartments\": [\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    },\n    {\n      \"openingWidthIn\": \"<integer>\",\n      \"openingHeightIn\": \"<integer>\",\n      \"compartmentLengthIn\": \"<integer>\",\n      \"compartmentWidthIn\": \"<integer>\",\n      \"compartmentHeightIn\": \"<integer>\"\n    }\n  ],\n  \"fleetVehicleId\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"maxWeightLbs\": \"<integer>\",\n  \"vin\": \"<string>\",\n  \"costPerMileCent\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73cd7fcb-12f3-48e3-b21f-df723a28c431",
+          "name": "Gets multiple Own Fleet Vehicles",
+          "request": {
+            "name": "Gets multiple Own Fleet Vehicles",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "freelancer",
+                ":userId",
+                "own-fleet-vehicles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b105f58-8c81-4972-bdf8-6d9fe5d962d5",
+              "name": "Own Fleet Vehicle",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "freelancer",
+                    ":userId",
+                    "own-fleet-vehicles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": null,\n    \"name\": \"string\",\n    \"maxWeightLbs\": 2708,\n    \"vin\": \"string\",\n    \"costPerMileCent\": 4733,\n    \"lpMarketId\": null,\n    \"currentRouteId\": \"6b2c50de-78a2-22e1-3fda-1242cbf89e25\",\n    \"currentRoute\": {\n      \"id\": \"3d11ecc1-0285-65eb-3fff-7095660b6f32\",\n      \"userId\": \"24fba2eb-d0e8-4773-1dae-cb0ec25851c3\",\n      \"orgSourcedIdentifier\": null\n    },\n    \"fleetVehicleId\": \"88691b0e-196e-6b30-5c13-0ee99b11c209\",\n    \"fleetVehicleCompartments\": [\n      {\n        \"id\": \"72eee589-02c0-2296-952e-5c4eb69a4c2a\",\n        \"openingWidthIn\": 3047,\n        \"openingHeightIn\": 1338,\n        \"compartmentLengthIn\": 2863,\n        \"compartmentWidthIn\": 1804,\n        \"compartmentHeightIn\": 3881,\n        \"fleetVehicleId\": null,\n        \"ownFleetVehicleId\": \"c401bdf1-e36e-3e72-11e2-2200ce5aba53\"\n      },\n      {\n        \"id\": \"efc308b6-7c24-d7e3-bba3-03aa7699fe0a\",\n        \"openingWidthIn\": 8370,\n        \"openingHeightIn\": 1603,\n        \"compartmentLengthIn\": 8612,\n        \"compartmentWidthIn\": 5118,\n        \"compartmentHeightIn\": 3021,\n        \"fleetVehicleId\": \"179a4f95-e0bf-1533-7ce8-a87af673eac1\",\n        \"ownFleetVehicleId\": \"43e2f5f8-d0ea-aa94-9a49-5c12d57cdd74\"\n      }\n    ],\n    \"active\": false\n  },\n  {\n    \"id\": \"079abc32-bc8e-305a-7347-d196705b1045\",\n    \"name\": \"string\",\n    \"maxWeightLbs\": 7867,\n    \"vin\": \"string\",\n    \"costPerMileCent\": 2889,\n    \"lpMarketId\": null,\n    \"currentRouteId\": null,\n    \"currentRoute\": {\n      \"id\": \"b9802426-d123-c1ca-3aae-f6bc0d26374d\",\n      \"userId\": null,\n      \"orgSourcedIdentifier\": \"string\"\n    },\n    \"fleetVehicleId\": \"df21c4e6-1b85-bb63-e146-1437af607890\",\n    \"fleetVehicleCompartments\": [\n      {\n        \"id\": \"1f75ce10-63f7-dd9d-fd07-816b79cfd1fb\",\n        \"openingWidthIn\": 5567,\n        \"openingHeightIn\": 2628,\n        \"compartmentLengthIn\": 3715,\n        \"compartmentWidthIn\": 2371,\n        \"compartmentHeightIn\": 3571,\n        \"fleetVehicleId\": \"f9068949-ade3-0d52-5acf-e801cc8f4106\",\n        \"ownFleetVehicleId\": \"48574625-e7ea-621f-1817-4ff5b0c8ae1f\"\n      },\n      {\n        \"id\": \"221c7539-3c6a-a09a-d092-e8a947388a97\",\n        \"openingWidthIn\": 7813,\n        \"openingHeightIn\": 3794,\n        \"compartmentLengthIn\": 8451,\n        \"compartmentWidthIn\": 4392,\n        \"compartmentHeightIn\": 2595,\n        \"fleetVehicleId\": null,\n        \"ownFleetVehicleId\": \"476b6168-8ec8-e0c0-852d-0d60fcc94dcd\"\n      }\n    ],\n    \"active\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e53c6587-72dd-4bfa-8550-ab8a0d079b6d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "freelancer",
+                    ":userId",
+                    "own-fleet-vehicles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "79a2faf5-47c4-49f8-bb73-18c7603a56c0",
+    "name": "OneRail Operation Dashboard Own Fleet Vehicle API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

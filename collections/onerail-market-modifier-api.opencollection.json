@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Market Modifier API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Market Modifier",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Set LSP bias for marketModifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId/:marketModifierId/lsp-bias",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "marketModifierId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set LSP bias for marketModifier"
+        },
+        {
+          "info": {
+            "name": "Enable / Disable marketModifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId/:marketModifierId/active",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "marketModifierId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable / Disable marketModifier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

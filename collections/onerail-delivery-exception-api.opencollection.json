@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Delivery Exception API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Delivery Exception",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a delivery exception",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/:deliveryId/exception",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a delivery exception"
+        },
+        {
+          "info": {
+            "name": "Creates a delivery exception with Api Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/:deliveryId/exception-api",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a delivery exception with Api Key"
+        },
+        {
+          "info": {
+            "name": "Get a delivery exception",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/delivery/:deliveryId/exception/:exceptionId",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "exceptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a delivery exception"
+        },
+        {
+          "info": {
+            "name": "Updates exception for a delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/delivery/:deliveryId/exception/:exceptionId",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "exceptionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates exception for a delivery"
+        },
+        {
+          "info": {
+            "name": "Remove a delivery exception",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/delivery/:deliveryId/exception/:exceptionId",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "exceptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a delivery exception"
+        },
+        {
+          "info": {
+            "name": "View delivery exception reason deifinitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/delivery-exception-reason-definitions",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "query",
+                "description": "Organization Id"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Optional to filter definitions"
+              }
+            ]
+          },
+          "docs": "View delivery exception reason deifinitions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,157 @@
+{
+  "item": [
+    {
+      "id": "86bbed09-4d1f-4dd2-8352-1e78642b55c3",
+      "name": "Cancellation Reason",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2c38553a-2780-48bd-a6b9-297c36e3cc4e",
+          "name": "View all cancellation reasons",
+          "request": {
+            "name": "View all cancellation reasons",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cancellation-reasons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6930822-12e0-4e33-ba61-7395a8d54f45",
+              "name": "Cancellation reasons",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cancellation-reasons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"fcb3886f-52d7-1b4e-cf46-d894fbac1feb\",\n    \"description\": \"string\"\n  },\n  {\n    \"id\": \"a90998fa-0996-6adf-be41-945df15357c1\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e08c8c1-aced-4e2f-b97f-3ba7e9115d6c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cancellation-reasons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9f187cc2-7fa2-4c5a-8dac-c875b7e7c997",
+    "name": "OneRail Operation Dashboard Cancellation Reason API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

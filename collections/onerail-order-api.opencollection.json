@@ -1,0 +1,625 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onerail Order API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Order",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an order with deliveries and returns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v2/order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an order with deliveries and returns"
+        },
+        {
+          "info": {
+            "name": "Partial update an order with deliveries, replacing items and containers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/order/:orderId/partial-update",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "order Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partial update an order with deliveries, replacing items and containers"
+        },
+        {
+          "info": {
+            "name": "Partial update an order with deliveries, appending items and containers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/order/:orderId/partial-update",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "order Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partial update an order with deliveries, appending items and containers"
+        },
+        {
+          "info": {
+            "name": "Create an order with deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/order/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an order with deliveries"
+        },
+        {
+          "info": {
+            "name": "Add return delivery to order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/order/add-return",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add return delivery to order"
+        },
+        {
+          "info": {
+            "name": "Create an order with deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/order/add-delivery",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an order with deliveries"
+        },
+        {
+          "info": {
+            "name": "Optimize system orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/order/optimize/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Optimize system orders"
+        },
+        {
+          "info": {
+            "name": "Optimize system orders with multiple locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/order/optimize/:organizationId/with-multiple-locations",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Optimize system orders with multiple locations"
+        },
+        {
+          "info": {
+            "name": "Optimize system orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/order/control-tower",
+            "params": [
+              {
+                "name": "shipperIds",
+                "value": "",
+                "type": "query",
+                "description": "shipperIds to filter down to."
+              },
+              {
+                "name": "locationIds",
+                "value": "",
+                "type": "query",
+                "description": "locationIds to filter down to."
+              },
+              {
+                "name": "includeExternal",
+                "value": "",
+                "type": "query",
+                "description": "whether or not to include external routes"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Optimize system orders"
+        },
+        {
+          "info": {
+            "name": "Load locations from an org that the user has access to.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/order/control-tower/locations",
+            "params": [
+              {
+                "name": "shipperId",
+                "value": "",
+                "type": "query",
+                "description": "shipperId to get locations from"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Load locations from an org that the user has access to."
+        },
+        {
+          "info": {
+            "name": "Get Driver Locations of optimized orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/order/optimized-drivers-location",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Driver Locations of optimized orders"
+        },
+        {
+          "info": {
+            "name": "Bulk delete orders and associated data. Request body should be an array of order IDs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/bulk-orders-delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Bulk delete orders and associated data. Request body should be an array of order IDs."
+        },
+        {
+          "info": {
+            "name": "Get status of a bulk process",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/bulk-status",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Key ID of process"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get status of a bulk process"
+        },
+        {
+          "info": {
+            "name": "Change orders status to Shipping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/order/set-status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Change orders status to Shipping"
+        },
+        {
+          "info": {
+            "name": "Advance order status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/order/advance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Advance order status"
+        },
+        {
+          "info": {
+            "name": "Get a order details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/order/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of deliveries to return in this page. When omitted, all deliveries are returned (legacy behaviour)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of deliveries to skip before returning the page. Defaults to 0."
+              },
+              {
+                "name": "includeItems",
+                "value": "",
+                "type": "query",
+                "description": "When false, the top-level `orderItems` list is omitted and not loaded; item bodies are fetched lazily via GET /v1/order/{orderId}/delivery/{deliveryId}/items. Deliveries and containers still expose `orderItemIds`. Defaults to true (full item list returned)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a order details"
+        },
+        {
+          "info": {
+            "name": "Add one or more deliveries to an order using an apikey for auth",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/order/add-deliveries-api",
+            "params": [
+              {
+                "name": "waitForDeliveryCalculations",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add one or more deliveries to an order using an apikey for auth"
+        },
+        {
+          "info": {
+            "name": "Add one or more returns to an order using an apikey for auth",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/order/add-returns-api",
+            "params": [
+              {
+                "name": "waitForDeliveryCalculations",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add one or more returns to an order using an apikey for auth"
+        },
+        {
+          "info": {
+            "name": "Add one or more returns to an order using an apikey for auth, update original delivery's status to INCOMPLETE, filters list of LPs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/order/add-returns-api/:deliveryId",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add one or more returns to an order using an apikey for auth, update original delivery's status to INCOMPLETE, filters list of LPs"
+        },
+        {
+          "info": {
+            "name": "Creates an order from API call with one or more deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/order/api",
+            "params": [
+              {
+                "name": "waitForDeliveryCalculations",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates an order from API call with one or more deliveries"
+        },
+        {
+          "info": {
+            "name": "Partial update order from API call with one or more deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/order/partial-update-api",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partial update order from API call with one or more deliveries"
+        },
+        {
+          "info": {
+            "name": "Partial update order from API call with one or more deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/order/partial-update-api",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partial update order from API call with one or more deliveries"
+        },
+        {
+          "info": {
+            "name": "Get the scan history for a container inside an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/order/:orderId/container/:containerId/scan-history",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "containerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the scan history for a container inside an order"
+        },
+        {
+          "info": {
+            "name": "Get a paginated list of a delivery's order items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/order/:orderId/delivery/:deliveryId/items",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return in this page. When omitted, all items are returned."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the page. Defaults to 0."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a paginated list of a delivery's order items"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onerail Visibility API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visibility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Use the visibility endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/visibility/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Use the visibility endpoint"
+        },
+        {
+          "info": {
+            "name": "Add visibility deliveries to order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/visibility/:orderId/add-deliveries",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add visibility deliveries to order"
+        },
+        {
+          "info": {
+            "name": "Creates a visibility from API call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/visibility/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a visibility from API call"
+        },
+        {
+          "info": {
+            "name": "Creates a visibility from API call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/visibility/:orderId/add-deliveries",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a visibility from API call"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

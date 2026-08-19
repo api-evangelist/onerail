@@ -1,0 +1,643 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Freight Audit & Pay API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Freight Audit & Pay
+paths:
+  /v1/freight-audit-pay/organizations/summary:
+    post:
+      x-exegesis-controller: FreightAuditPay
+      security:
+      - bearer: []
+      - ApiKey: []
+        AppId: []
+      summary: Get organization summaries for Freight Audit & Pay
+      description: 'Returns lightweight organization summary records for the requested organization IDs.
+
+        Results are constrained by the caller''s organization access. Unauthorized and missing
+
+        organization IDs are silently omitted from the response.
+
+        '
+      operationId: getFapOrganizationSummaries
+      tags:
+      - Freight Audit & Pay
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+              - organizationIds
+              properties:
+                organizationIds:
+                  type: array
+                  minItems: 1
+                  maxItems: 250
+                  items:
+                    type: string
+                    format: uuid
+                  description: Organization UUIDs to summarize.
+      responses:
+        '200':
+          description: Freight Audit & Pay organization summary records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  description: Lightweight organization summary for Freight Audit & Pay UI enrichment
+                  additionalProperties: false
+                  required:
+                  - id
+                  - name
+                  - active
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                    active:
+                      type: boolean
+                    logoImageURL:
+                      type:
+                      - string
+                      - 'null'
+                    dot:
+                      type:
+                      - string
+                      - 'null'
+                    ach:
+                      type:
+                      - string
+                      - 'null'
+                    federalTaxId:
+                      type:
+                      - string
+                      - 'null'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/freight-audit-pay/organizations/{organizationId}/delivery-attempts:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      description: Organization ID to filter delivery attempts
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: FreightAuditPay
+      summary: Get delivery attempts for a specific organization
+      description: 'Returns delivery attempts for a specific organization, scoped by the viewType parameter:
+
+        shipper billing (the organization is the shipper) or LSP payment (the organization is the
+
+        logistics provider). Costs are filtered to the requested view type.
+
+
+        As of ITO_DEV-785 eligibility filters (billing period, shipperBillable/lpPayable flags,
+
+        required FAP fields) no longer apply so the FAP UI can search any attempts the user wants to
+
+        attach. The FAP API batch-attach owns final eligibility decisions.
+
+        **At least one filter is required**: search parameter or deliveryAttemptIds. This prevents full table scans.
+
+        '
+      operationId: getOrganizationDeliveryAttempts
+      security:
+      - bearer: []
+      - ApiKey: []
+        AppId: []
+      tags:
+      - Freight Audit & Pay
+      parameters:
+      - name: viewType
+        in: query
+        required: true
+        description: 'Determines how the organization is interpreted and which costs are returned.
+
+          - shipper: the organization is the shipper being billed; costs are filtered to shipper costs and shipper location RBAC applies.
+
+          - lsp: the organization is the logistics provider being paid; costs are filtered to LSP costs.
+
+          '
+        schema:
+          type: string
+          enum:
+          - shipper
+          - lsp
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: 'Field to sort by (case-insensitive).
+
+
+          Allowed values:
+
+          - DeliveryDate (terminal state date; maps to endStateAt)
+
+          - OrderId
+
+          - DeliveryId
+
+          - AttemptId
+
+          - RouteId
+
+          - ShipperOrganizationName
+
+          - AssignedDriverName
+
+          - DeliveryState
+
+          - UpdatedAt
+
+          '
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          enum:
+          - ASC
+          - asc
+          - DESC
+          - desc
+          default: DESC
+      - name: search
+        in: query
+        required: false
+        description: Search term to filter delivery attempts by delivery attempt ID or order ID (substring match on both fields)
+        schema:
+          type: string
+          maxLength: 100
+        example: ORD-123
+      - name: deliveryAttemptIds
+        in: query
+        required: false
+        description: 'Specific delivery attempt IDs to retrieve (exact match, takes precedence over search).
+
+          Supplied as repeated query keys, e.g. `?deliveryAttemptIds=<id1>&deliveryAttemptIds=<id2>`.
+
+          '
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+        example:
+        - 123e4567-e89b-12d3-a456-426614174000
+        - 123e4567-e89b-12d3-a456-426614174001
+      responses:
+        '200':
+          description: Delivery attempts for the requested view type
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      description: Array of delivery attempt records
+                      items:
+                        type: object
+                        description: Delivery attempt record combining delivery and attempt scope data for freight audit and payment
+                        properties:
+                          deliveryId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                            description: Unique identifier for the delivery
+                          orderId:
+                            type: string
+                            description: Custom order identifier (e.g., "ORD-123"), not the internal UUID. Always present as delivery attempts without orderId are filtered out.
+                          orderUuid:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                            description: Internal order UUID
+                          routeId:
+                            type:
+                            - string
+                            - 'null'
+                            description: Custom route identifier (orgSourcedIdentifier), not the internal UUID
+                          routeUuid:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                            description: Internal route UUID for navigation purposes
+                          pickupWindow:
+                            type:
+                            - object
+                            - 'null'
+                            description: Pickup window details (from DeliveryWindows where deliverySegment='PICKUP')
+                            properties:
+                              start:
+                                type:
+                                - string
+                                - 'null'
+                                format: date-time
+                              end:
+                                type:
+                                - string
+                                - 'null'
+                                format: date-time
+                          deliveryDeadline:
+                            type:
+                            - string
+                            - 'null'
+                            format: date-time
+                            description: Latest delivery deadline from dropoff windows (from DeliveryWindows where deliverySegment='DROPOFF')
+                          pickupLocation:
+                            type: object
+                            description: Pickup location details
+                            properties:
+                              id:
+                                type:
+                                - string
+                                - 'null'
+                                format: uuid
+                                description: Unique identifier for the pickup location (fromId)
+                              address:
+                                type:
+                                - object
+                                - 'null'
+                                description: Full address object
+                              name:
+                                type:
+                                - string
+                                - 'null'
+                                description: Location name
+                              contactName:
+                                type:
+                                - string
+                                - 'null'
+                                description: Name of the contact person at the pickup location
+                              phoneNumber:
+                                type:
+                                - string
+                                - 'null'
+                                description: Contact phone number for the pickup location
+                              location:
+                                type:
+                                - object
+                                - 'null'
+                                description: Geographic coordinates
+                                properties:
+                                  longitude:
+                                    type:
+                                    - number
+                                    - 'null'
+                                    description: Longitude coordinate
+                                  latitude:
+                                    type:
+                                    - number
+                                    - 'null'
+                                    description: Latitude coordinate
+                          dropoffLocation:
+                            type: object
+                            description: Dropoff location details
+                            properties:
+                              id:
+                                type:
+                                - string
+                                - 'null'
+                                format: uuid
+                                description: Unique identifier for the dropoff location (toId)
+                              address:
+                                type:
+                                - object
+                                - 'null'
+                                description: Full address object
+                              name:
+                                type:
+                                - string
+                                - 'null'
+                                description: Location name
+                              contactName:
+                                type:
+                                - string
+                                - 'null'
+                                description: Name of the contact person at the dropoff location
+                              phoneNumber:
+                                type:
+                                - string
+                                - 'null'
+                                description: Contact phone number for the dropoff location
+                              timezone:
+                                type:
+                                - string
+                                - 'null'
+                                description: IANA timezone of the dropoff location (e.g. America/New_York)
+                              location:
+                                type:
+                                - object
+                                - 'null'
+                                description: Geographic coordinates
+                                properties:
+                                  longitude:
+                                    type:
+                                    - number
+                                    - 'null'
+                                    description: Longitude coordinate
+                                  latitude:
+                                    type:
+                                    - number
+                                    - 'null'
+                                    description: Latitude coordinate
+                          totalItems:
+                            type: integer
+                            description: Total number of items in the order
+                          totalWeight:
+                            type: number
+                            description: Total weight of all items in pounds
+                          totalVolume:
+                            type: number
+                            description: Total volume of all items in cubic feet
+                          deliveryAttemptId:
+                            type: string
+                            format: uuid
+                            description: Unique identifier for the delivery attempt
+                          attemptNumber:
+                            type: integer
+                            description: Attempt number (calculated from array position)
+                          state:
+                            type: string
+                            description: Current state of the delivery attempt
+                          endStateAt:
+                            type:
+                            - string
+                            - 'null'
+                            format: date-time
+                            description: Date when the delivery attempt reached a terminal state (DELIVERED, CANCELED_BY_LP, CANCELED_BY_ONERAIL, CANCELED_BY_SHIPPER, REVOKED_BY_ONERAIL, or INCOMPLETE). This is the date when the attempt became billable/payable.
+                          arrivedForPickupAt:
+                            type:
+                            - string
+                            - 'null'
+                            format: date-time
+                            description: Date when the driver arrived for pickup
+                          driverName:
+                            type:
+                            - string
+                            - 'null'
+                            description: Name of the driver assigned to this attempt
+                          createdAt:
+                            type: string
+                            format: date-time
+                            description: When the delivery attempt was created
+                          updatedAt:
+                            type: string
+                            format: date-time
+                            description: When the delivery attempt was last updated
+                          costs:
+                            type: array
+                            description: Array of cost records expanded by quantity, filtered to the current view type -- shipper or LSP.
+                            items:
+                              type: object
+                              description: Cost record for freight audit and pay, expanded by quantity and filtered to the current view type.
+                              properties:
+                                id:
+                                  type: string
+                                  format: uuid
+                                  description: Unique identifier for the cost
+                                deliveryAttemptId:
+                                  type: string
+                                  format: uuid
+                                  description: Delivery attempt this cost is associated with
+                                reason:
+                                  type: string
+                                  description: Reason category for the cost
+                                  enum:
+                                  - BASE
+                                  - TOLLS
+                                  - PICKUP_PENALTIES
+                                  - DELIVERY_PENALTIES
+                                  - ITEM_SPECIFIC
+                                  - ACCESSORIAL
+                                costCent:
+                                  type: integer
+                                  description: Cost amount in cents
+                                name:
+                                  type:
+                                  - string
+                                  - 'null'
+                                  description: Name or description of the cost
+                                type:
+                                  type:
+                                  - string
+                                  - 'null'
+                                  description: Type of cost
+                                costDetails:
+                                  type:
+                                  - array
+                                  - 'null'
+                                  description: Detailed cost breakdown
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                      type:
+                                        type: string
+                                      quantity:
+                                        type: integer
+                                      costCent:
+                                        type: integer
+                                costAdjustmentReasonId:
+                                  type:
+                                  - string
+                                  - 'null'
+                                  format: uuid
+                                  description: Reason for cost adjustment
+                          serviceLevel:
+                            type:
+                            - object
+                            - 'null'
+                            description: Service level agreement details
+                            properties:
+                              agreementId:
+                                type:
+                                - string
+                                - 'null'
+                                format: uuid
+                                description: LSP contract SLA ID
+                          vehicle:
+                            type:
+                            - string
+                            - 'null'
+                            description: Vehicle name/identifier
+                          routeDistance:
+                            type:
+                            - number
+                            - 'null'
+                            description: Computed delivery distance in miles
+                          shipperOrganizationId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                            description: ID of the shipper organization
+                          shipperOrganizationName:
+                            type:
+                            - string
+                            - 'null'
+                            description: Name of the shipper organization
+                          lspOrganizationId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                            description: ID of the LSP organization
+                          lspOrganizationName:
+                            type:
+                            - string
+                            - 'null'
+                            description: Name of the LSP organization
+                          lpContractSlaId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                            description: ID of the LSP contract SLA, for navigation to LP contract SLA details
+                          shipperContractId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                            description: ID of the parent ShipperContract, used to build the SLA review hyperlink for traditional invoices
+                          shipperContractSlaId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                            description: ID of the shipper contract SLA
+                          shipperContractSlaName:
+                            type:
+                            - string
+                            - 'null'
+                            description: Display name of the parent shipper contract (sourced from ShipperContractSla.shipperContract.name). Combined with serviceLevelName for the SLA column label.
+                          serviceLevelName:
+                            type:
+                            - string
+                            - 'null'
+                            description: Service level name resolved from ShipperContractSla.serviceLevel.name. Always sourced from the shipper side regardless of invoice type. Combined with shipperContractSlaName for the SLA column label.
+                          shipperRateCardVersionId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                            description: Rate card VERSION public ID used to price this delivery on the shipper side, when rate-card pricing is in effect. Null for contract-SLA deliveries. Consumers that need the parent rate card identity must resolve it via the rate cards service.
+                          shipperRateCardName:
+                            type:
+                            - string
+                            - 'null'
+                            description: Display name of the shipper rate card's parent. Null for contract-SLA deliveries.
+                          lpRateCardVersionId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                            description: Rate card VERSION public ID used to price this attempt on the LSP side, when rate-card pricing is in effect. Null for contract-SLA attempts. Consumers that need the parent rate card identity must resolve it via the rate cards service.
+                          lpRateCardName:
+                            type:
+                            - string
+                            - 'null'
+                            description: Display name of the LSP rate card's parent. Null for contract-SLA attempts.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

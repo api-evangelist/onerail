@@ -1,0 +1,137 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Fleet Assets API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Fleet Assets
+paths:
+  /v1/fleet-assets:
+    get:
+      x-exegesis-controller: FleetAssets
+      summary: Global list of fleet assets that can be required to complete a contract
+      operationId: getAllFleetAssets
+      tags:
+      - Fleet Assets
+      responses:
+        '200':
+          description: Fleet Assets data.
+          content:
+            application/json:
+              schema:
+                description: List of available fleet assets to choose from
+                type: object
+                properties:
+                  fleetVehicles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                  pickUpSpeeds:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        value:
+                          type: number
+                  dropOffSpeeds:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        value:
+                          type:
+                          - number
+                          - 'null'
+                  capabilityTags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        fleetCategory:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

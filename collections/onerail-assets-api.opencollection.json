@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Delivery Cloud - Delivery Assets API",
+    "version": "0.0.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-ONERAIL-API-KEY",
+      "value": "{{X-ONERAIL-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Display image stored in Azure storage account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/assets/:image",
+            "params": [
+              {
+                "name": "image",
+                "value": "",
+                "type": "path",
+                "description": "image name"
+              },
+              {
+                "name": "authentication",
+                "value": "",
+                "type": "query",
+                "description": "provide auth"
+              }
+            ]
+          },
+          "docs": "Display image stored in Azure storage account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

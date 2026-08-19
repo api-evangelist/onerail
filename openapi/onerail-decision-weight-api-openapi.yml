@@ -1,0 +1,276 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Decision Weight API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Decision Weight
+paths:
+  /v1/decision-weights:
+    get:
+      x-exegesis-controller: DecisionWeight
+      summary: Get Decision Weights
+      operationId: getAllDecisionWeights
+      parameters:
+      - name: organizationId
+        in: query
+        description: Organization Id
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: marketModifierId
+        in: query
+        description: Market Modifier Id
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      tags:
+      - Decision Weight
+      responses:
+        '200':
+          description: Decision Weights
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  description: Decision Weight Record
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    factor:
+                      type: string
+                      enum:
+                      - FAIRNESS
+                      - CANCELLATION_RATE_INST
+                      - COST
+                      - ONERAIL_BIAS
+                      - SLA_MET_RATE
+                    value:
+                      type: number
+                      format: float
+                    marketModifierId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    organizationId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/decision-weight/bulk-create:
+    post:
+      x-exegesis-controller: DecisionWeight
+      summary: Bulk Create Decision Weights
+      operationId: bulkCreateDecisionWeights
+      tags:
+      - Decision Weight
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                description: Decision Weight New Record
+                required:
+                - factor
+                - value
+                properties:
+                  factor:
+                    type: string
+                    enum:
+                    - FAIRNESS
+                    - CANCELLATION_RATE_INST
+                    - COST
+                    - ONERAIL_BIAS
+                    - SLA_MET_RATE
+                  value:
+                    type: number
+                    format: float
+                  organizationId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  marketModifierId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1decision-weights/get/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/decision-weight/bulk-delete:
+    post:
+      x-exegesis-controller: DecisionWeight
+      summary: Bulk Delete Decision Weights
+      operationId: bulkDeleteDecisionWeights
+      tags:
+      - Decision Weight
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+                format: uuid
+      responses:
+        '200':
+          description: Success
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/decision-weight/bulk-update:
+    post:
+      x-exegesis-controller: DecisionWeight
+      summary: Bulk Update Decision Weights
+      operationId: bulkUpdateDecisionWeights
+      tags:
+      - Decision Weight
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                description: Decision Weight Update Record
+                required:
+                - id
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  factor:
+                    type: string
+                    enum:
+                    - FAIRNESS
+                    - CANCELLATION_RATE_INST
+                    - COST
+                    - ONERAIL_BIAS
+                    - SLA_MET_RATE
+                  value:
+                    type: number
+                    format: float
+                  marketModifierId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  organizationId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1decision-weights/get/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

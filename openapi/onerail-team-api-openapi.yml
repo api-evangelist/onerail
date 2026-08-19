@@ -1,0 +1,305 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Team API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Team
+paths:
+  /v1/organization/{organizationId}/teams:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Team
+      summary: Get organization's teams
+      operationId: getAllTeams
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      - name: filter
+        in: query
+        description: 'JSON string { lpMarketIds: string[], userIds: string[] }'
+        required: false
+        schema:
+          type: string
+      tags:
+      - Team
+      responses:
+        '200':
+          description: Team Records
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1organization~1%7BorganizationId%7D~1teams/post/responses/200/content/application~1json/schema'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    post:
+      x-exegesis-controller: Team
+      summary: Creates a new Team
+      operationId: createTeam
+      tags:
+      - Team
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Team
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                address:
+                  type: object
+                email:
+                  type:
+                  - string
+                  - 'null'
+                phoneNumber:
+                  type:
+                  - string
+                  - 'null'
+                primaryContactId:
+                  type:
+                  - string
+                  - 'null'
+                organizationId:
+                  type: string
+                  format: uuid
+                lpMarketIds:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    type: string
+                userIds:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Team
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Team
+                required:
+                - name
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  address:
+                    type: string
+                  email:
+                    type: string
+                  primaryContactId:
+                    type: string
+                  lpMarketIds:
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/organization/{organizationId}/teams/{teamId}:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: teamId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Team
+      summary: Get team by id
+      operationId: getTeam
+      tags:
+      - Team
+      responses:
+        '200':
+          description: Team
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1organization~1%7BorganizationId%7D~1teams/post/responses/200/content/application~1json/schema'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: Team
+      summary: Updates Team
+      operationId: updateTeam
+      tags:
+      - Team
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Team
+              properties:
+                name:
+                  type: string
+                address:
+                  type: object
+                phoneNumber:
+                  type:
+                  - string
+                  - 'null'
+                email:
+                  type:
+                  - string
+                  - 'null'
+                lpMarketIds:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    type: string
+                userIds:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Team
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1organization~1%7BorganizationId%7D~1teams/post/responses/200/content/application~1json/schema'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: Team
+      summary: Remove team
+      operationId: removeTeam
+      tags:
+      - Team
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

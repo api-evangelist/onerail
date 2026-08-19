@@ -1,0 +1,133 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Pod Rating API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Pod Rating
+paths:
+  /v1/pod-ratings:
+    get:
+      x-exegesis-controller: PodRating
+      summary: Retrieve the next POD to rate
+      operationId: getNextPod
+      parameters:
+      - name: organizationId
+        in: query
+        description: ID of the organization to filter the results.
+        required: false
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - Pod Rating
+      responses:
+        '200':
+          description: Next POD to rate
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Product
+                properties:
+                  podUrl:
+                    type: string
+                    description: URL of the POD
+                  organizationId:
+                    type: string
+                    format: uuid
+                    description: Organization ID associated with the POD
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    post:
+      x-exegesis-controller: PodRating
+      summary: Rate a POD
+      operationId: ratePod
+      tags:
+      - Pod Rating
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Rate a POD
+              required:
+              - organizationId
+              properties:
+                organizationId:
+                  type: string
+                  format: uuid
+                podUrl:
+                  type: string
+                  description: URL of the POD
+                rating:
+                  type: boolean
+                  description: Rating of the POD, true for positive, false for negative
+      responses:
+        '200':
+          description: Success
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

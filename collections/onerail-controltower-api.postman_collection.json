@@ -1,0 +1,409 @@
+{
+  "item": [
+    {
+      "id": "af2cb836-508e-4bd1-a01e-1c20013cb058",
+      "name": "ControlTower",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "50c79a26-8b9f-4348-975d-2976f426b191",
+          "name": "Reject routes and deliveries",
+          "request": {
+            "name": "Reject routes and deliveries",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "bulk-rejection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"routeIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"reason\": {\n    \"title\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7c92fe2b-487d-408d-bee8-e354264da281",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bulk-rejection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"routeIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"reason\": {\n    \"title\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8be8352-8d49-4bfa-abb3-06e354bc2f40",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bulk-rejection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"routeIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"reason\": {\n    \"title\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43b7e56e-3681-451e-9c1a-22c7ccd12538",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bulk-rejection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"routeIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"reason\": {\n    \"title\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d13bce76-1472-45f8-bc6d-1f5183a7e26a",
+          "name": "Deletes routes and deliveries",
+          "request": {
+            "name": "Deletes routes and deliveries",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "bulk-cancelation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"routeIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"reason\": {\n    \"reason\": {\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"deliveryBillableToShipper\": \"<boolean,null>\",\n      \"deliveryPayableToLp\": \"<boolean,null>\",\n      \"shipperSlaWaived\": \"<boolean,null>\",\n      \"lpSlaWaived\": \"<boolean,null>\"\n    },\n    \"notes\": \"<string,null>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c62cd344-b37b-4cfa-bd4f-2b3058273bbb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bulk-cancelation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"routeIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"reason\": {\n    \"reason\": {\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"deliveryBillableToShipper\": \"<boolean,null>\",\n      \"deliveryPayableToLp\": \"<boolean,null>\",\n      \"shipperSlaWaived\": \"<boolean,null>\",\n      \"lpSlaWaived\": \"<boolean,null>\"\n    },\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "31636dc9-8aa9-4145-b260-add6e508a6ba",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bulk-cancelation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"routeIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"reason\": {\n    \"reason\": {\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"deliveryBillableToShipper\": \"<boolean,null>\",\n      \"deliveryPayableToLp\": \"<boolean,null>\",\n      \"shipperSlaWaived\": \"<boolean,null>\",\n      \"lpSlaWaived\": \"<boolean,null>\"\n    },\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "393cd823-5aed-4426-88eb-baacd3b4c54e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bulk-cancelation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"routeIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"reason\": {\n    \"reason\": {\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"deliveryBillableToShipper\": \"<boolean,null>\",\n      \"deliveryPayableToLp\": \"<boolean,null>\",\n      \"shipperSlaWaived\": \"<boolean,null>\",\n      \"lpSlaWaived\": \"<boolean,null>\"\n    },\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "07ad8486-1892-4a3f-843e-b570537b3c91",
+    "name": "OneRail Operation Dashboard Control Tower API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

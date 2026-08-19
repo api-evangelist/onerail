@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Locations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of locations for filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/locations",
+            "params": [
+              {
+                "name": "organizationIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { search: string } or { search: { name: string, storeNumber: string, pickupLocationAddress: string } } or { search: [ uuid ] }"
+              }
+            ]
+          },
+          "docs": "Get list of locations for filtering"
+        },
+        {
+          "info": {
+            "name": "Get list of locations for filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/locations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Filter locations with one of the following items:\n- { search: { name: string, storeNumber: string, pickupLocationAddress: string } } you can pass search and filter locations by name, storeNumber, pickupLocationAddress includes search \n- or\n- { locationIds: [ uuid ] } you can pass locationIds as an array of locationId and search in locations by their id or ids\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

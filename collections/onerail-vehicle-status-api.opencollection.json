@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Vehicle Status API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vehicle Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Status of Vehicles on LP Market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/lp-market/:lpMarketId/vehicle-status",
+            "params": [
+              {
+                "name": "lpMarketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Status of Vehicles on LP Market"
+        },
+        {
+          "info": {
+            "name": "Set Status of Vehicles on LP Market",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/lp-market/:lpMarketId/vehicle-status",
+            "params": [
+              {
+                "name": "lpMarketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set Status of Vehicles on LP Market"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

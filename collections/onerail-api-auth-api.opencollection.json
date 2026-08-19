@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Api Auth API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Api Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all Api Auths",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/api-auths",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get all Api Auths"
+        },
+        {
+          "info": {
+            "name": "Create an Api Auth",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/api-auth",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Api Auth"
+        },
+        {
+          "info": {
+            "name": "Get Api Auth",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/api-auth/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Api Auth"
+        },
+        {
+          "info": {
+            "name": "Delete an ApiAuth",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/api-auth/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an ApiAuth"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

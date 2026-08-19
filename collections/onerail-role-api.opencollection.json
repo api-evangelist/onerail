@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Role API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Role",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a new Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/role",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Role"
+        },
+        {
+          "info": {
+            "name": "Get Role's record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/role/:roleId",
+            "params": [
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path",
+                "description": "role id"
+              }
+            ]
+          },
+          "docs": "Get Role's record"
+        },
+        {
+          "info": {
+            "name": "Update Role's record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/role/:roleId",
+            "params": [
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path",
+                "description": "role id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Role's record"
+        },
+        {
+          "info": {
+            "name": "Deletes Role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/role/:roleId",
+            "params": [
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path",
+                "description": "role id"
+              }
+            ]
+          },
+          "docs": "Deletes Role"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

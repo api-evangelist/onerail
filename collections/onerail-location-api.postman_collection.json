@@ -1,0 +1,3745 @@
+{
+  "item": [
+    {
+      "id": "f7b6b504-095a-45ab-81ff-a9e38f539b00",
+      "name": "Location",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78be8552-7b73-4d18-ac3b-023b4fccd329",
+          "name": "Creates a new Location",
+          "request": {
+            "name": "Creates a new Location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"storeNumber\": \"<string,null>\",\n  \"phoneNumber\": \"<string,null>\",\n  \"primaryContactId\": \"<string,null>\",\n  \"organizationId\": \"<uuid>\",\n  \"canDispatchDeliveries\": \"<boolean>\",\n  \"shippingInstructions\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"contactEmailAddress\": \"<string>\",\n  \"serviceHours\": [\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    },\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    }\n  ],\n  \"shipperLocationExtraData\": {\n    \"slaPickupBufferMinutes\": \"<number>\",\n    \"slaDropoffBufferMinutes\": \"<number>\"\n  },\n  \"cutOffTimeMins\": \"<number,null>\",\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4138b06b-fd22-43ef-aea9-6e200bbaa245",
+              "name": "Location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"storeNumber\": \"<string,null>\",\n  \"phoneNumber\": \"<string,null>\",\n  \"primaryContactId\": \"<string,null>\",\n  \"organizationId\": \"<uuid>\",\n  \"canDispatchDeliveries\": \"<boolean>\",\n  \"shippingInstructions\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"contactEmailAddress\": \"<string>\",\n  \"serviceHours\": [\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    },\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    }\n  ],\n  \"shipperLocationExtraData\": {\n    \"slaPickupBufferMinutes\": \"<number>\",\n    \"slaDropoffBufferMinutes\": \"<number>\"\n  },\n  \"cutOffTimeMins\": \"<number,null>\",\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"id\": \"string\",\n  \"address\": \"string\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"cutOffTimeMins\": null,\n  \"storeNumber\": null,\n  \"msa\": null,\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1%7BcontextId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"string\",\n  \"totalUsers\": 3434\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fba1125f-fe84-4c62-b505-a63c107d8084",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"storeNumber\": \"<string,null>\",\n  \"phoneNumber\": \"<string,null>\",\n  \"primaryContactId\": \"<string,null>\",\n  \"organizationId\": \"<uuid>\",\n  \"canDispatchDeliveries\": \"<boolean>\",\n  \"shippingInstructions\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"accessCode\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"contactEmailAddress\": \"<string>\",\n  \"serviceHours\": [\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    },\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    }\n  ],\n  \"shipperLocationExtraData\": {\n    \"slaPickupBufferMinutes\": \"<number>\",\n    \"slaDropoffBufferMinutes\": \"<number>\"\n  },\n  \"cutOffTimeMins\": \"<number,null>\",\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15e7abf5-a14d-4fd2-8754-6f55a8a6b4e6",
+          "name": "Get all locations user has access to",
+          "request": {
+            "name": "Get all locations user has access to",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organizationId",
+                  "value": "<string,null-uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "organizationId",
+                  "value": "<string,null-uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "810eb019-ca66-4106-90ed-9773547a7211",
+              "name": "Location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationId",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "organizationId",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"8719aa15-fa60-e32e-9d07-ba59e361196d\",\n    \"name\": \"string\",\n    \"location\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    },\n    \"organization\": {\n      \"id\": \"78eb7b26-99d1-d256-3fcd-ccb8dff1379b\",\n      \"name\": \"string\"\n    }\n  },\n  {\n    \"id\": \"e9b0d51b-81b0-7aff-e1da-884d52437949\",\n    \"name\": \"string\",\n    \"location\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    },\n    \"organization\": {\n      \"id\": \"e8c8f4af-0a59-4ae5-c449-3ae7572f81db\",\n      \"name\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa4c1027-e8f5-4127-850b-3c4de39b19a8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationId",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "organizationId",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ae6e2ea-38fc-4162-a038-a10e750ef5e1",
+          "name": "Get location by id",
+          "request": {
+            "name": "Get location by id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec09a09c-e0eb-4ffa-baac-6da02aa25473",
+              "name": "Location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"id\": \"string\",\n  \"address\": \"string\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"cutOffTimeMins\": null,\n  \"storeNumber\": null,\n  \"msa\": null,\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1%7BcontextId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"string\",\n  \"totalUsers\": 3434\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51c1276b-1268-40a5-9ed6-c351bad54988",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2b92f09-c2cd-49fb-9106-85f9f85db725",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61d2da00-1dcc-483d-aa98-cff6a834c26c",
+          "name": "Updates location",
+          "request": {
+            "name": "Updates location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"primaryContactId\": \"<string,null>\",\n  \"canDispatchDeliveries\": \"<boolean>\",\n  \"shippingInstructions\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"serviceHours\": [\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    },\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    }\n  ],\n  \"shipperLocationExtraData\": {\n    \"id\": \"<string,null>\",\n    \"slaPickupBufferMinutes\": \"<number>\",\n    \"slaDropoffBufferMinutes\": \"<number>\"\n  },\n  \"cutOffTimeMins\": \"<number,null>\",\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a9306c13-94b4-48f7-ac99-e707a7567f64",
+              "name": "Location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"primaryContactId\": \"<string,null>\",\n  \"canDispatchDeliveries\": \"<boolean>\",\n  \"shippingInstructions\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"serviceHours\": [\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    },\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    }\n  ],\n  \"shipperLocationExtraData\": {\n    \"id\": \"<string,null>\",\n    \"slaPickupBufferMinutes\": \"<number>\",\n    \"slaDropoffBufferMinutes\": \"<number>\"\n  },\n  \"cutOffTimeMins\": \"<number,null>\",\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"id\": \"string\",\n  \"address\": \"string\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"cutOffTimeMins\": null,\n  \"storeNumber\": null,\n  \"msa\": null,\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1%7BcontextId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"string\",\n  \"totalUsers\": 3434\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21fe262a-1d67-40a1-8094-32a185070dc6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"primaryContactId\": \"<string,null>\",\n  \"canDispatchDeliveries\": \"<boolean>\",\n  \"shippingInstructions\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"serviceHours\": [\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    },\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    }\n  ],\n  \"shipperLocationExtraData\": {\n    \"id\": \"<string,null>\",\n    \"slaPickupBufferMinutes\": \"<number>\",\n    \"slaDropoffBufferMinutes\": \"<number>\"\n  },\n  \"cutOffTimeMins\": \"<number,null>\",\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41407c57-0e09-4e7d-98e0-ea698a56f1c9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"primaryContactId\": \"<string,null>\",\n  \"canDispatchDeliveries\": \"<boolean>\",\n  \"shippingInstructions\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"serviceHours\": [\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    },\n    {\n      \"startMin\": \"<number>\",\n      \"endMin\": \"<number>\",\n      \"dayOfWeek\": \"<number,null>\",\n      \"holidayId\": \"<string,null>\"\n    }\n  ],\n  \"shipperLocationExtraData\": {\n    \"id\": \"<string,null>\",\n    \"slaPickupBufferMinutes\": \"<number>\",\n    \"slaDropoffBufferMinutes\": \"<number>\"\n  },\n  \"cutOffTimeMins\": \"<number,null>\",\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a64b697e-d6ae-4a98-bd88-c6fb911541e7",
+          "name": "Remove location",
+          "request": {
+            "name": "Remove location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f821026d-28be-4f51-b39d-69220146a0c0",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e732f0e1-62f5-4eda-9bdb-eed4e9076f66",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef822c4b-a9a7-436a-a323-a65e77faca79",
+          "name": "Get Location's users",
+          "request": {
+            "name": "Get Location's users",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search user by name"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) location id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "72673d96-b2e6-401f-96ff-9c81c1cab9bc",
+              "name": "User Records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1 not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1 not found in the OpenAPI spec\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d458ab8-8df8-42d7-a5a4-7697717c6a1a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3bc77ad-ab48-4ddd-9767-ce9d7aaae40c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb847823-75db-4e6b-92e3-451c96c17a3d",
+          "name": "adds Location's users",
+          "request": {
+            "name": "adds Location's users",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) location id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e0b23ad7-0e4f-4be2-92a4-4d0cf212883c",
+              "name": "Array of successful associations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1645e0e-8a62-4c19-a54b-bd1dbb792fec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74a27c0c-bfa9-4354-8c13-fd2cf7ff3734",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfd960e3-6d1e-40b2-91d3-f02e883ed1d0",
+          "name": "Get Location's users (API)",
+          "request": {
+            "name": "Get Location's users (API)",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "users",
+                "api"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search user by name"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) location id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8df18fb1-2f84-4244-94bb-85581631a880",
+              "name": "User Records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "users",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1 not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1 not found in the OpenAPI spec\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df08715d-a96d-4455-bd87-ce82941055e7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "users",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "132bb3de-03fd-4b44-b349-88cc805274ea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "users",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5649a9ba-6b65-4545-b3bc-ed2fdaec7ba6",
+          "name": "deletes Location's users",
+          "request": {
+            "name": "deletes Location's users",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "user",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d664879-8608-4cd0-becb-efc9ee26661a",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6cb38430-8106-42ea-8d88-7319ee009b85",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0fd7c50a-bce3-4865-801a-90899f7b2d72",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d68f5e08-adac-44e6-985f-6bb8bd864dcc",
+          "name": "Get the customer locations for this shipper location",
+          "request": {
+            "name": "Get the customer locations for this shipper location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "customer-locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "JSON string { search: string }"
+                },
+                {
+                  "disabled": false,
+                  "key": "originLocationId",
+                  "value": "<string,null>",
+                  "description": "Origin location ID for orders with origin location"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb42be45-1f28-453b-aac2-d90a133639c1",
+              "name": "Customer locations serviced by this shipper location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "originLocationId",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"6ee2a2dd-e44b-9997-7c5a-f434bf1ba22a\",\n      \"name\": \"string\",\n      \"address\": {},\n      \"location\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      },\n      \"phoneNumber\": \"string\",\n      \"receivingInstructions\": \"string\",\n      \"contactName\": \"string\",\n      \"contactEmailAddress\": \"string\",\n      \"storeNumber\": null,\n      \"timezone\": null,\n      \"timezoneOffset\": 9235.786345338456,\n      \"timezoneAbbreviation\": null,\n      \"msa\": null,\n      \"physicalLocation\": {\n        \"altAddress\": {\n          \"label\": \"<string>\",\n          \"state\": \"<string>\",\n          \"county\": \"<string,null>\",\n          \"street\": \"<string,null>\",\n          \"street2\": \"<string,null>\",\n          \"address1\": \"<string,null>\",\n          \"address2\": \"<string,null>\",\n          \"district\": \"<string,null>\",\n          \"stateCode\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"city\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"countryName\": \"<string>\",\n          \"houseNumber\": \"<string,null>\",\n          \"additionalData\": [\n            \"<object>\",\n            \"<object>\"\n          ]\n        },\n        \"altLocation\": {\n          \"latitude\": \"<number>\",\n          \"longitude\": \"<number>\"\n        }\n      },\n      \"serviceHours\": null\n    },\n    {\n      \"id\": \"279716c0-4d75-4205-cb1a-301ee80a4a33\",\n      \"name\": \"string\",\n      \"address\": {},\n      \"location\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      },\n      \"phoneNumber\": \"string\",\n      \"receivingInstructions\": \"string\",\n      \"contactName\": \"string\",\n      \"contactEmailAddress\": \"string\",\n      \"storeNumber\": \"string\",\n      \"timezone\": null,\n      \"timezoneOffset\": 7940.022354893009,\n      \"timezoneAbbreviation\": \"string\",\n      \"msa\": null,\n      \"physicalLocation\": {\n        \"altAddress\": {\n          \"label\": \"<string>\",\n          \"state\": \"<string>\",\n          \"county\": \"<string,null>\",\n          \"street\": \"<string,null>\",\n          \"street2\": \"<string,null>\",\n          \"address1\": \"<string,null>\",\n          \"address2\": \"<string,null>\",\n          \"district\": \"<string,null>\",\n          \"stateCode\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"city\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"countryName\": \"<string>\",\n          \"houseNumber\": \"<string,null>\",\n          \"additionalData\": [\n            \"<object>\",\n            \"<object>\"\n          ]\n        },\n        \"altLocation\": {\n          \"latitude\": \"<number>\",\n          \"longitude\": \"<number>\"\n        }\n      },\n      \"serviceHours\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ab61af9-19d9-4533-ba42-ec90a58bbbe7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "originLocationId",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a6e9f22-b380-4818-b668-6afcdfb55362",
+          "name": "CSV file with customer locations",
+          "request": {
+            "name": "CSV file with customer locations",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                "bulk-customer-locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {}
+          },
+          "response": [
+            {
+              "id": "5b7ee607-328b-411b-a3ff-535f0ea13e89",
+              "name": "Successfully processed bulk customer locations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    "bulk-customer-locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec0745e3-6e3d-48db-9287-747fff6b8151",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    "bulk-customer-locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "510ad0f8-1791-40cb-80bd-12cace4511e1",
+          "name": "Create a customer location for the shipper location",
+          "request": {
+            "name": "Create a customer location for the shipper location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "customer-location"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string,null>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"contactName\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": \"<array,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "444f2a28-d66c-4aec-a580-c63f50ee38cc",
+              "name": "Customer location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"contactName\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"648283d7-f1c9-a3c0-d01b-e05d58a0f790\",\n  \"name\": \"string\",\n  \"address\": {},\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"string\",\n  \"receivingInstructions\": \"string\",\n  \"contactName\": \"string\",\n  \"contactEmailAddress\": \"string\",\n  \"storeNumber\": \"string\",\n  \"timezone\": null,\n  \"timezoneOffset\": 9765.103506056777,\n  \"timezoneAbbreviation\": \"string\",\n  \"msa\": \"string\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": [\n    {\n      \"id\": \"b7e660f4-784d-32e4-f87c-56b8dc9c9ec6\",\n      \"dayOfWeek\": 944.1871023685966,\n      \"startMin\": 4400.903860107216,\n      \"endMin\": 1534.720774517615,\n      \"holiday\": {\n        \"id\": \"2d7fada4-2603-30a3-c2d7-7ca4705846ca\",\n        \"holidayName\": \"string\"\n      }\n    },\n    {\n      \"id\": \"cbf930a9-2f3b-56b7-7c7c-acd7a0bf9abc\",\n      \"dayOfWeek\": 8598.725992009438,\n      \"startMin\": 7218.846950644336,\n      \"endMin\": 353.44213491029564,\n      \"holiday\": {\n        \"id\": \"89ab2403-4e6e-47e7-09e7-25d9ccd0c220\",\n        \"holidayName\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1640d72f-aea2-4830-b7fc-c83cdd52bb1d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"contactName\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "021400a6-1095-41f8-9f2a-3c5c5d5cdad7",
+          "name": "Get customer location",
+          "request": {
+            "name": "Get customer location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "customer-location",
+                ":customerLocationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerLocationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f89cbe75-986c-4a33-bab9-72af20407d9a",
+              "name": "Customer location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-location",
+                    ":customerLocationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerLocationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"648283d7-f1c9-a3c0-d01b-e05d58a0f790\",\n  \"name\": \"string\",\n  \"address\": {},\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"string\",\n  \"receivingInstructions\": \"string\",\n  \"contactName\": \"string\",\n  \"contactEmailAddress\": \"string\",\n  \"storeNumber\": \"string\",\n  \"timezone\": null,\n  \"timezoneOffset\": 9765.103506056777,\n  \"timezoneAbbreviation\": \"string\",\n  \"msa\": \"string\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": [\n    {\n      \"id\": \"b7e660f4-784d-32e4-f87c-56b8dc9c9ec6\",\n      \"dayOfWeek\": 944.1871023685966,\n      \"startMin\": 4400.903860107216,\n      \"endMin\": 1534.720774517615,\n      \"holiday\": {\n        \"id\": \"2d7fada4-2603-30a3-c2d7-7ca4705846ca\",\n        \"holidayName\": \"string\"\n      }\n    },\n    {\n      \"id\": \"cbf930a9-2f3b-56b7-7c7c-acd7a0bf9abc\",\n      \"dayOfWeek\": 8598.725992009438,\n      \"startMin\": 7218.846950644336,\n      \"endMin\": 353.44213491029564,\n      \"holiday\": {\n        \"id\": \"89ab2403-4e6e-47e7-09e7-25d9ccd0c220\",\n        \"holidayName\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70c96826-6350-46e5-8bf0-62f85f0eecca",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-location",
+                    ":customerLocationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerLocationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29b696ca-fdfe-4517-ad89-f6a3644ad284",
+          "name": "Update customer location",
+          "request": {
+            "name": "Update customer location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "customer-location",
+                ":customerLocationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerLocationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string,null>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"contactName\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": \"<array,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "593e280f-123f-4159-97b5-97f0b59e51a7",
+              "name": "Customer location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-location",
+                    ":customerLocationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerLocationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"contactName\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"648283d7-f1c9-a3c0-d01b-e05d58a0f790\",\n  \"name\": \"string\",\n  \"address\": {},\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"string\",\n  \"receivingInstructions\": \"string\",\n  \"contactName\": \"string\",\n  \"contactEmailAddress\": \"string\",\n  \"storeNumber\": \"string\",\n  \"timezone\": null,\n  \"timezoneOffset\": 9765.103506056777,\n  \"timezoneAbbreviation\": \"string\",\n  \"msa\": \"string\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": [\n    {\n      \"id\": \"b7e660f4-784d-32e4-f87c-56b8dc9c9ec6\",\n      \"dayOfWeek\": 944.1871023685966,\n      \"startMin\": 4400.903860107216,\n      \"endMin\": 1534.720774517615,\n      \"holiday\": {\n        \"id\": \"2d7fada4-2603-30a3-c2d7-7ca4705846ca\",\n        \"holidayName\": \"string\"\n      }\n    },\n    {\n      \"id\": \"cbf930a9-2f3b-56b7-7c7c-acd7a0bf9abc\",\n      \"dayOfWeek\": 8598.725992009438,\n      \"startMin\": 7218.846950644336,\n      \"endMin\": 353.44213491029564,\n      \"holiday\": {\n        \"id\": \"89ab2403-4e6e-47e7-09e7-25d9ccd0c220\",\n        \"holidayName\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d2a2292-0645-4550-a6e6-1be54c90dcf0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-location",
+                    ":customerLocationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerLocationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"address\": \"<object>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"contactName\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d74b58bd-e1cb-421a-a6df-db81ab629c6e",
+          "name": "Remove customer location association to the shipper location",
+          "request": {
+            "name": "Remove customer location association to the shipper location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "customer-location",
+                ":customerLocationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerLocationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a9d4dcf-c3cc-4ac6-b4bc-627c2ec4f56b",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-location",
+                    ":customerLocationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerLocationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2bfa9023-001e-4d63-857b-663f1a249204",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-location",
+                    ":customerLocationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerLocationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "633cc988-f2ca-411a-9afe-fc00d519da4d",
+          "name": "Change an existing associated customer location to a different shipper location",
+          "request": {
+            "name": "Change an existing associated customer location to a different shipper location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "customer-location",
+                ":customerLocationId",
+                "change-association"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerLocationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"newShipperLocationId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c06d3b7-f5c7-41af-a013-1e8dc4f12019",
+              "name": "Customer location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-location",
+                    ":customerLocationId",
+                    "change-association"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerLocationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"newShipperLocationId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"648283d7-f1c9-a3c0-d01b-e05d58a0f790\",\n  \"name\": \"string\",\n  \"address\": {},\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"string\",\n  \"receivingInstructions\": \"string\",\n  \"contactName\": \"string\",\n  \"contactEmailAddress\": \"string\",\n  \"storeNumber\": \"string\",\n  \"timezone\": null,\n  \"timezoneOffset\": 9765.103506056777,\n  \"timezoneAbbreviation\": \"string\",\n  \"msa\": \"string\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": [\n    {\n      \"id\": \"b7e660f4-784d-32e4-f87c-56b8dc9c9ec6\",\n      \"dayOfWeek\": 944.1871023685966,\n      \"startMin\": 4400.903860107216,\n      \"endMin\": 1534.720774517615,\n      \"holiday\": {\n        \"id\": \"2d7fada4-2603-30a3-c2d7-7ca4705846ca\",\n        \"holidayName\": \"string\"\n      }\n    },\n    {\n      \"id\": \"cbf930a9-2f3b-56b7-7c7c-acd7a0bf9abc\",\n      \"dayOfWeek\": 8598.725992009438,\n      \"startMin\": 7218.846950644336,\n      \"endMin\": 353.44213491029564,\n      \"holiday\": {\n        \"id\": \"89ab2403-4e6e-47e7-09e7-25d9ccd0c220\",\n        \"holidayName\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f26f65b2-1cbb-4f85-9a70-0244738c094a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "customer-location",
+                    ":customerLocationId",
+                    "change-association"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerLocationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"newShipperLocationId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d45a3445-4a51-4678-82b0-8bb260945241",
+          "name": "Bulk delete selected customer locations for the shipper location",
+          "request": {
+            "name": "Bulk delete selected customer locations for the shipper location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "78b7a487-5b93-4ba3-acdb-e5e2d7081e4c",
+              "name": "Location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"id\": \"string\",\n  \"address\": \"string\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"cutOffTimeMins\": null,\n  \"storeNumber\": null,\n  \"msa\": null,\n  \"hasLoadingDock\": false,\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1%7BcontextId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"ean\": \"string\",\n  \"totalUsers\": 3434\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26340370-3b6d-42cd-afb6-4c0c347cd799",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "adc5b441-3d34-4082-8f9e-8eb8f855ad5a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc2712ee-bb10-4ddd-924e-5bd76f8b3a19",
+          "name": "Bulk delete ALL customer locations for the shipper location",
+          "request": {
+            "name": "Bulk delete ALL customer locations for the shipper location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "549a2153-628d-47ad-9dfb-a3ab65751f86",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c6f4c9b-41bb-4ac3-b0ca-34568ce703ae",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df1ad866-617f-48de-8d32-c4fb39e9c712",
+          "name": "Update location by storeNumber",
+          "request": {
+            "name": "Update location by storeNumber",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":storeNumber",
+                "by-store-number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "storeNumber",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string,null>\",\n  \"address\": \"<object,null>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"contactName\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": \"<array,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d376d34-3d17-4d12-836c-d87cb37c15e0",
+              "name": "Location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":storeNumber",
+                    "by-store-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "storeNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"address\": \"<object,null>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"contactName\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"648283d7-f1c9-a3c0-d01b-e05d58a0f790\",\n  \"name\": \"string\",\n  \"address\": {},\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"string\",\n  \"receivingInstructions\": \"string\",\n  \"contactName\": \"string\",\n  \"contactEmailAddress\": \"string\",\n  \"storeNumber\": \"string\",\n  \"timezone\": null,\n  \"timezoneOffset\": 9765.103506056777,\n  \"timezoneAbbreviation\": \"string\",\n  \"msa\": \"string\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": [\n    {\n      \"id\": \"b7e660f4-784d-32e4-f87c-56b8dc9c9ec6\",\n      \"dayOfWeek\": 944.1871023685966,\n      \"startMin\": 4400.903860107216,\n      \"endMin\": 1534.720774517615,\n      \"holiday\": {\n        \"id\": \"2d7fada4-2603-30a3-c2d7-7ca4705846ca\",\n        \"holidayName\": \"string\"\n      }\n    },\n    {\n      \"id\": \"cbf930a9-2f3b-56b7-7c7c-acd7a0bf9abc\",\n      \"dayOfWeek\": 8598.725992009438,\n      \"startMin\": 7218.846950644336,\n      \"endMin\": 353.44213491029564,\n      \"holiday\": {\n        \"id\": \"89ab2403-4e6e-47e7-09e7-25d9ccd0c220\",\n        \"holidayName\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00e89a25-87fa-4e60-a948-3ab2eec6034b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":storeNumber",
+                    "by-store-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "storeNumber",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"address\": \"<object,null>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"phoneNumber\": \"<string,null>\",\n  \"receivingInstructions\": \"<string,null>\",\n  \"contactName\": \"<string,null>\",\n  \"contactEmailAddress\": \"<string,null>\",\n  \"storeNumber\": \"<string,null>\",\n  \"physicalLocation\": {\n    \"altAddress\": {\n      \"label\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string,null>\",\n      \"street\": \"<string,null>\",\n      \"street2\": \"<string,null>\",\n      \"address1\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"district\": \"<string,null>\",\n      \"stateCode\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"countryName\": \"<string>\",\n      \"houseNumber\": \"<string,null>\",\n      \"additionalData\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    \"altLocation\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    }\n  },\n  \"serviceHours\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "032cfcc5-7afa-4ff5-9a84-766e921b5c3f",
+    "name": "OneRail Operation Dashboard Location API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

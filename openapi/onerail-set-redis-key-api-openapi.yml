@@ -1,0 +1,87 @@
+openapi: 3.2.0
+info:
+  version: 0.0.3
+  title: OneRail Delivery Cloud - Delivery Set Redis Key API
+  description: Allows authorized 3rd parties to request new deliveries through the OneRail network
+  license:
+    name: UNLICENSED
+security:
+- ApiKey: []
+  AppId: []
+tags:
+- name: Set Redis Key
+paths:
+  /set-redis-key/{key}:
+    x-exegesis-controller: Redis
+    post:
+      summary: Display image stored in Azure storage account
+      operationId: setPayload
+      security: []
+      parameters:
+      - name: key
+        in: path
+        description: redis key to set
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: JSON Object to set
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: string
+        '422':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Set Redis Key
+components:
+  schemas:
+    Error:
+      required:
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        errors:
+          type: object
+        errorDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                description: A human-readable explanation specific to this occurrence of the problem
+              pointer:
+                type: string
+                description: A JSON Pointer [RFC6901] to the associated entity in the request document
+            required:
+            - detail
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+    ApiKeyAndAppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY-AND-APP-ID

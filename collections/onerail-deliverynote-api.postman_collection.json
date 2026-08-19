@@ -1,0 +1,804 @@
+{
+  "item": [
+    {
+      "id": "d097e073-2ab9-48c3-a0d8-86a18319dd40",
+      "name": "DeliveryNote",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7ac349f-12dc-488e-a77a-e8e5ebf5de6d",
+          "name": "Creates a delivery note",
+          "request": {
+            "name": "Creates a delivery note",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "delivery-note"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"replyToDeliveryNoteId\": \"<uuid>\",\n  \"deliveryExceptionId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c9e6666-5f3c-4550-8b13-90a452fbdc47",
+              "name": "Shipper Contract",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "delivery-note"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"replyToDeliveryNoteId\": \"<uuid>\",\n  \"deliveryExceptionId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6dc5592c-46d6-9dcf-96b2-b561e14fe025\",\n  \"deliveryId\": \"a2076469-8dbe-a032-0431-d9a32a901705\",\n  \"userId\": \"9087285f-cd9c-aabb-dcbc-b2e85808761a\",\n  \"content\": \"string\",\n  \"visibility\": \"OR_ONLY\",\n  \"replyToDeliveryNoteId\": \"c171585e-9f76-45a6-69c2-a01e02569e97\",\n  \"user\": {\n    \"id\": \"5abfa370-c0ff-8899-9040-0b79e494951b\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"emailAddress\": \"string\",\n    \"organizationId\": \"ed51e372-4491-8b8b-46aa-362c4d4bb432\",\n    \"organization\": {\n      \"id\": \"5e12674e-5d39-402d-16ad-46cf30300fb9\",\n      \"name\": \"string\",\n      \"logoImageURL\": \"string\"\n    }\n  },\n  \"deliveryExceptionId\": \"8f13682f-1166-93e9-f2c7-ed840bb2ff4e\",\n  \"replyToDeliveryNote\": {\n    \"id\": \"04d4f318-7b5e-a933-eed3-75723e6e492f\",\n    \"deliveryId\": \"70e40c72-dbd8-6fb8-3ebb-ea112a7da218\",\n    \"userId\": \"fd10465a-3f7b-e865-88de-660e4cfdcc3e\",\n    \"replyToDeliveryNoteId\": \"9fa28fad-cc0b-f111-97b0-570b92fe292a\",\n    \"content\": \"string\",\n    \"visibility\": \"NORMAL\",\n    \"deliveryExceptionId\": null,\n    \"deletedById\": \"9dff879a-5615-e5fc-ae55-af02c27c5454\",\n    \"createdAt\": \"1964-11-11T12:32:15.449Z\",\n    \"updatedAt\": \"2002-01-17T06:40:19.463Z\",\n    \"deletedAt\": \"2020-10-02T03:26:23.467Z\"\n  },\n  \"deletedById\": \"0109547a-d155-8c13-1166-fc796dc2a53e\",\n  \"deliveryException\": {\n    \"id\": \"8394865a-28b2-62b6-5b9d-a2b21bb6a54d\",\n    \"deliveryId\": \"a2a54dd5-03fa-b1fb-1bad-f47a947c034f\",\n    \"deliveryAttemptId\": null,\n    \"severity\": \"string\",\n    \"resolved\": true,\n    \"notes\": \"string\",\n    \"happenedOn\": \"1960-03-02T09:18:08.141Z\",\n    \"createdAt\": \"2022-09-18T12:14:17.260Z\",\n    \"updatedAt\": \"1988-10-12T02:25:24.442Z\"\n  },\n  \"deletedByUser\": {\n    \"id\": \"18f6e5bb-8f0e-530e-fa98-5e5d7c8f28dd\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"emailAddress\": \"string\"\n  },\n  \"createdAt\": \"1992-01-18T21:30:09.288Z\",\n  \"updatedAt\": \"1962-03-16T04:38:42.091Z\",\n  \"deletedAt\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "452e484a-b06f-40eb-bf81-12cefe385e4b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "delivery-note"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"replyToDeliveryNoteId\": \"<uuid>\",\n  \"deliveryExceptionId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ac9e1a1-581a-4cbe-8bb1-1ad0ef89bd62",
+          "name": "Updates editable delivery note fields",
+          "request": {
+            "name": "Updates editable delivery note fields",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "delivery-note",
+                ":deliveryNoteId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryNoteId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eec4c627-341c-4043-aed8-673744a8e9df",
+              "name": "Delivery Note Record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "delivery-note",
+                    ":deliveryNoteId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryNoteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6dc5592c-46d6-9dcf-96b2-b561e14fe025\",\n  \"deliveryId\": \"a2076469-8dbe-a032-0431-d9a32a901705\",\n  \"userId\": \"9087285f-cd9c-aabb-dcbc-b2e85808761a\",\n  \"content\": \"string\",\n  \"visibility\": \"OR_ONLY\",\n  \"replyToDeliveryNoteId\": \"c171585e-9f76-45a6-69c2-a01e02569e97\",\n  \"user\": {\n    \"id\": \"5abfa370-c0ff-8899-9040-0b79e494951b\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"emailAddress\": \"string\",\n    \"organizationId\": \"ed51e372-4491-8b8b-46aa-362c4d4bb432\",\n    \"organization\": {\n      \"id\": \"5e12674e-5d39-402d-16ad-46cf30300fb9\",\n      \"name\": \"string\",\n      \"logoImageURL\": \"string\"\n    }\n  },\n  \"deliveryExceptionId\": \"8f13682f-1166-93e9-f2c7-ed840bb2ff4e\",\n  \"replyToDeliveryNote\": {\n    \"id\": \"04d4f318-7b5e-a933-eed3-75723e6e492f\",\n    \"deliveryId\": \"70e40c72-dbd8-6fb8-3ebb-ea112a7da218\",\n    \"userId\": \"fd10465a-3f7b-e865-88de-660e4cfdcc3e\",\n    \"replyToDeliveryNoteId\": \"9fa28fad-cc0b-f111-97b0-570b92fe292a\",\n    \"content\": \"string\",\n    \"visibility\": \"NORMAL\",\n    \"deliveryExceptionId\": null,\n    \"deletedById\": \"9dff879a-5615-e5fc-ae55-af02c27c5454\",\n    \"createdAt\": \"1964-11-11T12:32:15.449Z\",\n    \"updatedAt\": \"2002-01-17T06:40:19.463Z\",\n    \"deletedAt\": \"2020-10-02T03:26:23.467Z\"\n  },\n  \"deletedById\": \"0109547a-d155-8c13-1166-fc796dc2a53e\",\n  \"deliveryException\": {\n    \"id\": \"8394865a-28b2-62b6-5b9d-a2b21bb6a54d\",\n    \"deliveryId\": \"a2a54dd5-03fa-b1fb-1bad-f47a947c034f\",\n    \"deliveryAttemptId\": null,\n    \"severity\": \"string\",\n    \"resolved\": true,\n    \"notes\": \"string\",\n    \"happenedOn\": \"1960-03-02T09:18:08.141Z\",\n    \"createdAt\": \"2022-09-18T12:14:17.260Z\",\n    \"updatedAt\": \"1988-10-12T02:25:24.442Z\"\n  },\n  \"deletedByUser\": {\n    \"id\": \"18f6e5bb-8f0e-530e-fa98-5e5d7c8f28dd\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"emailAddress\": \"string\"\n  },\n  \"createdAt\": \"1992-01-18T21:30:09.288Z\",\n  \"updatedAt\": \"1962-03-16T04:38:42.091Z\",\n  \"deletedAt\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87128458-dfda-4af4-b516-a2ca469fb9ab",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "delivery-note",
+                    ":deliveryNoteId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryNoteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "754e479d-7c25-4d14-a5ae-e1b4af13ff85",
+          "name": "Deletes a delivery note and its note-owned attachments",
+          "request": {
+            "name": "Deletes a delivery note and its note-owned attachments",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "delivery-note",
+                ":deliveryNoteId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryNoteId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79aa8f84-c671-46cd-9a14-172e0b27edda",
+              "name": "Delivery note deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "delivery-note",
+                    ":deliveryNoteId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryNoteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deliveryNoteId\": \"9edd0c69-4c35-adbc-9b4c-f4da640a66a5\",\n  \"deleted\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26612db8-a7e1-4745-a578-3ef346914f23",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "delivery-note",
+                    ":deliveryNoteId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryNoteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1917f96-0379-4697-bb48-59a07ea57687",
+          "name": "Get paginated delivery notes",
+          "request": {
+            "name": "Get paginated delivery notes",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "delivery-notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "JSON string { visibility: ['NORMAL', 'OR_ONLY'] }"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39799229-5cde-46ca-bf63-4444373510d6",
+              "name": "Delivery Notes Records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "delivery-notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"7837c722-4923-9fce-ea23-dd676c1cf40e\",\n      \"deliveryId\": \"f75a84b6-8223-8041-3a5e-c45bbbbb2c3b\",\n      \"userId\": \"02de3e93-42a7-f7d7-47f3-12e45352b065\",\n      \"content\": \"string\",\n      \"visibility\": \"NORMAL\",\n      \"replyToDeliveryNoteId\": \"c2df6e9e-11ec-848e-168d-b24c7c2e42c8\",\n      \"user\": {\n        \"id\": \"7d557f0c-65b0-3ee1-51d3-a189e97f5893\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"emailAddress\": \"string\",\n        \"organizationId\": \"c8443af8-7bce-736f-4019-629b187caed9\",\n        \"organization\": {\n          \"id\": \"54649aa5-be08-587b-1aca-4e6fdec16e87\",\n          \"name\": \"string\",\n          \"logoImageURL\": null\n        }\n      },\n      \"deliveryExceptionId\": null,\n      \"replyToDeliveryNote\": {\n        \"id\": \"2a3009e1-9ea2-3641-f728-fc537655b192\",\n        \"deliveryId\": \"91490291-3341-a8c9-6524-cd1ce60bb2e8\",\n        \"userId\": \"03d9a08e-ef59-a859-91de-6296f47e0c3f\",\n        \"replyToDeliveryNoteId\": null,\n        \"content\": \"string\",\n        \"visibility\": \"NORMAL\",\n        \"deliveryExceptionId\": \"a2fe77d8-0a86-3b76-05c0-d87700b6c004\",\n        \"deletedById\": null,\n        \"createdAt\": \"1990-06-27T19:36:26.930Z\",\n        \"updatedAt\": \"1947-06-27T19:46:45.360Z\",\n        \"deletedAt\": \"2025-02-15T17:48:55.057Z\"\n      },\n      \"deletedById\": \"81397b6a-829b-1f26-18e5-c26b6ec2a52a\",\n      \"deliveryException\": {\n        \"id\": \"cc70171e-2feb-d35e-c5ed-d0b38a143337\",\n        \"deliveryId\": \"5c6c0a45-2a09-576d-f32b-5f5ec631cac6\",\n        \"deliveryAttemptId\": \"5353b1b0-0a44-9aff-15fd-9ae95dce18fc\",\n        \"severity\": \"string\",\n        \"resolved\": true,\n        \"notes\": \"string\",\n        \"happenedOn\": \"1979-02-06T14:26:31.548Z\",\n        \"createdAt\": \"2002-03-16T17:07:58.393Z\",\n        \"updatedAt\": \"1994-01-16T01:24:49.064Z\"\n      },\n      \"deletedByUser\": {\n        \"id\": \"1481c7eb-28b4-89a5-9c0f-6c98a2c18bda\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"emailAddress\": \"string\"\n      },\n      \"createdAt\": \"1968-08-13T01:08:36.462Z\",\n      \"updatedAt\": \"2005-03-03T18:17:57.753Z\",\n      \"deletedAt\": null\n    },\n    {\n      \"id\": \"103fbb0e-f0ba-07f0-09b4-c68cc64b34e6\",\n      \"deliveryId\": \"59e60461-fe04-911e-6e8b-f3ae5ef7f8f0\",\n      \"userId\": \"b0d17c03-1a1f-eafa-ba16-acce5e9ca314\",\n      \"content\": \"string\",\n      \"visibility\": \"NORMAL\",\n      \"replyToDeliveryNoteId\": null,\n      \"user\": {\n        \"id\": \"3f698aa4-4b2c-9969-9a96-4ec9e2acd82d\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"emailAddress\": \"string\",\n        \"organizationId\": \"7ff4a018-f57f-d0c7-2db2-5a1a6d03e195\",\n        \"organization\": {\n          \"id\": \"7a54fb6d-7f1b-4d6f-8e85-32995bee1149\",\n          \"name\": \"string\",\n          \"logoImageURL\": null\n        }\n      },\n      \"deliveryExceptionId\": \"d3742303-2db6-82ce-b9cd-ba24cd298de3\",\n      \"replyToDeliveryNote\": {\n        \"id\": \"2779acf6-a5b9-e007-562b-1f3f98bceb1a\",\n        \"deliveryId\": \"77911d00-de18-8af7-65d1-cf0a506cab97\",\n        \"userId\": \"1e7121b3-1459-2352-efff-b27061f0ca6a\",\n        \"replyToDeliveryNoteId\": \"5aaa8ff9-e92a-fa4b-9031-5e5db389f526\",\n        \"content\": \"string\",\n        \"visibility\": \"NORMAL\",\n        \"deliveryExceptionId\": \"69d52970-9c9f-4bca-f0d3-a73324f6fd32\",\n        \"deletedById\": \"0602d58d-c8e8-57f3-40a4-b63e170c7317\",\n        \"createdAt\": \"1996-01-13T06:42:49.038Z\",\n        \"updatedAt\": \"1997-12-24T02:37:52.166Z\",\n        \"deletedAt\": null\n      },\n      \"deletedById\": \"e5a2165e-e2e9-41de-b6ff-7e5776ad68a3\",\n      \"deliveryException\": {\n        \"id\": \"8553cde0-6fac-b06e-ea17-477ee93bc98b\",\n        \"deliveryId\": \"937fa728-a580-911f-b939-49f6f31562aa\",\n        \"deliveryAttemptId\": \"034f7c41-c2c7-92d5-f841-5904d787afb4\",\n        \"severity\": \"string\",\n        \"resolved\": true,\n        \"notes\": \"string\",\n        \"happenedOn\": \"1946-09-09T07:46:21.837Z\",\n        \"createdAt\": \"2020-03-30T15:21:53.955Z\",\n        \"updatedAt\": \"1949-06-29T15:39:27.587Z\"\n      },\n      \"deletedByUser\": {\n        \"id\": \"3a8d670e-f842-4962-c356-aaf64d0f6c7a\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"emailAddress\": \"string\"\n      },\n      \"createdAt\": \"1995-09-12T07:36:50.676Z\",\n      \"updatedAt\": \"1980-08-29T03:31:12.825Z\",\n      \"deletedAt\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d12091c5-68e1-49ae-8caa-2ce4201a1fed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "delivery-notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fdc906eb-f490-4375-b6b6-3df1aed4630d",
+    "name": "OneRail Operation Dashboard Delivery Note API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

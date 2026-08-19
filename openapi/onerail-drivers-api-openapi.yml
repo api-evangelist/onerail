@@ -1,0 +1,157 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Drivers API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Drivers
+paths:
+  /v1/drivers:
+    get:
+      x-exegesis-controller: Drivers
+      summary: Get drivers
+      operationId: getAllDrivers
+      parameters:
+      - name: availability
+        in: query
+        description: Driver availability
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ON_DUTY
+            - OFF_DUTY
+            - OFFLINE
+      - name: locationId
+        in: query
+        description: Filter by driver location.  Ignored if orgazation id is given.
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: organizationId
+        in: query
+        description: Filter by organization.  This will cause any location id to be ignored.
+        required: false
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - Drivers
+      responses:
+        '200':
+          description: Array of drivers and associated user data
+          content:
+            application/json:
+              schema:
+                description: Array of drivers and associated user data.
+                type: object
+                properties:
+                  drivers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        availability:
+                          type: string
+                          enum:
+                          - ON_DUTY
+                          - OFF_DUTY
+                          - OFFLINE
+                        ownFleetVehicleId:
+                          type: string
+                          format: uuid
+                        freelancer:
+                          type: boolean
+                        user:
+                          type: object
+                          properties:
+                            active:
+                              type: boolean
+                            id:
+                              type: string
+                              format: uuid
+                            employeeId:
+                              type: string
+                            firstName:
+                              type: string
+                            fleetId:
+                              type: string
+                            lastName:
+                              type: string
+                            phoneNumber:
+                              type: string
+                            driverId:
+                              type: string
+                              format: uuid
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

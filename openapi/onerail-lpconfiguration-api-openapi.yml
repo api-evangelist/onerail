@@ -1,0 +1,277 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Lp Configuration API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: LpConfiguration
+paths:
+  /v1/lp-configuration:
+    post:
+      x-exegesis-controller: LpConfiguration
+      summary: Creates an LP Configuration
+      operationId: createLpConfiguration
+      tags:
+      - LpConfiguration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - organizationId
+              - responseLPName
+              - name
+              - default
+              - lockToLPGroup
+              - applicableLPs
+              properties:
+                organizationId:
+                  description: Organization ID for this LP Configuration
+                  type: string
+                default:
+                  description: When enabled, LP's not assigned to an LP Configuration will inherit this LP Configuration
+                  type: boolean
+                lockToLPGroup:
+                  description: When enabled, once an LP in this LP Configuration is assigned to a delivery, only LP's that are included in this LP Configuration are allowed to be reassigned to the delivery
+                  type: boolean
+                name:
+                  description: name of LP Configuration
+                  type: string
+                responseLPName:
+                  description: Identifier passed to client when a delivery is assigned to an LP within this LP Configuration
+                  type: string
+                applicableLPs:
+                  type: array
+                  items:
+                    type: string
+                    description: LP ID
+      responses:
+        '200':
+          description: LP Configuration Record
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  organizationId:
+                    description: Organization ID for this LP Configuration
+                    type: string
+                  default:
+                    description: When enabled, LP's not assigned to an LP Configuration will inherit this LP Configuration
+                    type: boolean
+                  lockToLPGroup:
+                    description: When enabled, once an LP in this LP Configuration is assigned to a delivery, only LP's that are included in this LP Configuration are allowed to be reassigned to the delivery
+                    type: boolean
+                  responseLPName:
+                    description: Identifier passed to client when a delivery is assigned to an LP within this LP Configuration
+                    type: string
+                  name:
+                    description: name of LP Configuration
+                    type: string
+                  applicableLPs:
+                    type: array
+                    items:
+                      type: string
+                      description: LP ID
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/lp-configuration/{configurationId}:
+    parameters:
+    - name: configurationId
+      in: path
+      required: true
+      description: configurationId
+      schema:
+        type: string
+    put:
+      x-exegesis-controller: LpConfiguration
+      summary: Updates an LP Configuration
+      operationId: updateLpConfiguration
+      tags:
+      - LpConfiguration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - responseLPName
+              - name
+              - default
+              - lockToLPGroup
+              - applicableLPs
+              properties:
+                organizationId:
+                  description: Organization ID for this LP Configuration
+                  type: string
+                default:
+                  description: When enabled, LP's not assigned to an LP Configuration will inherit this LP Configuration
+                  type: boolean
+                lockToLPGroup:
+                  description: When enabled, once an LP in this LP Configuration is assigned to a delivery, only LP's that are included in this LP Configuration are allowed to be reassigned to the delivery
+                  type: boolean
+                name:
+                  description: name of LP Configuration
+                  type: string
+                responseLPName:
+                  description: Identifier passed to client when a delivery is assigned to an LP within this LP Configuration
+                  type: string
+                applicableLPs:
+                  type: array
+                  items:
+                    type: string
+                    description: LP ID
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1lp-configuration/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    get:
+      x-exegesis-controller: LpConfiguration
+      summary: Find one LPConfiguration
+      operationId: find
+      tags:
+      - LpConfiguration
+      responses:
+        '200':
+          description: LP Configurations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    organizationId:
+                      description: Organization ID for this LP Configuration
+                      type: string
+                    default:
+                      description: When enabled, LP's not assigned to an LP Configuration will inherit this LP Configuration
+                      type: boolean
+                    lockToLPGroup:
+                      description: When enabled, once an LP in this LP Configuration is assigned to a delivery, only LP's that are included in this LP Configuration are allowed to be reassigned to the delivery
+                      type: boolean
+                    responseLPName:
+                      description: Identifier passed to client when a delivery is assigned to an LP within this LP Configuration
+                      type: string
+                    name:
+                      description: name of LP Configuration
+                      type: string
+                    applicableLPs:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            description: ID of LP organization
+                          name:
+                            type: string
+                            description: Name of LP organization
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: LpConfiguration
+      summary: Deletes an LP Configuration
+      operationId: destroy
+      tags:
+      - LpConfiguration
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/organization/{organizationId}/lp-configurations:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      description: organizationId
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: LpConfiguration
+      summary: Get organization's LP Configs
+      operationId: getOrganizationLpConfigurations
+      tags:
+      - LpConfiguration
+      responses:
+        '200':
+          description: LP Configurations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1v1~1lp-configuration~1%7BconfigurationId%7D/get/responses/200/content/application~1json/schema/items'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

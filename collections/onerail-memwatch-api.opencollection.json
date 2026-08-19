@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Mem Watch API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MemWatch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Capture Heap",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/memwatch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Capture Heap"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

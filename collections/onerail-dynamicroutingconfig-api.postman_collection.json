@@ -1,0 +1,468 @@
+{
+  "item": [
+    {
+      "id": "16bcf609-3936-4514-b17f-f414ee2d5aab",
+      "name": "DynamicRoutingConfig",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42de4609-2dd1-43f6-bc60-f84300c2e9fa",
+          "name": "Get organization's Dynamic Routing Configs",
+          "request": {
+            "name": "Get organization's Dynamic Routing Configs",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organization",
+                ":organizationId",
+                "dynamic-routing-configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) organizationId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4768b6f-4e67-4944-95e0-a2ea4fd1912b",
+              "name": "Dynamic Routing Configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "dynamic-routing-configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organizationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"3105bcea-96dd-43d8-6454-07b354299780\",\n    \"name\": \"string\",\n    \"locationId\": \"24760c58-35cd-7ccc-8598-73556671d563\",\n    \"marketId\": \"47c48a72-1ee7-6841-fc2c-3b83bfd7e8f8\",\n    \"radiusMiles\": 2128.094317384357,\n    \"activeAt\": \"1992-03-24T20:21:38.728Z\",\n    \"activeUntil\": null,\n    \"serviceLevelIds\": [\n      \"e597ef79-0350-b773-d96d-6c37013463e5\",\n      \"097456c7-604a-b851-d73e-4f881f6d0ddd\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": null,\n        \"ownFleetVehicleId\": \"3f5d4abc-1669-2487-d67b-9590f07406f5\"\n      },\n      {\n        \"userId\": \"e5810f71-3ee4-13cf-7ce9-dfa401166a9c\",\n        \"ownFleetVehicleId\": \"d6e870bc-93c6-2e47-f1cf-384625250f6b\"\n      }\n    ],\n    \"createdAt\": \"1987-10-24T05:28:57.076Z\",\n    \"updatedAt\": \"2013-07-10T09:29:57.390Z\",\n    \"_deleted\": null\n  },\n  {\n    \"id\": \"bb33a979-1bc3-a680-43f6-493cf9b7d7c1\",\n    \"name\": \"string\",\n    \"locationId\": \"b73720a6-a7f8-3b2f-5841-4f6f802c6f6a\",\n    \"marketId\": \"65585913-cc5d-8fda-eece-cc33f114cd2c\",\n    \"radiusMiles\": 8198.333059390208,\n    \"activeAt\": \"2008-02-26T02:00:35.754Z\",\n    \"activeUntil\": null,\n    \"serviceLevelIds\": [\n      \"f1111115-9c93-1ef2-023a-b14d0d7923b5\",\n      \"b971449e-6a32-d13b-b09e-6fa825821f3f\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"f73ff2cd-4f70-db2b-c8e9-fa12b33b900f\",\n        \"ownFleetVehicleId\": \"d29fb142-f35d-4f78-9854-c07d7eedfe12\"\n      },\n      {\n        \"userId\": null,\n        \"ownFleetVehicleId\": \"88c63cee-abb3-08ad-d04d-fb81ff9c1113\"\n      }\n    ],\n    \"createdAt\": \"1950-08-10T01:50:37.309Z\",\n    \"updatedAt\": \"2025-05-12T04:26:16.275Z\",\n    \"_deleted\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c032b7d-558d-4a52-ae82-347413f46fe9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "dynamic-routing-configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organizationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "927a68ec-4fa0-49bb-898a-29357a2f6980",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "dynamic-routing-configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organizationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1337de1f-1d9e-4969-82a5-392fa786cdf1",
+          "name": "Update Dynamic Routing Configurations",
+          "request": {
+            "name": "Update Dynamic Routing Configurations",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organization",
+                ":organizationId",
+                "dynamic-routing-configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) organizationId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"locationId\": \"<uuid>\",\n    \"marketId\": \"<string,null-uuid>\",\n    \"radiusMiles\": \"<number,null>\",\n    \"activeAt\": \"<string,null-date-time>\",\n    \"activeUntil\": \"<string,null-date-time>\",\n    \"serviceLevelIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      },\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"_deleted\": \"<boolean,null>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"locationId\": \"<uuid>\",\n    \"marketId\": \"<string,null-uuid>\",\n    \"radiusMiles\": \"<number,null>\",\n    \"activeAt\": \"<string,null-date-time>\",\n    \"activeUntil\": \"<string,null-date-time>\",\n    \"serviceLevelIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      },\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"_deleted\": \"<boolean,null>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "96fbd46b-ecdd-4942-b2b6-c1fc47966402",
+              "name": "Dynamic Routing Configurations updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "dynamic-routing-configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organizationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"locationId\": \"<uuid>\",\n    \"marketId\": \"<string,null-uuid>\",\n    \"radiusMiles\": \"<number,null>\",\n    \"activeAt\": \"<string,null-date-time>\",\n    \"activeUntil\": \"<string,null-date-time>\",\n    \"serviceLevelIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      },\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"_deleted\": \"<boolean,null>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"locationId\": \"<uuid>\",\n    \"marketId\": \"<string,null-uuid>\",\n    \"radiusMiles\": \"<number,null>\",\n    \"activeAt\": \"<string,null-date-time>\",\n    \"activeUntil\": \"<string,null-date-time>\",\n    \"serviceLevelIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      },\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"_deleted\": \"<boolean,null>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"locationId\": \"<uuid>\",\n    \"marketId\": \"<string,null-uuid>\",\n    \"radiusMiles\": \"<number,null>\",\n    \"activeAt\": \"<string,null-date-time>\",\n    \"activeUntil\": \"<string,null-date-time>\",\n    \"serviceLevelIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      },\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"_deleted\": \"<boolean,null>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"locationId\": \"<uuid>\",\n    \"marketId\": \"<string,null-uuid>\",\n    \"radiusMiles\": \"<number,null>\",\n    \"activeAt\": \"<string,null-date-time>\",\n    \"activeUntil\": \"<string,null-date-time>\",\n    \"serviceLevelIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      },\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"_deleted\": \"<boolean,null>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a36bb209-705c-4ab1-9bd6-31bee9c4526e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "dynamic-routing-configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organizationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"locationId\": \"<uuid>\",\n    \"marketId\": \"<string,null-uuid>\",\n    \"radiusMiles\": \"<number,null>\",\n    \"activeAt\": \"<string,null-date-time>\",\n    \"activeUntil\": \"<string,null-date-time>\",\n    \"serviceLevelIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      },\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"_deleted\": \"<boolean,null>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"locationId\": \"<uuid>\",\n    \"marketId\": \"<string,null-uuid>\",\n    \"radiusMiles\": \"<number,null>\",\n    \"activeAt\": \"<string,null-date-time>\",\n    \"activeUntil\": \"<string,null-date-time>\",\n    \"serviceLevelIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      },\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"_deleted\": \"<boolean,null>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c628b12-4dba-42af-ab80-bd7f2ce3f790",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "dynamic-routing-configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organizationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"locationId\": \"<uuid>\",\n    \"marketId\": \"<string,null-uuid>\",\n    \"radiusMiles\": \"<number,null>\",\n    \"activeAt\": \"<string,null-date-time>\",\n    \"activeUntil\": \"<string,null-date-time>\",\n    \"serviceLevelIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      },\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"_deleted\": \"<boolean,null>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"locationId\": \"<uuid>\",\n    \"marketId\": \"<string,null-uuid>\",\n    \"radiusMiles\": \"<number,null>\",\n    \"activeAt\": \"<string,null-date-time>\",\n    \"activeUntil\": \"<string,null-date-time>\",\n    \"serviceLevelIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"vehicles\": [\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      },\n      {\n        \"userId\": \"<string,null-uuid>\",\n        \"ownFleetVehicleId\": \"<uuid>\"\n      }\n    ],\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"_deleted\": \"<boolean,null>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "37b30d2f-321d-430a-8970-dae3944b5840",
+    "name": "OneRail Operation Dashboard Dynamic Routing Config API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

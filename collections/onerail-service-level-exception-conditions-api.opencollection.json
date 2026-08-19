@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Service Level Exception Conditions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service Level Exception Conditions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all conditions on a service level",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/service-level/exception-conditions"
+          },
+          "docs": "Get all conditions on a service level"
+        },
+        {
+          "info": {
+            "name": "Get one condition on a service level",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/service-level/exception-conditions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get one condition on a service level"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

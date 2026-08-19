@@ -1,0 +1,559 @@
+{
+  "item": [
+    {
+      "id": "723ed2c1-0ede-4b73-b7d6-8b762de60cda",
+      "name": "Shipping Label",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4a3dc9c-1947-4c64-ad93-51df1d789e68",
+          "name": "Returns labels for all containers of the delivery",
+          "request": {
+            "name": "Returns labels for all containers of the delivery",
+            "description": {},
+            "url": {
+              "path": [
+                "shipping-label",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Either a OneRail Delivery ID or a shipper-supplied Order ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY-AND-APP-ID"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "337f4b68-7194-4150-bd7e-0e86fe71ec26",
+              "name": "Shipping label URL for each container as well as summary about each container and the whole delivery",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping-label",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either a OneRail Delivery ID or a shipper-supplied Order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trackingId\": \"string\",\n  \"deliveryId\": \"string\",\n  \"type\": \"string\",\n  \"statusCode\": 1759,\n  \"statusDescription\": \"string\",\n  \"scac\": \"string\",\n  \"serviceCode\": \"string\",\n  \"containers\": [\n    {\n      \"label\": \"string\",\n      \"containerId\": \"string\",\n      \"containerTrackingId\": \"string\",\n      \"shipperContainerId\": \"string\"\n    },\n    {\n      \"label\": \"string\",\n      \"containerId\": \"string\",\n      \"containerTrackingId\": \"string\",\n      \"shipperContainerId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abf593e9-482b-4abc-b31c-cf459b67414a",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping-label",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either a OneRail Delivery ID or a shipper-supplied Order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 6125,\n  \"errors\": {},\n  \"errorDetails\": [\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4878ed5e-f09f-47cb-b239-8a7da6ee75f9",
+          "name": "Returns label for a specific container",
+          "request": {
+            "name": "Returns label for a specific container",
+            "description": {},
+            "url": {
+              "path": [
+                "shipping-label",
+                ":id",
+                ":containerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Either a OneRail Delivery ID or a shipper-supplied Order ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "containerId",
+                  "description": "(Required) Either a OneRail container ID or a shipper-supplied Order Container ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY-AND-APP-ID"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7807927b-6d68-4976-8d6b-cd51f481b3ba",
+              "name": "Shipping label URL for the requested container as well and summary about this container",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping-label",
+                    ":id",
+                    ":containerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either a OneRail Delivery ID or a shipper-supplied Order ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerId",
+                      "description": "(Required) Either a OneRail container ID or a shipper-supplied Order Container ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trackingId\": \"string\",\n  \"deliveryId\": \"string\",\n  \"type\": \"string\",\n  \"statusCode\": 8261,\n  \"statusDescription\": \"string\",\n  \"scac\": \"string\",\n  \"serviceCode\": \"string\",\n  \"label\": \"string\",\n  \"containerId\": \"string\",\n  \"containerTrackingId\": \"string\",\n  \"shipperContainerId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "450805d8-6904-411e-81bb-50bf43def7cb",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping-label",
+                    ":id",
+                    ":containerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either a OneRail Delivery ID or a shipper-supplied Order ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerId",
+                      "description": "(Required) Either a OneRail container ID or a shipper-supplied Order Container ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 4877,\n  \"errors\": {},\n  \"errorDetails\": [\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "934b6bf4-4825-40ea-b7a5-39bc3fbeea6e",
+          "name": "Returns labels for all containers of the delivery",
+          "request": {
+            "name": "Returns labels for all containers of the delivery",
+            "description": {},
+            "url": {
+              "path": [
+                "shipping-label",
+                "generate",
+                ":deliveryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deliveryId",
+                  "description": "(Required) OneRail Delivery ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY-AND-APP-ID"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7dda21ad-6350-499f-a53f-9ee180366bd0",
+              "name": "Shipping label URL for each container as well as summary about each container and the whole delivery",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping-label",
+                    "generate",
+                    ":deliveryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deliveryId",
+                      "description": "(Required) OneRail Delivery ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trackingId\": \"string\",\n  \"deliveryId\": \"string\",\n  \"type\": \"string\",\n  \"statusCode\": 3477,\n  \"statusDescription\": \"string\",\n  \"scac\": \"string\",\n  \"serviceCode\": \"string\",\n  \"containers\": [\n    {\n      \"label\": \"string\",\n      \"containerId\": \"string\",\n      \"containerTrackingId\": \"string\",\n      \"shipperContainerId\": \"string\"\n    },\n    {\n      \"label\": \"string\",\n      \"containerId\": \"string\",\n      \"containerTrackingId\": \"string\",\n      \"shipperContainerId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48ede4d1-06f7-48ff-a3a8-79ca7924d07f",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping-label",
+                    "generate",
+                    ":deliveryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deliveryId",
+                      "description": "(Required) OneRail Delivery ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 4877,\n  \"errors\": {},\n  \"errorDetails\": [\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-ONERAIL-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4f57a976-61c6-4aff-ad22-2139d24ff567",
+    "name": "OneRail Delivery Cloud - Delivery Shipping Label API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows authorized 3rd parties to request new deliveries through the OneRail network",
+      "type": "text/plain"
+    }
+  }
+}

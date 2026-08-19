@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard File Type API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File Type",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View all file types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/deliveryfile-types"
+          },
+          "docs": "View all file types"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

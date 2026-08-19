@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Shipper Contract SLA Template API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipper Contract SLA Template",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Shipper Contract SLA Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/shipper-contract-sla-template/:shipperContractSlaTemplateId",
+            "params": [
+              {
+                "name": "shipperContractSlaTemplateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipper Contract SLA Template"
+        },
+        {
+          "info": {
+            "name": "Update Shipper Contract SLA Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/shipper-contract-sla-template/:shipperContractSlaTemplateId",
+            "params": [
+              {
+                "name": "shipperContractSlaTemplateId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Shipper Contract SLA Template"
+        },
+        {
+          "info": {
+            "name": "Notify OneRail Approver to approve Template SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla-template/:shipperContractSlaTemplateId/submit-approval",
+            "params": [
+              {
+                "name": "shipperContractSlaTemplateId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Notify OneRail Approver to approve Template SLA"
+        },
+        {
+          "info": {
+            "name": "Approve an SLA Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla-template/:shipperContractSlaTemplateId/approve",
+            "params": [
+              {
+                "name": "shipperContractSlaTemplateId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve an SLA Template"
+        },
+        {
+          "info": {
+            "name": "Matches LPs and generates SLA Contracts for each of matched LP,",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla-template/:shipperContractSlaTemplateId/generate-lp-contract-sla",
+            "params": [
+              {
+                "name": "shipperContractSlaTemplateId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Matches LPs and generates SLA Contracts for each of matched LP,"
+        },
+        {
+          "info": {
+            "name": "Bulk approve an SLA Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla-template/bulk-approve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk approve an SLA Template"
+        },
+        {
+          "info": {
+            "name": "Send Bulk SLA Templates,",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla-template/bulk-send-templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send Bulk SLA Templates,"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,288 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard LP Contract SLA API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LP Contract SLA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get LP Contract SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get LP Contract SLA"
+        },
+        {
+          "info": {
+            "name": "Update LP Contract SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update LP Contract SLA"
+        },
+        {
+          "info": {
+            "name": "Notify OneRail Approver to approve LP Contract SLAs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId/submit-approval",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Notify OneRail Approver to approve LP Contract SLAs"
+        },
+        {
+          "info": {
+            "name": "Approves LP Contract SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId/approve",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approves LP Contract SLA"
+        },
+        {
+          "info": {
+            "name": "LP Signature for LP Contract SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId/lp-sign",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "LP Signature for LP Contract SLA"
+        },
+        {
+          "info": {
+            "name": "One Rail Signature for LP Contract SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId/onerail-sign",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "One Rail Signature for LP Contract SLA"
+        },
+        {
+          "info": {
+            "name": "Set LP Contract SLA active state",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId/set-active-state",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set LP Contract SLA active state"
+        },
+        {
+          "info": {
+            "name": "Set LSP bias for marketModifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId/:marketModifierId/lsp-bias",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "marketModifierId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set LSP bias for marketModifier"
+        },
+        {
+          "info": {
+            "name": "Enable / Disable marketModifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/lp-contract-sla/:lpContractSlaId/:marketModifierId/active",
+            "params": [
+              {
+                "name": "lpContractSlaId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "marketModifierId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable / Disable marketModifier"
+        },
+        {
+          "info": {
+            "name": "Create Bulk LP approval and signature for an SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-contract-sla/approve-and-sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Bulk LP approval and signature for an SLA"
+        },
+        {
+          "info": {
+            "name": "Bulk approve an array of LP Contract SLA ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-contract-sla/bulk-approve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk approve an array of LP Contract SLA ids"
+        },
+        {
+          "info": {
+            "name": "Bulk LP Signature for LP Contract SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-contract-sla/bulk-lp-sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk LP Signature for LP Contract SLA"
+        },
+        {
+          "info": {
+            "name": "Bulk One Rail Signature for LP Contract SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-contract-sla/bulk-onerail-sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk One Rail Signature for LP Contract SLA"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

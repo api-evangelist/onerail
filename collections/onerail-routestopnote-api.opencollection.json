@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Route Stop Note API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "RouteStopNote",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get paginated route stop notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/route/:routeId/route-stop-notes",
+            "params": [
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              }
+            ]
+          },
+          "docs": "Get paginated route stop notes"
+        },
+        {
+          "info": {
+            "name": "Creates a route stop note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/route/:routeId/route-stop-notes",
+            "params": [
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a route stop note"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

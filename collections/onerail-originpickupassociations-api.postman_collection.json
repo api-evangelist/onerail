@@ -1,0 +1,215 @@
+{
+  "item": [
+    {
+      "id": "a98adb64-ef5f-43f0-9bd2-b9ccfeb9df35",
+      "name": "OriginPickupAssociations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1a560c24-404f-47b2-87ba-f0d0d4f77b80",
+          "name": "Get all origin pickup associations",
+          "request": {
+            "name": "Get all origin pickup associations",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                ":organizationId",
+                "origin-pickup-associations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of items to return."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e776e09f-cc4e-49be-b721-f3410184684e",
+              "name": "Origin Pickup Association Records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    ":organizationId",
+                    "origin-pickup-associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"d59de628-4ebf-467b-55eb-796381df4cc1\",\n      \"originLocationId\": \"5f8b36b7-86ae-fa6a-a2b1-30b85920548d\",\n      \"pickupLocationId\": \"242c5f04-ea48-c717-ac3f-e765fa5b47fa\",\n      \"updatedAt\": \"string\"\n    },\n    {\n      \"id\": \"5c9c752a-f3ec-3df4-dee3-40edf804f819\",\n      \"originLocationId\": \"ba3ce6c5-f11c-299e-720d-5c6c8e8aa439\",\n      \"pickupLocationId\": \"4f376b80-3074-bbd9-1dd5-65bc326a467f\",\n      \"updatedAt\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1258de1-d865-4e34-b211-1df720cd46b7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    ":organizationId",
+                    "origin-pickup-associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "12bb4467-93c6-4f81-ab49-3fa524d3b697",
+    "name": "OneRail Operation Dashboard Origin Pickup Associations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

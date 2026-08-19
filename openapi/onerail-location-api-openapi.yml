@@ -1,0 +1,1147 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Location API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Location
+paths:
+  /v1/location:
+    post:
+      x-exegesis-controller: Location
+      summary: Creates a new Location
+      operationId: createLocation
+      tags:
+      - Location
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Location
+              required:
+              - name
+              - address
+              properties:
+                name:
+                  type: string
+                address:
+                  type: object
+                location:
+                  $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                storeNumber:
+                  type:
+                  - string
+                  - 'null'
+                phoneNumber:
+                  type:
+                  - string
+                  - 'null'
+                primaryContactId:
+                  type:
+                  - string
+                  - 'null'
+                organizationId:
+                  type: string
+                  format: uuid
+                canDispatchDeliveries:
+                  type: boolean
+                shippingInstructions:
+                  type:
+                  - string
+                  - 'null'
+                receivingInstructions:
+                  type:
+                  - string
+                  - 'null'
+                accessCode:
+                  type: string
+                contactName:
+                  type: string
+                contactEmailAddress:
+                  type: string
+                serviceHours:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                    - startMin
+                    - endMin
+                    properties:
+                      dayOfWeek:
+                        type:
+                        - number
+                        - 'null'
+                      startMin:
+                        type: number
+                      endMin:
+                        type: number
+                      holidayId:
+                        type:
+                        - string
+                        - 'null'
+                shipperLocationExtraData:
+                  type:
+                  - object
+                  - 'null'
+                  properties:
+                    slaPickupBufferMinutes:
+                      type: number
+                    slaDropoffBufferMinutes:
+                      type: number
+                cutOffTimeMins:
+                  type:
+                  - number
+                  - 'null'
+                hasLoadingDock:
+                  type:
+                  - boolean
+                  - 'null'
+                  default: false
+                physicalLocation:
+                  type:
+                  - object
+                  - 'null'
+                  properties:
+                    altAddress:
+                      type: object
+                      properties:
+                        label:
+                          type: string
+                        state:
+                          type: string
+                        county:
+                          type:
+                          - string
+                          - 'null'
+                        street:
+                          type:
+                          - string
+                          - 'null'
+                        street2:
+                          type:
+                          - string
+                          - 'null'
+                        address1:
+                          type:
+                          - string
+                          - 'null'
+                        address2:
+                          type:
+                          - string
+                          - 'null'
+                        district:
+                          type:
+                          - string
+                          - 'null'
+                        stateCode:
+                          type: string
+                        postalCode:
+                          type: string
+                        city:
+                          type: string
+                        countryCode:
+                          type: string
+                        countryName:
+                          type: string
+                        houseNumber:
+                          type:
+                          - string
+                          - 'null'
+                        additionalData:
+                          type: array
+                          items:
+                            type: object
+                    altLocation:
+                      $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                preferences:
+                  $ref: '#/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema'
+                ean:
+                  type:
+                  - string
+                  - 'null'
+      responses:
+        '200':
+          description: Location
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Location
+                required:
+                - name
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  address:
+                    type: string
+                  location:
+                    $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                  cutOffTimeMins:
+                    type:
+                    - number
+                    - 'null'
+                  storeNumber:
+                    type:
+                    - string
+                    - 'null'
+                  msa:
+                    type:
+                    - string
+                    - 'null'
+                  hasLoadingDock:
+                    type:
+                    - boolean
+                    - 'null'
+                    default: false
+                  physicalLocation:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      altAddress:
+                        $ref: '#/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/physicalLocation/properties/altAddress'
+                      altLocation:
+                        $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                  preferences:
+                    $ref: '#/paths/~1v1~1preferences~1%7BcontextId%7D/get/responses/200/content/application~1json/schema'
+                  ean:
+                    type:
+                    - string
+                    - 'null'
+                  totalUsers:
+                    type:
+                    - integer
+                    - 'null'
+                    minimum: 0
+                    description: Number of users linked to this location (excludes soft-deleted users). Populated by the organization locations list endpoint.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    get:
+      x-exegesis-controller: Location
+      summary: Get all locations user has access to
+      operationId: getAllLocationsGeoPoint
+      parameters:
+      - name: organizationId
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type:
+            - string
+            - 'null'
+            format: uuid
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+          default: 1000
+      tags:
+      - Location
+      responses:
+        '200':
+          description: Location
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                    location:
+                      type: object
+                      description: Geo Point with latitude and longitude
+                      required:
+                      - latitude
+                      - longitude
+                      properties:
+                        latitude:
+                          type: number
+                        longitude:
+                          type: number
+                    organization:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        name:
+                          type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/{locationId}:
+    parameters:
+    - name: locationId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Location
+      summary: Get location by id
+      operationId: getLocation
+      tags:
+      - Location
+      responses:
+        '200':
+          description: Location
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1location/post/responses/200/content/application~1json/schema'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: Location
+      summary: Updates location
+      operationId: updateLocation
+      tags:
+      - Location
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Location
+              properties:
+                name:
+                  type: string
+                address:
+                  type: object
+                location:
+                  $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                phoneNumber:
+                  type:
+                  - string
+                  - 'null'
+                contactEmailAddress:
+                  type:
+                  - string
+                  - 'null'
+                storeNumber:
+                  type:
+                  - string
+                  - 'null'
+                primaryContactId:
+                  type:
+                  - string
+                  - 'null'
+                canDispatchDeliveries:
+                  type: boolean
+                shippingInstructions:
+                  type:
+                  - string
+                  - 'null'
+                receivingInstructions:
+                  type:
+                  - string
+                  - 'null'
+                serviceHours:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items'
+                shipperLocationExtraData:
+                  type:
+                  - object
+                  - 'null'
+                  properties:
+                    id:
+                      type:
+                      - string
+                      - 'null'
+                    slaPickupBufferMinutes:
+                      type: number
+                    slaDropoffBufferMinutes:
+                      type: number
+                cutOffTimeMins:
+                  type:
+                  - number
+                  - 'null'
+                hasLoadingDock:
+                  type:
+                  - boolean
+                  - 'null'
+                  default: false
+                physicalLocation:
+                  type:
+                  - object
+                  - 'null'
+                  properties:
+                    altAddress:
+                      $ref: '#/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/physicalLocation/properties/altAddress'
+                    altLocation:
+                      $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                preferences:
+                  $ref: '#/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema'
+                ean:
+                  type:
+                  - string
+                  - 'null'
+      responses:
+        '200':
+          description: Location
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1location/post/responses/200/content/application~1json/schema'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: Location
+      summary: Remove location
+      operationId: removeLocation
+      tags:
+      - Location
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/{locationId}/users:
+    parameters:
+    - name: locationId
+      in: path
+      required: true
+      description: location id
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Location
+      summary: Get Location's users
+      operationId: getLocationUsers
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      - name: search
+        in: query
+        description: Search user by name
+        required: false
+        schema:
+          type: string
+      tags:
+      - Location
+      responses:
+        '200':
+          description: User Records
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    post:
+      x-exegesis-controller: Location
+      summary: adds Location's users
+      operationId: addUsersToLocation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              description: User ids to add to this locaiton
+              items:
+                type: string
+      tags:
+      - Location
+      responses:
+        '200':
+          description: Array of successful associations
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Returns all assosiations maded between locations and users as well as organization and users
+                properties:
+                  locations:
+                    type: array
+                    items:
+                      type: object
+                  organizations:
+                    type: array
+                    items:
+                      type: object
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/{locationId}/users/api:
+    get:
+      security:
+      - ApiKey: []
+        AppId: []
+      x-exegesis-controller: Location
+      summary: Get Location's users (API)
+      operationId: getUsersApi
+      parameters:
+      - name: locationId
+        in: path
+        required: true
+        description: location id
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      - name: search
+        in: query
+        description: Search user by name
+        required: false
+        schema:
+          type: string
+      tags:
+      - Location
+      responses:
+        '200':
+          description: User Records
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1location~1%7BlocationId%7D~1users/get/responses/200/content/application~1json/schema'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/{locationId}/user/{userId}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: locationId
+      in: path
+      required: true
+      schema:
+        type: string
+    delete:
+      x-exegesis-controller: Location
+      summary: deletes Location's users
+      operationId: removeUserFromLocation
+      tags:
+      - Location
+      responses:
+        '200':
+          description: Success.
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/{locationId}/customer-locations:
+    parameters:
+    - name: locationId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Location
+      summary: Get the customer locations for this shipper location
+      operationId: getCustomerLocations
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      - name: filter
+        in: query
+        description: 'JSON string { search: string }'
+        required: false
+        schema:
+          type: string
+      - name: originLocationId
+        in: query
+        description: Origin location ID for orders with origin location
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      tags:
+      - Location
+      responses:
+        '200':
+          description: Customer locations serviced by this shipper location
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1location~1%7BstoreNumber%7D~1by-store-number/put/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/bulk-customer-locations:
+    post:
+      x-exegesis-controller: Location
+      summary: CSV file with customer locations
+      operationId: bulkCustomerLocations
+      tags:
+      - Location
+      requestBody:
+        $ref: '#/paths/~1v1~1product~1bulk/post/requestBody'
+      responses:
+        '200':
+          description: Successfully processed bulk customer locations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/{locationId}/customer-location:
+    parameters:
+    - name: locationId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: Location
+      summary: Create a customer location for the shipper location
+      operationId: createCustomerLocation
+      tags:
+      - Location
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Customer location
+              required:
+              - name
+              - address
+              properties:
+                name:
+                  type:
+                  - string
+                  - 'null'
+                address:
+                  type: object
+                location:
+                  $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                phoneNumber:
+                  type:
+                  - string
+                  - 'null'
+                receivingInstructions:
+                  type:
+                  - string
+                  - 'null'
+                contactName:
+                  type:
+                  - string
+                  - 'null'
+                contactEmailAddress:
+                  type:
+                  - string
+                  - 'null'
+                storeNumber:
+                  type:
+                  - string
+                  - 'null'
+                physicalLocation:
+                  type:
+                  - object
+                  - 'null'
+                  required:
+                  - altAddress
+                  - altLocation
+                  properties:
+                    altAddress:
+                      $ref: '#/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/physicalLocation/properties/altAddress'
+                    altLocation:
+                      $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                serviceHours:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    $ref: '#/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items'
+      responses:
+        '200':
+          description: Customer location
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1location~1%7BstoreNumber%7D~1by-store-number/put/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/{locationId}/customer-location/{customerLocationId}:
+    parameters:
+    - name: locationId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: customerLocationId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Location
+      summary: Get customer location
+      operationId: getCustomerLocation
+      tags:
+      - Location
+      responses:
+        '200':
+          description: Customer location
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1location~1%7BstoreNumber%7D~1by-store-number/put/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: Location
+      summary: Update customer location
+      operationId: updateCustomerLocation
+      tags:
+      - Location
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1location~1%7BlocationId%7D~1customer-location/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: Customer location
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1location~1%7BstoreNumber%7D~1by-store-number/put/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: Location
+      summary: Remove customer location association to the shipper location
+      operationId: removeCustomerLocation
+      tags:
+      - Location
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/{locationId}/customer-location/{customerLocationId}/change-association:
+    parameters:
+    - name: locationId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: customerLocationId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: Location
+      summary: Change an existing associated customer location to a different shipper location
+      operationId: changeCustomerLocationAssociation
+      tags:
+      - Location
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - newShipperLocationId
+              properties:
+                newShipperLocationId:
+                  type: string
+                  format: uuid
+                  description: The new shipper location to associate the customer location
+      responses:
+        '200':
+          description: Customer location
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1location~1%7BstoreNumber%7D~1by-store-number/put/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/{locationId}/bulk:
+    parameters:
+    - name: locationId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: Location
+      summary: Bulk delete selected customer locations for the shipper location
+      operationId: bulkDeleteCustomerLocations
+      tags:
+      - Location
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Customer location ids to be deleted
+              type: array
+              items:
+                type: string
+      responses:
+        '200':
+          description: Location
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1location/post/responses/200/content/application~1json/schema'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: Location
+      summary: Bulk delete ALL customer locations for the shipper location
+      operationId: bulkDeleteAllCustomerLocations
+      tags:
+      - Location
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/location/{storeNumber}/by-store-number:
+    parameters:
+    - name: storeNumber
+      in: path
+      required: true
+      schema:
+        type: string
+    put:
+      x-exegesis-controller: Location
+      summary: Update location by storeNumber
+      operationId: updateLocationByStoreNumber
+      tags:
+      - Location
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Location
+              properties:
+                name:
+                  type:
+                  - string
+                  - 'null'
+                address:
+                  type:
+                  - object
+                  - 'null'
+                location:
+                  type:
+                  - object
+                  - 'null'
+                  $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                phoneNumber:
+                  type:
+                  - string
+                  - 'null'
+                receivingInstructions:
+                  type:
+                  - string
+                  - 'null'
+                contactName:
+                  type:
+                  - string
+                  - 'null'
+                contactEmailAddress:
+                  type:
+                  - string
+                  - 'null'
+                storeNumber:
+                  type:
+                  - string
+                  - 'null'
+                physicalLocation:
+                  type:
+                  - object
+                  - 'null'
+                  required:
+                  - altAddress
+                  - altLocation
+                  properties:
+                    altAddress:
+                      $ref: '#/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/physicalLocation/properties/altAddress'
+                    altLocation:
+                      $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                serviceHours:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    $ref: '#/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items'
+      responses:
+        '200':
+          description: Location
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Customer Location
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  address:
+                    type: object
+                  location:
+                    $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                  phoneNumber:
+                    type: string
+                  receivingInstructions:
+                    type: string
+                  contactName:
+                    type: string
+                  contactEmailAddress:
+                    type: string
+                  storeNumber:
+                    type:
+                    - string
+                    - 'null'
+                  timezone:
+                    type:
+                    - string
+                    - 'null'
+                  timezoneOffset:
+                    type: number
+                  timezoneAbbreviation:
+                    type:
+                    - string
+                    - 'null'
+                  msa:
+                    type:
+                    - string
+                    - 'null'
+                  physicalLocation:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      altAddress:
+                        $ref: '#/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/physicalLocation/properties/altAddress'
+                      altLocation:
+                        $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                  serviceHours:
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        dayOfWeek:
+                          type: number
+                        startMin:
+                          type: number
+                        endMin:
+                          type: number
+                        holiday:
+                          type:
+                          - object
+                          - 'null'
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            holidayName:
+                              type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

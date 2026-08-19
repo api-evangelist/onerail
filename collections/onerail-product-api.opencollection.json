@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Product API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a new Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/product",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Product"
+        },
+        {
+          "info": {
+            "name": "CSV file with products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/product/bulk",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "fileData",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "CSV file with products"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

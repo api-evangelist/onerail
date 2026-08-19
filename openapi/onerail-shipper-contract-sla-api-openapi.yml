@@ -1,0 +1,592 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Shipper Contract SLA API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Shipper Contract SLA
+paths:
+  /v1/shipper-contract-sla/{shipperContractSlaId}:
+    parameters:
+    - name: shipperContractSlaId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: ShipperContractSla
+      summary: Get Shipper Contract SLA
+      operationId: getShipperContractSla
+      tags:
+      - Shipper Contract SLA
+      responses:
+        '200':
+          description: Shipper Contract SLA
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: ShipperContractSla
+      summary: Update Shipper Contract SLA
+      operationId: updateShipperContractSla
+      tags:
+      - Shipper Contract SLA
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Shipper Contract SLA
+              required:
+              - latePickupPenaltyPercent
+              - lateDeliveryPenaltyPercent
+              - endOfDayTime
+              - milageTiers
+              - marketModifiers
+              - deliveryPremium
+              - fleetVehicleModifiers
+              - serviceLevelId
+              properties:
+                pickUpSlaId:
+                  type: string
+                  format: uuid
+                  description: Reference to Pick up speed (Acceptable time)
+                dropOffSlaId:
+                  type: string
+                  format: uuid
+                  description: Reference to Drop off speed (Acceptable time)
+                latePickupPenaltyPercent:
+                  type: number
+                  format: float
+                  description: Late pick up penalty percentage
+                lateDeliveryPenaltyPercent:
+                  type: number
+                  format: float
+                  description: Late delivery penalty percentage
+                pickUpDesc:
+                  type: string
+                  description: Pick up description
+                dropOffDesc:
+                  type: string
+                  description: Drop off description
+                mileageAvg:
+                  type: integer
+                  description: Mileage average rate
+                mileageMax:
+                  type: integer
+                  description: Mileage max rate
+                endOfDayTime:
+                  type: integer
+                shippingModeId:
+                  type: string
+                  format: uuid
+                  description: Reference to a Shipping Mode
+                marketModifiers:
+                  type: array
+                  description: List of market modifiers
+                  items:
+                    $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/requestBody/content/application~1json/schema/properties/marketModifiers/items'
+                deliveryPremium:
+                  $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryPremium'
+                milageTiers:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/requestBody/content/application~1json/schema/properties/milageTiers/items'
+                deliveryCorrectionCharges:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/requestBody/content/application~1json/schema/properties/deliveryCorrectionCharges/items'
+                fleetVehicleModifiers:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/requestBody/content/application~1json/schema/properties/fleetVehicleModifiers/items'
+                serviceLevelId:
+                  type: string
+                  format: uuid
+                active:
+                  type: boolean
+                  description: Is shipper contract sla active?
+                seasonPricingIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                routeCostConfigurations:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/routeCostConfigurations/items'
+      responses:
+        '200':
+          description: Shipper Contract SLA
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract-sla/{shipperContractSlaId}/approve:
+    parameters:
+    - name: shipperContractSlaId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: ShipperContractSla
+      summary: Approve an SLA
+      operationId: approve
+      tags:
+      - Shipper Contract SLA
+      requestBody:
+        description: None
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Approve SLA
+          content:
+            application/json:
+              schema:
+                type: object
+                description: SLA approval info
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  approvedOn:
+                    type: string
+                    format: date-time
+                  approvedBy:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract-sla/{shipperContractSlaId}/shipper-sign:
+    parameters:
+    - name: shipperContractSlaId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: ShipperContractSla
+      summary: Create Shipper signature for an SLA
+      operationId: createShipperSignature
+      tags:
+      - Shipper Contract SLA
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D~1lp-sign/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: Shipper signature
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Contract Signature
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  typedName:
+                    type: string
+                  ipAddress:
+                    type: string
+                    oneOf:
+                    - format: ipv4
+                    - format: ipv6
+                  signedOn:
+                    type: string
+                    format: date-time
+                  signedBy:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract-sla/{shipperContractSlaId}/onerail-sign:
+    parameters:
+    - name: shipperContractSlaId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: ShipperContractSla
+      summary: Create OneRail signature for an SLA
+      operationId: createOneRailSignature
+      tags:
+      - Shipper Contract SLA
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D~1lp-sign/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: OneRail signature
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract-sla/{shipperContractSlaId}/template:
+    parameters:
+    - name: shipperContractSlaId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: ShipperContractSla
+      summary: Get Shipper Contract SLA Template
+      operationId: getTemplate
+      tags:
+      - Shipper Contract SLA
+      responses:
+        '200':
+          description: Shipper Contract SLA Template
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Shipper Contract SLA Template
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  approvedBy:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+                  approvedOn:
+                    type: string
+                    format: date-time
+                  createdAt:
+                    type: string
+                    format: date-time
+                  organizationId:
+                    type: string
+                    format: uuid
+                    description: Reference to Organization
+                  shipperContractId:
+                    type: string
+                    format: uuid
+                    description: Reference to Shipper Contract
+                  shipperContractSlaId:
+                    type: string
+                    format: uuid
+                    description: Reference to Shipper Contract SLA
+                  marketModifiers:
+                    type: array
+                    description: List of market modifiers
+                    items:
+                      $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/marketModifiers/items'
+                  deliveryPremium:
+                    $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryPremium'
+                  milageTiers:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/milageTiers/items'
+                  deliveryCorrectionCharges:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryCorrectionCharges/items'
+                  fleetVehicleModifiers:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/get/responses/200/content/application~1json/schema/properties/fleetVehicleModifiers/items'
+                  routeCostConfigurations:
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/get/responses/200/content/application~1json/schema/properties/routeCostConfigurations/items'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract-sla/{shipperContractSlaId}/duplicate:
+    parameters:
+    - name: shipperContractSlaId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: ShipperContractSla
+      summary: Get Shipper Contract SLA Template
+      operationId: duplicate
+      tags:
+      - Shipper Contract SLA
+      requestBody:
+        required: false
+        description: Empty Body
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Shipper Contract SLA Template
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1template/get/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract-sla/{shipperContractSlaId}/set-active-state:
+    parameters:
+    - name: shipperContractSlaId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: ShipperContractSla
+      summary: Set ShipperContractSla active state
+      operationId: setActiveState
+      tags:
+      - Shipper Contract SLA
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                active:
+                  type: boolean
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract-sla/bulk-approve:
+    post:
+      x-exegesis-controller: ShipperContractSla
+      summary: Bulk approve an array of SLA ids
+      operationId: bulkApprove
+      tags:
+      - Shipper Contract SLA
+      requestBody:
+        description: Shipper Contract SLA ids
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Shipper Contract SLA ids
+              properties:
+                shipperContractSlaIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Approve SLA ids
+          content:
+            application/json:
+              schema:
+                type: object
+                description: List of bulk SLA approval info
+                properties:
+                  approvals:
+                    type: array
+                    description: SLA approval info
+                    items:
+                      $ref: '#/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1approve/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract-sla/bulk-shipper-sign:
+    post:
+      x-exegesis-controller: ShipperContractSla
+      summary: Create Bulk Shipper signature for an SLA
+      operationId: createBulkShipperSignature
+      tags:
+      - Shipper Contract SLA
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D~1lp-sign/post/requestBody/content/application~1json/schema'
+              - $ref: '#/paths/~1v1~1shipper-contract-sla~1bulk-approve/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: Shipper signature
+          content:
+            application/json:
+              schema:
+                type: object
+                description: List of bulk SLA signature info
+                properties:
+                  signatures:
+                    type: array
+                    description: SLA signature info
+                    items:
+                      $ref: '#/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract-sla/bulk-onerail-sign:
+    post:
+      x-exegesis-controller: ShipperContractSla
+      summary: Create Bulk OneRail signature for an SLA
+      operationId: createBulkOneRailSignature
+      tags:
+      - Shipper Contract SLA
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D~1lp-sign/post/requestBody/content/application~1json/schema'
+              - $ref: '#/paths/~1v1~1shipper-contract-sla~1bulk-approve/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: OneRail signature
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1shipper-contract-sla~1bulk-shipper-sign/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract-sla/approve-and-sign:
+    post:
+      x-exegesis-controller: ShipperContractSla
+      summary: Bulk approve, create Bulk Shipper signature, create Bulk OneRail signature for an SLA
+      operationId: bulkApproveAndSignShipperContractSlas
+      tags:
+      - Shipper Contract SLA
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Bulk Approve and Sign request body
+              type: object
+              properties:
+                typedName:
+                  type: string
+                lpContractSlaTemplateIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+      responses:
+        '200':
+          description: Bulk Approve and Sign response
+          content:
+            application/json:
+              schema:
+                description: Bulk Approve and Sign response
+                type: object
+                properties:
+                  signatures:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

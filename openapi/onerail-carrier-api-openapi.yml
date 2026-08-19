@@ -1,0 +1,686 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Carrier API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Carrier
+paths:
+  /v1/carrier/{carrierId}/deliveries:
+    parameters:
+    - name: carrierId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: offset
+      in: query
+      description: Number of items to skip before returning the results.
+      required: true
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    - name: limit
+      in: query
+      description: Maximum number of items to return.
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        default: 20
+    - name: sortby
+      in: query
+      description: Field to sort by
+      required: false
+      schema:
+        type: string
+    - name: filter
+      in: query
+      description: 'JSON string { state: DeliveryState[], search: string, searchOrderId: string, searchShipmentId: string }'
+      required: false
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Carrier
+      summary: Get carrier's deliveries
+      operationId: getCarrierDeliveries
+      tags:
+      - Carrier
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1deliveries/get/responses/200'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/carrier/{carrierId}/delivery/{deliveryId}/failed:
+    parameters:
+    - name: carrierId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: Carrier
+      summary: Resend to push-api /failed - moving delivery to CANCELED_BY_LP state
+      operationId: failDelivery
+      tags:
+      - Carrier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  description: Reason of failure
+                  type: string
+                note:
+                  description: Note
+                  type: string
+      responses:
+        '200':
+          description: Success.
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/carrier/{carrierId}/delivery/{deliveryId}/route:
+    parameters:
+    - name: carrierId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: Carrier
+      summary: Create new route for delivery and assign driver with vehicle (OneRail)
+      operationId: createRoute
+      tags:
+      - Carrier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - userId
+              properties:
+                ownFleetVehicleId:
+                  description: Own fleet vehicle id for new route
+                  type: string
+                  format: uuid
+                userId:
+                  description: Driver id for assign to new route
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: Success.
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/carrier/{carrierId}/route/{routeId}/assign:
+    parameters:
+    - name: carrierId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: routeId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: Carrier
+      summary: Assign driver to exists carrier route
+      operationId: assignDriverToRoute
+      tags:
+      - Carrier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - userId
+              properties:
+                userId:
+                  description: Driver id for assign to new route
+                  type: string
+                  format: uuid
+                vehicleId:
+                  description: New recommended vehicle for new route
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: Success.
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/carrier/{carrierId}/delivery/select/{deliveryId}:
+    parameters:
+    - name: carrierId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: attributes
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: string
+    - name: include
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    get:
+      x-exegesis-controller: Carrier
+      summary: Get a delivery
+      operationId: getDeliverySelectively
+      tags:
+      - Carrier
+      responses:
+        '200':
+          description: Delivery Record
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  description: Delivery Record
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    fromId:
+                      type: string
+                      format: uuid
+                    deliveryAttemptId:
+                      type: string
+                      format: uuid
+                    from:
+                      description: Pickup location
+                      $ref: '#/paths/~1v1~1location/post/responses/200/content/application~1json/schema'
+                    to:
+                      description: Drop off location
+                      $ref: '#/paths/~1v1~1location/post/responses/200/content/application~1json/schema'
+                    deliveryType:
+                      type: string
+                    notes:
+                      type: string
+                    triggeredBy:
+                      type: string
+                    state:
+                      type: string
+                    deliveryOptions:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1delivery~1options/get/responses/200/content/application~1json/schema/items'
+                    deliverySpeedMin:
+                      type: integer
+                    deliveryRating:
+                      $ref: '#/paths/~1v1~1delivery-attempt~1%7BdeliveryAttemptId%7D/put/responses/200/content/application~1json/schema/properties/deliveryRating'
+                    shipperContractSla:
+                      $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1dispatch/post/responses/200/content/application~1json/schema/properties/shipperContractSla'
+                    order:
+                      allOf:
+                      - $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1dispatch/post/responses/200/content/application~1json/schema/properties/order/allOf/0'
+                      - $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1dispatch/post/responses/200/content/application~1json/schema/properties/order/allOf/1'
+                    deliveryAttempts:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1dispatch/post/responses/200/content/application~1json/schema/properties/deliveryAttempts/items'
+                    capabilityTags:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1dispatch/post/responses/200/content/application~1json/schema/properties/capabilityTags/items'
+                    deliveryExceptions:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1exception/post/responses/200/content/application~1json/schema'
+                    createdAt:
+                      type: string
+                      format: date-time
+                    updatedAt:
+                      type: string
+                      format: date-time
+                    shipperExtraData:
+                      type:
+                      - object
+                      - 'null'
+                      description: JSON blob that the customer can use to store additional info they may need.
+                    contractedShipperCostCent:
+                      type: integer
+                    actualShipperCostCent:
+                      type: integer
+                    slaPickupBufferMinute:
+                      type: number
+                    slaDropoffBufferMinute:
+                      type: number
+                    computedDistanceMile:
+                      type: number
+                    creationReason:
+                      type: string
+                    shipmentId:
+                      type:
+                      - string
+                      - 'null'
+                      description: Shippers shipmentId for this delivery
+                    deliveryShipperCostDeviations:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1dispatch/post/responses/200/content/application~1json/schema/properties/deliveryShipperCostDeviations/items'
+                    orderItems:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1order~1%7BorderId%7D/get/responses/200/content/application~1json/schema/properties/orderItems/items'
+                    deliveryWindows:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          deliveryId:
+                            type: string
+                            format: uuid
+                          deliverySegment:
+                            type: string
+                            enum:
+                            - PICKUP
+                            - DROPOFF
+                          opensOn:
+                            type: string
+                            description: datetime in ISO format
+                          closesOn:
+                            type: string
+                            description: datetime in ISO format
+                          version:
+                            type: number
+                          createdAt:
+                            type: string
+                            format: date-time
+                          updatedAt:
+                            type: string
+                            format: date-time
+                          deletedAt:
+                            type: string
+                            format: date-time
+                    deliveryAppointments:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: object
+                        properties:
+                          durationMins:
+                            type: number
+                            description: minutes as an integer
+                          description:
+                            type: string
+                          deliverySegment:
+                            type: string
+                            enum:
+                            - PICKUP
+                            - DROPOFF
+                    deliveryCustomFields:
+                      type: array
+                      items:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          fieldName:
+                            type: string
+                          value:
+                            type: string
+                          dataType:
+                            type: string
+                    packingBoxes:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1dispatch/post/responses/200/content/application~1json/schema/properties/packingBoxes/items'
+                    ownFleetVehicle:
+                      type: object
+                      description: Vehicle
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        name:
+                          type: string
+                    mileage:
+                      type:
+                      - integer
+                      - 'null'
+                    contactPreference:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - EMAIL
+                      - SMS
+                      - BOTH
+                      - null
+                      default: null
+                - $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D/get/responses/200/content/application~1json/schema/allOf/3'
+        '401':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/carrier/{carrierId}/delivery/{deliveryId}/deliveryfiles:
+    parameters:
+    - name: carrierId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: deliveryId
+      in: path
+      required: true
+      description: delivery id
+      schema:
+        type: string
+        format: uuid
+    - name: fileType
+      in: query
+      description: file type string
+      schema:
+        type: array
+        items:
+          type: string
+    get:
+      x-exegesis-controller: Carrier
+      summary: Get the delivery's deliveryFiles
+      operationId: getDeliveryFiles
+      security:
+      - ApiKey: []
+        AppId: []
+      - bearer: []
+      tags:
+      - Carrier
+      responses:
+        '200':
+          description: Get delivery deliveryFile records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1deliveryfiles/get/responses/200/content/application~1json/schema/items'
+        '401':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/carrier/{carrierId}/delivery/{deliveryId}/delivery-attempts:
+    parameters:
+    - name: carrierId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: Carrier
+      summary: Get a delivery's attempts
+      operationId: getCarrierDeliveryAttempts
+      tags:
+      - Carrier
+      responses:
+        '200':
+          $ref: '#/paths/~1v2~1organization~1delivery~1%7BdeliveryId%7D~1delivery-attempts-api/get/responses/200'
+        '401':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/carrier/{carrierId}/delivery/{deliveryId}/images-download:
+    parameters:
+    - name: deliveryId
+      in: path
+      required: true
+      description: Delivery id
+      schema:
+        type: string
+    - name: carrierId
+      in: path
+      required: true
+      description: Carrier id
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: Carrier
+      summary: Get all POP or POD images for delivery
+      operationId: downloadCarrierDeliveryImages
+      tags:
+      - Carrier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                imageType:
+                  description: Type of file bundle to generate (POP or POD)
+                  type: string
+                  enum:
+                  - pop
+                  - pod
+                files:
+                  description: List of files to bundle
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/zip:
+              schema:
+                description: Zip file of requested images
+                type: string
+                format: binary
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/carrier/{carrierId}/products:
+    parameters:
+    - name: carrierId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Carrier
+      summary: Get organization's Products in service mode
+      operationId: getCarrierProducts
+      parameters:
+      - name: deliveryId
+        in: query
+        description: Delivery that is using in service mode.
+        required: true
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 250
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      - name: filter
+        in: query
+        description: 'JSON string { search: string }'
+        required: false
+        schema:
+          type: string
+      tags:
+      - Carrier
+      responses:
+        '200':
+          description: Products
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1organization~1%7BorganizationId%7D~1product~1%7BproductId%7D/put/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/carrier/{carrierId}/delivery/{deliveryId}/partial-update-api:
+    parameters:
+    - name: carrierId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+    patch:
+      x-exegesis-controller: Carrier
+      summary: Partial update order from API call with one or more deliveries
+      operationId: partialUpdateOrder
+      tags:
+      - Carrier
+      requestBody:
+        $ref: '#/paths/~1v1~1order~1partial-update-api/put/requestBody'
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1order~1api/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

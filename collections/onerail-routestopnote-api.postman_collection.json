@@ -1,0 +1,393 @@
+{
+  "item": [
+    {
+      "id": "a74eb2fe-2792-4031-92e6-d1decf8bdafa",
+      "name": "RouteStopNote",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d75cb97c-2111-4505-8f06-e715b513377c",
+          "name": "Get paginated route stop notes",
+          "request": {
+            "name": "Get paginated route stop notes",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "route",
+                ":routeId",
+                "route-stop-notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of items to return."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "routeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21b31c17-e6c5-4d1f-8f39-2da9f3943735",
+              "name": "Route Stop Notes Records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "route-stop-notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"d3c9ccfa-e055-0c91-6144-293d8cab03a0\",\n      \"routeStopId\": \"string\",\n      \"content\": \"string\",\n      \"visibility\": \"OR_ONLY\",\n      \"routeStop\": {\n        \"id\": \"string\",\n        \"deliveryId\": \"string\",\n        \"stopType\": \"string\"\n      },\n      \"user\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"createdAt\": \"1963-11-03T03:17:53.394Z\",\n      \"updatedAt\": \"1967-12-24T16:43:48.516Z\"\n    },\n    {\n      \"id\": \"df4226ac-41ef-0e99-8237-52ad8f9d9f13\",\n      \"routeStopId\": \"string\",\n      \"content\": \"string\",\n      \"visibility\": \"NORMAL\",\n      \"routeStop\": {\n        \"id\": \"string\",\n        \"deliveryId\": \"string\",\n        \"stopType\": \"string\"\n      },\n      \"user\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"createdAt\": \"1991-07-05T09:39:46.650Z\",\n      \"updatedAt\": \"1954-05-17T02:13:19.548Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "209cc5fc-1b74-4b50-95ea-48b5a643b326",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "route-stop-notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34b4b721-7023-4b31-b2cc-a14a06e3dc77",
+          "name": "Creates a route stop note",
+          "request": {
+            "name": "Creates a route stop note",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "route",
+                ":routeId",
+                "route-stop-notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "routeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"routeStopId\": \"<string>\",\n  \"content\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97981577-abb7-46d6-870b-0b4c0e79551c",
+              "name": "Route Stop Note",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "route-stop-notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeStopId\": \"<string>\",\n  \"content\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"09dcc84d-9d6e-6c4d-b27d-760782a50d47\",\n  \"routeStopId\": \"string\",\n  \"content\": \"string\",\n  \"visibility\": \"NORMAL\",\n  \"routeStop\": {\n    \"id\": \"string\",\n    \"deliveryId\": \"string\",\n    \"stopType\": \"string\"\n  },\n  \"user\": {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"createdAt\": \"1974-05-04T00:36:44.759Z\",\n  \"updatedAt\": \"2013-07-19T21:12:19.104Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53c94a43-4055-484a-8ff9-37b0fdce4ef5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "route-stop-notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeStopId\": \"<string>\",\n  \"content\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a2e5026b-9d51-4c76-9411-61bc8482f120",
+    "name": "OneRail Operation Dashboard Route Stop Note API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

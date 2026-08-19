@@ -1,0 +1,361 @@
+{
+  "item": [
+    {
+      "id": "04639d67-7237-4816-be70-1b4617f1c722",
+      "name": "Locations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "920234cb-e559-49f4-8e66-d8bde5a0a0b5",
+          "name": "Get list of locations for filtering",
+          "request": {
+            "name": "Get list of locations for filtering",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organizationIds",
+                  "value": "<string,null-uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "organizationIds",
+                  "value": "<string,null-uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "JSON string { search: string } or { search: { name: string, storeNumber: string, pickupLocationAddress: string } } or { search: [ uuid ] }"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12d832b5-b8aa-415a-975a-1e270f0ddf37",
+              "name": "Location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationIds",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "organizationIds",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"d6bff9ce-77d5-ab4e-f9dc-f834ee469822\",\n    \"name\": \"string\",\n    \"storeNumber\": \"string\"\n  },\n  {\n    \"id\": \"d06d6b9e-5ffd-2c4f-dbfa-f035aad7f3f4\",\n    \"name\": \"string\",\n    \"storeNumber\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5b0fc05-7a38-4a8d-b988-841181c06976",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationIds",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "organizationIds",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d88f9304-8490-4267-b02e-eb33c810b148",
+          "name": "Get list of locations for filtering",
+          "request": {
+            "name": "Get list of locations for filtering",
+            "description": {
+              "content": "Filter locations with one of the following items:\n- { search: { name: string, storeNumber: string, pickupLocationAddress: string } } you can pass search and filter locations by name, storeNumber, pickupLocationAddress includes search \n- or\n- { locationIds: [ uuid ] } you can pass locationIds as an array of locationId and search in locations by their id or ids\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organizationIds\": [\n    \"<string,null-uuid>\",\n    \"<string,null-uuid>\"\n  ],\n  \"limit\": 100,\n  \"locationIds\": [\n    \"<string,null-uuid>\",\n    \"<string,null-uuid>\"\n  ],\n  \"search\": {\n    \"name\": \"<string,null>\",\n    \"storeNumber\": \"<string,null>\",\n    \"pickupLocationAddress\": \"<string,null>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9ccc9090-9988-4c2e-a948-b3d30d28dfbf",
+              "name": "Location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationIds\": [\n    \"<string,null-uuid>\",\n    \"<string,null-uuid>\"\n  ],\n  \"limit\": 100,\n  \"locationIds\": [\n    \"<string,null-uuid>\",\n    \"<string,null-uuid>\"\n  ],\n  \"search\": {\n    \"name\": \"<string,null>\",\n    \"storeNumber\": \"<string,null>\",\n    \"pickupLocationAddress\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"7ce20aa4-494f-4cff-c713-8f12775b8bb6\",\n    \"name\": \"string\",\n    \"storeNumber\": \"string\"\n  },\n  {\n    \"id\": \"e9271dcb-bcf6-f8f0-dd73-9304a11b8491\",\n    \"name\": \"string\",\n    \"storeNumber\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ab399b6-52ac-4377-a33c-e82354a2be02",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationIds\": [\n    \"<string,null-uuid>\",\n    \"<string,null-uuid>\"\n  ],\n  \"limit\": 100,\n  \"locationIds\": [\n    \"<string,null-uuid>\",\n    \"<string,null-uuid>\"\n  ],\n  \"search\": {\n    \"name\": \"<string,null>\",\n    \"storeNumber\": \"<string,null>\",\n    \"pickupLocationAddress\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "20aa9a49-a51b-4201-a364-35fd4df2be6d",
+    "name": "OneRail Operation Dashboard Locations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

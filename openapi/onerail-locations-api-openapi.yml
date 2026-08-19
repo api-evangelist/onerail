@@ -1,0 +1,191 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Locations API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Locations
+paths:
+  /v1/locations:
+    get:
+      x-exegesis-controller: Location
+      summary: Get list of locations for filtering
+      operationId: getFilterLocationsByGet
+      parameters:
+      - name: organizationIds
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type:
+            - string
+            - 'null'
+            format: uuid
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: number
+          default: 100
+      - name: filter
+        in: query
+        description: 'JSON string { search: string } or { search: { name: string, storeNumber: string, pickupLocationAddress: string } } or { search: [ uuid ] }'
+        required: false
+        schema:
+          type: string
+          properties:
+            search:
+              oneOf:
+              - type: string
+              - type: array
+                items:
+                  type: string
+                  format: uuid
+              - type: object
+                description: Filter as a object
+                properties:
+                  name:
+                    type: string
+                  storeNumber:
+                    type: string
+                  pickupLocationAddress:
+                    type: string
+      responses:
+        '200':
+          description: Location
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                    storeNumber:
+                      type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      tags:
+      - Locations
+    post:
+      x-exegesis-controller: Location
+      description: "Filter locations with one of the following items:\n- { search: { name: string, storeNumber: string, pickupLocationAddress: string } } you can pass search and filter locations by name, storeNumber, pickupLocationAddress includes search \n- or\n- { locationIds: [ uuid ] } you can pass locationIds as an array of locationId and search in locations by their id or ids\n"
+      summary: Get list of locations for filtering
+      operationId: getFilterLocationsByPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organizationIds:
+                  type: array
+                  items:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                limit:
+                  type: number
+                  default: 100
+                locationIds:
+                  type: array
+                  items:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                search:
+                  type: object
+                  properties:
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                    storeNumber:
+                      type:
+                      - string
+                      - 'null'
+                    pickupLocationAddress:
+                      type:
+                      - string
+                      - 'null'
+      responses:
+        '200':
+          description: Location
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1locations/get/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      tags:
+      - Locations
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

@@ -1,0 +1,71 @@
+openapi: 3.2.0
+info:
+  title: Onerail Health Check API
+  version: '1.0'
+  description: 'Operations tagged HealthCheck across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: /
+  description: Default relative server URL
+tags:
+- name: HealthCheck
+paths:
+  /:
+    x-exegesis-controller: Home
+    head:
+      operationId: healthCheck
+      responses:
+        '400':
+          description: Bad request
+        default:
+          description: Health check passed.
+      security: []
+      summary: Health check
+      tags:
+      - HealthCheck
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+    ApiKeyAndAppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY-AND-APP-ID
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}
+x-refined-from:
+- onerail-delivery-api-openapi.yml
+- onerail-operations-api-openapi.yml

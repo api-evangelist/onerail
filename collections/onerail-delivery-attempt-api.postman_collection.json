@@ -1,0 +1,982 @@
+{
+  "item": [
+    {
+      "id": "b6edac12-333d-4cf7-8e50-27677ceb64c6",
+      "name": "Delivery Attempt",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f25358e-2ae5-4e72-8c7a-2d32dde85a18",
+          "name": "Creates an attempt for the delivery",
+          "request": {
+            "name": "Creates an attempt for the delivery",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "attempt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryAttempt\": {\n    \"lpContractSlaId\": \"<string,null-uuid>\",\n    \"lpOrganizationId\": \"<string,null-uuid>\"\n  },\n  \"deliveryCost\": {\n    \"computedCostCent\": \"<integer>\"\n  },\n  \"deliveryStatus\": {\n    \"tmsLinkURL\": \"<string>\",\n    \"lpDeliveryId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9c6edf5c-ee6f-4d73-b977-1e4baae12a48",
+              "name": "Delivery Attempt record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "attempt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryAttempt\": {\n    \"lpContractSlaId\": \"<string,null-uuid>\",\n    \"lpOrganizationId\": \"<string,null-uuid>\"\n  },\n  \"deliveryCost\": {\n    \"computedCostCent\": \"<integer>\"\n  },\n  \"deliveryStatus\": {\n    \"tmsLinkURL\": \"<string>\",\n    \"lpDeliveryId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f2019781-9e4e-e313-7a15-ea01a1618a23\",\n  \"state\": \"ACCEPTED_BY_LP\",\n  \"failureReason\": \"string\",\n  \"shipperBillable\": false,\n  \"lpPayable\": false,\n  \"durationMin\": 8425,\n  \"createdAt\": \"1992-06-25T19:54:39.770Z\",\n  \"updatedAt\": \"2021-06-09T23:23:51.006Z\",\n  \"deliveryStatus\": {\n    \"id\": \"847413a7-edf1-4e0b-5c0b-1e26b0c93641\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"driverName\": \"string\",\n    \"driverPhone\": \"string\",\n    \"eta\": \"1978-06-23T00:41:32.895Z\",\n    \"driverNotes\": \"string\",\n    \"tmsLinkURL\": \"string\",\n    \"lpDeliveryId\": \"string\",\n    \"lpDeliveryData\": \"string\"\n  },\n  \"deliveryStateChanges\": [\n    {\n      \"id\": 1900.8188559159444,\n      \"state\": \"ARRIVED_FOR_PICKUP\",\n      \"driverName\": \"string\",\n      \"driverPhone\": \"string\",\n      \"location\": {\n        \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n      },\n      \"happenedOn\": \"1991-05-06T20:13:17.765Z\",\n      \"createdBy\": {\n        \"id\": \"9da505dd-2a9f-43ba-1849-8e156068327b\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      }\n    },\n    {\n      \"id\": 9005.36077682881,\n      \"state\": \"ARRIVED_FOR_PICKUP\",\n      \"driverName\": \"string\",\n      \"driverPhone\": \"string\",\n      \"location\": {\n        \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n      },\n      \"happenedOn\": \"1991-12-26T23:12:27.058Z\",\n      \"createdBy\": {\n        \"id\": \"cc8f4df8-1e6d-d1a2-a172-b799afd0c00e\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      }\n    }\n  ],\n  \"lpContractSla\": {\n    \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"deliveryCost\": {\n    \"id\": \"2b5b7f50-58df-73ba-76fb-3367a853dd4f\",\n    \"computedCostCent\": 3701,\n    \"actualCostCent\": 1568,\n    \"lpContractSlaId\": \"9638d9f7-b940-c02a-2fe0-aec5fd695f64\",\n    \"lpContractSla\": {\n      \"id\": \"6870760f-da22-c84b-f63b-d0ed1df3c791\",\n      \"approvedOn\": \"1999-12-11T23:27:59.346Z\",\n      \"approvedById\": \"aa2957e6-e38e-ae1e-2373-3c29d8929849\",\n      \"shipperContractSlaId\": \"0f1419cd-29e7-bda4-5b85-fcbfe4047909\",\n      \"organizationId\": \"15186743-3c39-981b-767c-91dff478a990\",\n      \"createdAt\": \"1969-06-15T16:24:04.714Z\",\n      \"lpSignatureId\": \"257d1f30-e70f-077a-611c-9eec46b16977\",\n      \"oneRailSignatureId\": \"2a819e07-4d68-11cd-8ab0-df2c797bc002\"\n    }\n  },\n  \"deliveryCostDeviations\": [\n    {\n      \"id\": \"b222e621-598d-0b57-a017-27a043b12bbe\",\n      \"reason\": \"string\",\n      \"costCent\": 4125\n    },\n    {\n      \"id\": \"6ac5f01e-e3a3-1175-e76c-db03a8d9b9b1\",\n      \"reason\": \"string\",\n      \"costCent\": 3563\n    }\n  ],\n  \"createdBy\": {\n    \"id\": \"d9c6cd53-167c-6055-3f91-55518efc22e2\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"delivery\": {\n    \"state\": \"string\",\n    \"deliveryAttemptId\": \"b756cc61-ee1b-a069-d3ba-6215912e4ae5\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e58f744-ac40-45d2-a8aa-f92bb8355dec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "attempt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryAttempt\": {\n    \"lpContractSlaId\": \"<string,null-uuid>\",\n    \"lpOrganizationId\": \"<string,null-uuid>\"\n  },\n  \"deliveryCost\": {\n    \"computedCostCent\": \"<integer>\"\n  },\n  \"deliveryStatus\": {\n    \"tmsLinkURL\": \"<string>\",\n    \"lpDeliveryId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "560f0458-919d-4f97-9c8f-ab856bbb9c80",
+          "name": "Creates an attempt for the delivery (API)",
+          "request": {
+            "name": "Creates an attempt for the delivery (API)",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "attempt",
+                "api"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryAttempt\": {\n    \"lpContractSlaId\": \"<string,null-uuid>\",\n    \"lpOrganizationId\": \"<string,null-uuid>\"\n  },\n  \"deliveryCost\": {\n    \"computedCostCent\": \"<integer>\"\n  },\n  \"deliveryStatus\": {\n    \"tmsLinkURL\": \"<string>\",\n    \"lpDeliveryId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "48e7c4ee-57b0-41ca-bfa4-93eaf27e25de",
+              "name": "Delivery Attempt record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "attempt",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryAttempt\": {\n    \"lpContractSlaId\": \"<string,null-uuid>\",\n    \"lpOrganizationId\": \"<string,null-uuid>\"\n  },\n  \"deliveryCost\": {\n    \"computedCostCent\": \"<integer>\"\n  },\n  \"deliveryStatus\": {\n    \"tmsLinkURL\": \"<string>\",\n    \"lpDeliveryId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8152c6ca-c6ec-3a65-cab5-13d3a3f8eac1\",\n  \"state\": \"ONERAIL_PROCESSING\",\n  \"failureReason\": \"string\",\n  \"shipperBillable\": false,\n  \"lpPayable\": false,\n  \"durationMin\": 497,\n  \"createdAt\": \"1984-04-21T12:04:59.278Z\",\n  \"updatedAt\": \"1982-01-29T08:16:38.440Z\",\n  \"deliveryStatus\": {\n    \"id\": \"d253dd67-8eea-2a4e-3bf3-f2f10c6c3586\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"driverName\": \"string\",\n    \"driverPhone\": \"string\",\n    \"eta\": \"2012-12-17T19:11:37.977Z\",\n    \"driverNotes\": \"string\",\n    \"tmsLinkURL\": \"string\",\n    \"lpDeliveryId\": \"string\",\n    \"lpDeliveryData\": \"string\"\n  },\n  \"deliveryStateChanges\": [\n    {\n      \"id\": 8779.95990386647,\n      \"state\": \"EN_ROUTE_TO_DELIVERY\",\n      \"driverName\": null,\n      \"driverPhone\": null,\n      \"location\": {\n        \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n      },\n      \"happenedOn\": \"2025-09-22T05:49:18.504Z\",\n      \"createdBy\": {\n        \"id\": \"9f51eaac-183a-2744-3c5c-80265422a1fa\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      }\n    },\n    {\n      \"id\": 1330.1231703931703,\n      \"state\": \"DISPATCHING\",\n      \"driverName\": null,\n      \"driverPhone\": null,\n      \"location\": {\n        \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n      },\n      \"happenedOn\": \"1953-03-21T18:57:46.417Z\",\n      \"createdBy\": {\n        \"id\": \"9088cf8b-3eee-40e7-27c9-4a3fd595face\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      }\n    }\n  ],\n  \"lpContractSla\": {\n    \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"deliveryCost\": {\n    \"id\": \"c3ca3dd6-158c-1561-2f6c-cdf6cea0e2a1\",\n    \"computedCostCent\": 6633,\n    \"actualCostCent\": 9070,\n    \"lpContractSlaId\": \"6d4b1668-14dc-19fb-620e-983962c87402\",\n    \"lpContractSla\": {\n      \"id\": \"4a4d84eb-52dc-dea2-5a88-b609aa5d6bf2\",\n      \"approvedOn\": \"2006-03-23T14:50:31.063Z\",\n      \"approvedById\": \"ab6d86ff-fdab-08bc-0cf3-bcca2481737a\",\n      \"shipperContractSlaId\": \"bcec28eb-e49c-ae03-fb86-5db399ee14af\",\n      \"organizationId\": \"55f06b3d-7e40-ac86-5855-b819ef9b4417\",\n      \"createdAt\": \"2023-06-03T01:41:40.649Z\",\n      \"lpSignatureId\": \"5c39b371-23b9-a67e-1054-65a1c0a0d8fd\",\n      \"oneRailSignatureId\": \"958c263e-67ba-5b68-c768-be75acc276e4\"\n    }\n  },\n  \"deliveryCostDeviations\": [\n    {\n      \"id\": \"fe4a41fe-c68a-698b-42d8-2686b584a82d\",\n      \"reason\": \"string\",\n      \"costCent\": 9614\n    },\n    {\n      \"id\": \"a6077ce4-1481-94af-a406-441d3fbcad12\",\n      \"reason\": \"string\",\n      \"costCent\": 5015\n    }\n  ],\n  \"createdBy\": {\n    \"id\": \"cbc3f553-6d90-8219-8835-f8785e18e3b4\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"delivery\": {\n    \"state\": \"string\",\n    \"deliveryAttemptId\": \"1511015b-2a63-52ab-c50d-3fde056b0e3e\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "890a6b1c-8c80-429b-b82d-8f93f48cef9d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "attempt",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryAttempt\": {\n    \"lpContractSlaId\": \"<string,null-uuid>\",\n    \"lpOrganizationId\": \"<string,null-uuid>\"\n  },\n  \"deliveryCost\": {\n    \"computedCostCent\": \"<integer>\"\n  },\n  \"deliveryStatus\": {\n    \"tmsLinkURL\": \"<string>\",\n    \"lpDeliveryId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bf9a28e-a217-47e4-a751-afe36c8b88fb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "attempt",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryAttempt\": {\n    \"lpContractSlaId\": \"<string,null-uuid>\",\n    \"lpOrganizationId\": \"<string,null-uuid>\"\n  },\n  \"deliveryCost\": {\n    \"computedCostCent\": \"<integer>\"\n  },\n  \"deliveryStatus\": {\n    \"tmsLinkURL\": \"<string>\",\n    \"lpDeliveryId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0298c5cb-6fdd-4e8e-a388-412fbdcb6a9b",
+          "name": "Update a delivery attempt's details",
+          "request": {
+            "name": "Update a delivery attempt's details",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery-attempt",
+                ":deliveryAttemptId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deliveryAttemptId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryCost\": {\n    \"computedCostCent\": \"<integer>\"\n  },\n  \"deliveryStatus\": {\n    \"driverName\": \"<string>\",\n    \"driverPhone\": \"<string>\",\n    \"driverNotes\": \"<string>\",\n    \"tmsLinkURL\": \"<string>\",\n    \"eta\": \"<dateTime>\",\n    \"lpDeliveryId\": \"<string>\"\n  },\n  \"deliveryRating\": {\n    \"value\": \"reference #/paths/~1v1~1delivery~1%7BdeliveryId%7D~1rating/post/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"deliveryStateChange\": {\n    \"id\": \"<uuid>\",\n    \"happenedOn\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4adffb52-84b3-4fb7-a2a6-232f6a04a3ea",
+              "name": "Delivery attempt updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryCost\": {\n    \"computedCostCent\": \"<integer>\"\n  },\n  \"deliveryStatus\": {\n    \"driverName\": \"<string>\",\n    \"driverPhone\": \"<string>\",\n    \"driverNotes\": \"<string>\",\n    \"tmsLinkURL\": \"<string>\",\n    \"eta\": \"<dateTime>\",\n    \"lpDeliveryId\": \"<string>\"\n  },\n  \"deliveryRating\": {\n    \"value\": \"reference #/paths/~1v1~1delivery~1%7BdeliveryId%7D~1rating/post/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"deliveryStateChange\": {\n    \"id\": \"<uuid>\",\n    \"happenedOn\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deliveryAttempt\": {\n    \"id\": \"d1c961b1-e532-1c9e-cf5e-e931242a12a2\",\n    \"state\": \"ROUTED\",\n    \"failureReason\": \"string\",\n    \"shipperBillable\": true,\n    \"lpPayable\": false,\n    \"durationMin\": 4183,\n    \"createdAt\": \"1965-08-10T17:48:00.937Z\",\n    \"updatedAt\": \"1975-01-02T23:49:14.413Z\",\n    \"deliveryStatus\": {\n      \"id\": \"3ccf9bc4-bbb3-35a6-2b60-3f7adbbd7599\",\n      \"location\": {\n        \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n      },\n      \"driverName\": \"string\",\n      \"driverPhone\": \"string\",\n      \"eta\": \"1956-12-08T06:41:47.022Z\",\n      \"driverNotes\": \"string\",\n      \"tmsLinkURL\": \"string\",\n      \"lpDeliveryId\": \"string\",\n      \"lpDeliveryData\": \"string\"\n    },\n    \"deliveryStateChanges\": [\n      {\n        \"id\": 2689.7064448527817,\n        \"state\": \"CANCELED_BY_ONERAIL\",\n        \"driverName\": null,\n        \"driverPhone\": null,\n        \"location\": {\n          \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n        },\n        \"happenedOn\": \"2021-11-07T10:49:57.097Z\",\n        \"createdBy\": {\n          \"id\": \"d8a96735-b804-17e5-e61d-ee22d4f69cf8\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\"\n        }\n      },\n      {\n        \"id\": 7276.440015731049,\n        \"state\": \"CANCELED_BY_LP\",\n        \"driverName\": \"string\",\n        \"driverPhone\": null,\n        \"location\": {\n          \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n        },\n        \"happenedOn\": \"1999-10-06T06:20:10.329Z\",\n        \"createdBy\": {\n          \"id\": \"0823fdc1-5154-1541-ae08-2b034354988f\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\"\n        }\n      }\n    ],\n    \"lpContractSla\": {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"deliveryCost\": {\n      \"id\": \"de0ce6b2-6f88-cacb-7680-dc1308d891b2\",\n      \"computedCostCent\": 7911,\n      \"actualCostCent\": 6759,\n      \"lpContractSlaId\": \"5ea653e9-5995-5577-f39a-232415771604\",\n      \"lpContractSla\": {\n        \"id\": \"c86eeb4d-8840-313f-502c-784bb06e2180\",\n        \"approvedOn\": \"1981-06-26T19:17:33.165Z\",\n        \"approvedById\": \"73307f8f-6a25-be55-9077-b3f31ee96e9f\",\n        \"shipperContractSlaId\": \"d1130c40-58d7-b94c-946e-978459b25258\",\n        \"organizationId\": \"72ff3165-9c06-09df-cbc8-55d3798700a5\",\n        \"createdAt\": \"1964-01-23T13:15:18.280Z\",\n        \"lpSignatureId\": \"f4ddea34-0031-f099-89d1-362412b3f2ab\",\n        \"oneRailSignatureId\": \"ab49cb7c-3a79-2d57-7270-27667e96b279\"\n      }\n    },\n    \"deliveryCostDeviations\": [\n      {\n        \"id\": \"0dd492a7-647d-1987-4d9e-c5aa484ed281\",\n        \"reason\": \"string\",\n        \"costCent\": 6251\n      },\n      {\n        \"id\": \"9bc24708-efd7-b5f3-e786-1e8ee2bc6520\",\n        \"reason\": \"string\",\n        \"costCent\": 8371\n      }\n    ],\n    \"createdBy\": {\n      \"id\": \"706eee9e-7984-e8aa-9c51-a46af00c5bdb\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\"\n    },\n    \"delivery\": {\n      \"state\": \"string\",\n      \"deliveryAttemptId\": \"d96f3037-e4c5-5598-6662-8e1d5822e5b2\"\n    }\n  },\n  \"deliveryRating\": {\n    \"id\": \"dd5fa2b6-15a8-7047-9a3f-0870f9eac0a0\",\n    \"rating\": 8168,\n    \"feedback\": \"string\",\n    \"createdAt\": \"1992-02-12T17:52:27.899Z\",\n    \"updatedAt\": \"2023-03-07T17:06:40.435Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f10ddbc6-fe96-49ce-bb4a-95a54881b47e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryCost\": {\n    \"computedCostCent\": \"<integer>\"\n  },\n  \"deliveryStatus\": {\n    \"driverName\": \"<string>\",\n    \"driverPhone\": \"<string>\",\n    \"driverNotes\": \"<string>\",\n    \"tmsLinkURL\": \"<string>\",\n    \"eta\": \"<dateTime>\",\n    \"lpDeliveryId\": \"<string>\"\n  },\n  \"deliveryRating\": {\n    \"value\": \"reference #/paths/~1v1~1delivery~1%7BdeliveryId%7D~1rating/post/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"deliveryStateChange\": {\n    \"id\": \"<uuid>\",\n    \"happenedOn\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de62beca-5c0d-4ee0-9524-71d69b7a8fb6",
+          "name": "Creates a delivery state change for the delivery attempt",
+          "request": {
+            "name": "Creates a delivery state change for the delivery attempt",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery-attempt",
+                ":deliveryAttemptId",
+                "delivery-state-change"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deliveryAttemptId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state\": \"<string>\",\n  \"happenedOn\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67df5ee4-205d-4daa-ac6a-968d37b97226",
+              "name": "Delivery Attempt record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId",
+                    "delivery-state-change"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\",\n  \"happenedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8152c6ca-c6ec-3a65-cab5-13d3a3f8eac1\",\n  \"state\": \"ONERAIL_PROCESSING\",\n  \"failureReason\": \"string\",\n  \"shipperBillable\": false,\n  \"lpPayable\": false,\n  \"durationMin\": 497,\n  \"createdAt\": \"1984-04-21T12:04:59.278Z\",\n  \"updatedAt\": \"1982-01-29T08:16:38.440Z\",\n  \"deliveryStatus\": {\n    \"id\": \"d253dd67-8eea-2a4e-3bf3-f2f10c6c3586\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"driverName\": \"string\",\n    \"driverPhone\": \"string\",\n    \"eta\": \"2012-12-17T19:11:37.977Z\",\n    \"driverNotes\": \"string\",\n    \"tmsLinkURL\": \"string\",\n    \"lpDeliveryId\": \"string\",\n    \"lpDeliveryData\": \"string\"\n  },\n  \"deliveryStateChanges\": [\n    {\n      \"id\": 8779.95990386647,\n      \"state\": \"EN_ROUTE_TO_DELIVERY\",\n      \"driverName\": null,\n      \"driverPhone\": null,\n      \"location\": {\n        \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n      },\n      \"happenedOn\": \"2025-09-22T05:49:18.504Z\",\n      \"createdBy\": {\n        \"id\": \"9f51eaac-183a-2744-3c5c-80265422a1fa\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      }\n    },\n    {\n      \"id\": 1330.1231703931703,\n      \"state\": \"DISPATCHING\",\n      \"driverName\": null,\n      \"driverPhone\": null,\n      \"location\": {\n        \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n      },\n      \"happenedOn\": \"1953-03-21T18:57:46.417Z\",\n      \"createdBy\": {\n        \"id\": \"9088cf8b-3eee-40e7-27c9-4a3fd595face\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      }\n    }\n  ],\n  \"lpContractSla\": {\n    \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"deliveryCost\": {\n    \"id\": \"c3ca3dd6-158c-1561-2f6c-cdf6cea0e2a1\",\n    \"computedCostCent\": 6633,\n    \"actualCostCent\": 9070,\n    \"lpContractSlaId\": \"6d4b1668-14dc-19fb-620e-983962c87402\",\n    \"lpContractSla\": {\n      \"id\": \"4a4d84eb-52dc-dea2-5a88-b609aa5d6bf2\",\n      \"approvedOn\": \"2006-03-23T14:50:31.063Z\",\n      \"approvedById\": \"ab6d86ff-fdab-08bc-0cf3-bcca2481737a\",\n      \"shipperContractSlaId\": \"bcec28eb-e49c-ae03-fb86-5db399ee14af\",\n      \"organizationId\": \"55f06b3d-7e40-ac86-5855-b819ef9b4417\",\n      \"createdAt\": \"2023-06-03T01:41:40.649Z\",\n      \"lpSignatureId\": \"5c39b371-23b9-a67e-1054-65a1c0a0d8fd\",\n      \"oneRailSignatureId\": \"958c263e-67ba-5b68-c768-be75acc276e4\"\n    }\n  },\n  \"deliveryCostDeviations\": [\n    {\n      \"id\": \"fe4a41fe-c68a-698b-42d8-2686b584a82d\",\n      \"reason\": \"string\",\n      \"costCent\": 9614\n    },\n    {\n      \"id\": \"a6077ce4-1481-94af-a406-441d3fbcad12\",\n      \"reason\": \"string\",\n      \"costCent\": 5015\n    }\n  ],\n  \"createdBy\": {\n    \"id\": \"cbc3f553-6d90-8219-8835-f8785e18e3b4\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"delivery\": {\n    \"state\": \"string\",\n    \"deliveryAttemptId\": \"1511015b-2a63-52ab-c50d-3fde056b0e3e\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "018494b3-bc0a-45fa-8342-e91889e93748",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId",
+                    "delivery-state-change"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\",\n  \"happenedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3eba680c-daae-428e-884c-3cbab9a0b3c2",
+          "name": "Sets the attempt as the active attempt",
+          "request": {
+            "name": "Sets the attempt as the active attempt",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery-attempt",
+                ":deliveryAttemptId",
+                "set-as-active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deliveryAttemptId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53d8f214-d3b3-46e8-9713-225b8562a07c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId",
+                    "set-as-active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "279fd82c-de18-48e5-bdc0-aa383751323e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId",
+                    "set-as-active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "40d41adc-51a2-4562-a469-ac691916408a",
+    "name": "OneRail Operation Dashboard Delivery Attempt API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

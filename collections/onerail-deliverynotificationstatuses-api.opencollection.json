@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Delivery Notification Statuses API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DeliveryNotificationStatuses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get delivery notifications, used for getting delivery webhook notification state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/delivery/notification-statuses",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter and return notifications with a state in this array of notification states"
+              }
+            ]
+          },
+          "docs": "Get delivery notifications, used for getting delivery webhook notification state"
+        },
+        {
+          "info": {
+            "name": "Create a delivery notification status record.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/notification-statuses/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a delivery notification status record."
+        },
+        {
+          "info": {
+            "name": "Create a delivery notification status record.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/notification-statuses/create/api",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a delivery notification status record."
+        },
+        {
+          "info": {
+            "name": "Update a delivery notification with an webhook attempt.  Can be either successful or a failure with an error.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/notification-statuses/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a delivery notification with an webhook attempt.  Can be either successful or a failure with an error."
+        },
+        {
+          "info": {
+            "name": "Update a delivery notification with an webhook attempt. Can be either successful or a failure with an error. (API)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/notification-statuses/update/api",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a delivery notification with an webhook attempt. Can be either successful or a failure with an error. (API)"
+        },
+        {
+          "info": {
+            "name": "Retry any pending delivery notification statuses. Called by logic app",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/notification-statuses/retry-pending",
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retry any pending delivery notification statuses. Called by logic app"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,249 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Bulk Uploads API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Bulk Uploads
+paths:
+  /v1/organization/{organizationId}/file-uploads:
+    parameters:
+    - name: organizationId
+      in: path
+      description: organization id
+      required: true
+      schema:
+        type: string
+    - name: offset
+      in: query
+      description: Number of items to skip before returning the results.
+      required: true
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    - name: limit
+      in: query
+      description: Maximum number of items to return.
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+    - name: sortby
+      in: query
+      description: Field to sort by
+      required: false
+      schema:
+        type: string
+    - name: status
+      in: query
+      description: status filter
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+          - partial
+          - failed
+          - succeeded
+    - name: rangeType
+      in: query
+      description: date range type
+      required: false
+      schema:
+        type: string
+    - name: startOn
+      in: query
+      description: daterange starts on
+      required: false
+      schema:
+        type: string
+    - name: endOn
+      in: query
+      description: date range ends on
+      required: false
+      schema:
+        type: string
+    - name: order
+      in: query
+      description: Sort order
+      required: false
+      schema:
+        type: string
+        default: DESC
+        enum:
+        - ASC
+        - DESC
+    - name: entityType
+      in: query
+      description: Entity type to show
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+          - order
+          - product
+          - marketModifier
+          - location
+          - customerLocation
+    get:
+      x-exegesis-controller: Organization
+      summary: Gets the file uploads in relation to a provided organization id
+      operationId: getAllFileUploadsForOrganization
+      tags:
+      - Bulk Uploads
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1file-upload~1%7BfileUploadId%7D/get/responses/200/headers/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/file-upload/{fileUploadId}:
+    parameters:
+    - name: fileUploadId
+      in: path
+      description: file id
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: FileUpload
+      summary: Gets information related to a specific file uploads
+      operationId: getFileUpload
+      tags:
+      - Bulk Uploads
+      responses:
+        '200':
+          description: Success.
+          headers:
+            application/json:
+              schema:
+                type: object
+                description: File upload status
+                required:
+                - fileName
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  fileName:
+                    type: string
+                  fileSize:
+                    type: integer
+                    format: int32
+                  status:
+                    type: string
+                    enum:
+                    - processing
+                    - succeeded
+                    - failed
+                    - partial
+                  successCount:
+                    type: integer
+                    format: int32
+                  failureCount:
+                    type: integer
+                    format: int32
+                  orderCount:
+                    type: integer
+                    format: int32
+                  deliveryCount:
+                    type: integer
+                    format: int32
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  entity:
+                    type: string
+                    enum:
+                    - order
+                    - product
+                    - marketModifier
+                  organizationId:
+                    type: string
+                    format: uuid
+                  userId:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

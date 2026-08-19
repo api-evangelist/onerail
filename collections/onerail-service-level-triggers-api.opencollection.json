@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Service Level Triggers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service Level Triggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all triggers for a service level",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/service-level/:serviceLevelId/triggers",
+            "params": [
+              {
+                "name": "serviceLevelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all triggers for a service level"
+        },
+        {
+          "info": {
+            "name": "Create a service level trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/service-level/:serviceLevelId/trigger",
+            "params": [
+              {
+                "name": "serviceLevelId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a service level trigger"
+        },
+        {
+          "info": {
+            "name": "Get trigger for a service level",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/service-level/:serviceLevelId/trigger/:triggerId",
+            "params": [
+              {
+                "name": "serviceLevelId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get trigger for a service level"
+        },
+        {
+          "info": {
+            "name": "Update trigger for service level",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/service-level/:serviceLevelId/trigger/:triggerId",
+            "params": [
+              {
+                "name": "serviceLevelId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update trigger for service level"
+        },
+        {
+          "info": {
+            "name": "Remove a service level trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/service-level/:serviceLevelId/trigger/:triggerId",
+            "params": [
+              {
+                "name": "serviceLevelId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a service level trigger"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

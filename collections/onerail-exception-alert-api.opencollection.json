@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Exception Alert API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exception Alert",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View all exception alerts for a given servicelevel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/exception-alerts/:serviceLevelId",
+            "params": [
+              {
+                "name": "serviceLevelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "View all exception alerts for a given servicelevel"
+        },
+        {
+          "info": {
+            "name": "Create Exception Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/exception-alert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Exception Alert"
+        },
+        {
+          "info": {
+            "name": "Get Exception Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/exception-alert/:exceptionAlertId",
+            "params": [
+              {
+                "name": "exceptionAlertId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Exception Alert"
+        },
+        {
+          "info": {
+            "name": "Update Exception Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/exception-alert/:exceptionAlertId",
+            "params": [
+              {
+                "name": "exceptionAlertId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Exception Alert"
+        },
+        {
+          "info": {
+            "name": "Remove Exception Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/exception-alert/:exceptionAlertId",
+            "params": [
+              {
+                "name": "exceptionAlertId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Exception Alert"
+        },
+        {
+          "info": {
+            "name": "Apply exception alert to delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/exception-alert/apply-to-delivery/:deliveryId",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply exception alert to delivery"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

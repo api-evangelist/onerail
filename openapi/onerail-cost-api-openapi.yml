@@ -1,0 +1,325 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Cost API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Cost
+paths:
+  /v1/delivery-attempt/{deliveryAttemptId}/costs/adjustments:
+    parameters:
+    - name: deliveryAttemptId
+      in: path
+      required: true
+      description: Delivery attempt UUID that the cost belongs to.
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: Cost
+      security:
+      - ApiKey: []
+        AppId: []
+      summary: Create an externally-sourced adjustment cost on a delivery attempt
+      description: 'Inserts a single adjustment Cost into the Core operations DB on behalf of an
+
+        external producer (today: the FAP `InvoiceCostSyncService`; tomorrow: any
+
+        other service-to-service producer that owns its own idempotency keys).
+
+        Stamps `reason = ADJUSTMENT` server-side; the sub-category is selected by
+
+        the caller via `costAdjustmentReasonId`, which must resolve to a row in
+
+        `CostAdjustmentReasons`.
+
+
+        Idempotency: the request body `sourceCostId` is the producer''s globally
+
+        unique identifier for this cost (e.g. FAP `InvoiceCost.PublicId`). If a
+
+        Cost row already exists with this `sourceCostId`, the endpoint returns
+
+        200 with the existing record instead of creating a duplicate. Otherwise,
+
+        a new Cost is inserted and returned with 201. The unique index on
+
+        `Costs.sourceCostId` counts soft-deleted rows too, so a previously
+
+        soft-deleted match also returns 200 (operator deletion intent is
+
+        preserved; the row is not resurrected).
+
+
+        `adjustmentUserId`, when supplied, must resolve to an existing `Users`
+
+        row in Core; unknown IDs are rejected with 400. Omit or send null for
+
+        adjustments created by automated/system flows that have no human actor —
+
+        `sourceCostId` remains the authoritative marker that the row originated
+
+        from an external producer, so callers are never required to invent a
+
+        synthetic user. A `cost_changes` Kafka event is always emitted with
+
+        `newValues.sourceCostId` populated and `userId` set to the same
+
+        `adjustmentUserId`; consumers use `sourceCostId` as an echo filter to
+
+        skip self-originated events.
+
+
+        Authentication: OneRail-organization API key only (`X-OneRail-API-Key` +
+
+        `X-OneRail-App-Id`). JWT and non-OneRail API keys are rejected with 403.
+
+        This is pure service-to-service — no user identity is resolved from the
+
+        request and operator-driven adjustments belong on a separate user-JWT
+
+        endpoint.
+
+        '
+      operationId: createDeliveryAttemptAdjustmentCost
+      tags:
+      - Cost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - sourceCostId
+              - costAdjustmentReasonId
+              - costCent
+              - isShipper
+              properties:
+                sourceCostId:
+                  type: string
+                  format: uuid
+                  description: 'Producer-owned globally unique identifier for this cost (e.g.
+
+                    FAP `InvoiceCost.PublicId`). Used as the idempotency key on
+
+                    the unique index `Costs.sourceCostId`.
+
+                    '
+                costAdjustmentReasonId:
+                  type: string
+                  format: uuid
+                  description: 'UUID of the `CostAdjustmentReasons` row this adjustment is
+
+                    categorised under. The caller is expected to know which
+
+                    reason its producer flow corresponds to (FAP dispute sync
+
+                    supplies the seeded "Dispute" reason); unknown IDs are
+
+                    rejected with 400.
+
+                    '
+                costCent:
+                  type: integer
+                  description: Signed cost delta in cents. Positive for charges, negative for refunds.
+                isShipper:
+                  type: boolean
+                  description: True if the cost applies to the shipper side; false for the LSP side.
+                adjustmentUserId:
+                  type:
+                  - string
+                  - 'null'
+                  format: uuid
+                  description: 'UUID of the OneRail user who authorized this adjustment in
+
+                    the originating system (e.g. the auditor resolving a FAP
+
+                    dispute). Must resolve to an existing `Users` row in Core;
+
+                    unknown IDs are rejected with 400. Omit or send null for
+
+                    adjustments created by automated/system flows. Flows through
+
+                    to `Cost.adjustmentUserId` and to the emitted `cost_changes`
+
+                    event''s `userId` envelope field.
+
+                    '
+      responses:
+        '200':
+          description: A Cost with this sourceCostId already exists (idempotent hit).
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Cost
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  deliveryAttemptId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  deliveryId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  reason:
+                    type: string
+                    enum:
+                    - BASE
+                    - TOLLS
+                    - PICKUP_PENALTIES
+                    - DELIVERY_PENALTIES
+                    - ACCESSORIAL
+                    - ITEM_SPECIFIC
+                    - ADJUSTMENT
+                  costCent:
+                    type: number
+                  isShipper:
+                    type:
+                    - boolean
+                    - 'null'
+                  costDetails:
+                    type: array
+                    description: Array of json, that display other categories base on reason
+                    default: []
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        type:
+                          type: string
+                        quantity:
+                          type: number
+                        costCent:
+                          type: number
+                  costAdjustmentReason:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      reason:
+                        type: string
+                  adjustmentUserId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  sourceCostId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                    description: 'UUID of the originating record when this cost was synced from an external
+
+                      system (e.g. a FAP dispute adjustment''s `InvoiceCost.PublicId`). Null for
+
+                      user-originated costs. Used as the FAP-side echo filter on `cost_changes`.
+
+                      '
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  deletedAt:
+                    type: string
+                    format: date-time
+        '201':
+          description: New Cost was inserted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1delivery-attempt~1%7BdeliveryAttemptId%7D~1costs~1adjustments/post/responses/200/content/application~1json/schema'
+        '400':
+          description: Invalid input (bad UUID, missing field, bad value, unknown reason or user).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '404':
+          description: Delivery attempt not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

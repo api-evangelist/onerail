@@ -1,0 +1,1191 @@
+{
+  "item": [
+    {
+      "id": "90e8b86a-811f-4f9a-b160-c5d29e6451f1",
+      "name": "Delivery Exception",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4af579fe-8db0-42b5-9991-0489213a3543",
+          "name": "Creates a delivery exception",
+          "request": {
+            "name": "Creates a delivery exception",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "exception"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"severity\": \"<string>\",\n  \"resolved\": false,\n  \"reason\": {\n    \"title\": \"<string>\",\n    \"deliveryBillableToShipper\": \"<boolean>\",\n    \"deliveryPayableToLp\": \"<boolean>\",\n    \"shipperSlaWaived\": \"<boolean>\",\n    \"lpSlaWaived\": \"<boolean>\",\n    \"canOverrideReturnPUAddress\": \"<boolean>\"\n  },\n  \"notes\": \"<string,null>\",\n  \"damageInfo\": {\n    \"quantity\": \"<integer>\",\n    \"orderItemId\": \"<uuid>\"\n  },\n  \"deliveryAttemptId\": \"<string,null>\",\n  \"isNoteVisibleToShipper\": true,\n  \"happenedOn\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3be352e5-280f-40b0-94ad-c303e0cdbac3",
+              "name": "Delivery Record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"severity\": \"<string>\",\n  \"resolved\": false,\n  \"reason\": {\n    \"title\": \"<string>\",\n    \"deliveryBillableToShipper\": \"<boolean>\",\n    \"deliveryPayableToLp\": \"<boolean>\",\n    \"shipperSlaWaived\": \"<boolean>\",\n    \"lpSlaWaived\": \"<boolean>\",\n    \"canOverrideReturnPUAddress\": \"<boolean>\"\n  },\n  \"notes\": \"<string,null>\",\n  \"damageInfo\": {\n    \"quantity\": \"<integer>\",\n    \"orderItemId\": \"<uuid>\"\n  },\n  \"deliveryAttemptId\": \"<string,null>\",\n  \"isNoteVisibleToShipper\": true,\n  \"happenedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e804c904-70f2-32a0-e52c-3739037e29e3\",\n  \"reason\": {\n    \"id\": \"7a711faa-caa3-49ee-d4f3-8f7e03b41028\",\n    \"title\": \"string\",\n    \"deliveryBillableToShipper\": true,\n    \"deliveryPayableToLp\": true,\n    \"shipperSlaWaived\": true,\n    \"lpSlaWaived\": false,\n    \"canOverrideReturnPUAddress\": false\n  },\n  \"severity\": \"LOW\",\n  \"resolved\": false,\n  \"notes\": null,\n  \"damageInfo\": {\n    \"id\": \"925e8e72-a8f1-da0d-ac97-2ce9ae612d36\",\n    \"quantity\": \"string\",\n    \"orderItem\": {\n      \"value\": \"reference #/paths/~1v1~1order~1%7BorderId%7D/get/responses/200/content/application~1json/schema/properties/orderItems/items not found in the OpenAPI spec\"\n    }\n  },\n  \"deliveryAttemptId\": null,\n  \"isNoteVisibleToShipper\": false,\n  \"user\": {\n    \"id\": \"1f94ab45-ade2-def8-5590-86c14bc8e0d1\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"happenedOn\": \"1947-01-07T01:14:50.297Z\",\n  \"createdAt\": \"1948-08-31T08:27:53.407Z\",\n  \"updatedAt\": \"2017-01-07T08:07:46.625Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "514c97f8-6451-4a4f-a229-e9bcb34f1de2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"severity\": \"<string>\",\n  \"resolved\": false,\n  \"reason\": {\n    \"title\": \"<string>\",\n    \"deliveryBillableToShipper\": \"<boolean>\",\n    \"deliveryPayableToLp\": \"<boolean>\",\n    \"shipperSlaWaived\": \"<boolean>\",\n    \"lpSlaWaived\": \"<boolean>\",\n    \"canOverrideReturnPUAddress\": \"<boolean>\"\n  },\n  \"notes\": \"<string,null>\",\n  \"damageInfo\": {\n    \"quantity\": \"<integer>\",\n    \"orderItemId\": \"<uuid>\"\n  },\n  \"deliveryAttemptId\": \"<string,null>\",\n  \"isNoteVisibleToShipper\": true,\n  \"happenedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e2ac54d-fb2a-4d3d-8e45-c8ecc22e79f8",
+          "name": "Creates a delivery exception with Api Key",
+          "request": {
+            "name": "Creates a delivery exception with Api Key",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "exception-api"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"severity\": \"<string>\",\n  \"resolved\": false,\n  \"reason\": {\n    \"title\": \"<string>\",\n    \"deliveryBillableToShipper\": \"<boolean>\",\n    \"deliveryPayableToLp\": \"<boolean>\",\n    \"shipperSlaWaived\": \"<boolean>\",\n    \"lpSlaWaived\": \"<boolean>\",\n    \"canOverrideReturnPUAddress\": \"<boolean>\"\n  },\n  \"notes\": \"<string,null>\",\n  \"damageInfo\": {\n    \"quantity\": \"<integer>\",\n    \"orderItemId\": \"<uuid>\"\n  },\n  \"deliveryAttemptId\": \"<string,null>\",\n  \"isNoteVisibleToShipper\": true,\n  \"happenedOn\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0fd4f917-a4a1-4983-90f1-b01bfb0cca4f",
+              "name": "Delivery Record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception-api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e804c904-70f2-32a0-e52c-3739037e29e3\",\n  \"reason\": {\n    \"id\": \"7a711faa-caa3-49ee-d4f3-8f7e03b41028\",\n    \"title\": \"string\",\n    \"deliveryBillableToShipper\": true,\n    \"deliveryPayableToLp\": true,\n    \"shipperSlaWaived\": true,\n    \"lpSlaWaived\": false,\n    \"canOverrideReturnPUAddress\": false\n  },\n  \"severity\": \"LOW\",\n  \"resolved\": false,\n  \"notes\": null,\n  \"damageInfo\": {\n    \"id\": \"925e8e72-a8f1-da0d-ac97-2ce9ae612d36\",\n    \"quantity\": \"string\",\n    \"orderItem\": {\n      \"value\": \"reference #/paths/~1v1~1order~1%7BorderId%7D/get/responses/200/content/application~1json/schema/properties/orderItems/items not found in the OpenAPI spec\"\n    }\n  },\n  \"deliveryAttemptId\": null,\n  \"isNoteVisibleToShipper\": false,\n  \"user\": {\n    \"id\": \"1f94ab45-ade2-def8-5590-86c14bc8e0d1\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"happenedOn\": \"1947-01-07T01:14:50.297Z\",\n  \"createdAt\": \"1948-08-31T08:27:53.407Z\",\n  \"updatedAt\": \"2017-01-07T08:07:46.625Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0914760f-6374-4042-955e-6b05cd2398a9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception-api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b53ac729-69e8-4275-b2df-31ef099f2d96",
+          "name": "Get a delivery exception",
+          "request": {
+            "name": "Get a delivery exception",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "exception",
+                ":exceptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "exceptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95429a0c-34fc-426a-89e3-6af786820931",
+              "name": "Delivery Record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception",
+                    ":exceptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e804c904-70f2-32a0-e52c-3739037e29e3\",\n  \"reason\": {\n    \"id\": \"7a711faa-caa3-49ee-d4f3-8f7e03b41028\",\n    \"title\": \"string\",\n    \"deliveryBillableToShipper\": true,\n    \"deliveryPayableToLp\": true,\n    \"shipperSlaWaived\": true,\n    \"lpSlaWaived\": false,\n    \"canOverrideReturnPUAddress\": false\n  },\n  \"severity\": \"LOW\",\n  \"resolved\": false,\n  \"notes\": null,\n  \"damageInfo\": {\n    \"id\": \"925e8e72-a8f1-da0d-ac97-2ce9ae612d36\",\n    \"quantity\": \"string\",\n    \"orderItem\": {\n      \"value\": \"reference #/paths/~1v1~1order~1%7BorderId%7D/get/responses/200/content/application~1json/schema/properties/orderItems/items not found in the OpenAPI spec\"\n    }\n  },\n  \"deliveryAttemptId\": null,\n  \"isNoteVisibleToShipper\": false,\n  \"user\": {\n    \"id\": \"1f94ab45-ade2-def8-5590-86c14bc8e0d1\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"happenedOn\": \"1947-01-07T01:14:50.297Z\",\n  \"createdAt\": \"1948-08-31T08:27:53.407Z\",\n  \"updatedAt\": \"2017-01-07T08:07:46.625Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fa4723a-e1f5-478e-9a78-e9f4b4ca4455",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception",
+                    ":exceptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "698b2523-dfe5-42fd-ab8d-a6cfc94eb410",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception",
+                    ":exceptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e15d2e25-4188-471a-8ece-0f911a1c0596",
+          "name": "Updates exception for a delivery",
+          "request": {
+            "name": "Updates exception for a delivery",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "exception",
+                ":exceptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "exceptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"severity\": \"<string>\",\n  \"resolved\": false,\n  \"reason\": {\n    \"id\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"deliveryBillableToShipper\": \"<boolean>\",\n    \"deliveryPayableToLp\": \"<boolean>\",\n    \"shipperSlaWaived\": \"<boolean>\",\n    \"lpSlaWaived\": \"<boolean>\",\n    \"canOverrideReturnPUAddress\": \"<boolean>\"\n  },\n  \"notes\": \"<string,null>\",\n  \"damageInfo\": {\n    \"id\": \"<uuid>\",\n    \"orderItemId\": \"<uuid>\",\n    \"quantity\": \"<integer>\"\n  },\n  \"deliveryAttemptId\": \"<string,null>\",\n  \"isNoteVisibleToShipper\": \"<boolean>\",\n  \"happenedOn\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be104a84-aeb9-43b2-9cdb-eaa61f22d937",
+              "name": "Delivery Record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception",
+                    ":exceptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"severity\": \"<string>\",\n  \"resolved\": false,\n  \"reason\": {\n    \"id\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"deliveryBillableToShipper\": \"<boolean>\",\n    \"deliveryPayableToLp\": \"<boolean>\",\n    \"shipperSlaWaived\": \"<boolean>\",\n    \"lpSlaWaived\": \"<boolean>\",\n    \"canOverrideReturnPUAddress\": \"<boolean>\"\n  },\n  \"notes\": \"<string,null>\",\n  \"damageInfo\": {\n    \"id\": \"<uuid>\",\n    \"orderItemId\": \"<uuid>\",\n    \"quantity\": \"<integer>\"\n  },\n  \"deliveryAttemptId\": \"<string,null>\",\n  \"isNoteVisibleToShipper\": \"<boolean>\",\n  \"happenedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6e445154-06db-f2d6-72e6-cfda39a47670\",\n  \"reason\": {\n    \"id\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"deliveryBillableToShipper\": \"<boolean>\",\n    \"deliveryPayableToLp\": \"<boolean>\",\n    \"shipperSlaWaived\": \"<boolean>\",\n    \"lpSlaWaived\": \"<boolean>\",\n    \"canOverrideReturnPUAddress\": \"<boolean>\"\n  },\n  \"severity\": \"LOW\",\n  \"resolved\": false,\n  \"notes\": \"string\",\n  \"damageInfo\": {\n    \"id\": \"a98ee7b6-b355-688f-46b5-b7e989b8fc67\",\n    \"quantity\": \"string\",\n    \"orderItem\": {\n      \"value\": \"reference #/paths/~1v1~1order~1%7BorderId%7D/get/responses/200/content/application~1json/schema/properties/orderItems/items not found in the OpenAPI spec\"\n    }\n  },\n  \"deliveryAttemptId\": null,\n  \"isNoteVisibleToShipper\": true,\n  \"user\": {\n    \"id\": \"650b614d-5650-e4bd-6d4c-5d7a5a4a5d7c\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"happenedOn\": \"1969-05-17T02:11:36.851Z\",\n  \"createdAt\": \"1958-04-04T07:29:52.867Z\",\n  \"updatedAt\": \"1951-02-13T12:17:22.089Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "150a81a8-2388-4bc6-a4da-911b68f3f912",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception",
+                    ":exceptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"severity\": \"<string>\",\n  \"resolved\": false,\n  \"reason\": {\n    \"id\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"deliveryBillableToShipper\": \"<boolean>\",\n    \"deliveryPayableToLp\": \"<boolean>\",\n    \"shipperSlaWaived\": \"<boolean>\",\n    \"lpSlaWaived\": \"<boolean>\",\n    \"canOverrideReturnPUAddress\": \"<boolean>\"\n  },\n  \"notes\": \"<string,null>\",\n  \"damageInfo\": {\n    \"id\": \"<uuid>\",\n    \"orderItemId\": \"<uuid>\",\n    \"quantity\": \"<integer>\"\n  },\n  \"deliveryAttemptId\": \"<string,null>\",\n  \"isNoteVisibleToShipper\": \"<boolean>\",\n  \"happenedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "007cd70c-8f22-4dfd-81e1-5bb9d2393df0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception",
+                    ":exceptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"severity\": \"<string>\",\n  \"resolved\": false,\n  \"reason\": {\n    \"id\": \"<uuid>\",\n    \"title\": \"<string>\",\n    \"deliveryBillableToShipper\": \"<boolean>\",\n    \"deliveryPayableToLp\": \"<boolean>\",\n    \"shipperSlaWaived\": \"<boolean>\",\n    \"lpSlaWaived\": \"<boolean>\",\n    \"canOverrideReturnPUAddress\": \"<boolean>\"\n  },\n  \"notes\": \"<string,null>\",\n  \"damageInfo\": {\n    \"id\": \"<uuid>\",\n    \"orderItemId\": \"<uuid>\",\n    \"quantity\": \"<integer>\"\n  },\n  \"deliveryAttemptId\": \"<string,null>\",\n  \"isNoteVisibleToShipper\": \"<boolean>\",\n  \"happenedOn\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67783f20-0ade-449d-a54f-8224c15aad1a",
+          "name": "Remove a delivery exception",
+          "request": {
+            "name": "Remove a delivery exception",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery",
+                ":deliveryId",
+                "exception",
+                ":exceptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "exceptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d7d1a56-4452-443d-a9dd-0bb023fad57e",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception",
+                    ":exceptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c08104d-b9af-4aaa-b4d6-d15d12937ca2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery",
+                    ":deliveryId",
+                    "exception",
+                    ":exceptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18119b52-0bdc-44a6-85ee-dab457ad801b",
+          "name": "View delivery exception reason deifinitions",
+          "request": {
+            "name": "View delivery exception reason deifinitions",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "delivery-exception-reason-definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orgId",
+                  "value": "<string>",
+                  "description": "Organization Id"
+                },
+                {
+                  "description": {
+                    "content": "Optional to filter definitions",
+                    "type": "text/plain"
+                  },
+                  "key": "filter",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bdae57ac-5d1a-4839-a69f-4a24a4b5adc4",
+              "name": "Definition reasons",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-exception-reason-definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"56a79be8-f372-706b-21a2-de2ef85a1373\",\n    \"title\": \"string\",\n    \"deliveryBillableToShipper\": false,\n    \"deliveryPayableToLp\": false,\n    \"shipperSlaWaived\": true,\n    \"lpSlaWaived\": true,\n    \"isDeliveryLevel\": false,\n    \"isAttemptLevel\": false,\n    \"canOverrideReturnPUAddress\": true\n  },\n  {\n    \"id\": \"16dc1966-7970-bc67-3edb-efcc9ef7db6e\",\n    \"title\": \"string\",\n    \"deliveryBillableToShipper\": false,\n    \"deliveryPayableToLp\": true,\n    \"shipperSlaWaived\": false,\n    \"lpSlaWaived\": false,\n    \"isDeliveryLevel\": true,\n    \"isAttemptLevel\": true,\n    \"canOverrideReturnPUAddress\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "452b2cc0-0e5e-48e4-876d-340e9fca16da",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-exception-reason-definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3c5433f3-9211-4ea9-8031-6a4e94474ca5",
+    "name": "OneRail Operation Dashboard Delivery Exception API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

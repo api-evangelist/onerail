@@ -1,0 +1,804 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Delivery Cloud - Delivery API",
+    "version": "0.0.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-ONERAIL-API-KEY",
+      "value": "{{X-ONERAIL-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Home",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Root path showing app name and version number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/"
+          },
+          "docs": "Root path showing app name and version number"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "HealthCheck",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health check",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "{{baseUrl}}/"
+          },
+          "docs": "Health check"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Default",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates and returns an authentication token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/user/authenticate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and returns an authentication token"
+        },
+        {
+          "info": {
+            "name": "Creates a new delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/delivery/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new delivery"
+        },
+        {
+          "info": {
+            "name": "Fetches rates of delivery through OneRail network. If saveDraftDelivery is set to true then a delivery will be created. If set to false rates will be fetched without creating a delivery.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/delivery/get-rates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches rates of delivery through OneRail network. If saveDraftDelivery is set to true then a delivery will be created. If set to false rates will be fetched without creating a delivery."
+        },
+        {
+          "info": {
+            "name": "Check delivery availability using progressive input. Minimal requests can return top-level availability only; richer requests can include service-level details.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/delivery/check-availability",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Check delivery availability using progressive input. Minimal requests can return top-level availability only; richer requests can include service-level details.\n"
+        },
+        {
+          "info": {
+            "name": "Returns delivery details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/delivery/:id/details",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "delivery id"
+              },
+              {
+                "name": "numericSystem",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns delivery details"
+        },
+        {
+          "info": {
+            "name": "Get historical rates for a delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/delivery/get-historical-rates",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "query",
+                "description": "Onerail uuid deliveryId or internal user deliveryId"
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "query",
+                "description": "Onerail uuid deliveryId or internal user deliveryId"
+              }
+            ]
+          },
+          "docs": "Get historical rates for a delivery"
+        },
+        {
+          "info": {
+            "name": "Reschedule delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/delivery/:deliveryId/reschedule",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path",
+                "description": "target delivery"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Reschedule delivery"
+        },
+        {
+          "info": {
+            "name": "Cancel a delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/delivery/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "delivery id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Cancel a delivery"
+        },
+        {
+          "info": {
+            "name": "Update the shipmentId on a delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/delivery/:id/shipment-id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "delivery id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the shipmentId on a delivery"
+        },
+        {
+          "info": {
+            "name": "Validate delivery before creation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/delivery/pre-validation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Validate delivery before creation"
+        },
+        {
+          "info": {
+            "name": "Validate delivery before creation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/delivery/pre-validation-multiple",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Validate delivery before creation"
+        },
+        {
+          "info": {
+            "name": "Returns labels for all containers of the delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/shipping-label/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Either a OneRail Delivery ID or a shipper-supplied Order ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns labels for all containers of the delivery"
+        },
+        {
+          "info": {
+            "name": "Returns label for a specific container",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/shipping-label/:id/:containerId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Either a OneRail Delivery ID or a shipper-supplied Order ID"
+              },
+              {
+                "name": "containerId",
+                "value": "",
+                "type": "path",
+                "description": "Either a OneRail container ID or a shipper-supplied Order Container ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns label for a specific container"
+        },
+        {
+          "info": {
+            "name": "Returns labels for all containers of the delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/shipping-label/generate/:deliveryId",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path",
+                "description": "OneRail Delivery ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns labels for all containers of the delivery"
+        },
+        {
+          "info": {
+            "name": "Display image stored in Azure storage account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/assets/:image",
+            "params": [
+              {
+                "name": "image",
+                "value": "",
+                "type": "path",
+                "description": "image name"
+              },
+              {
+                "name": "authentication",
+                "value": "",
+                "type": "query",
+                "description": "provide auth"
+              }
+            ]
+          },
+          "docs": "Display image stored in Azure storage account"
+        },
+        {
+          "info": {
+            "name": "Display image stored in Azure storage account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/set-redis-key/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "redis key to set"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Display image stored in Azure storage account"
+        },
+        {
+          "info": {
+            "name": "Create scan data records for containers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/delivery/:deliveryId/scanData",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create scan data records for containers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Order",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an order with deliveries and returns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an order with deliveries and returns"
+        },
+        {
+          "info": {
+            "name": "Partial update an order with deliveries, replacing items and containers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/order/:orderId/partial-update",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "order Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partial update an order with deliveries, replacing items and containers"
+        },
+        {
+          "info": {
+            "name": "Partial update an order with deliveries, appending items and containers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/order/:orderId/partial-update",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "order Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partial update an order with deliveries, appending items and containers"
+        },
+        {
+          "info": {
+            "name": "Create an order with deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/order/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an order with deliveries"
+        },
+        {
+          "info": {
+            "name": "Add return delivery to order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/order/add-return",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add return delivery to order"
+        },
+        {
+          "info": {
+            "name": "Create an order with deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/order/add-delivery",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an order with deliveries"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Visibility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Use the visibility endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/visibility/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Use the visibility endpoint"
+        },
+        {
+          "info": {
+            "name": "Add visibility deliveries to order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/visibility/:orderId/add-deliveries",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add visibility deliveries to order"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Routes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create new orders within one or more routes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/routes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new orders within one or more routes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OAuth2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "An endpoint that processes a clientId and clientSecret, verifies the client's credentials, and issues an access token for authorized API access upon successful validation.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/oauth2/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "An endpoint that processes a clientId and clientSecret, verifies the client's credentials, and issues an access token for authorized API access upon successful validation.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve all documents associated with a specific delivery. This includes a variety of documents required for the shipment process, such as shipping labels, hazard labels, Bills of Lading (BOL), invoices, and additional delivery receipts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/delivery/:id/documents",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the delivery, used to locate and retrieve its associated documents or order id ."
+              },
+              {
+                "name": "withBase64",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether the documents should be returned as base64-encoded strings."
+              },
+              {
+                "name": "containerId",
+                "value": "",
+                "type": "query",
+                "description": "Optional shipper container ID to filter documents for a specific container within the delivery."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetches all documents linked to a given delivery or order ID. These documents may include mandatory shipment documentation, regulatory compliance forms, hazardous materials labels (if applicable), and other related paperwork essential for tracking and verification purposes. This endpoint supports authentication and requires a valid `deliveryId` or `orderId` parameter to identify the delivery in question."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Manifest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Close a carrier manifest",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/close-manifest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Close a carrier manifest. Required fields depend on `carrierCode`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

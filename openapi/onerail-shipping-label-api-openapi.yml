@@ -1,0 +1,209 @@
+openapi: 3.2.0
+info:
+  version: 0.0.3
+  title: OneRail Delivery Cloud - Delivery Shipping Label API
+  description: Allows authorized 3rd parties to request new deliveries through the OneRail network
+  license:
+    name: UNLICENSED
+security:
+- ApiKey: []
+  AppId: []
+tags:
+- name: Shipping Label
+paths:
+  /shipping-label/{id}:
+    x-exegesis-controller: DeliveryLabel
+    get:
+      summary: Returns labels for all containers of the delivery
+      operationId: labelInfo
+      security:
+      - ApiKeyAndAppId: []
+      - ApiKey: []
+      - OAuth: []
+      - AppId: []
+      parameters:
+      - name: id
+        in: path
+        description: Either a OneRail Delivery ID or a shipper-supplied Order ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Shipping label URL for each container as well as summary about each container and
+            the whole delivery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LabelInfo'
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Shipping Label
+  /shipping-label/{id}/{containerId}:
+    x-exegesis-controller: DeliveryLabel
+    get:
+      summary: Returns label for a specific container
+      operationId: containerLabelInfo
+      security:
+      - ApiKeyAndAppId: []
+      - ApiKey: []
+      - OAuth: []
+      - AppId: []
+      parameters:
+      - name: id
+        in: path
+        description: Either a OneRail Delivery ID or a shipper-supplied Order ID
+        required: true
+        schema:
+          type: string
+      - name: containerId
+        in: path
+        description: Either a OneRail container ID or a shipper-supplied Order Container ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Shipping label URL for the requested container as well and summary about this container
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContainerLabelInfo'
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Shipping Label
+  /shipping-label/generate/{deliveryId}:
+    x-exegesis-controller: DeliveryLabel
+    get:
+      summary: Returns labels for all containers of the delivery
+      operationId: getLabelCached
+      security:
+      - ApiKeyAndAppId: []
+      - ApiKey: []
+      - OAuth: []
+      - AppId: []
+      parameters:
+      - name: deliveryId
+        in: path
+        description: OneRail Delivery ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Shipping label URL for each container as well as summary about each container and
+            the whole delivery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LabelInfo'
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Shipping Label
+components:
+  schemas:
+    ContainerLabelInfo:
+      properties:
+        trackingId:
+          type: string
+        deliveryId:
+          type: string
+        type:
+          type: string
+        statusCode:
+          type: integer
+        statusDescription:
+          type: string
+        scac:
+          type: string
+        serviceCode:
+          type: string
+        label:
+          type: string
+        containerId:
+          type: string
+        containerTrackingId:
+          type: string
+        shipperContainerId:
+          type: string
+    LabelInfo:
+      properties:
+        trackingId:
+          type: string
+        deliveryId:
+          type: string
+        type:
+          type: string
+        statusCode:
+          type: integer
+        statusDescription:
+          type: string
+        scac:
+          type: string
+        serviceCode:
+          type: string
+        containers:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              containerId:
+                type: string
+              containerTrackingId:
+                type: string
+              shipperContainerId:
+                type: string
+    Error:
+      required:
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        errors:
+          type: object
+        errorDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                description: A human-readable explanation specific to this occurrence of the problem
+              pointer:
+                type: string
+                description: A JSON Pointer [RFC6901] to the associated entity in the request document
+            required:
+            - detail
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+    ApiKeyAndAppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY-AND-APP-ID

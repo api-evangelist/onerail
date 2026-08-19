@@ -1,0 +1,1261 @@
+{
+  "item": [
+    {
+      "id": "2ab67c5c-fe23-499d-9a30-565339a985a4",
+      "name": "Dispatch Platform",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "25de8554-807c-42ea-9458-38965ebe5415",
+          "name": "Get all Dispatch Platforms",
+          "request": {
+            "name": "Get all Dispatch Platforms",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dispatch-platforms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "385a3654-1efa-4fd6-972b-7a9456bcc325",
+              "name": "Delivery Records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"a0b93c46-ddc2-7099-40c0-e8f6795374be\",\n      \"name\": \"string\",\n      \"token\": \"string\",\n      \"createdAt\": \"1952-04-06T16:53:44.501Z\",\n      \"updatedAt\": \"1960-01-14T14:11:06.767Z\"\n    },\n    {\n      \"id\": \"18a4b648-59ed-6e22-1595-47fb2e13d37c\",\n      \"name\": \"string\",\n      \"token\": \"string\",\n      \"createdAt\": \"1972-07-20T10:45:15.684Z\",\n      \"updatedAt\": \"1977-04-16T22:31:08.062Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e541bc6-d77e-48b3-adc6-af22c161fa03",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1bdb510-befb-4ae8-9605-ac5f2c67cae2",
+          "name": "Create a Dispatch Platform",
+          "request": {
+            "name": "Create a Dispatch Platform",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dispatch-platform"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1af54b0e-1ec5-4ba2-9a80-0546405278b1",
+              "name": "Dispatch Platform",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"129301cf-983a-4907-52e4-49f3408424cc\",\n  \"name\": \"string\",\n  \"token\": \"string\",\n  \"createdAt\": \"2022-07-01T06:04:21.726Z\",\n  \"updatedAt\": \"1993-05-26T17:21:57.359Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff9bb758-ce24-4858-8b98-f14d4617d503",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edec4c35-1902-461d-942f-cceeb6f088d4",
+          "name": "Get Dispatch Platform",
+          "request": {
+            "name": "Get Dispatch Platform",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dispatch-platform",
+                ":dispatchPlatformId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dispatchPlatformId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae0797a2-6591-4f37-8970-8a8c30992d80",
+              "name": "Dispatch Platform",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform",
+                    ":dispatchPlatformId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dispatchPlatformId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"129301cf-983a-4907-52e4-49f3408424cc\",\n  \"name\": \"string\",\n  \"token\": \"string\",\n  \"createdAt\": \"2022-07-01T06:04:21.726Z\",\n  \"updatedAt\": \"1993-05-26T17:21:57.359Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5550ed01-ddf6-4118-8c89-dec88946b6ae",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform",
+                    ":dispatchPlatformId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dispatchPlatformId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7629efc-762b-4f68-8d16-47ba4dd36a64",
+          "name": "Update a Dispatch Platform",
+          "request": {
+            "name": "Update a Dispatch Platform",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dispatch-platform",
+                ":dispatchPlatformId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dispatchPlatformId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "730be5ac-36b1-433e-aa48-e7af73b09e81",
+              "name": "Dispatch Platform",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform",
+                    ":dispatchPlatformId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dispatchPlatformId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"129301cf-983a-4907-52e4-49f3408424cc\",\n  \"name\": \"string\",\n  \"token\": \"string\",\n  \"createdAt\": \"2022-07-01T06:04:21.726Z\",\n  \"updatedAt\": \"1993-05-26T17:21:57.359Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bbc58dc-3f6a-43fc-a052-b1789dc71dc7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform",
+                    ":dispatchPlatformId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dispatchPlatformId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf99496b-347e-4797-bdde-eb3fffc52a03",
+          "name": "Get all LPs that have the dispatch platforms",
+          "request": {
+            "name": "Get all LPs that have the dispatch platforms",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dispatch-platform",
+                ":dispatchPlatformId",
+                "lps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dispatchPlatformId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2628099a-4097-41d4-9c44-9e602e40920b",
+              "name": "LPs record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform",
+                    ":dispatchPlatformId",
+                    "lps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dispatchPlatformId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"a49eff89-ec96-7489-78cd-77d2d8c21b36\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"c3a1ea11-897f-bb02-ecb8-3c153221c64b\",\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8601335f-107b-420d-8605-176a7a76e092",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform",
+                    ":dispatchPlatformId",
+                    "lps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dispatchPlatformId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf433a7b-3565-4455-ad4d-11f7b60bca89",
+          "name": "Get all settings for a dispatch platform",
+          "request": {
+            "name": "Get all settings for a dispatch platform",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dispatch-platform",
+                ":dispatchPlatformId",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dispatchPlatformId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "741f11b1-7b52-4025-926d-6705a9db45d1",
+              "name": "Dispatch platform setting records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform",
+                    ":dispatchPlatformId",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dispatchPlatformId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"d4da2072-d3d7-784e-ff71-dc0db631c929\",\n      \"name\": \"string\",\n      \"data\": \"string\",\n      \"lp\": {\n        \"id\": \"99d689ca-2cc9-d1eb-c2eb-996b9bcc65e7\",\n        \"name\": \"string\"\n      },\n      \"shipper\": {\n        \"id\": \"d47c867a-fc07-cbdb-f289-9bb863504025\",\n        \"name\": \"string\"\n      },\n      \"shipperLocation\": {\n        \"id\": \"56e1d234-58e2-1640-5309-36de5317d6e4\",\n        \"name\": \"string\",\n        \"address\": {\n          \"city\": \"string\",\n          \"label\": \"string\",\n          \"state\": \"string\",\n          \"county\": \"string\",\n          \"street\": \"string\",\n          \"district\": \"string\",\n          \"stateCode\": \"string\",\n          \"postalCode\": \"string\",\n          \"countryCode\": \"string\",\n          \"countryName\": \"string\",\n          \"houseNumber\": \"string\",\n          \"additionalData\": \"string\"\n        }\n      }\n    },\n    {\n      \"id\": \"bb89f4a1-e14a-47fc-f23d-9aee1018e544\",\n      \"name\": \"string\",\n      \"data\": \"string\",\n      \"lp\": {\n        \"id\": \"082fdfee-2699-327e-55a7-ec31f4dd8d5d\",\n        \"name\": \"string\"\n      },\n      \"shipper\": {\n        \"id\": \"2b48e208-b943-a14e-7862-65997b2b4cf1\",\n        \"name\": \"string\"\n      },\n      \"shipperLocation\": {\n        \"id\": \"1d4dbdff-8c60-bdb4-6b88-d343c2419076\",\n        \"name\": \"string\",\n        \"address\": {\n          \"city\": \"string\",\n          \"label\": \"string\",\n          \"state\": \"string\",\n          \"county\": \"string\",\n          \"street\": \"string\",\n          \"district\": \"string\",\n          \"stateCode\": \"string\",\n          \"postalCode\": \"string\",\n          \"countryCode\": \"string\",\n          \"countryName\": \"string\",\n          \"houseNumber\": \"string\",\n          \"additionalData\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6b6711c-0995-4b29-8a11-ee82f307c1f5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform",
+                    ":dispatchPlatformId",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dispatchPlatformId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95f3a84d-0ab8-4e4b-866f-6acdd74ca025",
+          "name": "Create a Dispatch Platform Setting",
+          "request": {
+            "name": "Create a Dispatch Platform Setting",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "dispatch-platform",
+                ":dispatchPlatformId",
+                "setting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dispatchPlatformId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"lpOrganizationId\": \"<uuid>\",\n  \"data\": {\n    \"key_0\": {}\n  },\n  \"shipperLocationId\": \"<uuid>\",\n  \"organizationId\": \"<string,null-uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "715cb174-dc1d-4bf6-a50a-b7aeaa29eb01",
+              "name": "Dispatch platform setting",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform",
+                    ":dispatchPlatformId",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dispatchPlatformId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"lpOrganizationId\": \"<uuid>\",\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"shipperLocationId\": \"<uuid>\",\n  \"organizationId\": \"<string,null-uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"adc96c90-28b0-889d-c782-9a033e7cb22c\",\n  \"name\": \"string\",\n  \"data\": \"string\",\n  \"lp\": {\n    \"id\": \"1256cab7-1790-0d97-fc86-8f7bfac2ce8a\",\n    \"name\": \"string\"\n  },\n  \"shipper\": {\n    \"id\": \"00d4fada-4b6a-d339-bc75-2f3307ac784a\",\n    \"name\": \"string\"\n  },\n  \"shipperLocation\": {\n    \"id\": \"af1083f0-bb14-b469-cd3b-cb4e23a4003a\",\n    \"name\": \"string\",\n    \"address\": {\n      \"city\": \"string\",\n      \"label\": \"string\",\n      \"state\": \"string\",\n      \"county\": \"string\",\n      \"street\": \"string\",\n      \"district\": \"string\",\n      \"stateCode\": \"string\",\n      \"postalCode\": \"string\",\n      \"countryCode\": \"string\",\n      \"countryName\": \"string\",\n      \"houseNumber\": \"string\",\n      \"additionalData\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2222be15-7d15-4992-b232-b81a36395631",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "dispatch-platform",
+                    ":dispatchPlatformId",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dispatchPlatformId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"lpOrganizationId\": \"<uuid>\",\n  \"data\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"shipperLocationId\": \"<uuid>\",\n  \"organizationId\": \"<string,null-uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8af53443-9513-425f-8ff5-66e094c73d6e",
+    "name": "OneRail Operation Dashboard Dispatch Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,634 @@
+{
+  "item": [
+    {
+      "id": "98a70657-d269-42fa-b729-1802178294b3",
+      "name": "Role",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "404e59bc-83be-4c99-ae1e-bd73fdb6881f",
+          "name": "Creates a new Role",
+          "request": {
+            "name": "Creates a new Role",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "role"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"organizationId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a6d90548-d860-498b-b89a-f2700d8962e4",
+              "name": "Role record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"organizationId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"permissions\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"id\": \"9daf1e9d-7a4f-cc6f-b0e4-bb3f007b7582\",\n  \"organizationId\": \"c7b7ea23-1359-9583-0f36-ff65b2432e3f\",\n  \"updatedAt\": \"1975-04-06T03:29:06.428Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "218edcdd-9e6f-4092-b8d5-4a22fba66d5e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"organizationId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f9bd519-95c9-42c8-9dab-3e65b4260ead",
+          "name": "Get Role's record",
+          "request": {
+            "name": "Get Role's record",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "role",
+                ":roleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) role id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90adc878-3d6b-460b-941f-456a2d591ba3",
+              "name": "Role record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "role",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) role id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"permissions\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"id\": \"b5528930-765c-b771-0d61-d63870d16102\",\n  \"organizationId\": \"1c1c8d37-02a1-d4f3-4ed2-dee436b6d201\",\n  \"updatedAt\": \"1977-01-23T05:01:31.483Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d29fc31-9ea0-4b3f-a7ed-594bfe577fd6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "role",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) role id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "612cfe2c-6d8f-4058-bced-3e7ac90e9d4f",
+          "name": "Update Role's record",
+          "request": {
+            "name": "Update Role's record",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "role",
+                ":roleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) role id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"organizationId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e9f61db-0606-4b24-b63e-fad70228d404",
+              "name": "Role record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "role",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) role id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"organizationId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"permissions\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"id\": \"b5528930-765c-b771-0d61-d63870d16102\",\n  \"organizationId\": \"1c1c8d37-02a1-d4f3-4ed2-dee436b6d201\",\n  \"updatedAt\": \"1977-01-23T05:01:31.483Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bf7b868-2bde-4fe2-a985-802b1b860d89",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "role",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) role id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1user~1%7BuserId%7D~1permissions/get/responses/200/content/application~1json/schema/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"organizationId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6f4a48a-48ce-41ac-9d4b-4ecd9a9ff8bd",
+          "name": "Deletes Role",
+          "request": {
+            "name": "Deletes Role",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "role",
+                ":roleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) role id"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60c90553-3f22-469b-97c0-82df2fe6de99",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "role",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) role id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eac60390-f25c-4f8a-adac-60897201b123",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "role",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) role id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "79905491-f4ab-49f4-9c97-1787d6bc0629",
+    "name": "OneRail Operation Dashboard Role API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

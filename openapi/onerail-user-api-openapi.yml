@@ -1,0 +1,1102 @@
+openapi: 3.2.0
+info:
+  title: Onerail User API
+  version: '1.0'
+  description: 'Operations tagged User across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: /
+  description: Default relative server URL
+tags:
+- name: User
+paths:
+  /user/authenticate:
+    x-exegesis-controller: User
+    post:
+      summary: Creates and returns an authentication token
+      operationId: authenticate
+      security: []
+      requestBody:
+        description: User credetials
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCredentials'
+      responses:
+        '200':
+          description: User token created
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - token
+                properties:
+                  token:
+                    type: string
+        '401':
+          description: Unauthorized - invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - User
+  /v1/organization/{organizationId}/user/status:
+    servers:
+    - url: /
+      description: Default relative server URL
+    get:
+      x-exegesis-controller: Organization
+      summary: Gets driver status
+      operationId: getUserStatus
+      parameters:
+      - name: organizationId
+        in: path
+        description: Organization Id
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: userIds
+        in: query
+        description: Array of userId's
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+      - name: locationId
+        in: query
+        description: Location Id
+        required: false
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - User
+      responses:
+        '200':
+          description: User Status
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  description: User Status
+                  required:
+                  - id
+                  - status
+                  properties:
+                    id:
+                      type: string
+                    status:
+                      type: number
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user:
+    servers:
+    - url: /
+      description: Default relative server URL
+    post:
+      x-exegesis-controller: User
+      summary: Creates a new User
+      operationId: createUser
+      tags:
+      - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: User
+              required:
+              - emailAddress
+              - firstName
+              - lastName
+              - organizationId
+              properties:
+                emailAddress:
+                  type: string
+                  format: email
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                phoneNumber:
+                  type:
+                  - string
+                  - 'null'
+                active:
+                  type: boolean
+                driver:
+                  $ref: '#/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1/properties/driver'
+                title:
+                  type:
+                  - string
+                  - 'null'
+                organizationId:
+                  type: string
+                  format: uuid
+                employeeId:
+                  type:
+                  - string
+                  - 'null'
+                teamIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                mvrCertified:
+                  type: boolean
+                  default: false
+                organizations:
+                  type: array
+                  items:
+                    type: string
+                preferences:
+                  $ref: '#/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema'
+      responses:
+        '200':
+          description: User record
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user/{userId}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    servers:
+    - url: /
+      description: Default relative server URL
+    get:
+      x-exegesis-controller: User
+      summary: Get user's record
+      operationId: getUser
+      tags:
+      - User
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1user/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+    put:
+      x-exegesis-controller: User
+      summary: Update user's record
+      operationId: updateUser
+      tags:
+      - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1user/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1user/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+    delete:
+      x-exegesis-controller: User
+      summary: Deletes User
+      operationId: removeUser
+      tags:
+      - User
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user/{userId}/welcome-email:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    servers:
+    - url: /
+      description: Default relative server URL
+    get:
+      x-exegesis-controller: User
+      summary: Resend welcome email
+      operationId: welcomeEmail
+      tags:
+      - User
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1bulk-dispatch/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user/{userId}/roles:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    servers:
+    - url: /
+      description: Default relative server URL
+    post:
+      x-exegesis-controller: User
+      summary: Update user roles
+      operationId: updateRoles
+      tags:
+      - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: array of all roles this user should have access
+              type: array
+              items:
+                type: object
+                required:
+                - roleId
+                - context
+                properties:
+                  roleId:
+                    type: string
+                    format: uuid
+                  context:
+                    type: string
+                    enum:
+                    - GLOBAL
+                    - ORGANIZATION
+                    - LOCATION
+                  contextId:
+                    type:
+                    - string
+                    - 'null'
+                    description: if this role needs to be applied to a particular organization or location
+                    format: uuid
+                  excludesPermissions:
+                    description: array of all permission id this user should NOT have access
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      type: string
+                      format: uuid
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1bulk-dispatch/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+    get:
+      x-exegesis-controller: User
+      summary: Get all user's roles and permissions
+      operationId: getUserRoles
+      tags:
+      - User
+      responses:
+        '200':
+          description: User roles
+          content:
+            application/json:
+              schema:
+                description: array of all roles this user should have access
+                type: array
+                items:
+                  type: object
+                  description: User roles
+                  properties:
+                    role:
+                      $ref: '#/paths/~1v1~1role/post/responses/200/content/application~1json/schema'
+                    context:
+                      $ref: '#/paths/~1v1~1user~1%7BuserId%7D~1roles/post/requestBody/content/application~1json/schema/items/properties/context'
+                    excludesPermissions:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: string
+                        format: uuid
+                    contextId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user/{userId}/roles/api:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    servers:
+    - url: /
+      description: Default relative server URL
+    get:
+      x-exegesis-controller: User
+      summary: Get all user's roles and permissions (API)
+      security:
+      - ApiKey: []
+        AppId: []
+      operationId: getUserRolesApi
+      tags:
+      - User
+      responses:
+        '200':
+          description: User roles
+          content:
+            application/json:
+              schema:
+                description: array of all roles this user should have access
+                type: array
+                items:
+                  $ref: '#/paths/~1v1~1user~1%7BuserId%7D~1roles/get/responses/200/content/application~1json/schema/items'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/user/{userId}/permissions:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    servers:
+    - url: /
+      description: Default relative server URL
+    get:
+      x-exegesis-controller: User
+      summary: Get All user's permissions across all roles. Only displays permissions to loggin user.
+      operationId: getPermissions
+      tags:
+      - User
+      responses:
+        '200':
+          description: Permission Records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  description: Permission
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                    label:
+                      type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user/fleet/{fleetId}/last-known-driver-location:
+    parameters:
+    - name: fleetId
+      in: path
+      required: true
+      description: Fleet Id
+      schema:
+        type: string
+    servers:
+    - url: /
+      description: Default relative server URL
+    post:
+      x-exegesis-controller: User
+      summary: Updates a user's last known geo location by fleet id
+      security:
+      - ApiKey: []
+        AppId: []
+      operationId: updateFleetLastKnownLocation
+      tags:
+      - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Geo Point
+              type: object
+              required:
+              - latitude
+              - longitude
+              properties:
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1bulk-dispatch/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/user/{userId}/user-view:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    servers:
+    - url: /
+      description: Default relative server URL
+    post:
+      x-exegesis-controller: User
+      summary: Create user view filter
+      operationId: createUserView
+      tags:
+      - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: UserView
+              required:
+              - page
+              - filter
+              - name
+              properties:
+                page:
+                  type: string
+                  enum:
+                  - dashboard
+                  - deliveries
+                  - orders
+                  - needs_attention
+                  - locations
+                  - users
+                  - location-users
+                  - dashboard-users
+                  - invoices
+                  - disputes
+                filter:
+                  type:
+                  - object
+                  - 'null'
+                name:
+                  type: string
+                default:
+                  type: boolean
+                  default: false
+                order:
+                  type: integer
+                  description: View display order (lower values appear first)
+                columns:
+                  type:
+                  - array
+                  - 'null'
+                  description: Ordered list of visible column keys
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: User record
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1user~1%7BuserId%7D~1user-view~1%7BuserViewId%7D/get/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user/{userId}/user-view/{userViewId}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    - name: userViewId
+      in: path
+      required: true
+      description: User View id
+      schema:
+        type: string
+    servers:
+    - url: /
+      description: Default relative server URL
+    get:
+      x-exegesis-controller: User
+      summary: Get user view filter
+      operationId: getUserView
+      tags:
+      - User
+      responses:
+        '200':
+          description: User view details
+          content:
+            application/json:
+              schema:
+                type: object
+                description: UserView
+                required:
+                - page
+                - filter
+                - name
+                properties:
+                  id:
+                    type: string
+                  userId:
+                    type: string
+                    format: uuid
+                  page:
+                    type: string
+                    enum:
+                    - dashboard
+                    - deliveries
+                    - orders
+                    - needs_attention
+                    - locations
+                    - users
+                    - location-users
+                    - dashboard-users
+                    - invoices
+                    - disputes
+                  filter:
+                    type:
+                    - string
+                    - 'null'
+                  name:
+                    type: string
+                  default:
+                    type: boolean
+                    default: false
+                  order:
+                    type: integer
+                    description: View display order (lower values appear first)
+                    default: 0
+                  columns:
+                    type:
+                    - array
+                    - 'null'
+                    description: Ordered list of visible column keys
+                    items:
+                      type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+    put:
+      x-exegesis-controller: User
+      summary: Update User View filter
+      operationId: updateUserView
+      tags:
+      - User
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        description: User id
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1user~1%7BuserId%7D~1user-view/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1user~1%7BuserId%7D~1user-view/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+    delete:
+      x-exegesis-controller: User
+      summary: Delete User View filter
+      operationId: deleteUserView
+      tags:
+      - User
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user/{userId}/user-views:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    - name: offset
+      in: query
+      description: Number of items to skip before returning the results.
+      required: true
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    - name: limit
+      in: query
+      description: Maximum number of items to return.
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        default: 20
+    - name: sortby
+      in: query
+      description: Field to sort by
+      required: false
+      schema:
+        type: string
+    - name: order
+      in: query
+      description: Sort order
+      required: false
+      schema:
+        type: string
+        default: DESC
+        enum:
+        - ASC
+        - DESC
+    - name: page
+      in: query
+      description: Filter returned views by page
+      required: false
+      schema:
+        type: string
+        enum:
+        - dashboard
+        - deliveries
+        - orders
+        - needs_attention
+        - locations
+        - users
+        - location-users
+        - dashboard-users
+        - invoices
+        - disputes
+    servers:
+    - url: /
+      description: Default relative server URL
+    get:
+      x-exegesis-controller: User
+      summary: Get all user views filter
+      operationId: getAllUserView
+      tags:
+      - User
+      responses:
+        '200':
+          description: List of user views
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1user~1%7BuserId%7D~1user-view~1%7BuserViewId%7D/get/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user/{userId}/user-views/cardinality:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    servers:
+    - url: /
+      description: Default relative server URL
+    put:
+      x-exegesis-controller: User
+      summary: Bulk update user view order
+      description: Updates the order field for multiple user views at once. Does not affect other fields like default/favorite status.
+      operationId: bulkUpdateUserViewCardinality
+      tags:
+      - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - views
+              properties:
+                views:
+                  type: array
+                  description: Array of view IDs with their new order values
+                  items:
+                    type: object
+                    required:
+                    - id
+                    - order
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: The user view ID
+                      order:
+                        type: integer
+                        description: The new order value (1-based)
+      responses:
+        '200':
+          description: Successfully updated view orders
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  updated:
+                    type: integer
+                    description: Number of views updated
+        '400':
+          description: Bad request - no views provided, invalid format, or duplicate view IDs
+        '404':
+          description: One or more views not found or do not belong to user
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user/policy-check:
+    servers:
+    - url: /
+      description: Default relative server URL
+    get:
+      x-exegesis-controller: User
+      summary: check if latest privacy policy accepted by User
+      operationId: checkPolicy
+      tags:
+      - User
+      responses:
+        '200':
+          description: Latest privacy policy acceptance result for User.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  policyCheckPassed:
+                    type: boolean
+                  policy:
+                    type:
+                    - object
+                    - 'null'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/user/policy-accept:
+    servers:
+    - url: /
+      description: Default relative server URL
+    post:
+      x-exegesis-controller: User
+      summary: Update policy accept
+      operationId: updatePolicyAccept
+      tags:
+      - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: User
+              required:
+              - policyVersion
+              properties:
+                policyVersion:
+                  type: integer
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/organization/{organizationId}/user/{userId}/roles:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    - name: organizationId
+      in: path
+      required: true
+      description: organization id
+      schema:
+        type: string
+    servers:
+    - url: /
+      description: Default relative server URL
+    post:
+      x-exegesis-controller: User
+      summary: Update user roles
+      operationId: updateUserOrganizationRoles
+      tags:
+      - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1location~1%7BlocationId%7D~1user~1%7BuserId%7D~1roles/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1bulk-dispatch/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+    get:
+      x-exegesis-controller: User
+      summary: Get all user's roles and permissions for the specified organization
+      operationId: getUserOrganizationRoles
+      tags:
+      - User
+      responses:
+        '200':
+          description: User roles
+          content:
+            application/json:
+              schema:
+                description: array of all roles this user should have access
+                type: array
+                items:
+                  $ref: '#/paths/~1v1~1user~1%7BuserId%7D~1roles/get/responses/200/content/application~1json/schema/items'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+  /v1/location/{locationId}/user/{userId}/roles:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+    - name: locationId
+      in: path
+      required: true
+      description: location id
+      schema:
+        type: string
+    servers:
+    - url: /
+      description: Default relative server URL
+    post:
+      x-exegesis-controller: User
+      summary: Update user roles
+      operationId: updateUserLocationRoles
+      tags:
+      - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: array of all roles this user should have access
+              type: array
+              items:
+                type: object
+                required:
+                - roleId
+                - context
+                properties:
+                  roleId:
+                    type: string
+                    format: uuid
+                  context:
+                    $ref: '#/paths/~1v1~1user~1%7BuserId%7D~1roles/post/requestBody/content/application~1json/schema/items/properties/context'
+                  contextId:
+                    type:
+                    - string
+                    - 'null'
+                    description: if this role needs to be applied to a particular organization or location
+                    format: uuid
+                  excludesPermissions:
+                    description: array of all permission id this user should NOT have access
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      type: string
+                      format: uuid
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1bulk-dispatch/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+    get:
+      x-exegesis-controller: User
+      summary: Get all user's roles and permissions for the specified location
+      operationId: getUserLocationRoles
+      tags:
+      - User
+      responses:
+        '200':
+          description: User roles
+          content:
+            application/json:
+              schema:
+                description: array of all roles this user should have access
+                type: array
+                items:
+                  $ref: '#/paths/~1v1~1user~1%7BuserId%7D~1roles/get/responses/200/content/application~1json/schema/items'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      security:
+      - bearer: []
+components:
+  schemas:
+    UserCredentials:
+      required:
+      - username
+      - password
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        password_is_token:
+          type: boolean
+    Error:
+      required:
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        errors:
+          type: object
+        errorDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                description: A human-readable explanation specific to this occurrence of the problem
+              pointer:
+                type: string
+                description: A JSON Pointer [RFC6901] to the associated entity in the request document
+            required:
+            - detail
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+    ApiKeyAndAppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY-AND-APP-ID
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}
+x-refined-from:
+- onerail-delivery-api-openapi.yml
+- onerail-operations-api-openapi.yml

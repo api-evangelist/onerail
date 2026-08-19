@@ -1,0 +1,405 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Delivery Exception API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Delivery Exception
+paths:
+  /v1/delivery/{deliveryId}/exception:
+    parameters:
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: DeliveryException
+      summary: Creates a delivery exception
+      operationId: createDeliveryException
+      tags:
+      - Delivery Exception
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Delivery exception
+              required:
+              - severity
+              - resolved
+              - reason
+              properties:
+                reason:
+                  type: object
+                  description: Delivery exception reason
+                  required:
+                  - title
+                  properties:
+                    title:
+                      type: string
+                    deliveryBillableToShipper:
+                      type: boolean
+                    deliveryPayableToLp:
+                      type: boolean
+                    shipperSlaWaived:
+                      type: boolean
+                    lpSlaWaived:
+                      type: boolean
+                    canOverrideReturnPUAddress:
+                      type: boolean
+                severity:
+                  type: string
+                  enum:
+                  - LOW
+                  - MEDIUM
+                  - HIGH
+                resolved:
+                  type: boolean
+                  default: false
+                notes:
+                  type:
+                  - string
+                  - 'null'
+                damageInfo:
+                  type:
+                  - object
+                  - 'null'
+                  properties:
+                    quantity:
+                      type: integer
+                    orderItemId:
+                      type: string
+                      format: uuid
+                deliveryAttemptId:
+                  type:
+                  - string
+                  - 'null'
+                isNoteVisibleToShipper:
+                  type: boolean
+                  default: true
+                happenedOn:
+                  type: string
+                  format: date-time
+      responses:
+        '200':
+          description: Delivery Record
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  reason:
+                    $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1exception~1%7BexceptionId%7D/put/requestBody/content/application~1json/schema/properties/reason'
+                  severity:
+                    type: string
+                    enum:
+                    - LOW
+                    - MEDIUM
+                    - HIGH
+                  resolved:
+                    type: boolean
+                    default: false
+                  notes:
+                    type:
+                    - string
+                    - 'null'
+                  damageInfo:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      quantity:
+                        type: string
+                      orderItem:
+                        $ref: '#/paths/~1v1~1order~1%7BorderId%7D/get/responses/200/content/application~1json/schema/properties/orderItems/items'
+                  deliveryAttemptId:
+                    type:
+                    - string
+                    - 'null'
+                  isNoteVisibleToShipper:
+                    type: boolean
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+                  happenedOn:
+                    type: string
+                    format: date-time
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery/{deliveryId}/exception-api:
+    parameters:
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: DeliveryException
+      summary: Creates a delivery exception with Api Key
+      operationId: createWithApiKey
+      security:
+      - ApiKey: []
+        AppId: []
+      tags:
+      - Delivery Exception
+      requestBody:
+        $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1exception/post/requestBody'
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1exception/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery/{deliveryId}/exception/{exceptionId}:
+    parameters:
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: exceptionId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: DeliveryException
+      summary: Get a delivery exception
+      operationId: getDeliveryException
+      tags:
+      - Delivery Exception
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1exception/post/responses/200'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: DeliveryException
+      summary: Updates exception for a delivery
+      operationId: updateDeliveryException
+      tags:
+      - Delivery Exception
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - severity
+              - resolved
+              - reason
+              properties:
+                reason:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    title:
+                      type: string
+                    deliveryBillableToShipper:
+                      type: boolean
+                    deliveryPayableToLp:
+                      type: boolean
+                    shipperSlaWaived:
+                      type: boolean
+                    lpSlaWaived:
+                      type: boolean
+                    canOverrideReturnPUAddress:
+                      type: boolean
+                severity:
+                  type: string
+                  enum:
+                  - LOW
+                  - MEDIUM
+                  - HIGH
+                resolved:
+                  type: boolean
+                  default: false
+                notes:
+                  type:
+                  - string
+                  - 'null'
+                damageInfo:
+                  type:
+                  - object
+                  - 'null'
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    orderItemId:
+                      type: string
+                      format: uuid
+                    quantity:
+                      type: integer
+                deliveryAttemptId:
+                  type:
+                  - string
+                  - 'null'
+                isNoteVisibleToShipper:
+                  type: boolean
+                happenedOn:
+                  type: string
+                  format: date-time
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1exception/post/responses/200'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: DeliveryException
+      summary: Remove a delivery exception
+      operationId: removeDeliveryException
+      tags:
+      - Delivery Exception
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery-exception-reason-definitions:
+    get:
+      x-exegesis-controller: DeliveryException
+      summary: View delivery exception reason deifinitions
+      operationId: getDefinitions
+      tags:
+      - Delivery Exception
+      parameters:
+      - name: orgId
+        in: query
+        description: Organization Id
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: Optional to filter definitions
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titles:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Definition reasons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    title:
+                      type: string
+                    deliveryBillableToShipper:
+                      type: boolean
+                    deliveryPayableToLp:
+                      type: boolean
+                    shipperSlaWaived:
+                      type: boolean
+                    lpSlaWaived:
+                      type: boolean
+                    isDeliveryLevel:
+                      type: boolean
+                    isAttemptLevel:
+                      type: boolean
+                    canOverrideReturnPUAddress:
+                      type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

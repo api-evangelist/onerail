@@ -1,0 +1,463 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Dispatch Platform API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Dispatch Platform
+paths:
+  /v1/dispatch-platforms:
+    get:
+      x-exegesis-controller: DispatchPlatform
+      summary: Get all Dispatch Platforms
+      operationId: getAllDispatchPlatforms
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      tags:
+      - Dispatch Platform
+      responses:
+        '200':
+          description: Delivery Records
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1dispatch-platform/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/dispatch-platform:
+    post:
+      x-exegesis-controller: DispatchPlatform
+      summary: Create a Dispatch Platform
+      operationId: createDispatchPlatform
+      tags:
+      - Dispatch Platform
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Dispatch Platform
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  maxLength: 255
+      responses:
+        '200':
+          description: Dispatch Platform
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Dispatch Platform
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  token:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/dispatch-platform/{dispatchPlatformId}:
+    parameters:
+    - name: dispatchPlatformId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: DispatchPlatform
+      summary: Get Dispatch Platform
+      operationId: getDispatchPlatform
+      tags:
+      - Dispatch Platform
+      responses:
+        '200':
+          description: Dispatch Platform
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1dispatch-platform/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: DispatchPlatform
+      summary: Update a Dispatch Platform
+      operationId: updateDispatchPlatform
+      tags:
+      - Dispatch Platform
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1dispatch-platform/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: Dispatch Platform
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1dispatch-platform/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/dispatch-platform/{dispatchPlatformId}/lps:
+    parameters:
+    - name: dispatchPlatformId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: DispatchPlatform
+      summary: Get all LPs that have the dispatch platforms
+      operationId: getLPsForDispatchPlatform
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      tags:
+      - Dispatch Platform
+      responses:
+        '200':
+          description: LPs record
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        description: LPs
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          name:
+                            type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/dispatch-platform/{dispatchPlatformId}/settings:
+    parameters:
+    - name: dispatchPlatformId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: DispatchPlatform
+      summary: Get all settings for a dispatch platform
+      operationId: getSettings
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      tags:
+      - Dispatch Platform
+      responses:
+        '200':
+          description: Dispatch platform setting records
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1dispatch-platform~1%7BdispatchPlatformId%7D~1setting/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/dispatch-platform/{dispatchPlatformId}/setting:
+    parameters:
+    - name: dispatchPlatformId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: DispatchPlatformSetting
+      summary: Create a Dispatch Platform Setting
+      operationId: createSetting
+      tags:
+      - Dispatch Platform
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Dispatch platform setting
+              required:
+              - name
+              - lpOrganizationId
+              - data
+              properties:
+                name:
+                  type: string
+                  maxLength: 255
+                  description: Setting name, usually identifying the Lp - Shipper relationship of the setting
+                data:
+                  type: object
+                  additionalProperties: {}
+                  description: JSON data
+                lpOrganizationId:
+                  type: string
+                  format: uuid
+                  description: The LP org with the specific setting
+                shipperLocationId:
+                  type: string
+                  format: uuid
+                  description: The shipper locationID for this specific setting
+                organizationId:
+                  type:
+                  - string
+                  - 'null'
+                  format: uuid
+                  description: Optional Shipper org indicating this specific setting is for this org's account with the LP
+      responses:
+        '200':
+          description: Dispatch platform setting
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Dispatch Platform
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  data:
+                    type: string
+                  lp:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                  shipper:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                  shipperLocation:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                      address:
+                        type: object
+                        properties:
+                          city:
+                            type: string
+                          label:
+                            type: string
+                          state:
+                            type: string
+                          county:
+                            type: string
+                          street:
+                            type: string
+                          district:
+                            type: string
+                          stateCode:
+                            type: string
+                          postalCode:
+                            type: string
+                          countryCode:
+                            type: string
+                          countryName:
+                            type: string
+                          houseNumber:
+                            type: string
+                          additionalData:
+                            type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

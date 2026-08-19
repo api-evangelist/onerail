@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Ratecards Market API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ratecards Market",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new market",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/ratecards/markets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "query",
+                "description": "Optional organization ID to scope the market to"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new market in the Rate Cards service"
+        },
+        {
+          "info": {
+            "name": "Delete a market",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/ratecards/markets/:marketPublicId",
+            "params": [
+              {
+                "name": "marketPublicId",
+                "value": "",
+                "type": "path",
+                "description": "The public ID of the market"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Soft delete a market in the Rate Cards service"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

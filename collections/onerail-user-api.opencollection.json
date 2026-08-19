@@ -1,0 +1,666 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onerail User API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates and returns an authentication token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/user/authenticate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and returns an authentication token"
+        },
+        {
+          "info": {
+            "name": "Gets driver status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/user/status",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization Id"
+              },
+              {
+                "name": "userIds",
+                "value": "",
+                "type": "query",
+                "description": "Array of userId's"
+              },
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "query",
+                "description": "Location Id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets driver status"
+        },
+        {
+          "info": {
+            "name": "Creates a new User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new User"
+        },
+        {
+          "info": {
+            "name": "Get user's record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/user/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get user's record"
+        },
+        {
+          "info": {
+            "name": "Update user's record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/user/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update user's record"
+        },
+        {
+          "info": {
+            "name": "Deletes User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/user/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes User"
+        },
+        {
+          "info": {
+            "name": "Resend welcome email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/user/:userId/welcome-email",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Resend welcome email"
+        },
+        {
+          "info": {
+            "name": "Get all user's roles and permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/user/:userId/roles",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all user's roles and permissions"
+        },
+        {
+          "info": {
+            "name": "Update user roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/user/:userId/roles",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update user roles"
+        },
+        {
+          "info": {
+            "name": "Get all user's roles and permissions (API)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/user/:userId/roles/api",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all user's roles and permissions (API)"
+        },
+        {
+          "info": {
+            "name": "Get All user's permissions across all roles. Only displays permissions to loggin user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/user/:userId/permissions",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get All user's permissions across all roles. Only displays permissions to loggin user."
+        },
+        {
+          "info": {
+            "name": "Updates a user's last known geo location by fleet id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/user/fleet/:fleetId/last-known-driver-location",
+            "params": [
+              {
+                "name": "fleetId",
+                "value": "",
+                "type": "path",
+                "description": "Fleet Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates a user's last known geo location by fleet id"
+        },
+        {
+          "info": {
+            "name": "Create user view filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/user/:userId/user-view",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create user view filter"
+        },
+        {
+          "info": {
+            "name": "Get user view filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/user/:userId/user-view/:userViewId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              },
+              {
+                "name": "userViewId",
+                "value": "",
+                "type": "path",
+                "description": "User View id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get user view filter"
+        },
+        {
+          "info": {
+            "name": "Update User View filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/user/:userId/user-view/:userViewId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              },
+              {
+                "name": "userViewId",
+                "value": "",
+                "type": "path",
+                "description": "User View id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update User View filter"
+        },
+        {
+          "info": {
+            "name": "Delete User View filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/user/:userId/user-view/:userViewId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              },
+              {
+                "name": "userViewId",
+                "value": "",
+                "type": "path",
+                "description": "User View id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete User View filter"
+        },
+        {
+          "info": {
+            "name": "Get all user views filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/user/:userId/user-views",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned views by page"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all user views filter"
+        },
+        {
+          "info": {
+            "name": "Bulk update user view order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/user/:userId/user-views/cardinality",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates the order field for multiple user views at once. Does not affect other fields like default/favorite status."
+        },
+        {
+          "info": {
+            "name": "check if latest privacy policy accepted by User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/user/policy-check",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "check if latest privacy policy accepted by User"
+        },
+        {
+          "info": {
+            "name": "Update policy accept",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/user/policy-accept",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update policy accept"
+        },
+        {
+          "info": {
+            "name": "Get all user's roles and permissions for the specified organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/user/:userId/roles",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              },
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organization id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all user's roles and permissions for the specified organization"
+        },
+        {
+          "info": {
+            "name": "Update user roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/user/:userId/roles",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              },
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organization id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update user roles"
+        },
+        {
+          "info": {
+            "name": "Get all user's roles and permissions for the specified location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/location/:locationId/user/:userId/roles",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              },
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path",
+                "description": "location id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all user's roles and permissions for the specified location"
+        },
+        {
+          "info": {
+            "name": "Update user roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/location/:locationId/user/:userId/roles",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User id"
+              },
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path",
+                "description": "location id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update user roles"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

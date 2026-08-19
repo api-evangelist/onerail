@@ -1,0 +1,433 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Delivery Note API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: DeliveryNote
+paths:
+  /v1/delivery/{deliveryId}/delivery-note:
+    parameters:
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: DeliveryNote
+      summary: Creates a delivery note
+      operationId: createDeliveryNote
+      tags:
+      - DeliveryNote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: DeliveryNote
+              additionalProperties: false
+              properties:
+                content:
+                  type: string
+                  maxLength: 1000
+                  minLength: 1
+                visibility:
+                  type: string
+                  description: Sets note's visibility. Only OR Users can set this value. NORMAL is defaulted if user doesn't have enough permissions
+                  enum:
+                  - NORMAL
+                  - OR_ONLY
+                replyToDeliveryNoteId:
+                  type: string
+                  format: uuid
+                  description: Delivery note id this note replies to.
+                deliveryExceptionId:
+                  type: string
+                  format: uuid
+                  description: Delivery exception id.
+              required:
+              - content
+      responses:
+        '200':
+          description: Shipper Contract
+          content:
+            application/json:
+              schema:
+                type: object
+                description: DeliveryNote
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  deliveryId:
+                    type: string
+                    format: uuid
+                  userId:
+                    type: string
+                    format: uuid
+                  content:
+                    type: string
+                  visibility:
+                    type: string
+                    enum:
+                    - NORMAL
+                    - OR_ONLY
+                  replyToDeliveryNoteId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  user:
+                    type: object
+                    description: User
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+                      emailAddress:
+                        type: string
+                      organizationId:
+                        type: string
+                        format: uuid
+                      organization:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          name:
+                            type: string
+                          logoImageURL:
+                            type:
+                            - string
+                            - 'null'
+                  deliveryExceptionId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  replyToDeliveryNote:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      deliveryId:
+                        type: string
+                        format: uuid
+                      userId:
+                        type: string
+                        format: uuid
+                      replyToDeliveryNoteId:
+                        type:
+                        - string
+                        - 'null'
+                        format: uuid
+                      content:
+                        type: string
+                      visibility:
+                        type: string
+                        enum:
+                        - NORMAL
+                        - OR_ONLY
+                      deliveryExceptionId:
+                        type:
+                        - string
+                        - 'null'
+                        format: uuid
+                      deletedById:
+                        type:
+                        - string
+                        - 'null'
+                        format: uuid
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      deletedAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                  deletedById:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  deliveryException:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      deliveryId:
+                        type: string
+                        format: uuid
+                      deliveryAttemptId:
+                        type:
+                        - string
+                        - 'null'
+                        format: uuid
+                      severity:
+                        type: string
+                      resolved:
+                        type: boolean
+                      notes:
+                        type: string
+                      happenedOn:
+                        type: string
+                        format: date-time
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                  deletedByUser:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+                      emailAddress:
+                        type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  deletedAt:
+                    type:
+                    - string
+                    - 'null'
+                    format: date-time
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery/{deliveryId}/delivery-note/{deliveryNoteId}:
+    parameters:
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: deliveryNoteId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    patch:
+      x-exegesis-controller: DeliveryNote
+      summary: Updates editable delivery note fields
+      operationId: updateDeliveryNote
+      tags:
+      - DeliveryNote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Delivery note editable fields
+              additionalProperties: false
+              properties:
+                content:
+                  type: string
+                  maxLength: 1000
+                  minLength: 1
+                  description: Note text.
+                visibility:
+                  type: string
+                  description: Sets note visibility. Only OneRail users can set OR_ONLY.
+                  enum:
+                  - NORMAL
+                  - OR_ONLY
+              anyOf:
+              - required:
+                - content
+              - required:
+                - visibility
+      responses:
+        '200':
+          description: Delivery Note Record
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1delivery-note/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: DeliveryNote
+      summary: Deletes a delivery note and its note-owned attachments
+      operationId: removeDeliveryNote
+      tags:
+      - DeliveryNote
+      responses:
+        '200':
+          description: Delivery note deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - deliveryNoteId
+                - deleted
+                properties:
+                  deliveryNoteId:
+                    type: string
+                    format: uuid
+                  deleted:
+                    type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery/{deliveryId}/delivery-notes:
+    parameters:
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: DeliveryNote
+      summary: Get paginated delivery notes
+      operationId: getAllDeliveryNotes
+      tags:
+      - DeliveryNote
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      - name: filter
+        in: query
+        description: 'JSON string { visibility: [''NORMAL'', ''OR_ONLY''] }'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Delivery Notes Records
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1delivery-note/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

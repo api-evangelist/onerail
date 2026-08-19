@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onerail Home API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Home",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Root path showing app name and version number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/"
+          },
+          "docs": "Root path showing app name and version number"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

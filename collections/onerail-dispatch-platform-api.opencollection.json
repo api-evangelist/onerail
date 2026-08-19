@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Dispatch Platform API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dispatch Platform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all Dispatch Platforms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/dispatch-platforms",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get all Dispatch Platforms"
+        },
+        {
+          "info": {
+            "name": "Create a Dispatch Platform",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/dispatch-platform",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Dispatch Platform"
+        },
+        {
+          "info": {
+            "name": "Get Dispatch Platform",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/dispatch-platform/:dispatchPlatformId",
+            "params": [
+              {
+                "name": "dispatchPlatformId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Dispatch Platform"
+        },
+        {
+          "info": {
+            "name": "Update a Dispatch Platform",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/dispatch-platform/:dispatchPlatformId",
+            "params": [
+              {
+                "name": "dispatchPlatformId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Dispatch Platform"
+        },
+        {
+          "info": {
+            "name": "Get all LPs that have the dispatch platforms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/dispatch-platform/:dispatchPlatformId/lps",
+            "params": [
+              {
+                "name": "dispatchPlatformId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get all LPs that have the dispatch platforms"
+        },
+        {
+          "info": {
+            "name": "Get all settings for a dispatch platform",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/dispatch-platform/:dispatchPlatformId/settings",
+            "params": [
+              {
+                "name": "dispatchPlatformId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get all settings for a dispatch platform"
+        },
+        {
+          "info": {
+            "name": "Create a Dispatch Platform Setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/dispatch-platform/:dispatchPlatformId/setting",
+            "params": [
+              {
+                "name": "dispatchPlatformId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Dispatch Platform Setting"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

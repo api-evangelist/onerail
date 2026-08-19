@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Lp Configuration API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LpConfiguration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates an LP Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-configuration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an LP Configuration"
+        },
+        {
+          "info": {
+            "name": "Find one LPConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/lp-configuration/:configurationId",
+            "params": [
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "configurationId"
+              }
+            ]
+          },
+          "docs": "Find one LPConfiguration"
+        },
+        {
+          "info": {
+            "name": "Updates an LP Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/lp-configuration/:configurationId",
+            "params": [
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "configurationId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an LP Configuration"
+        },
+        {
+          "info": {
+            "name": "Deletes an LP Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/lp-configuration/:configurationId",
+            "params": [
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "configurationId"
+              }
+            ]
+          },
+          "docs": "Deletes an LP Configuration"
+        },
+        {
+          "info": {
+            "name": "Get organization's LP Configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/lp-configurations",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organizationId"
+              }
+            ]
+          },
+          "docs": "Get organization's LP Configs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

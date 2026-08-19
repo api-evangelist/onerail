@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Cancellation Reason API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cancellation Reason",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View all cancellation reasons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/cancellation-reasons"
+          },
+          "docs": "View all cancellation reasons"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

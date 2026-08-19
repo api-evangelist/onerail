@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Delivery Attempt API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Delivery Attempt",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates an attempt for the delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/:deliveryId/attempt",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an attempt for the delivery"
+        },
+        {
+          "info": {
+            "name": "Creates an attempt for the delivery (API)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/:deliveryId/attempt/api",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates an attempt for the delivery (API)"
+        },
+        {
+          "info": {
+            "name": "Update a delivery attempt's details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/delivery-attempt/:deliveryAttemptId",
+            "params": [
+              {
+                "name": "deliveryAttemptId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a delivery attempt's details"
+        },
+        {
+          "info": {
+            "name": "Creates a delivery state change for the delivery attempt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery-attempt/:deliveryAttemptId/delivery-state-change",
+            "params": [
+              {
+                "name": "deliveryAttemptId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a delivery state change for the delivery attempt"
+        },
+        {
+          "info": {
+            "name": "Sets the attempt as the active attempt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery-attempt/:deliveryAttemptId/set-as-active",
+            "params": [
+              {
+                "name": "deliveryAttemptId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the attempt as the active attempt"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

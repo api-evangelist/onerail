@@ -1,0 +1,461 @@
+{
+  "item": [
+    {
+      "id": "63a6408c-79c4-4482-b6f3-6eba36d204fc",
+      "name": "Manifest",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf7c173b-9259-4152-a588-caee8354c884",
+          "name": "Close a carrier manifest",
+          "request": {
+            "name": "Close a carrier manifest",
+            "description": {
+              "content": "Close a carrier manifest. Required fields depend on `carrierCode`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "close-manifest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY-AND-APP-ID"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"carrierCode\": \"<string>\",\n  \"closedAt\": \"<dateTime>\",\n  \"carrierServiceLevel\": \"<string>\",\n  \"manifestId\": \"<string>\",\n  \"trackingNumber\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"locationId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc424d4a-5747-4dde-b756-e34a6e23d962",
+              "name": "Success. The manifest has been closed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "close-manifest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"carrierCode\": \"<string>\",\n  \"closedAt\": \"2026-06-25T14:30:00Z\",\n  \"carrierServiceLevel\": \"<string>\",\n  \"manifestId\": \"<string>\",\n  \"trackingNumber\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"locationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ece693fa-88c7-4579-baef-c474edba5b05",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "close-manifest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"carrierCode\": \"<string>\",\n  \"closedAt\": \"2026-06-25T14:30:00Z\",\n  \"carrierServiceLevel\": \"<string>\",\n  \"manifestId\": \"<string>\",\n  \"trackingNumber\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"locationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 4973,\n  \"errors\": {},\n  \"errorDetails\": [\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69d4fa37-90c2-4b34-8739-25719d3416bc",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "close-manifest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"carrierCode\": \"<string>\",\n  \"closedAt\": \"2026-06-25T14:30:00Z\",\n  \"carrierServiceLevel\": \"<string>\",\n  \"manifestId\": \"<string>\",\n  \"trackingNumber\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"locationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 4422,\n  \"errors\": {},\n  \"errorDetails\": [\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0394b42-e218-44b2-b482-34874829ab39",
+          "name": "Closes a carrier manifest",
+          "request": {
+            "name": "Closes a carrier manifest",
+            "description": {
+              "content": "Closes a carrier manifest for the authenticated shipper.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "close-manifest"
+              ],
+              "host": [
+                "{{v1-close-manifest-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"carrierCode\": \"<string>\",\n  \"closedAt\": \"<dateTime>\",\n  \"carrierServiceLevel\": \"<string>\",\n  \"manifestId\": \"<string,null>\",\n  \"trackingNumber\": \"<string,null>\",\n  \"accountNumber\": \"<string,null>\",\n  \"locationId\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "114b89a1-7a0a-4cc4-a8ba-d6386f823a02",
+              "name": "Close Manifest Result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "close-manifest"
+                  ],
+                  "host": [
+                    "{{v1-close-manifest-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"carrierCode\": \"<string>\",\n  \"closedAt\": \"<dateTime>\",\n  \"carrierServiceLevel\": \"<string>\",\n  \"manifestId\": \"<string,null>\",\n  \"trackingNumber\": \"<string,null>\",\n  \"accountNumber\": \"<string,null>\",\n  \"locationId\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"carrierCode\": \"string\",\n  \"manifestId\": \"string\",\n  \"closedAt\": \"1972-05-23T16:41:48.037Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "617628e3-f860-42dd-a869-42f95b3fca45",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "close-manifest"
+                  ],
+                  "host": [
+                    "{{v1-close-manifest-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"carrierCode\": \"<string>\",\n  \"closedAt\": \"<dateTime>\",\n  \"carrierServiceLevel\": \"<string>\",\n  \"manifestId\": \"<string,null>\",\n  \"trackingNumber\": \"<string,null>\",\n  \"accountNumber\": \"<string,null>\",\n  \"locationId\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "311872d4-fc66-40a3-b5a6-8fa6223feb7b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "close-manifest"
+                  ],
+                  "host": [
+                    "{{v1-close-manifest-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"carrierCode\": \"<string>\",\n  \"closedAt\": \"<dateTime>\",\n  \"carrierServiceLevel\": \"<string>\",\n  \"manifestId\": \"<string,null>\",\n  \"trackingNumber\": \"<string,null>\",\n  \"accountNumber\": \"<string,null>\",\n  \"locationId\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-close-manifest-Url"
+    }
+  ],
+  "info": {
+    "_postman_id": "afc78ade-1f14-4156-b360-bde5c25d6c86",
+    "name": "Onerail Manifest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Manifest across 2 of this provider's published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

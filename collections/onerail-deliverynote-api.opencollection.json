@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Delivery Note API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DeliveryNote",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a delivery note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/:deliveryId/delivery-note",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a delivery note"
+        },
+        {
+          "info": {
+            "name": "Updates editable delivery note fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/delivery/:deliveryId/delivery-note/:deliveryNoteId",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryNoteId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates editable delivery note fields"
+        },
+        {
+          "info": {
+            "name": "Deletes a delivery note and its note-owned attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/delivery/:deliveryId/delivery-note/:deliveryNoteId",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryNoteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a delivery note and its note-owned attachments"
+        },
+        {
+          "info": {
+            "name": "Get paginated delivery notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/delivery/:deliveryId/delivery-notes",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { visibility: ['NORMAL', 'OR_ONLY'] }"
+              }
+            ]
+          },
+          "docs": "Get paginated delivery notes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

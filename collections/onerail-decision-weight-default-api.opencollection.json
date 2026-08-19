@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Decision Weight Default API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Decision Weight Default",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Decision Weight Defaults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/decision-weight-defaults",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get Decision Weight Defaults"
+        },
+        {
+          "info": {
+            "name": "Update a Decision Weight Default",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/decision-weight-default/:decisionWeightDefaultId",
+            "params": [
+              {
+                "name": "decisionWeightDefaultId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Decision Weight Default"
+        },
+        {
+          "info": {
+            "name": "Bulk Update Decision Weight Defaults",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/decision-weight-default/bulk-update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk Update Decision Weight Defaults"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,731 @@
+{
+  "item": [
+    {
+      "id": "486fa415-1c08-4847-a2da-03d7d9ec9558",
+      "name": "LpConfiguration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c0968ead-27a4-4226-9777-0c1fcda192b7",
+          "name": "Creates an LP Configuration",
+          "request": {
+            "name": "Creates an LP Configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organizationId\": \"<string>\",\n  \"responseLPName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"lockToLPGroup\": \"<boolean>\",\n  \"applicableLPs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "387df5b3-965e-430d-8e64-98a1374ac74f",
+              "name": "LP Configuration Record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationId\": \"<string>\",\n  \"responseLPName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"lockToLPGroup\": \"<boolean>\",\n  \"applicableLPs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"821289c0-7afb-a753-3256-d0b57f216ac9\",\n  \"organizationId\": \"string\",\n  \"default\": true,\n  \"lockToLPGroup\": false,\n  \"responseLPName\": \"string\",\n  \"name\": \"string\",\n  \"applicableLPs\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffc5d600-d756-467f-bbd6-0c7d478f4587",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationId\": \"<string>\",\n  \"responseLPName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"lockToLPGroup\": \"<boolean>\",\n  \"applicableLPs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9cbbfe1-45c7-4581-aad5-812cc0358fcf",
+          "name": "Updates an LP Configuration",
+          "request": {
+            "name": "Updates an LP Configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-configuration",
+                ":configurationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "configurationId",
+                  "description": "(Required) configurationId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"responseLPName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"lockToLPGroup\": \"<boolean>\",\n  \"applicableLPs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organizationId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7f9d46bb-c948-4446-8ded-cf9b1fffa179",
+              "name": "LP Configuration Record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-configuration",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationId",
+                      "description": "(Required) configurationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"responseLPName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"lockToLPGroup\": \"<boolean>\",\n  \"applicableLPs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organizationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"21e8a321-0e5f-6414-70fb-22307c6fbf6e\",\n  \"organizationId\": \"string\",\n  \"default\": false,\n  \"lockToLPGroup\": false,\n  \"responseLPName\": \"string\",\n  \"name\": \"string\",\n  \"applicableLPs\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d85eefc-4f4d-4895-9ef1-ccb075a24271",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-configuration",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationId",
+                      "description": "(Required) configurationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"responseLPName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"lockToLPGroup\": \"<boolean>\",\n  \"applicableLPs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organizationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b1f23e1-1462-4d5f-b2e5-2c7f4c9751c5",
+          "name": "Find one LPConfiguration",
+          "request": {
+            "name": "Find one LPConfiguration",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-configuration",
+                ":configurationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "configurationId",
+                  "description": "(Required) configurationId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf59f48c-f526-46b5-9479-475641228c30",
+              "name": "LP Configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-configuration",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationId",
+                      "description": "(Required) configurationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"053c207c-0c9d-c0a3-8d30-f064d45c93a0\",\n    \"organizationId\": \"string\",\n    \"default\": true,\n    \"lockToLPGroup\": true,\n    \"responseLPName\": \"string\",\n    \"name\": \"string\",\n    \"applicableLPs\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    ]\n  },\n  {\n    \"id\": \"6cff04f8-ccb7-9153-df1a-5313cffa61d9\",\n    \"organizationId\": \"string\",\n    \"default\": true,\n    \"lockToLPGroup\": true,\n    \"responseLPName\": \"string\",\n    \"name\": \"string\",\n    \"applicableLPs\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "549c4e89-aa25-4d1c-bdae-ff036f9fe486",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-configuration",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationId",
+                      "description": "(Required) configurationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f311ae6-d6e4-45da-adfd-9e3e13b85215",
+          "name": "Deletes an LP Configuration",
+          "request": {
+            "name": "Deletes an LP Configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-configuration",
+                ":configurationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "configurationId",
+                  "description": "(Required) configurationId"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f399229-8c59-4fb7-8826-60db5bacc09e",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-configuration",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationId",
+                      "description": "(Required) configurationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e4b9b30-dd3d-41f7-99b4-ca36057c7e61",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-configuration",
+                    ":configurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "configurationId",
+                      "description": "(Required) configurationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a93c12b-6123-4966-93d7-281ded90bbc9",
+          "name": "Get organization's LP Configs",
+          "request": {
+            "name": "Get organization's LP Configs",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organization",
+                ":organizationId",
+                "lp-configurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) organizationId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bea97947-9d6c-4483-a1ee-7f09f1a8737f",
+              "name": "LP Configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "lp-configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organizationId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"439c1091-ce82-3a23-a042-ff738de92535\",\n    \"organizationId\": \"string\",\n    \"default\": false,\n    \"lockToLPGroup\": true,\n    \"responseLPName\": \"string\",\n    \"name\": \"string\",\n    \"applicableLPs\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    ]\n  },\n  {\n    \"id\": \"f7cbcfb2-1ce7-b7fc-1ed0-68e5bb53c762\",\n    \"organizationId\": \"string\",\n    \"default\": true,\n    \"lockToLPGroup\": true,\n    \"responseLPName\": \"string\",\n    \"name\": \"string\",\n    \"applicableLPs\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "542c46fe-9b16-4b69-86fa-5d2d0ce256e8",
+    "name": "OneRail Operation Dashboard Lp Configuration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

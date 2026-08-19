@@ -1,0 +1,483 @@
+{
+  "item": [
+    {
+      "id": "164e81bc-3765-4107-a6f0-6e6aa550c69f",
+      "name": "Bulk Uploads",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a27048b0-8038-498f-acc4-6cecc57e074f",
+          "name": "Gets the file uploads in relation to a provided organization id",
+          "request": {
+            "name": "Gets the file uploads in relation to a provided organization id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organization",
+                ":organizationId",
+                "file-uploads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "status filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "status filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "rangeType",
+                  "value": "<string>",
+                  "description": "date range type"
+                },
+                {
+                  "disabled": false,
+                  "key": "startOn",
+                  "value": "<string>",
+                  "description": "daterange starts on"
+                },
+                {
+                  "disabled": false,
+                  "key": "endOn",
+                  "value": "<string>",
+                  "description": "date range ends on"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityType",
+                  "value": "<string>",
+                  "description": "Entity type to show"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityType",
+                  "value": "<string>",
+                  "description": "Entity type to show"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) organization id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c0d0679-9240-4717-8554-3cdd379bd199",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "file-uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rangeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startOn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endOn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organization id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"fileName\": \"string\",\n      \"id\": \"58402490-a193-e879-a68d-42f67cf47d99\",\n      \"fileSize\": 947,\n      \"status\": \"succeeded\",\n      \"successCount\": 4455,\n      \"failureCount\": 5188,\n      \"orderCount\": 351,\n      \"deliveryCount\": 87,\n      \"createdAt\": \"2003-09-17T20:11:26.665Z\",\n      \"updatedAt\": \"2004-07-12T18:43:02.899Z\",\n      \"entity\": \"marketModifier\",\n      \"organizationId\": \"eb10d32e-fc9f-17a8-8377-7cef77e62132\",\n      \"userId\": \"43b0fc5b-7580-a55c-0a12-1c8964cff4c2\"\n    },\n    {\n      \"fileName\": \"string\",\n      \"id\": \"01ebbdb9-0d79-b40d-8594-48cb14185970\",\n      \"fileSize\": 3618,\n      \"status\": \"succeeded\",\n      \"successCount\": 9404,\n      \"failureCount\": 1698,\n      \"orderCount\": 7979,\n      \"deliveryCount\": 3673,\n      \"createdAt\": \"2018-10-08T05:28:57.269Z\",\n      \"updatedAt\": \"2002-06-29T06:33:25.040Z\",\n      \"entity\": \"marketModifier\",\n      \"organizationId\": \"36132b04-54bc-8734-5c51-70fb4e811fb8\",\n      \"userId\": \"0d9babce-16c9-1755-abd2-e0f1458476ad\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8d8817f-c46c-4923-b64c-791ec94207e2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "file-uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rangeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startOn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endOn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organization id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a8f954f-a607-42cc-a985-f9c038f573c9",
+          "name": "Gets information related to a specific file uploads",
+          "request": {
+            "name": "Gets information related to a specific file uploads",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "file-upload",
+                ":fileUploadId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fileUploadId",
+                  "description": "(Required) file id"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c299f4c1-7592-4dbf-b0fb-942dd61a0966",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file-upload",
+                    ":fileUploadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileUploadId",
+                      "description": "(Required) file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "application/json",
+                  "value": "fileName,string,id,c2856b25-3f05-9f02-946d-815defd04737,fileSize,4476,status,partial,successCount,1141,failureCount,5704,orderCount,748,deliveryCount,5053,createdAt,1958-05-01T09:16:51.570Z,updatedAt,2021-07-07T04:41:56.474Z,entity,marketModifier,organizationId,f644ca25-3738-4eac-686c-12bbbf1f87d5,userId,2579b991-b023-5221-e3b6-468711b7cb69",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b101251-8992-4a69-bca5-606b80ce3185",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file-upload",
+                    ":fileUploadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileUploadId",
+                      "description": "(Required) file id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "70b861c8-5bce-4b08-b561-66de7d66dfd3",
+    "name": "OneRail Operation Dashboard Bulk Uploads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

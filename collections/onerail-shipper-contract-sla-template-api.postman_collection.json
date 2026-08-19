@@ -1,0 +1,1169 @@
+{
+  "item": [
+    {
+      "id": "61cd7abb-7257-4581-bdf9-2b98f01d1af6",
+      "name": "Shipper Contract SLA Template",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "472d6308-6911-4e28-9e38-db065e1beb85",
+          "name": "Get Shipper Contract SLA Template",
+          "request": {
+            "name": "Get Shipper Contract SLA Template",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "shipper-contract-sla-template",
+                ":shipperContractSlaTemplateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipperContractSlaTemplateId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ba0f244-367a-4d2b-8c7a-6073e071f4cf",
+              "name": "Shipper Contract SLA Template",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    ":shipperContractSlaTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipperContractSlaTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8da816f-3566-4243-91a5-b2f66f38ed55",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    ":shipperContractSlaTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipperContractSlaTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7effd8a-9de0-4ce7-89a1-58cef70733fd",
+          "name": "Update Shipper Contract SLA Template",
+          "request": {
+            "name": "Update Shipper Contract SLA Template",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "shipper-contract-sla-template",
+                ":shipperContractSlaTemplateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipperContractSlaTemplateId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marketModifiers\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/marketModifiers/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/marketModifiers/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"deliveryPremium\": {\n    \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryPremium not found in the OpenAPI spec\"\n  },\n  \"milageTiers\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/milageTiers/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/milageTiers/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryCorrectionCharges/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryCorrectionCharges/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/fleetVehicleModifiers/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/fleetVehicleModifiers/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"routeCostConfigurations\": \"<array,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2df4860a-6d87-46b7-a822-5fdc146bf133",
+              "name": "Shipper Contract SLA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    ":shipperContractSlaTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipperContractSlaTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"marketModifiers\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/marketModifiers/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/marketModifiers/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"deliveryPremium\": {\n    \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryPremium not found in the OpenAPI spec\"\n  },\n  \"milageTiers\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/milageTiers/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/milageTiers/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryCorrectionCharges/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryCorrectionCharges/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/fleetVehicleModifiers/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/fleetVehicleModifiers/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"routeCostConfigurations\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a79ec422-1537-46e9-b36b-98e4ac420d36",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    ":shipperContractSlaTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipperContractSlaTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"marketModifiers\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/marketModifiers/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/marketModifiers/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"deliveryPremium\": {\n    \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryPremium not found in the OpenAPI spec\"\n  },\n  \"milageTiers\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/milageTiers/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/milageTiers/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryCorrectionCharges/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryCorrectionCharges/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/fleetVehicleModifiers/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/fleetVehicleModifiers/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"routeCostConfigurations\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e49cbf59-95fb-4508-bf6b-7dddf6c0af6e",
+          "name": "Notify OneRail Approver to approve Template SLA",
+          "request": {
+            "name": "Notify OneRail Approver to approve Template SLA",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "shipper-contract-sla-template",
+                ":shipperContractSlaTemplateId",
+                "submit-approval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipperContractSlaTemplateId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "795d857d-706d-4b14-a4d9-4ab766e51bd3",
+              "name": "True or false",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    ":shipperContractSlaTemplateId",
+                    "submit-approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipperContractSlaTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e901e3b0-f253-43be-9ce7-f19429c3d897",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    ":shipperContractSlaTemplateId",
+                    "submit-approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipperContractSlaTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11781911-b93f-4749-824d-f3f65bbfdd38",
+          "name": "Approve an SLA Template",
+          "request": {
+            "name": "Approve an SLA Template",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "shipper-contract-sla-template",
+                ":shipperContractSlaTemplateId",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipperContractSlaTemplateId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ba53f6ff-b7d2-487e-a005-9601fb10c381",
+              "name": "Approve SLA Template",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    ":shipperContractSlaTemplateId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipperContractSlaTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee691797-79eb-4614-a75e-7cc038116bf9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    ":shipperContractSlaTemplateId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipperContractSlaTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e923f0a9-d55f-4e63-afb7-bf8717c5b6e5",
+          "name": "Matches LPs and generates SLA Contracts for each of matched LP,",
+          "request": {
+            "name": "Matches LPs and generates SLA Contracts for each of matched LP,",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "shipper-contract-sla-template",
+                ":shipperContractSlaTemplateId",
+                "generate-lp-contract-sla"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "shipperContractSlaTemplateId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ced6caf3-008a-48cf-944e-8d97ca9b293e",
+              "name": "Successfully matched and generated SLA contracts for matching LPs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    ":shipperContractSlaTemplateId",
+                    "generate-lp-contract-sla"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipperContractSlaTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3fef1333-38cd-44a6-8c3a-42558253998b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    ":shipperContractSlaTemplateId",
+                    "generate-lp-contract-sla"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "shipperContractSlaTemplateId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fedac8f-dc34-425b-b348-b49acda553df",
+          "name": "Bulk approve an SLA Template",
+          "request": {
+            "name": "Bulk approve an SLA Template",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "shipper-contract-sla-template",
+                "bulk-approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipperContractSlaTemplateIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8afc1242-db6a-4dcd-ad76-5ade3134c5f8",
+              "name": "Approve SLA Template",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    "bulk-approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipperContractSlaTemplateIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"approvals\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1template/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1template/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "461f1554-de34-4cbb-b5a4-65250d7c3978",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    "bulk-approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipperContractSlaTemplateIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d234291f-10a0-457d-a0a5-1e328cdd2bb3",
+          "name": "Send Bulk SLA Templates,",
+          "request": {
+            "name": "Send Bulk SLA Templates,",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "shipper-contract-sla-template",
+                "bulk-send-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipperContractSlaTemplateIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5c751f0-3018-4ea2-86fb-a262166bb011",
+              "name": "Successfully matched and sent bulk template slas",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    "bulk-send-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipperContractSlaTemplateIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": [\n    \"string\",\n    \"string\"\n  ],\n  \"failed\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e75dff46-68f7-4f6f-96b8-0875c918298a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "shipper-contract-sla-template",
+                    "bulk-send-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipperContractSlaTemplateIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a626c99d-aa43-4d0c-ad9b-9a3854964e15",
+    "name": "OneRail Operation Dashboard Shipper Contract SLA Template API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1199 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Shipper Contract API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Shipper Contract
+paths:
+  /v1/shipper-contract:
+    post:
+      x-exegesis-controller: ShipperContract
+      summary: Create Shipper Contract
+      operationId: createShipperContract
+      tags:
+      - Shipper Contract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Shipper Contract
+              required:
+              - name
+              - description
+              - organizationId
+              - insuranceAndCompliance
+              - contractExpectation
+              - itemSizing
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                itemsDescription:
+                  type: string
+                avgDeliveriesPerWk:
+                  type: number
+                organizationId:
+                  type: string
+                  format: uuid
+                insuranceAndCompliance:
+                  $ref: '#/paths/~1v1~1lp-market/post/requestBody/content/application~1json/schema/properties/insuranceAndCompliance'
+                contractExpectation:
+                  type: object
+                  description: Contract Expectation
+                  properties:
+                    loadUnloading:
+                      type: string
+                    personnelCompliance:
+                      type: string
+                    personnelOnPremisis:
+                      type: string
+                    personnelAttire:
+                      type: string
+                    specialInstructions:
+                      type: string
+                itemSizing:
+                  type: object
+                  description: Item Sizing
+                  properties:
+                    maxWeightLB:
+                      type: number
+                    maxLengthIn:
+                      type: number
+                    maxWidthIn:
+                      type: number
+                    maxHeightIn:
+                      type: number
+                    maxItems:
+                      type: number
+                    maxCargoValueCent:
+                      type: number
+                capabilityUsageCharges:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      priceCent:
+                        type: number
+                      capabilityTagId:
+                        type: string
+                        format: uuid
+                options:
+                  type: object
+                  properties:
+                    allowRestock:
+                      type: boolean
+                itemCategoryPricings:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      costPerItemCent:
+                        type: number
+                      itemCategory:
+                        type: object
+                        properties:
+                          itemCategoryName:
+                            type: string
+                universalVariable:
+                  type: number
+                maxWeight:
+                  type:
+                  - integer
+                  - 'null'
+      responses:
+        '200':
+          description: Shipper Contract
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Shipper Contract
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  itemsDescription:
+                    type: string
+                  avgDeliveriesPerWk:
+                    type: number
+                  organizationId:
+                    type: string
+                    format: uuid
+                  createdAt:
+                    type: string
+                    format: date
+                  insuranceAndCompliance:
+                    $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D/put/requestBody/content/application~1json/schema/properties/insuranceAndCompliance'
+                  contractExpectation:
+                    $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D/put/requestBody/content/application~1json/schema/properties/contractExpectation'
+                  itemSizing:
+                    $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D/put/requestBody/content/application~1json/schema/properties/itemSizing'
+                  capabilityUsageCharges:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        priceCent:
+                          type: number
+                        capabilityTagId:
+                          type: string
+                          format: uuid
+                  itemCategoryPricings:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        costPerItemCent:
+                          type: number
+                        itemCategory:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            itemCategoryName:
+                              type: string
+                  isLockedByShipper:
+                    type: boolean
+                  isLockedByLp:
+                    type: boolean
+                  universalVariable:
+                    type: number
+                  maxWeight:
+                    type:
+                    - integer
+                    - 'null'
+                  options:
+                    type: object
+                    properties:
+                      allowRestock:
+                        type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract/{shipperContractId}:
+    parameters:
+    - name: shipperContractId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: ShipperContract
+      summary: Get Shipper Contract
+      operationId: getShipperContract
+      tags:
+      - Shipper Contract
+      responses:
+        '200':
+          description: Shipper Contract
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: ShipperContract
+      summary: Update Shipper Contract
+      operationId: updateShipperContract
+      tags:
+      - Shipper Contract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Shipper Contract
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                itemsDescription:
+                  type: string
+                avgDeliveriesPerWk:
+                  type: number
+                insuranceAndCompliance:
+                  type: object
+                  description: Insurance And Compliance
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    cargoUsd:
+                      type: number
+                    autoLiabilityUsd:
+                      type: number
+                    commercialGeneralLiabilityUsd:
+                      type: number
+                    workersCompensationUsd:
+                      type: number
+                    umbrellaUsd:
+                      type: number
+                    bondedUsd:
+                      type: number
+                    hazardousMaterialsExclusion:
+                      type: boolean
+                    fmcsa:
+                      type: boolean
+                contractExpectation:
+                  type: object
+                  description: Contract Expectation
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    loadUnloading:
+                      type: string
+                    personnelCompliance:
+                      type: string
+                    personnelOnPremisis:
+                      type: string
+                    personnelAttire:
+                      type: string
+                    specialInstructions:
+                      type: string
+                itemSizing:
+                  type: object
+                  description: Item Sizing
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    maxWeightLB:
+                      type: number
+                    maxLengthIn:
+                      type: number
+                    maxWidthIn:
+                      type: number
+                    maxHeightIn:
+                      type: number
+                    maxItems:
+                      type: number
+                    maxCargoValueCent:
+                      type: number
+                capabilityUsageCharges:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      priceCent:
+                        type: number
+                      capabilityTagId:
+                        type: string
+                        format: uuid
+                options:
+                  type: object
+                  properties:
+                    allowRestock:
+                      type: boolean
+                itemCategoryPricings:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      costPerItemCent:
+                        type: number
+                      itemCategory:
+                        type: object
+                        properties:
+                          itemCategoryName:
+                            type: string
+                universalVariable:
+                  type: number
+      responses:
+        '200':
+          description: Shipper Contract
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: ShipperContract
+      summary: Remove Shipper Contract
+      operationId: removeShipperContract
+      tags:
+      - Shipper Contract
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract/{shipperContractId}/sla:
+    parameters:
+    - name: shipperContractId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: ShipperContractSla
+      summary: Create an SLA for a Shipper Contract
+      operationId: createSla
+      tags:
+      - Shipper Contract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Shipper Contract SLA
+              required:
+              - latePickupPenaltyPercent
+              - lateDeliveryPenaltyPercent
+              - endOfDayTime
+              - shippingModeId
+              - marketModifiers
+              - milageTiers
+              - fleetVehicleModifiers
+              properties:
+                pickUpSlaId:
+                  type: string
+                  format: uuid
+                  description: Reference to Pick up speed (Acceptable time)
+                dropOffSlaId:
+                  type: string
+                  format: uuid
+                  description: Reference to Drop off speed (Acceptable time)
+                latePickupPenaltyPercent:
+                  type: number
+                  format: float
+                  description: Late pick up penalty percentage
+                lateDeliveryPenaltyPercent:
+                  type: number
+                  format: float
+                  description: Late delivery penalty percentage
+                pickUpDesc:
+                  type: string
+                  description: Pick up description
+                dropOffDesc:
+                  type: string
+                  description: Drop off description
+                mileageAvg:
+                  type: integer
+                  description: Mileage average rate
+                mileageMax:
+                  type: integer
+                  description: Mileage max rate
+                endOfDayTime:
+                  type: integer
+                shippingModeId:
+                  type: string
+                  format: uuid
+                  description: Reference to a Shipping Mode
+                marketModifiers:
+                  type: array
+                  description: List of market modifiers
+                  items:
+                    type: object
+                    properties:
+                      basePriceMultiplier:
+                        type: number
+                        format: float
+                      onerailBias:
+                        type: number
+                        format: float
+                      fairnessWeight:
+                        type: number
+                        format: float
+                      market:
+                        $ref: '#/paths/~1v1~1lp-market/post/requestBody/content/application~1json/schema/properties/market'
+                deliveryPremium:
+                  type: object
+                  properties:
+                    holidayDeliveryAddnlPercentage:
+                      type:
+                      - number
+                      - 'null'
+                      format: float
+                    holidayReturnAddnlPercentage:
+                      type:
+                      - number
+                      - 'null'
+                      format: float
+                    fuelDeliveryAddnlPercentage:
+                      type:
+                      - number
+                      - 'null'
+                      format: float
+                    fuelReturnAddnlPercentage:
+                      type:
+                      - number
+                      - 'null'
+                      format: float
+                    weekendDeliveryAddnlPercentage:
+                      type:
+                      - number
+                      - 'null'
+                      format: float
+                    weekendReturnAddnlPercentage:
+                      type:
+                      - number
+                      - 'null'
+                      format: float
+                milageTiers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      maxMilage:
+                        type: integer
+                      baseDeliveryPriceCent:
+                        type: integer
+                      baseReturnPriceCent:
+                        type: integer
+                      priceIsPerMile:
+                        type: boolean
+                deliveryCorrectionCharges:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      timeBeforePickupMin:
+                        type: integer
+                      correctionAddnlPercentage:
+                        type: number
+                        format: float
+                fleetVehicleModifiers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      basePriceMultiplier:
+                        type: number
+                        format: float
+                      fleetVehicleId:
+                        type: string
+                        format: uuid
+                serviceLevelId:
+                  type: string
+                  format: uuid
+                seasonPricingIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+      responses:
+        '200':
+          description: Shipper Contract SLA
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Shipper Contract SLA
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  pickUpSla:
+                    description: Reference to Pick up speed (Acceptable time)
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                      value:
+                        type: integer
+                  dropOffSla:
+                    description: Reference to Drop off speed (Acceptable time)
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                      value:
+                        type: integer
+                  latePickupPenaltyPercent:
+                    type: number
+                    format: float
+                    description: Late pick up penalty percentage
+                  lateDeliveryPenaltyPercent:
+                    type: number
+                    format: float
+                    description: Late delivery penalty percentage
+                  pickUpDesc:
+                    type: string
+                    description: Pick up description
+                  dropOffDesc:
+                    type: string
+                    description: Drop off description
+                  mileageAvg:
+                    type: integer
+                    description: Mileage average rate
+                  mileageMax:
+                    type: integer
+                    description: Mileage max rate
+                  endOfDayTime:
+                    type: integer
+                  shippingMode:
+                    $ref: '#/paths/~1v1~1lp-market~1shipping-modes/get/responses/200/content/application~1json/schema'
+                    description: Reference to a Shipping Mode
+                  shipperSignature:
+                    $ref: '#/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema'
+                  oneRailSignature:
+                    $ref: '#/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema'
+                  approvedBy:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+                    description: Reference to a OneRail User
+                  approvedOn:
+                    type: string
+                    format: date-time
+                  marketModifiers:
+                    type: array
+                    description: List of market modifiers
+                    items:
+                      $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/marketModifiers/items'
+                  deliveryPremium:
+                    $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryPremium'
+                  milageTiers:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/milageTiers/items'
+                  deliveryCorrectionCharges:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/deliveryCorrectionCharges/items'
+                  fleetVehicleModifiers:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/get/responses/200/content/application~1json/schema/properties/fleetVehicleModifiers/items'
+                  shipperContract:
+                    type: object
+                    description: Reference to Shipper Contract
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                      organization:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          name:
+                            type: string
+                  serviceLevel:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                  active:
+                    type: boolean
+                    description: Is shipper contract sla active?
+                  seasonPricings:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1organization~1%7BorganizationId%7D~1season-pricing/get/responses/200/content/application~1json/schema/properties/data/items'
+                  routeCostConfigurations:
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/get/responses/200/content/application~1json/schema/properties/routeCostConfigurations/items'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract/{shipperContractId}/slas:
+    parameters:
+    - name: shipperContractId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: ShipperContractSla
+      summary: Get all SLAs for a Shipper Contract
+      operationId: getSlas
+      tags:
+      - Shipper Contract
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      responses:
+        '200':
+          description: Shipper Contract SLAs
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract/{shipperContractId}/slas-info:
+    parameters:
+    - name: shipperContractId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: ShipperContractSla
+      summary: Get basic info for all SLAs for a Shipper Contract
+      operationId: getSlaInfos
+      tags:
+      - Shipper Contract
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      responses:
+        '200':
+          description: Shipper Contract SLAs
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        description: Shipper Contract SLA
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          pickUpSla:
+                            type: object
+                            description: Reference to Pick up speed name
+                            properties:
+                              name:
+                                type: string
+                          dropOffSla:
+                            type: object
+                            description: Reference to Drop off speed name
+                            properties:
+                              name:
+                                type: string
+                          shipperSignature:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                          oneRailSignature:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                          approvedOn:
+                            type: string
+                            description: Date SLA was approved
+                            format: date-time
+                          marketModifiers:
+                            type: array
+                            description: Index 0-n of market modifiers. Length contains the total count
+                            items:
+                              type: number
+                          serviceLevel:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                          active:
+                            type: boolean
+                            description: Is shipper contract sla active?
+                          createdAt:
+                            type: string
+                            format: date-time
+                          numMarkets:
+                            type: number
+                            description: How many markets the SLA has
+        '400':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract/{shipperContractId}/submit-approval:
+    parameters:
+    - name: shipperContractId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: ShipperContract
+      summary: Notify OneRail Approver to approve SLAs for a Shipper Contract
+      operationId: approveNotifyShipperContract
+      tags:
+      - Shipper Contract
+      requestBody:
+        description: None
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: True or false
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract/{shipperContractId}/shipper-contract-sla-templates:
+    parameters:
+    - name: shipperContractId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: ShipperContract
+      summary: Get all sla template for this Shipper Contract
+      operationId: getAllSlaTemplates
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      tags:
+      - Shipper Contract
+      responses:
+        '200':
+          description: Shipper Contract
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        description: Shipper Contract SLA Template
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          approvedOn:
+                            type: string
+                            format: date-time
+                          createdAt:
+                            type: string
+                            format: date-time
+                          organizationId:
+                            type: string
+                            format: uuid
+                            description: Reference to Organization
+                          shipperContractId:
+                            type: string
+                            format: uuid
+                            description: Reference to Shipper Contract
+                          shipperContractSlaId:
+                            type: string
+                            format: uuid
+                            description: Reference to Shipper Contract SLA
+                          marketModifiers:
+                            type: array
+                            description: List of market modifiers
+                            items:
+                              $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/marketModifiers/items'
+                          shipperContractSla:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              pickUpSla:
+                                $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/responses/200/content/application~1json/schema/properties/pickUpSla'
+                                description: Reference to Pick up speed (Acceptable time)
+                              dropOffSla:
+                                $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/responses/200/content/application~1json/schema/properties/dropOffSla'
+                                description: Reference to Drop off speed (Acceptable time)
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: ShipperContract
+      summary: Update Shipper Contract
+      operationId: updateSlaTemplateCapabilityUsageCharge
+      tags:
+      - Shipper Contract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1lp-contract-sla/put/requestBody/content/application~1json/schema/items'
+      responses:
+        '200':
+          description: Success
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract/{shipperContractId}/lp-contract-sla:
+    parameters:
+    - name: shipperContractId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: ShipperContract
+      summary: Get all lp contract sla for this Shipper Contract
+      operationId: getAllLpContractSlas
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      - name: organizationId
+        in: query
+        description: Organization id to filter contracts by
+        required: true
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - Shipper Contract
+      responses:
+        '200':
+          description: LP Contract Slas
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        description: LP Contract SLA
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          approvedById:
+                            type: string
+                            format: uuid
+                          approvedOn:
+                            type: string
+                            format: date-time
+                          createdAt:
+                            type: string
+                            format: date-time
+                          organizationId:
+                            type: string
+                            format: uuid
+                            description: Reference to Organization
+                          shipperContractSlaId:
+                            type: string
+                            format: uuid
+                            description: Reference to Shipper Contract SLA
+                          shipperContractSla:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              pickUpSla:
+                                $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/responses/200/content/application~1json/schema/properties/pickUpSla'
+                                description: Reference to Pick up speed (Acceptable time)
+                              dropOffSla:
+                                $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D~1sla/post/responses/200/content/application~1json/schema/properties/dropOffSla'
+                                description: Reference to Drop off speed (Acceptable time)
+                              serviceLevel:
+                                type:
+                                - object
+                                - 'null'
+                                description: The service level
+                                properties:
+                                  id:
+                                    type: string
+                                    format: uuid
+                                  name:
+                                    type: string
+                          marketModifiers:
+                            type: array
+                            description: List of market modifiers
+                            items:
+                              $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/put/requestBody/content/application~1json/schema/properties/marketModifiers/items'
+                          lpSignatureId:
+                            type: string
+                            format: uuid
+                          oneRailSignatureId:
+                            type: string
+                            format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: ShipperContract
+      summary: Update LP Contract Sla
+      operationId: updateLpContractSlaCapabilityUsageCharge
+      tags:
+      - Shipper Contract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  priceCent:
+                    type: number
+                  capabilityTagId:
+                    type: string
+                    format: uuid
+      responses:
+        '200':
+          description: Success
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/shipper-contract/{shipperContractId}/all-slas-approved:
+    parameters:
+    - name: shipperContractId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: ShipperContract
+      summary: Send boolean base on all slas have been approved
+      operationId: checkForAllSlasApproval
+      tags:
+      - Shipper Contract
+      responses:
+        '200':
+          description: Check for all slas have been approved
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Shipper Contract
+                properties:
+                  AllSlasApproved:
+                    type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

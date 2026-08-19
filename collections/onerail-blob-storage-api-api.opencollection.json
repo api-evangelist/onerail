@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Blob Storage API API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blob Storage API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the blob names in an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/blob",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organization id"
+              }
+            ]
+          },
+          "docs": "Get the blob names in an organization"
+        },
+        {
+          "info": {
+            "name": "Get the blob file with the given name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/blob/:blobName",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organization id"
+              },
+              {
+                "name": "blobName",
+                "value": "",
+                "type": "path",
+                "description": "blob name"
+              }
+            ]
+          },
+          "docs": "Get the blob file with the given name"
+        },
+        {
+          "info": {
+            "name": "Update the blob file with the given name",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/blob/:blobName",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organization id"
+              },
+              {
+                "name": "blobName",
+                "value": "",
+                "type": "path",
+                "description": "blob name"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "secure",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "fileData",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Update the blob file with the given name"
+        },
+        {
+          "info": {
+            "name": "Get the organization IDs which use blob storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/blob/organizations",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organization id"
+              }
+            ]
+          },
+          "docs": "Get the organization IDs which use blob storage"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Pod Rating API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pod Rating",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the next POD to rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/pod-ratings",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "query",
+                "description": "ID of the organization to filter the results."
+              }
+            ]
+          },
+          "docs": "Retrieve the next POD to rate"
+        },
+        {
+          "info": {
+            "name": "Rate a POD",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/pod-ratings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rate a POD"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

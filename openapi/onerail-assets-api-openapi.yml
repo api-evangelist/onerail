@@ -1,0 +1,85 @@
+openapi: 3.2.0
+info:
+  version: 0.0.3
+  title: OneRail Delivery Cloud - Delivery Assets API
+  description: Allows authorized 3rd parties to request new deliveries through the OneRail network
+  license:
+    name: UNLICENSED
+security:
+- ApiKey: []
+  AppId: []
+tags:
+- name: Assets
+paths:
+  /assets/{image}:
+    x-exegesis-controller: Image
+    get:
+      summary: Display image stored in Azure storage account
+      operationId: viewImage
+      security: []
+      parameters:
+      - name: image
+        in: path
+        description: image name
+        required: true
+        schema:
+          type: string
+      - name: authentication
+        in: query
+        description: provide auth
+        schema:
+          type: string
+      responses:
+        '302':
+          description: Success. Redirected to image blob with access token
+          headers:
+            Location:
+              schema:
+                type: string
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Assets
+components:
+  schemas:
+    Error:
+      required:
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        errors:
+          type: object
+        errorDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                description: A human-readable explanation specific to this occurrence of the problem
+              pointer:
+                type: string
+                description: A JSON Pointer [RFC6901] to the associated entity in the request document
+            required:
+            - detail
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+    ApiKeyAndAppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY-AND-APP-ID

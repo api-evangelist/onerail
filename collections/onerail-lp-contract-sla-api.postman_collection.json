@@ -1,0 +1,2463 @@
+{
+  "item": [
+    {
+      "id": "38343045-f2f3-446f-8058-09135b4ac4ef",
+      "name": "LP Contract SLA",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d4c7af8c-8abf-4fb0-9626-a217a6b210c6",
+          "name": "Get LP Contract SLA",
+          "request": {
+            "name": "Get LP Contract SLA",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                ":lpContractSlaId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpContractSlaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7c0a570-824e-440c-a9ca-508c652c38b0",
+              "name": "LP Contract SLA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"51576bdf-57cd-dc19-9d75-1e2762ad1905\",\n  \"approvedBy\": {\n    \"id\": \"df89178f-ecdb-9cdd-5cc3-fdd4e574b0b1\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"approvedOn\": \"1972-06-03T05:07:16.938Z\",\n  \"createdAt\": \"1988-05-25T07:41:19.326Z\",\n  \"organization\": {\n    \"id\": \"a52819c1-dd62-4f4f-5cf3-75969f80260e\",\n    \"name\": \"string\"\n  },\n  \"shipperContractSlaId\": \"ab3ff195-ee2b-358d-39d2-694665b53a16\",\n  \"marketModifiers\": [\n    {\n      \"id\": \"5479376e-390d-596b-fd55-a03949055fe3\",\n      \"basePriceMultiplier\": 2839.0169777594233,\n      \"onerailBias\": 1922.1950683872446,\n      \"fairnessWeight\": 7701.874899829713,\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    },\n    {\n      \"id\": \"b11e17f4-955a-38e6-f07b-97949a213241\",\n      \"basePriceMultiplier\": 4314.935162958345,\n      \"onerailBias\": 7075.763879548189,\n      \"fairnessWeight\": 5253.4466697118905,\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    }\n  ],\n  \"deliveryPremium\": {\n    \"id\": \"3d77989c-08c6-ba01-203f-c0ffb235c322\",\n    \"holidayDeliveryAddnlPercentage\": null,\n    \"holidayReturnAddnlPercentage\": 3858.3662263534247,\n    \"fuelDeliveryAddnlPercentage\": null,\n    \"fuelReturnAddnlPercentage\": null,\n    \"weekendDeliveryAddnlPercentage\": 6384.584270684663,\n    \"weekendReturnAddnlPercentage\": null\n  },\n  \"milageTiers\": [\n    {\n      \"id\": \"2210ee24-b8aa-24bc-bf11-573ad9e22e8d\",\n      \"maxMilage\": 2247,\n      \"baseDeliveryPriceCent\": 770,\n      \"baseReturnPriceCent\": 2898,\n      \"priceIsPerMile\": false\n    },\n    {\n      \"id\": \"5221296b-d19d-476c-2e41-83e6c9288af5\",\n      \"maxMilage\": 310,\n      \"baseDeliveryPriceCent\": 7101,\n      \"baseReturnPriceCent\": 5460,\n      \"priceIsPerMile\": false\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"id\": \"406df566-ca8d-1719-adbe-0e69c4914ba4\",\n      \"timeBeforePickupMin\": 3562,\n      \"correctionAddnlPercentage\": 7690.982916939748\n    },\n    {\n      \"id\": \"ca14b546-6d7c-61b4-c525-b61cf7c3d89e\",\n      \"timeBeforePickupMin\": 9631,\n      \"correctionAddnlPercentage\": 7123.221486720103\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"id\": \"c3f95233-1626-5188-4c92-1adaefdcf2c9\",\n      \"basePriceMultiplier\": 2777.6454144457684,\n      \"fleetVehicleId\": \"c4e6e019-ef91-e8ac-31fb-42b4cea7f245\",\n      \"fleetVehicle\": {\n        \"id\": \"82170cf8-8431-bb0c-c738-f077a052fb7c\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 7579\n      }\n    },\n    {\n      \"id\": \"c2437283-2c9e-8e82-9d2b-21745bb2dec9\",\n      \"basePriceMultiplier\": 4664.163377261484,\n      \"fleetVehicleId\": \"991b0924-0374-0ee7-5038-0eaf0c3981c5\",\n      \"fleetVehicle\": {\n        \"id\": \"e83071b1-e0eb-2465-0ef0-44d75e7f41ed\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 7695\n      }\n    }\n  ],\n  \"lpSignature\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"oneRailSignature\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"shipperContract\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    }\n  ],\n  \"active\": true,\n  \"routeCostConfigurations\": [\n    {\n      \"shipperContractSlaId\": \"9cf856b6-fb0d-4703-4591-c56f05583146\",\n      \"lpContractSlaId\": \"c7fc960c-4a59-edc8-119c-48e40e9b49f5\",\n      \"fleetVehicleId\": \"92478689-1765-fe9f-5c9c-5955e738638e\",\n      \"type\": \"PER_STOP\",\n      \"priceCent\": 3101.7856232733543\n    },\n    {\n      \"shipperContractSlaId\": null,\n      \"lpContractSlaId\": null,\n      \"fleetVehicleId\": \"27009a83-3c5e-ba90-d988-e31ed2ac2564\",\n      \"type\": \"PER_MILE\",\n      \"priceCent\": 1910.7918951093816\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0eed304e-a5cd-4106-b2bf-b216bf4889fe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb671aa8-ff8e-47f4-920b-6fa30fffca80",
+          "name": "Update LP Contract SLA",
+          "request": {
+            "name": "Update LP Contract SLA",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                ":lpContractSlaId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpContractSlaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marketModifiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    }\n  ],\n  \"deliveryPremium\": {\n    \"id\": \"<uuid>\",\n    \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n    \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n    \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n  },\n  \"milageTiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"fleetVehicleId\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"fleetVehicleId\": \"<uuid>\"\n    }\n  ],\n  \"routeCostConfigurations\": \"<array,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "33caf51c-e947-4ff8-a8d1-3a07c760ef38",
+              "name": "LP Contract SLA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"marketModifiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    }\n  ],\n  \"deliveryPremium\": {\n    \"id\": \"<uuid>\",\n    \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n    \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n    \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n  },\n  \"milageTiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"fleetVehicleId\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"fleetVehicleId\": \"<uuid>\"\n    }\n  ],\n  \"routeCostConfigurations\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ac4b123a-2499-da3c-3dfa-dfbad969757d\",\n  \"approvedBy\": {\n    \"id\": \"e02bc407-f689-568e-af28-db8f13affa83\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"approvedOn\": \"1992-06-14T12:20:32.825Z\",\n  \"createdAt\": \"2010-05-20T00:47:41.097Z\",\n  \"organization\": {\n    \"id\": \"10aa3858-3fa4-41da-7d1f-e17385549b90\",\n    \"name\": \"string\"\n  },\n  \"shipperContractSlaId\": \"b4e6181b-ba98-3ad7-4f4f-6d3e4a028b34\",\n  \"marketModifiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    }\n  ],\n  \"deliveryPremium\": {\n    \"id\": \"<uuid>\",\n    \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n    \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n    \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n  },\n  \"milageTiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"id\": \"6d4a5a22-2919-3898-81ed-0055fc0aeecb\",\n      \"basePriceMultiplier\": 7048.922234927917,\n      \"fleetVehicleId\": \"bb8b5e5f-509d-798a-d67b-322033e7aee3\",\n      \"fleetVehicle\": {\n        \"id\": \"2773524e-2f15-4515-00cd-e90f8a31f8ef\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 7780\n      }\n    },\n    {\n      \"id\": \"ab9fa288-20bf-7dfa-2d6a-2971d5d415c7\",\n      \"basePriceMultiplier\": 4569.342003476133,\n      \"fleetVehicleId\": \"e6f29446-fa34-9745-42f9-a7cbe28c38d6\",\n      \"fleetVehicle\": {\n        \"id\": \"6222e88d-2fc9-e74a-0a45-de5fc4303180\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 8909\n      }\n    }\n  ],\n  \"lpSignature\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"oneRailSignature\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"shipperContract\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    }\n  ],\n  \"active\": true,\n  \"routeCostConfigurations\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60ada7d9-a856-4025-bf7a-40294a36566b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"marketModifiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    }\n  ],\n  \"deliveryPremium\": {\n    \"id\": \"<uuid>\",\n    \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n    \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n    \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n  },\n  \"milageTiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"fleetVehicleId\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"fleetVehicleId\": \"<uuid>\"\n    }\n  ],\n  \"routeCostConfigurations\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8eb10af-f9e4-4fec-b57c-c7565063ac88",
+          "name": "Notify OneRail Approver to approve LP Contract SLAs",
+          "request": {
+            "name": "Notify OneRail Approver to approve LP Contract SLAs",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                ":lpContractSlaId",
+                "submit-approval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "lpContractSlaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "218cdb2d-437c-451f-afdd-e6c2fbec9b17",
+              "name": "True or false",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    "submit-approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f522097a-abbd-4c75-a080-8dfd8b7dd434",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    "submit-approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a83d34c-e575-4de9-b960-9192d2cb12e9",
+          "name": "Approves LP Contract SLA",
+          "request": {
+            "name": "Approves LP Contract SLA",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                ":lpContractSlaId",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpContractSlaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "649ee103-70a5-4da0-8845-00d455ba7fbf",
+              "name": "LP Contract SLA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ac4b123a-2499-da3c-3dfa-dfbad969757d\",\n  \"approvedBy\": {\n    \"id\": \"e02bc407-f689-568e-af28-db8f13affa83\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"approvedOn\": \"1992-06-14T12:20:32.825Z\",\n  \"createdAt\": \"2010-05-20T00:47:41.097Z\",\n  \"organization\": {\n    \"id\": \"10aa3858-3fa4-41da-7d1f-e17385549b90\",\n    \"name\": \"string\"\n  },\n  \"shipperContractSlaId\": \"b4e6181b-ba98-3ad7-4f4f-6d3e4a028b34\",\n  \"marketModifiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    }\n  ],\n  \"deliveryPremium\": {\n    \"id\": \"<uuid>\",\n    \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n    \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n    \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n  },\n  \"milageTiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"id\": \"6d4a5a22-2919-3898-81ed-0055fc0aeecb\",\n      \"basePriceMultiplier\": 7048.922234927917,\n      \"fleetVehicleId\": \"bb8b5e5f-509d-798a-d67b-322033e7aee3\",\n      \"fleetVehicle\": {\n        \"id\": \"2773524e-2f15-4515-00cd-e90f8a31f8ef\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 7780\n      }\n    },\n    {\n      \"id\": \"ab9fa288-20bf-7dfa-2d6a-2971d5d415c7\",\n      \"basePriceMultiplier\": 4569.342003476133,\n      \"fleetVehicleId\": \"e6f29446-fa34-9745-42f9-a7cbe28c38d6\",\n      \"fleetVehicle\": {\n        \"id\": \"6222e88d-2fc9-e74a-0a45-de5fc4303180\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 8909\n      }\n    }\n  ],\n  \"lpSignature\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"oneRailSignature\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"shipperContract\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    }\n  ],\n  \"active\": true,\n  \"routeCostConfigurations\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2b13ca8-ebb8-42ee-ad40-1c4203f2104b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42595519-9a5b-4228-a5d1-e4c30968bf97",
+          "name": "LP Signature for LP Contract SLA",
+          "request": {
+            "name": "LP Signature for LP Contract SLA",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                ":lpContractSlaId",
+                "lp-sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpContractSlaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"typedName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a2a020e-6eda-404a-9e31-a749e401a3c9",
+              "name": "LP Contract SLA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    "lp-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typedName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ac4b123a-2499-da3c-3dfa-dfbad969757d\",\n  \"approvedBy\": {\n    \"id\": \"e02bc407-f689-568e-af28-db8f13affa83\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"approvedOn\": \"1992-06-14T12:20:32.825Z\",\n  \"createdAt\": \"2010-05-20T00:47:41.097Z\",\n  \"organization\": {\n    \"id\": \"10aa3858-3fa4-41da-7d1f-e17385549b90\",\n    \"name\": \"string\"\n  },\n  \"shipperContractSlaId\": \"b4e6181b-ba98-3ad7-4f4f-6d3e4a028b34\",\n  \"marketModifiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    }\n  ],\n  \"deliveryPremium\": {\n    \"id\": \"<uuid>\",\n    \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n    \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n    \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n  },\n  \"milageTiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"id\": \"6d4a5a22-2919-3898-81ed-0055fc0aeecb\",\n      \"basePriceMultiplier\": 7048.922234927917,\n      \"fleetVehicleId\": \"bb8b5e5f-509d-798a-d67b-322033e7aee3\",\n      \"fleetVehicle\": {\n        \"id\": \"2773524e-2f15-4515-00cd-e90f8a31f8ef\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 7780\n      }\n    },\n    {\n      \"id\": \"ab9fa288-20bf-7dfa-2d6a-2971d5d415c7\",\n      \"basePriceMultiplier\": 4569.342003476133,\n      \"fleetVehicleId\": \"e6f29446-fa34-9745-42f9-a7cbe28c38d6\",\n      \"fleetVehicle\": {\n        \"id\": \"6222e88d-2fc9-e74a-0a45-de5fc4303180\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 8909\n      }\n    }\n  ],\n  \"lpSignature\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"oneRailSignature\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"shipperContract\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    }\n  ],\n  \"active\": true,\n  \"routeCostConfigurations\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cea7336d-081d-4c8b-8e7f-6ca898f5df6c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    "lp-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typedName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b91423d-f9ab-44be-86bf-fbdac8a9375c",
+          "name": "One Rail Signature for LP Contract SLA",
+          "request": {
+            "name": "One Rail Signature for LP Contract SLA",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                ":lpContractSlaId",
+                "onerail-sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpContractSlaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"typedName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7afc1716-18f0-4fc2-9aa5-e8c4b01c06e9",
+              "name": "LP Contract SLA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    "onerail-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typedName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ac4b123a-2499-da3c-3dfa-dfbad969757d\",\n  \"approvedBy\": {\n    \"id\": \"e02bc407-f689-568e-af28-db8f13affa83\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\"\n  },\n  \"approvedOn\": \"1992-06-14T12:20:32.825Z\",\n  \"createdAt\": \"2010-05-20T00:47:41.097Z\",\n  \"organization\": {\n    \"id\": \"10aa3858-3fa4-41da-7d1f-e17385549b90\",\n    \"name\": \"string\"\n  },\n  \"shipperContractSlaId\": \"b4e6181b-ba98-3ad7-4f4f-6d3e4a028b34\",\n  \"marketModifiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"basePriceMultiplier\": \"<float>\",\n      \"onerailBias\": \"<float>\",\n      \"fairnessWeight\": \"<float>\",\n      \"market\": {\n        \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      }\n    }\n  ],\n  \"deliveryPremium\": {\n    \"id\": \"<uuid>\",\n    \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n    \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n    \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n    \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n  },\n  \"milageTiers\": [\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"maxMilage\": \"<integer>\",\n      \"baseDeliveryPriceCent\": \"<integer>\",\n      \"baseReturnPriceCent\": \"<integer>\",\n      \"priceIsPerMile\": \"<boolean>\"\n    }\n  ],\n  \"deliveryCorrectionCharges\": [\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"timeBeforePickupMin\": \"<integer>\",\n      \"correctionAddnlPercentage\": \"<float>\"\n    }\n  ],\n  \"fleetVehicleModifiers\": [\n    {\n      \"id\": \"6d4a5a22-2919-3898-81ed-0055fc0aeecb\",\n      \"basePriceMultiplier\": 7048.922234927917,\n      \"fleetVehicleId\": \"bb8b5e5f-509d-798a-d67b-322033e7aee3\",\n      \"fleetVehicle\": {\n        \"id\": \"2773524e-2f15-4515-00cd-e90f8a31f8ef\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 7780\n      }\n    },\n    {\n      \"id\": \"ab9fa288-20bf-7dfa-2d6a-2971d5d415c7\",\n      \"basePriceMultiplier\": 4569.342003476133,\n      \"fleetVehicleId\": \"e6f29446-fa34-9745-42f9-a7cbe28c38d6\",\n      \"fleetVehicle\": {\n        \"id\": \"6222e88d-2fc9-e74a-0a45-de5fc4303180\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 8909\n      }\n    }\n  ],\n  \"lpSignature\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"oneRailSignature\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"shipperContract\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    }\n  ],\n  \"active\": true,\n  \"routeCostConfigurations\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e7cb435-373b-4907-bd74-53b559af48f8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    "onerail-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typedName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f0fa901-e767-45b3-a029-93ee300cef60",
+          "name": "Set LP Contract SLA active state",
+          "request": {
+            "name": "Set LP Contract SLA active state",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                ":lpContractSlaId",
+                "set-active-state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpContractSlaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"active\": \"<boolean>\",\n  \"forceState\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67df3660-6d92-40c4-9c1c-15ff47a47106",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    "set-active-state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\",\n  \"forceState\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"SUCCESS\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3011d70f-dd8c-460b-88ab-017c7b38f463",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    "set-active-state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\",\n  \"forceState\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec62b1a2-7059-4ff7-acba-4727a8afbf58",
+          "name": "Set LSP bias for marketModifier",
+          "request": {
+            "name": "Set LSP bias for marketModifier",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                ":lpContractSlaId",
+                ":marketModifierId",
+                "lsp-bias"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpContractSlaId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketModifierId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lspBias\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "097e2808-b738-4858-b0e2-77d77aab8d42",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    ":marketModifierId",
+                    "lsp-bias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketModifierId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lspBias\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "91314b53-e0e7-4132-b03e-fb3888f101f2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    ":marketModifierId",
+                    "lsp-bias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketModifierId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lspBias\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "333cfa10-28d0-4061-9ba7-ab6d7ab5b083",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    ":marketModifierId",
+                    "lsp-bias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketModifierId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lspBias\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2fa893d3-9a02-401d-9a89-57c1c31d0e6b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    ":marketModifierId",
+                    "lsp-bias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketModifierId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lspBias\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39263c48-cfdf-4b5b-a8e7-dec05898fd57",
+          "name": "Enable / Disable marketModifier",
+          "request": {
+            "name": "Enable / Disable marketModifier",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                ":lpContractSlaId",
+                ":marketModifierId",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpContractSlaId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketModifierId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"active\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d0b671c7-6b2b-47c7-823a-0d129735deb6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    ":marketModifierId",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketModifierId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "71ac348a-e966-40de-83b2-2a6999ff00b0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    ":marketModifierId",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketModifierId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4e5673a3-3436-4d4f-84bb-8c202780db06",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    ":marketModifierId",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketModifierId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f64f0b9b-6134-44be-8798-97b049f1f22b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    ":lpContractSlaId",
+                    ":marketModifierId",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpContractSlaId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketModifierId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb61e7b6-e932-45f2-8bab-6d92f819226f",
+          "name": "Create Bulk LP approval and signature for an SLA",
+          "request": {
+            "name": "Create Bulk LP approval and signature for an SLA",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                "approve-and-sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"typedName\": \"<string>\",\n  \"lpContractSlaTemplateIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e7c9a22-dd40-4588-9127-3958f7bf2155",
+              "name": "Bulk Approve and Sign response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    "approve-and-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typedName\": \"<string>\",\n  \"lpContractSlaTemplateIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"signatures\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3a7e048-d285-476d-a736-dc44af72b2cc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    "approve-and-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typedName\": \"<string>\",\n  \"lpContractSlaTemplateIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b9eb803-1dc2-4a0c-b3d9-5719384d9b70",
+          "name": "Bulk approve an array of LP Contract SLA ids",
+          "request": {
+            "name": "Bulk approve an array of LP Contract SLA ids",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                "bulk-approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lpContractSlaIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f783f331-9272-4107-a682-535193743164",
+              "name": "Approve Contract SLA ids",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    "bulk-approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lpContractSlaIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"approvals\": [\n    {\n      \"id\": \"bc2b1631-c102-c991-a3d3-a625a0bc35aa\",\n      \"approvedBy\": {\n        \"id\": \"76eaa333-c355-a663-4e78-7dcff94e9ab1\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"approvedOn\": \"2022-05-20T22:01:40.903Z\",\n      \"createdAt\": \"1988-07-07T16:22:52.454Z\",\n      \"organization\": {\n        \"id\": \"508287cf-688f-16cb-e003-ef4ba6a2ab40\",\n        \"name\": \"string\"\n      },\n      \"shipperContractSlaId\": \"e6ff1ae8-f015-d230-eb85-11704d3c0ef3\",\n      \"marketModifiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        }\n      ],\n      \"deliveryPremium\": {\n        \"id\": \"<uuid>\",\n        \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n        \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n        \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n      },\n      \"milageTiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        }\n      ],\n      \"deliveryCorrectionCharges\": [\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        }\n      ],\n      \"fleetVehicleModifiers\": [\n        {\n          \"id\": \"0b9b5bda-8446-19a9-b79f-350170d37406\",\n          \"basePriceMultiplier\": 3982.2602879427636,\n          \"fleetVehicleId\": \"d5256c9d-f168-1851-64fd-f1947af67102\",\n          \"fleetVehicle\": {\n            \"id\": \"95b10838-0e86-aa68-8905-503f729914e7\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 9414\n          }\n        },\n        {\n          \"id\": \"a2929e88-db74-53ee-2ef2-f3da8109ad87\",\n          \"basePriceMultiplier\": 9371.411966282649,\n          \"fleetVehicleId\": \"d0bc9e3e-6eef-9304-0cb9-754faac51d8b\",\n          \"fleetVehicle\": {\n            \"id\": \"179b4de9-7276-620d-ec88-1bec455e5b05\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 4388\n          }\n        }\n      ],\n      \"lpSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"oneRailSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"shipperContract\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": false,\n      \"routeCostConfigurations\": [\n        {\n          \"shipperContractSlaId\": null,\n          \"lpContractSlaId\": \"30045778-55a7-a735-c5fd-453dfecd9f0b\",\n          \"fleetVehicleId\": \"572fe6ad-aa18-0c43-6e02-cb5c77eeab87\",\n          \"type\": \"PER_MILE\",\n          \"priceCent\": 5486.170637646515\n        },\n        {\n          \"shipperContractSlaId\": \"986ba847-aa45-6158-5c40-71096e484b3f\",\n          \"lpContractSlaId\": \"558f28b3-adb1-bbf5-f2fa-12273c10bea0\",\n          \"fleetVehicleId\": \"63d53af2-3782-873e-9c43-f8efbc41b745\",\n          \"type\": \"FLAT\",\n          \"priceCent\": 3112.3177845335495\n        }\n      ]\n    },\n    {\n      \"id\": \"41a01713-dfab-1436-ed5e-0eb926d29a06\",\n      \"approvedBy\": {\n        \"id\": \"6c98c9af-32b7-cc36-a888-a58a25a2afdb\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"approvedOn\": \"1950-07-07T11:01:45.787Z\",\n      \"createdAt\": \"1948-01-13T11:29:43.545Z\",\n      \"organization\": {\n        \"id\": \"3c859b16-f543-e7b4-5858-943b2694e7ff\",\n        \"name\": \"string\"\n      },\n      \"shipperContractSlaId\": \"dc2dfe5a-7444-e8d0-0964-52c5b7cbda7d\",\n      \"marketModifiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        }\n      ],\n      \"deliveryPremium\": {\n        \"id\": \"<uuid>\",\n        \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n        \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n        \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n      },\n      \"milageTiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        }\n      ],\n      \"deliveryCorrectionCharges\": [\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        }\n      ],\n      \"fleetVehicleModifiers\": [\n        {\n          \"id\": \"c3174d00-1313-6ecb-4786-43d1794e699e\",\n          \"basePriceMultiplier\": 1133.4171932472325,\n          \"fleetVehicleId\": \"bee8f2ea-7ae5-2d3c-7fdf-5b5c37eba04a\",\n          \"fleetVehicle\": {\n            \"id\": \"d652f711-609f-e98c-c95f-7e3974ecd6a9\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 162\n          }\n        },\n        {\n          \"id\": \"93ada117-b208-33dc-5ee0-de712e8a612c\",\n          \"basePriceMultiplier\": 9367.450443959422,\n          \"fleetVehicleId\": \"cb9e50b1-8f65-3890-cfe3-9e75aa8f72a1\",\n          \"fleetVehicle\": {\n            \"id\": \"632940ba-4ba9-1715-c8b3-fe8e2a03a2af\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 1439\n          }\n        }\n      ],\n      \"lpSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"oneRailSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"shipperContract\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": false,\n      \"routeCostConfigurations\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4a9d14a-b87f-40d7-9cff-eda24199480e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    "bulk-approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lpContractSlaIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fadcffeb-55ac-4037-aa33-f465f3d0efe5",
+          "name": "Bulk LP Signature for LP Contract SLA",
+          "request": {
+            "name": "Bulk LP Signature for LP Contract SLA",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                "bulk-lp-sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"typedName\": \"<string>\",\n  \"lpContractSlaIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d86912dc-2c06-40d0-94cd-67a54a798c75",
+              "name": "List of signatures for LP Contract SLA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    "bulk-lp-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typedName\": \"<string>\",\n  \"lpContractSlaIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"signatures\": [\n    {\n      \"id\": \"0cfdb659-7d90-b3f6-fb62-7b7cad70950c\",\n      \"approvedBy\": {\n        \"id\": \"f9736693-4a4e-6b0a-0755-e35064256bd6\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"approvedOn\": \"2008-02-20T07:33:45.446Z\",\n      \"createdAt\": \"2015-03-14T00:33:54.220Z\",\n      \"organization\": {\n        \"id\": \"27892598-7ed1-9711-4a3a-c9e1249e2b7c\",\n        \"name\": \"string\"\n      },\n      \"shipperContractSlaId\": \"81e9e09a-0193-5ade-38fe-2f89bfffd102\",\n      \"marketModifiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        }\n      ],\n      \"deliveryPremium\": {\n        \"id\": \"<uuid>\",\n        \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n        \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n        \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n      },\n      \"milageTiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        }\n      ],\n      \"deliveryCorrectionCharges\": [\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        }\n      ],\n      \"fleetVehicleModifiers\": [\n        {\n          \"id\": \"c8507fc6-c48c-297e-c589-0dea9fccc414\",\n          \"basePriceMultiplier\": 3271.844003664035,\n          \"fleetVehicleId\": \"a9fa13ac-0d26-1a07-4663-4baeff6d7d74\",\n          \"fleetVehicle\": {\n            \"id\": \"b005078d-2ba1-0024-1458-9423c35e02ec\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 8499\n          }\n        },\n        {\n          \"id\": \"c237e649-ea7e-24de-8f9a-e28d8ffc6030\",\n          \"basePriceMultiplier\": 4249.789332071889,\n          \"fleetVehicleId\": \"f53869b2-d6aa-7080-8070-ede840363d38\",\n          \"fleetVehicle\": {\n            \"id\": \"9aa34cdf-335b-0777-202b-a52ba88f1090\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 6605\n          }\n        }\n      ],\n      \"lpSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"oneRailSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"shipperContract\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": false,\n      \"routeCostConfigurations\": [\n        {\n          \"shipperContractSlaId\": null,\n          \"lpContractSlaId\": null,\n          \"fleetVehicleId\": \"042cdd36-37d3-c188-d36a-ce8c51873e05\",\n          \"type\": \"FLAT\",\n          \"priceCent\": 4957.058681261053\n        },\n        {\n          \"shipperContractSlaId\": null,\n          \"lpContractSlaId\": \"156eff7b-2802-4e35-7aa3-139d6705ed0d\",\n          \"fleetVehicleId\": \"e56cb8b4-84ac-2f0d-93fd-b0e2bdbcc522\",\n          \"type\": \"PER_STOP\",\n          \"priceCent\": 1203.8843891415252\n        }\n      ]\n    },\n    {\n      \"id\": \"a03bf630-ff2e-2841-9065-4bcc6b0a6074\",\n      \"approvedBy\": {\n        \"id\": \"0107bc0a-b07d-58ca-78c6-59bfccd9a518\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"approvedOn\": \"1951-09-14T14:02:04.127Z\",\n      \"createdAt\": \"2011-09-13T19:31:45.832Z\",\n      \"organization\": {\n        \"id\": \"8c1650ab-effc-64b2-9671-e4b9a02008fa\",\n        \"name\": \"string\"\n      },\n      \"shipperContractSlaId\": \"4f325e16-5913-658e-b3fb-426071984cb6\",\n      \"marketModifiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        }\n      ],\n      \"deliveryPremium\": {\n        \"id\": \"<uuid>\",\n        \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n        \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n        \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n      },\n      \"milageTiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        }\n      ],\n      \"deliveryCorrectionCharges\": [\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        }\n      ],\n      \"fleetVehicleModifiers\": [\n        {\n          \"id\": \"3232a7ee-7bc9-f5ad-e1f3-cac0ea28dbb0\",\n          \"basePriceMultiplier\": 4275.437060769175,\n          \"fleetVehicleId\": \"8ed7a1de-f02b-d627-1109-e1269de52124\",\n          \"fleetVehicle\": {\n            \"id\": \"789e5976-5a2f-36ee-ac9c-10b9e0bc2bde\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 936\n          }\n        },\n        {\n          \"id\": \"985ecec1-f25b-9376-4682-52201796c234\",\n          \"basePriceMultiplier\": 7686.801036267038,\n          \"fleetVehicleId\": \"dae88770-d487-6886-b103-ec4a313e4ee0\",\n          \"fleetVehicle\": {\n            \"id\": \"93765e7a-96fb-fe76-5d2f-a436d9ca6cbe\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 5395\n          }\n        }\n      ],\n      \"lpSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"oneRailSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"shipperContract\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": false,\n      \"routeCostConfigurations\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3854bbfe-eb16-4870-9df1-48f54dd88d7d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    "bulk-lp-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typedName\": \"<string>\",\n  \"lpContractSlaIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0cd92d5c-8612-4891-b576-1908c5fbb6e0",
+          "name": "Bulk One Rail Signature for LP Contract SLA",
+          "request": {
+            "name": "Bulk One Rail Signature for LP Contract SLA",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-contract-sla",
+                "bulk-onerail-sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"typedName\": \"<string>\",\n  \"lpContractSlaIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6f64403-6bfe-4042-bd07-c978ed9cbd77",
+              "name": "List of signatures for LP OneRail Contract SLA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    "bulk-onerail-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typedName\": \"<string>\",\n  \"lpContractSlaIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"signatures\": [\n    {\n      \"id\": \"0cfdb659-7d90-b3f6-fb62-7b7cad70950c\",\n      \"approvedBy\": {\n        \"id\": \"f9736693-4a4e-6b0a-0755-e35064256bd6\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"approvedOn\": \"2008-02-20T07:33:45.446Z\",\n      \"createdAt\": \"2015-03-14T00:33:54.220Z\",\n      \"organization\": {\n        \"id\": \"27892598-7ed1-9711-4a3a-c9e1249e2b7c\",\n        \"name\": \"string\"\n      },\n      \"shipperContractSlaId\": \"81e9e09a-0193-5ade-38fe-2f89bfffd102\",\n      \"marketModifiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        }\n      ],\n      \"deliveryPremium\": {\n        \"id\": \"<uuid>\",\n        \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n        \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n        \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n      },\n      \"milageTiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        }\n      ],\n      \"deliveryCorrectionCharges\": [\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        }\n      ],\n      \"fleetVehicleModifiers\": [\n        {\n          \"id\": \"c8507fc6-c48c-297e-c589-0dea9fccc414\",\n          \"basePriceMultiplier\": 3271.844003664035,\n          \"fleetVehicleId\": \"a9fa13ac-0d26-1a07-4663-4baeff6d7d74\",\n          \"fleetVehicle\": {\n            \"id\": \"b005078d-2ba1-0024-1458-9423c35e02ec\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 8499\n          }\n        },\n        {\n          \"id\": \"c237e649-ea7e-24de-8f9a-e28d8ffc6030\",\n          \"basePriceMultiplier\": 4249.789332071889,\n          \"fleetVehicleId\": \"f53869b2-d6aa-7080-8070-ede840363d38\",\n          \"fleetVehicle\": {\n            \"id\": \"9aa34cdf-335b-0777-202b-a52ba88f1090\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 6605\n          }\n        }\n      ],\n      \"lpSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"oneRailSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"shipperContract\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": false,\n      \"routeCostConfigurations\": [\n        {\n          \"shipperContractSlaId\": null,\n          \"lpContractSlaId\": null,\n          \"fleetVehicleId\": \"042cdd36-37d3-c188-d36a-ce8c51873e05\",\n          \"type\": \"FLAT\",\n          \"priceCent\": 4957.058681261053\n        },\n        {\n          \"shipperContractSlaId\": null,\n          \"lpContractSlaId\": \"156eff7b-2802-4e35-7aa3-139d6705ed0d\",\n          \"fleetVehicleId\": \"e56cb8b4-84ac-2f0d-93fd-b0e2bdbcc522\",\n          \"type\": \"PER_STOP\",\n          \"priceCent\": 1203.8843891415252\n        }\n      ]\n    },\n    {\n      \"id\": \"a03bf630-ff2e-2841-9065-4bcc6b0a6074\",\n      \"approvedBy\": {\n        \"id\": \"0107bc0a-b07d-58ca-78c6-59bfccd9a518\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"approvedOn\": \"1951-09-14T14:02:04.127Z\",\n      \"createdAt\": \"2011-09-13T19:31:45.832Z\",\n      \"organization\": {\n        \"id\": \"8c1650ab-effc-64b2-9671-e4b9a02008fa\",\n        \"name\": \"string\"\n      },\n      \"shipperContractSlaId\": \"4f325e16-5913-658e-b3fb-426071984cb6\",\n      \"marketModifiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"basePriceMultiplier\": \"<float>\",\n          \"onerailBias\": \"<float>\",\n          \"fairnessWeight\": \"<float>\",\n          \"market\": {\n            \"value\": \"reference #/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n          }\n        }\n      ],\n      \"deliveryPremium\": {\n        \"id\": \"<uuid>\",\n        \"holidayDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"holidayReturnAddnlPercentage\": \"<number,null-float>\",\n        \"fuelDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"fuelReturnAddnlPercentage\": \"<number,null-float>\",\n        \"weekendDeliveryAddnlPercentage\": \"<number,null-float>\",\n        \"weekendReturnAddnlPercentage\": \"<number,null-float>\"\n      },\n      \"milageTiers\": [\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"maxMilage\": \"<integer>\",\n          \"baseDeliveryPriceCent\": \"<integer>\",\n          \"baseReturnPriceCent\": \"<integer>\",\n          \"priceIsPerMile\": \"<boolean>\"\n        }\n      ],\n      \"deliveryCorrectionCharges\": [\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"timeBeforePickupMin\": \"<integer>\",\n          \"correctionAddnlPercentage\": \"<float>\"\n        }\n      ],\n      \"fleetVehicleModifiers\": [\n        {\n          \"id\": \"3232a7ee-7bc9-f5ad-e1f3-cac0ea28dbb0\",\n          \"basePriceMultiplier\": 4275.437060769175,\n          \"fleetVehicleId\": \"8ed7a1de-f02b-d627-1109-e1269de52124\",\n          \"fleetVehicle\": {\n            \"id\": \"789e5976-5a2f-36ee-ac9c-10b9e0bc2bde\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 936\n          }\n        },\n        {\n          \"id\": \"985ecec1-f25b-9376-4682-52201796c234\",\n          \"basePriceMultiplier\": 7686.801036267038,\n          \"fleetVehicleId\": \"dae88770-d487-6886-b103-ec4a313e4ee0\",\n          \"fleetVehicle\": {\n            \"id\": \"93765e7a-96fb-fe76-5d2f-a436d9ca6cbe\",\n            \"name\": \"string\",\n            \"maxWeightLbs\": 5395\n          }\n        }\n      ],\n      \"lpSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"oneRailSignature\": {\n        \"value\": \"reference #/paths/~1v1~1shipper-contract-sla~1%7BshipperContractSlaId%7D~1shipper-sign/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n      },\n      \"shipperContract\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1shipper-contract/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": false,\n      \"routeCostConfigurations\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc7fa24b-2213-4ad4-8a78-8382afe69191",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-contract-sla",
+                    "bulk-onerail-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typedName\": \"<string>\",\n  \"lpContractSlaIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a1c4e03-d29b-4ec0-b07c-97a0bde84c83",
+    "name": "OneRail Operation Dashboard LP Contract SLA API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

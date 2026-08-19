@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Delivery Rating API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Delivery Rating",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pull up a deliveries' rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/delivery/:deliveryId/rating",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Pull up a deliveries' rating"
+        },
+        {
+          "info": {
+            "name": "Add rating to a delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/:deliveryId/rating",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add rating to a delivery"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

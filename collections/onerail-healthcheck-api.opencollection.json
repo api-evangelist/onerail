@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Onerail Health Check API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HealthCheck",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health check",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "/"
+          },
+          "docs": "Health check"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,309 @@
+{
+  "item": [
+    {
+      "id": "dd3cc8b7-8489-438e-933f-1090f4a32aeb",
+      "name": "Documents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f28b0d1-6123-4311-ab27-55d6abe1b4ab",
+          "name": "Retrieve all documents associated with a specific delivery. This includes a variety of documents required for the shipment process, such as shipping labels, hazard labels, Bills of Lading (BOL), invoices, and additional delivery receipts.",
+          "request": {
+            "name": "Retrieve all documents associated with a specific delivery. This includes a variety of documents required for the shipment process, such as shipping labels, hazard labels, Bills of Lading (BOL), invoices, and additional delivery receipts.",
+            "description": {
+              "content": "Fetches all documents linked to a given delivery or order ID. These documents may include mandatory shipment documentation, regulatory compliance forms, hazardous materials labels (if applicable), and other related paperwork essential for tracking and verification purposes. This endpoint supports authentication and requires a valid `deliveryId` or `orderId` parameter to identify the delivery in question.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "delivery",
+                ":id",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "withBase64",
+                  "value": "false",
+                  "description": "Indicates whether the documents should be returned as base64-encoded strings."
+                },
+                {
+                  "disabled": false,
+                  "key": "containerId",
+                  "value": "<string>",
+                  "description": "Optional shipper container ID to filter documents for a specific container within the delivery."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the delivery, used to locate and retrieve its associated documents or order id ."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY-AND-APP-ID"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5014b7ee-cd94-40b7-b62a-ae7eaa2a6247",
+              "name": "Successfully retrieved the documents associated with the specified delivery.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delivery",
+                    ":id",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "withBase64",
+                      "value": "false"
+                    },
+                    {
+                      "key": "containerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the delivery, used to locate and retrieve its associated documents or order id ."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deliveryId\": \"0a5f3e5f-63bd-4472-9eee-a99f17cfeb44\",\n  \"orderId\": \"999-637-9299\",\n  \"documents\": [\n    {\n      \"fileType\": \"BOL\",\n      \"subFileType\": null,\n      \"fileLink\": \"https://onerail-delivery-api-staging.azurewebsites.net/assets/2fa9bb66-c0a2-462f-9afa-5c045a6edb53_Image1733165563.png\",\n      \"fileBase64\": \"iVBORw0KGg\"\n    },\n    {\n      \"fileType\": \"BOL\",\n      \"subFileType\": null,\n      \"fileLink\": \"https://onerail-delivery-api-staging.azurewebsites.net/assets/2fa9bb66-c0a2-462f-9afa-5c045a6edb53_Image1733165563.png\",\n      \"fileBase64\": \"iVBORw0KGg\"\n    }\n  ],\n  \"containers\": [\n    {\n      \"containerId\": \"93ca6ee6-d4ef-4879-8b5e-bb85a7ae2da7\",\n      \"containerTrackingId\": \"794810563883\",\n      \"shipperContainerId\": \"2222\",\n      \"shippingLabelLink\": \"https://onerail-delivery-api-staging.azurewebsites.net/assets/2fa9bb66-c0a2-462f-9afa-5c045a6edb53_Image1733165563.png\",\n      \"hazmatLabelType\": \"OP900\",\n      \"hazmatLabelLink\": \"https://onerail-delivery-api-staging.azurewebsites.net/assets/2fa9bb66-c0a2-462f-9afa-5c045a6edb53_Image1733165563.png\",\n      \"hazmatLabelBase64\": \"iVBORw0KGg...\",\n      \"shippingLabelBase64\": \"iVBORw0KGg...\"\n    },\n    {\n      \"containerId\": \"93ca6ee6-d4ef-4879-8b5e-bb85a7ae2da7\",\n      \"containerTrackingId\": \"794810563883\",\n      \"shipperContainerId\": \"2222\",\n      \"shippingLabelLink\": \"https://onerail-delivery-api-staging.azurewebsites.net/assets/2fa9bb66-c0a2-462f-9afa-5c045a6edb53_Image1733165563.png\",\n      \"hazmatLabelType\": \"OP900\",\n      \"hazmatLabelLink\": \"https://onerail-delivery-api-staging.azurewebsites.net/assets/2fa9bb66-c0a2-462f-9afa-5c045a6edb53_Image1733165563.png\",\n      \"hazmatLabelBase64\": \"iVBORw0KGg...\",\n      \"shippingLabelBase64\": \"iVBORw0KGg...\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cca56a0a-114d-4cd2-ab5a-ec0bfe48e3e9",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delivery",
+                    ":id",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "withBase64",
+                      "value": "false"
+                    },
+                    {
+                      "key": "containerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the delivery, used to locate and retrieve its associated documents or order id ."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 1742,\n  \"errors\": {},\n  \"errorDetails\": [\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c722516-0778-4343-8388-7acc18d9750c",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delivery",
+                    ":id",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "withBase64",
+                      "value": "false"
+                    },
+                    {
+                      "key": "containerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the delivery, used to locate and retrieve its associated documents or order id ."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 1868,\n  \"errors\": {},\n  \"errorDetails\": [\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-ONERAIL-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9e347942-a42d-498a-b888-d989749d793f",
+    "name": "OneRail Delivery Cloud - Delivery Documents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Allows authorized 3rd parties to request new deliveries through the OneRail network",
+      "type": "text/plain"
+    }
+  }
+}

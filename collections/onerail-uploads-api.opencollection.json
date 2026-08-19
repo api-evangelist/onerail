@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Uploads API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Uploads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Uploads a new file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/file",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "secure",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "fileData",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Uploads a new file"
+        },
+        {
+          "info": {
+            "name": "Display image stored in Azure storage account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/assets",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "image URL"
+              }
+            ]
+          },
+          "docs": "Display image stored in Azure storage account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

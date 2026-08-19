@@ -1,0 +1,482 @@
+{
+  "item": [
+    {
+      "id": "8b9a881b-cb6b-48ee-937d-76eaa951692f",
+      "name": "Ratecards Market",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b666ba60-9ca2-4c9a-9e6f-ac6f73d44262",
+          "name": "Create a new market",
+          "request": {
+            "name": "Create a new market",
+            "description": {
+              "content": "Create a new market in the Rate Cards service",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "ratecards",
+                "markets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organizationId",
+                  "value": "<string>",
+                  "description": "Optional organization ID to scope the market to"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"geopoly\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  },\n  \"cellIds\": \"<array,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4dce1d56-a319-440f-9432-39b14e2627af",
+              "name": "Successfully created market",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ratecards",
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"geopoly\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  },\n  \"cellIds\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"publicId\": \"string\",\n  \"name\": \"string\",\n  \"geopoly\": {},\n  \"organizationId\": null,\n  \"createdAt\": \"1997-04-24T03:13:15.704Z\",\n  \"createdById\": null,\n  \"createdByName\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f62e342-276c-43ba-81c7-6b3039a9ae60",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ratecards",
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"geopoly\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  },\n  \"cellIds\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8d83e0f-6977-47ed-a021-df687ca5c4d0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ratecards",
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"geopoly\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  },\n  \"cellIds\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67115304-00bb-4669-93c3-a7e08a9c716d",
+          "name": "Delete a market",
+          "request": {
+            "name": "Delete a market",
+            "description": {
+              "content": "Soft delete a market in the Rate Cards service",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "ratecards",
+                "markets",
+                ":marketPublicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketPublicId",
+                  "description": "(Required) The public ID of the market"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1497289b-4e31-45d1-a214-0e86a0ae6e81",
+              "name": "Successfully deleted market",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ratecards",
+                    "markets",
+                    ":marketPublicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketPublicId",
+                      "description": "(Required) The public ID of the market"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bdd22c03-a56d-43ef-ae2e-6bf20911ea20",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ratecards",
+                    "markets",
+                    ":marketPublicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketPublicId",
+                      "description": "(Required) The public ID of the market"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc3de65a-6255-4748-8f57-6ef746f61e6e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ratecards",
+                    "markets",
+                    ":marketPublicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketPublicId",
+                      "description": "(Required) The public ID of the market"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aacd65d2-8212-4995-b20d-4ac137eb0da0",
+    "name": "OneRail Operation Dashboard Ratecards Market API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

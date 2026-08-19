@@ -1,0 +1,204 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Blob Storage API API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Blob Storage API
+paths:
+  /v1/organization/{organizationId}/blob:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      description: organization id
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Blob
+      summary: Get the blob names in an organization
+      operationId: getAllBlobs
+      tags:
+      - Blob Storage API
+      responses:
+        '200':
+          description: blob metadata
+          content:
+            application/json:
+              schema:
+                description: Get blobNames from the organization's blob storage container.
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    lastUpdatedAt:
+                      type: string
+                      format: date-time
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/organization/{organizationId}/blob/{blobName}:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      description: organization id
+      schema:
+        type: string
+    - name: blobName
+      in: path
+      description: blob name
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Blob
+      summary: Get the blob file with the given name
+      operationId: getBlob
+      tags:
+      - Blob Storage API
+      responses:
+        '200':
+          description: blob file
+          content:
+            application/json:
+              schema:
+                description: Get blob with the given blob name
+                type: object
+                properties:
+                  success:
+                    type: string
+                  lastUpdatedAt:
+                    type: string
+                    format: date-time
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: Blob
+      summary: Update the blob file with the given name
+      operationId: put
+      tags:
+      - Blob Storage API
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              description: Put data for the blob update.
+              required:
+              - secure
+              properties:
+                secure:
+                  type: boolean
+                  description: If the image should be stored securely
+                  default: true
+                fileData:
+                  type: string
+                  format: binary
+                  description: binary file upload
+      responses:
+        '200':
+          description: blob success status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/organization/{organizationId}/blob/organizations:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      description: organization id
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Blob
+      summary: Get the organization IDs which use blob storage
+      operationId: organizations
+      tags:
+      - Blob Storage API
+      responses:
+        '200':
+          description: organizations with file APIs
+          content:
+            application/json:
+              schema:
+                description: array of organization ids
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

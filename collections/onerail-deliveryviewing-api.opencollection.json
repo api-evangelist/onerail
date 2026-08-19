@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Delivery Viewing API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DeliveryViewing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of all users actively viewing a page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/delivery/:deliveryId/viewing",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "organizationName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get list of all users actively viewing a page"
+        },
+        {
+          "info": {
+            "name": "Remove current user from active delivery viewers",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/delivery/:deliveryId/viewing",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove current user from active delivery viewers"
+        },
+        {
+          "info": {
+            "name": "Get active viewers for many deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery/viewing/active",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get active viewers for many deliveries"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

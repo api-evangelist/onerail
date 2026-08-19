@@ -1,0 +1,1172 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Route API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Route
+paths:
+  /v1/cancel-expired-deliveries:
+    post:
+      x-exegesis-controller: Delivery
+      summary: Accepts a filter to determine which deliveries to revoke the routes for and Only cancel deliveries that are not in a "final" status, final statuses
+      security:
+      - ApiKey: []
+        AppId: []
+      operationId: cancelExpiredDeliveries
+      tags:
+      - Route
+      requestBody:
+        description: Filters to determine which deliveries to revoke the routes for.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organizationId:
+                  type: string
+                  format: uuid
+                attemptedDeliveries:
+                  type: boolean
+                requireOrderStatuses:
+                  type: array
+                  items:
+                    type: string
+                ignoreFDOPackingDeliveries:
+                  type: boolean
+                triggerAtMidnight:
+                  type: boolean
+                createdAtStart:
+                  type: string
+                  format: date-time
+                createdAtEnd:
+                  type: string
+                  format: date-time
+                reportOnly:
+                  type: boolean
+                manualDispatch:
+                  type: boolean
+                shipperContractSlaIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                deliveryStatuses:
+                  type: array
+                  items:
+                    type: string
+                bins:
+                  type:
+                  - integer
+                  - 'null'
+                  minimum: 1
+      responses:
+        '200':
+          description: Revoked routes and cancel deliveries
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/route/{routeId}:
+    parameters:
+    - name: routeId
+      in: path
+      required: true
+      description: route id
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Route
+      summary: Gets one route by id
+      operationId: getRoute
+      tags:
+      - Route
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  status:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  userId:
+                    type: string
+                    format: uuid
+                  expectedCompletionDate:
+                    type: string
+                    format: date-time
+                  plannedStartAt:
+                    type:
+                    - string
+                    - 'null'
+                    format: date-time
+                  calculatedShipperCostCent:
+                    type: number
+                  calculatedLpCostCent:
+                    type: number
+                  totalDurationSecondsEstimate:
+                    type: number
+                  totalMilesEstimate:
+                    type: number
+                  orgSourcedIdentifier:
+                    type:
+                    - string
+                    - 'null'
+                  pathCoordinates:
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      type: array
+                      items:
+                        type: array
+                        items:
+                          type: number
+                  routeStops:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        eta:
+                          type: string
+                          format: date-time
+                        computedLegDistanceMile:
+                          type: number
+                        computedLegDurationSeconds:
+                          type: number
+                        routeId:
+                          type: string
+                          format: uuid
+                        deliveryId:
+                          type: string
+                          format: uuid
+                        stopType:
+                          type: string
+                          enum:
+                          - PICKUP
+                          - DROPOFF
+                        order:
+                          description: Order of the routestops along the route
+                          type: number
+                        delivery:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            orderId:
+                              type: string
+                              format: uuid
+                            order:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  format: uuid
+                                organizationId:
+                                  type: string
+                                  format: uuid
+                  ownFleetVehicles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        name:
+                          type: string
+                        maxWeightLbs:
+                          type: number
+                        vin:
+                          type: string
+                        costPerMileCent:
+                          type: number
+                        lpMarketId:
+                          type: string
+                          format: uuid
+                        currentRouteId:
+                          type: string
+                          format: uuid
+                        fleetVehicleId:
+                          type: string
+                          format: uuid
+                        driverId:
+                          type:
+                          - string
+                          - 'null'
+                          format: uuid
+                        active:
+                          type: boolean
+                        createdAt:
+                          type: string
+                          format: date-time
+                        OwnFleetVehicleRoute:
+                          type: object
+                          properties:
+                            ownFleetVehicleId:
+                              type: string
+                              format: uuid
+                            routeId:
+                              type: string
+                              format: uuid
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/route/{routeId}/risky:
+    parameters:
+    - name: routeId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: Route
+      summary: Get information for risky route
+      operationId: getInfoForRiskyRoute
+      tags:
+      - Route
+      responses:
+        '200':
+          description: Risky route information with carriers, costs, and drivers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    organizationId:
+                      type: string
+                    organizationName:
+                      type: string
+                    organizationLogo:
+                      type:
+                      - string
+                      - 'null'
+                    phoneNumber:
+                      type:
+                      - string
+                      - 'null'
+                    costCents:
+                      type: number
+                      description: Estimated cost in cents for the route from external rates API
+                    organizationSlaId:
+                      type:
+                      - string
+                      - 'null'
+                      description: Organization SLA ID for the carrier
+                    drivers:
+                      type: array
+                      description: Array of available drivers within 100 miles of the route pickup location
+                      items:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          id:
+                            type: string
+                          firstName:
+                            type: string
+                          lastName:
+                            type: string
+                          phoneNumber:
+                            type: string
+                          driver:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              availability:
+                                type: string
+                              ownFleetVehicle:
+                                type: object
+                              distance:
+                                type: object
+        '401':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        '403':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/route/{routeId}/rates-with-drivers:
+    parameters:
+    - name: routeId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: Route
+      summary: Get external rates with available drivers for route
+      operationId: getRatesWithDriversForRoute
+      tags:
+      - Route
+      responses:
+        '200':
+          description: External rates with available drivers information for route
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    organizationId:
+                      type: string
+                    organizationName:
+                      type: string
+                    organizationLogo:
+                      type:
+                      - string
+                      - 'null'
+                    phoneNumber:
+                      type:
+                      - string
+                      - 'null'
+                    costCents:
+                      type: number
+                      description: Estimated cost in cents for the route from external rates API
+                    rateId:
+                      type: string
+                      description: Rate ID from external rates API
+                    organizationSlaId:
+                      type:
+                      - string
+                      - 'null'
+                      description: Organization SLA ID for the carrier
+                    drivers:
+                      type: array
+                      description: Array of available drivers within 100 miles of the route pickup location
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          firstName:
+                            type: string
+                          lastName:
+                            type: string
+                          phoneNumber:
+                            type: string
+                          driver:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              availability:
+                                type: string
+                              ownFleetVehicle:
+                                type: object
+                              distance:
+                                type: object
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        '512':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/routes/bulk-rates-with-drivers:
+    post:
+      x-exegesis-controller: Route
+      summary: Get external rates with available drivers for multiple routes
+      description: Returns carriers that can handle ALL specified routes, with rate information per route
+      operationId: getRatesWithDriversForMultipleRoutes
+      tags:
+      - Route
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - routeIds
+              properties:
+                routeIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                  description: Array of route IDs to get rates for
+                  minItems: 1
+      responses:
+        '200':
+          description: External rates with available drivers for carriers that can handle all routes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    organizationId:
+                      type: string
+                    organizationName:
+                      type: string
+                    organizationLogo:
+                      type:
+                      - string
+                      - 'null'
+                    phoneNumber:
+                      type:
+                      - string
+                      - 'null'
+                    organizationSlaId:
+                      type:
+                      - string
+                      - 'null'
+                      description: Organization SLA ID for the carrier
+                    drivers:
+                      type: array
+                      description: Array of available drivers within 100 miles of the first route pickup location
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          firstName:
+                            type: string
+                          lastName:
+                            type: string
+                          phoneNumber:
+                            type: string
+                          driver:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              availability:
+                                type: string
+                              ownFleetVehicle:
+                                type: object
+                              distance:
+                                type: object
+                    ratesByRoute:
+                      type: object
+                      description: Map of routeId to array of rates for that route
+                      additionalProperties:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            rateId:
+                              type: string
+                              description: Rate ID from external rates API
+                            costCents:
+                              type: number
+                              description: Estimated cost in cents for the route
+        '400':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        '512':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/route/{routeId}/revoke:
+    parameters:
+    - name: routeId
+      in: path
+      required: true
+      description: route id
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: Route
+      summary: Removes all deliveries and fleet vehicles from route and deletes the route
+      operationId: revokeRoute
+      security:
+      - ApiKey: []
+        AppId: []
+      tags:
+      - Route
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  numOfVehicles:
+                    type: number
+                  deliveriesCanceled:
+                    type: array
+                    items:
+                      type: string
+                      format: uuid
+                  deliveriesNotCanceled:
+                    type: array
+                    items:
+                      type: string
+                      format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/routes:
+    parameters:
+    - name: organizationIds
+      in: query
+      description: organizationIds to filter down to.
+      schema:
+        type: array
+        items:
+          type: string
+    - name: locationIds
+      in: query
+      description: locationIds to filter down to.
+      schema:
+        type: array
+        items:
+          type: string
+    - name: routeStatuses
+      in: query
+      description: routeStatuses to filter down to.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+          - CREATED
+          - ASSIGNED
+          - IN_PROGRESS
+          - COMPLETED
+          - CANCELED
+    - name: driverAssignedToRoute
+      in: query
+      description: driverAssignedToRoute to filter down to.
+      schema:
+        type: boolean
+    get:
+      x-exegesis-controller: Route
+      summary: Gets all routes
+      operationId: getAllRoutes
+      tags:
+      - Route
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    status:
+                      type: string
+                    createdAt:
+                      type: string
+                      format: date-time
+                    updatedAt:
+                      type: string
+                      format: date-time
+                    userId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                    expectedCompletionDate:
+                      type:
+                      - string
+                      - 'null'
+                      format: date-time
+                    plannedStartAt:
+                      type:
+                      - string
+                      - 'null'
+                      format: date-time
+                    calculatedShipperCostCent:
+                      type:
+                      - number
+                      - 'null'
+                    calculatedLpCostCent:
+                      type:
+                      - number
+                      - 'null'
+                    totalDurationSecondsEstimate:
+                      type:
+                      - number
+                      - 'null'
+                    totalMilesEstimate:
+                      type:
+                      - number
+                      - 'null'
+                    orgSourcedIdentifier:
+                      type:
+                      - string
+                      - 'null'
+                    pathCoordinates:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: array
+                        items:
+                          type: array
+                          items:
+                            type: number
+                    routeStops:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          eta:
+                            type:
+                            - string
+                            - 'null'
+                            format: date-time
+                          computedLegDistanceMile:
+                            type:
+                            - number
+                            - 'null'
+                          computedLegDurationSeconds:
+                            type:
+                            - number
+                            - 'null'
+                          routeId:
+                            type: string
+                            format: uuid
+                          deliveryId:
+                            type: string
+                            format: uuid
+                          stopType:
+                            type: string
+                            enum:
+                            - PICKUP
+                            - DROPOFF
+                          order:
+                            description: Order of the routestops along the route
+                            type: number
+                    ownFleetVehicles:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          name:
+                            type: string
+                          maxWeightLbs:
+                            type: number
+                          vin:
+                            type: string
+                          costPerMileCent:
+                            type: number
+                          lpMarketId:
+                            type: string
+                            format: uuid
+                          currentRouteId:
+                            type: string
+                            format: uuid
+                          fleetVehicleId:
+                            type: string
+                            format: uuid
+                          driverId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                          active:
+                            type: boolean
+                          createdAt:
+                            type: string
+                            format: date-time
+                          OwnFleetVehicleRoute:
+                            type: object
+                            properties:
+                              ownFleetVehicleId:
+                                type: string
+                                format: uuid
+                              routeId:
+                                type: string
+                                format: uuid
+                    deliveries:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          orderId:
+                            type: string
+                            format: uuid
+                          fromId:
+                            type: string
+                            format: uuid
+                          toId:
+                            type: string
+                            format: uuid
+                          altFromId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                          altToId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                          state:
+                            type: string
+                          dispatchAt:
+                            type:
+                            - string
+                            - 'null'
+                            format: date-time
+                          deliverySpeedMin:
+                            type: number
+                          deliveryRatingId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                          startTime:
+                            type:
+                            - string
+                            - 'null'
+                            format: date-time
+                          createdAt:
+                            type: string
+                            format: date-time
+                          updatedAt:
+                            type: string
+                            format: date-time
+                          driversLocationId:
+                            type:
+                            - string
+                            - 'null'
+                            format: uuid
+                    routeVehicleHub:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        routeId:
+                          type: string
+                          format: uuid
+                        locationId:
+                          type: string
+                          format: uuid
+                        location:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            address:
+                              type: string
+                            contactName:
+                              type:
+                              - string
+                              - 'null'
+                            location:
+                              type: array
+                              items:
+                                type: number
+                              minItems: 2
+                              maxItems: 2
+                            name:
+                              type: string
+                            storeNumber:
+                              type:
+                              - string
+                              - 'null'
+        '404':
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    post:
+      x-exegesis-controller: Route
+      summary: Create new orders within one or more routes.
+      operationId: createRoutes
+      tags:
+      - Route
+      requestBody:
+        description: Multiple orders with route options.
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - routes
+              properties:
+                routes:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                    - orders
+                    properties:
+                      id:
+                        type: string
+                        minLength: 5
+                        maxLength: 255
+                        description: Custom route id - Will create default if none is given.
+                        pattern: ^[a-zA-Z0-9:_-]+$
+                      dispatchToOnerail:
+                        type: boolean
+                        default: false
+                        description: Use if route needs to be dispatched to OneRail.
+                      skipOptimizer:
+                        type: boolean
+                        default: false
+                        description: Set to true to skip route optimization step and keep delivery sequence.
+                      overflowToOnerail:
+                        type: boolean
+                        default: false
+                        description: Set to true to allow the overflow of routed deliveries to external.
+                      orders:
+                        type: array
+                        items:
+                          $ref: '#/paths/~1v1~1order~1api/post/requestBody/content/application~1json/schema'
+          multipart/form-data:
+            schema:
+              type: object
+              description: Set if image should be securely stored and the binary data to upload
+              properties:
+                fileData:
+                  type: string
+                  format: binary
+                  description: CSV File upload
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  failedOrders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        orderId:
+                          type: string
+                        routeId:
+                          type: string
+                        reason:
+                          type: string
+                  failedRoutes:
+                    type: array
+                    items:
+                      type: string
+                  successfulRoutes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        orgSourcedIdentifer:
+                          type: string
+                        deliveryIds:
+                          type: array
+                          items:
+                            type: string
+                            format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: Route
+      summary: Update exist route.
+      operationId: updateRoutes
+      tags:
+      - Route
+      requestBody:
+        description: Multiple orders with route options.
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - routes
+              properties:
+                routes:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                    - orders
+                    - id
+                    properties:
+                      id:
+                        type: string
+                        description: Org source identifier route [orgSourcedIdentifier].
+                      dispatchToOnerail:
+                        type: boolean
+                        default: false
+                        description: Use if route needs to be dispatched to OneRail.
+                      returnToDepot:
+                        type: boolean
+                        default: false
+                        description: Use if route needs to account for the driver returning to the distrubtion center at the end.
+                      skipOptimizer:
+                        type: boolean
+                        default: false
+                        description: Set to true to skip route optimization step and keep delivery sequence.
+                      orders:
+                        type: array
+                        items:
+                          $ref: '#/paths/~1v1~1order~1api/post/requestBody/content/application~1json/schema'
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                fileData:
+                  type: string
+                  format: binary
+                  description: CSV File upload
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  failedRoutes:
+                    type: array
+                    items:
+                      type: string
+                  successfulRoutes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        orgSourcedIdentifer:
+                          type: string
+                        deliveryIds:
+                          type: array
+                          items:
+                            type: string
+                            format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/routes/organization/{organizationId}:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      description: organization id
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: Route
+      summary: Create routes with orders for specific organizationId
+      operationId: createForOrganization
+      tags:
+      - Route
+      requestBody:
+        description: Multiple orders with route options.
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1routes/post/requestBody/content/application~1json/schema'
+          multipart/form-data:
+            schema:
+              type: object
+              description: Optional formData CSV File with list of orders
+              properties:
+                processInBackground:
+                  type: boolean
+                  default: false
+                fileData:
+                  type: string
+                  format: binary
+                  description: CSV File upload
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  failedOrders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        orderId:
+                          type: string
+                        routeId:
+                          type: string
+                        reason:
+                          type: string
+                  failedRoutes:
+                    type: array
+                    items:
+                      type: string
+                  successfulRoutes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        orgSourcedIdentifer:
+                          type: string
+                        deliveryIds:
+                          type: array
+                          items:
+                            type: string
+                            format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/routes/{orgSourcedIdentifier}/deliveries:
+    parameters:
+    - name: orgSourcedIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: Route
+      summary: Update route deliveries
+      operationId: updateDeliveries
+      tags:
+      - Route
+      requestBody:
+        description: Delivery ids with options
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - deliveryIds
+              properties:
+                dispatchToOnerail:
+                  type: boolean
+                  default: false
+                skipOptimizer:
+                  type: boolean
+                  default: false
+                deliveryIds:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deliveryIds:
+                    type: array
+                    items:
+                      type: string
+                      format: uuid
+                  orgSourcedIdentifier:
+                    type: string
+                  warnings:
+                    type: array
+                    items:
+                      type: string
+                      format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

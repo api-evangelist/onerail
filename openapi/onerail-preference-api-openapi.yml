@@ -1,0 +1,482 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Preference API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Preference
+paths:
+  /v1/preferences/default:
+    get:
+      x-exegesis-controller: Preference
+      summary: get default preference object for any context
+      operationId: getDefault
+      tags:
+      - Preference
+      responses:
+        '200':
+          description: Preference default object
+          content:
+            application/json:
+              schema:
+                type:
+                - object
+                - 'null'
+                properties:
+                  locale:
+                    type: string
+                    description: language-country determinant
+                    default: EN_US
+                  measurementSystem:
+                    type: string
+                    enum:
+                    - IMPERIAL
+                    - METRIC
+                    description: measurement system
+                  dateFormat:
+                    type: string
+                    enum:
+                    - MM-DD-YY
+                    - DD-MM-YY
+                    - YY-MM-DD
+                    - DD/MM/YY
+                    - MM/DD/YY
+                    - YY/MM/DD
+                    - MM/DD/YYYY
+                    - DD/MM/YYYY
+                    - YYYY/MM/DD
+                    description: date format. Must match `viewDateFormats` from `@bcatania18/operations-schema` (see core-or1 PR
+                  timeFormat:
+                    type: string
+                    enum:
+                    - 12H
+                    - 24H
+                    description: time format
+                  timezone:
+                    $ref: '#/paths/~1v1~1preferences~1%7BcontextType%7D~1%7BcontextId%7D~1timezone/post/requestBody/content/application~1json/schema/properties/timezone'
+                  currency:
+                    type: string
+                    description: currency
+                    default: USD
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/preferences/{contextId}:
+    parameters:
+    - name: contextId
+      in: path
+      required: true
+      description: User/Location/Organization id
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: Preference
+      summary: Get Preference record by context id
+      operationId: getByContextId
+      tags:
+      - Preference
+      responses:
+        '200':
+          description: Preference record
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  contextId:
+                    type: string
+                    description: User/Location/Organization id
+                  context:
+                    type: string
+                    enum:
+                    - USER
+                    - LOCATION
+                    - ORGANIZATION
+                  locale:
+                    type: string
+                    description: language-country determinant
+                    default: EN_US
+                  measurementSystem:
+                    type: string
+                    enum:
+                    - IMPERIAL
+                    - METRIC
+                    description: measurement system
+                  dateFormat:
+                    type: string
+                    enum:
+                    - MM-DD-YY
+                    - DD-MM-YY
+                    - YY-MM-DD
+                    - DD/MM/YY
+                    - MM/DD/YY
+                    - YY/MM/DD
+                    - MM/DD/YYYY
+                    - DD/MM/YYYY
+                    - YYYY/MM/DD
+                    description: date format. Must match `viewDateFormats` from `@bcatania18/operations-schema` (see core-or1 PR
+                  timeFormat:
+                    type: string
+                    enum:
+                    - 12H
+                    - 24H
+                    description: time format
+                  timezone:
+                    $ref: '#/paths/~1v1~1preferences~1%7BcontextType%7D~1%7BcontextId%7D~1timezone/post/requestBody/content/application~1json/schema/properties/timezone'
+                  currency:
+                    type: string
+                    description: currency
+                    default: USD
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/preferences/{contextType}/{contextId}/date-format:
+    parameters:
+    - name: contextType
+      in: path
+      required: true
+      description: The context level for the preference
+      schema:
+        type: string
+        enum:
+        - ORGANIZATION
+        - LOCATION
+        - USER
+    - name: contextId
+      in: path
+      required: true
+      description: User/Location/Organization id
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: Preference
+      summary: Get date format preference for a specific context
+      operationId: getDateFormat
+      tags:
+      - Preference
+      responses:
+        '200':
+          description: Date format preference
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dateFormat:
+                    type: string
+                    enum:
+                    - MM-DD-YY
+                    - DD-MM-YY
+                    - YY-MM-DD
+                    - DD/MM/YY
+                    - MM/DD/YY
+                    - YY/MM/DD
+                    - MM/DD/YYYY
+                    - DD/MM/YYYY
+                    - YYYY/MM/DD
+                    description: Date format preference. Must match `viewDateFormats` from `@bcatania18/operations-schema` (see core-or1 PR
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    post:
+      x-exegesis-controller: Preference
+      summary: Set date format preference for a specific context
+      operationId: setDateFormat
+      tags:
+      - Preference
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dateFormat:
+                  type: string
+                  enum:
+                  - MM-DD-YY
+                  - DD-MM-YY
+                  - YY-MM-DD
+                  - DD/MM/YY
+                  - MM/DD/YY
+                  - YY/MM/DD
+                  - MM/DD/YYYY
+                  - DD/MM/YYYY
+                  - YYYY/MM/DD
+                  description: Date format preference. Must match `viewDateFormats` from `@bcatania18/operations-schema` (see core-or1 PR
+              required:
+              - dateFormat
+      responses:
+        '200':
+          description: Date format preference updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dateFormat:
+                    type: string
+                    enum:
+                    - MM-DD-YY
+                    - DD-MM-YY
+                    - YY-MM-DD
+                    - DD/MM/YY
+                    - MM/DD/YY
+                    - YY/MM/DD
+                    - MM/DD/YYYY
+                    - DD/MM/YYYY
+                    - YYYY/MM/DD
+                    description: Date format preference. Must match `viewDateFormats` from `@bcatania18/operations-schema` (see core-or1 PR
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/preferences/{contextType}/{contextId}/time-format:
+    parameters:
+    - name: contextType
+      in: path
+      required: true
+      description: The context level for the preference
+      schema:
+        type: string
+        enum:
+        - ORGANIZATION
+        - LOCATION
+        - USER
+    - name: contextId
+      in: path
+      required: true
+      description: User/Location/Organization id
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: Preference
+      summary: Get time format preference for a specific context
+      operationId: getTimeFormat
+      tags:
+      - Preference
+      responses:
+        '200':
+          description: Time format preference
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  timeFormat:
+                    type: string
+                    enum:
+                    - 12H
+                    - 24H
+                    description: Time format preference
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    post:
+      x-exegesis-controller: Preference
+      summary: Set time format preference for a specific context
+      operationId: setTimeFormat
+      tags:
+      - Preference
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                timeFormat:
+                  type: string
+                  enum:
+                  - 12H
+                  - 24H
+                  description: Time format preference
+              required:
+              - timeFormat
+      responses:
+        '200':
+          description: Time format preference updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  timeFormat:
+                    type: string
+                    enum:
+                    - 12H
+                    - 24H
+                    description: Time format preference
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/timezones:
+    get:
+      x-exegesis-controller: Preference
+      summary: List allowed timezones
+      operationId: listTimezones
+      tags:
+      - Preference
+      responses:
+        '200':
+          description: List of allowed timezones
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - timezones
+                properties:
+                  timezones:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - label
+                      properties:
+                        id:
+                          type: string
+                          description: IANA timezone identifier (e.g. America/New_York)
+                        label:
+                          type: string
+                          description: Human-readable timezone label
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/preferences/{contextType}/{contextId}/timezone:
+    parameters:
+    - name: contextType
+      in: path
+      required: true
+      description: The context level for the preference
+      schema:
+        type: string
+        enum:
+        - ORGANIZATION
+        - LOCATION
+        - USER
+    - name: contextId
+      in: path
+      required: true
+      description: User/Location/Organization id
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: Preference
+      summary: Get timezone preference for a specific context
+      operationId: getTimezone
+      tags:
+      - Preference
+      responses:
+        '200':
+          description: Timezone preference
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  timezone:
+                    $ref: '#/paths/~1v1~1preferences~1%7BcontextType%7D~1%7BcontextId%7D~1timezone/post/requestBody/content/application~1json/schema/properties/timezone'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    post:
+      x-exegesis-controller: Preference
+      summary: Set timezone preference for a specific context
+      operationId: setTimezone
+      tags:
+      - Preference
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                timezone:
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - null
+                  - America/New_York
+                  - America/Chicago
+                  - America/Denver
+                  - America/Los_Angeles
+                  - America/Anchorage
+                  - Pacific/Honolulu
+                  description: Supported timezone identifier from the API allowlist; the canonical list is also available via `GET /v1/timezones` (e.g. America/New_York). Send `null` to clear the stored value.
+              required:
+              - timezone
+      responses:
+        '200':
+          description: Timezone preference updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  timezone:
+                    $ref: '#/paths/~1v1~1preferences~1%7BcontextType%7D~1%7BcontextId%7D~1timezone/post/requestBody/content/application~1json/schema/properties/timezone'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

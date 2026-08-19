@@ -1,0 +1,952 @@
+{
+  "item": [
+    {
+      "id": "9f31a9ea-68d1-4436-b4c0-465fb6c62694",
+      "name": "Exception Alert",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "00f54977-9d57-4cc6-a4b3-32b60c1776a7",
+          "name": "View all exception alerts for a given servicelevel",
+          "request": {
+            "name": "View all exception alerts for a given servicelevel",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "exception-alerts",
+                ":serviceLevelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "serviceLevelId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b2067e3-f437-4022-be70-a3bd263592ad",
+              "name": "Exception alerts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alerts",
+                    ":serviceLevelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "serviceLevelId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"serviceLevelId\": \"4fac32bf-3bf8-fed5-f688-69ee3ed5ef6e\",\n  \"conditions\": [\n    {\n      \"id\": \"73eae876-6bbe-8a69-0eb9-c014caba9dbd\",\n      \"thresholdValue\": 0,\n      \"conditionOperator\": \">\",\n      \"notes\": \"\",\n      \"deliveryExceptionReasonDefinitionId\": \"7175b935-1e61-93a0-567f-3a26e6f35e6f\"\n    },\n    {\n      \"id\": \"9dcb801e-3cce-9e99-c5d6-1353ba2e0ce0\",\n      \"thresholdValue\": 0,\n      \"conditionOperator\": \">\",\n      \"notes\": \"\",\n      \"deliveryExceptionReasonDefinitionId\": \"1cd1dc35-43ed-465b-8e0e-ff8ce60ec5f9\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e24a00c0-aa8e-4e86-a43b-35b2d6a4edcd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alerts",
+                    ":serviceLevelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "serviceLevelId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8af28a71-6556-4377-85e0-d5aed1eb7a7b",
+          "name": "Create Exception Alert",
+          "request": {
+            "name": "Create Exception Alert",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "exception-alert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conditions\": [\n    {\n      \"serviceLevelId\": \"<uuid>\",\n      \"organizationId\": \"<uuid>\",\n      \"conditionId\": \"<uuid>\",\n      \"thresholdValue\": \"<integer>\",\n      \"conditionOperator\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"deliveryExceptionReasonDefinitionId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"serviceLevelId\": \"<uuid>\",\n      \"organizationId\": \"<uuid>\",\n      \"conditionId\": \"<uuid>\",\n      \"thresholdValue\": \"<integer>\",\n      \"conditionOperator\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"deliveryExceptionReasonDefinitionId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be6081f9-1dae-4617-869a-3cefda79bda0",
+              "name": "Exception Alert",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"serviceLevelId\": \"<uuid>\",\n      \"organizationId\": \"<uuid>\",\n      \"conditionId\": \"<uuid>\",\n      \"thresholdValue\": \"<integer>\",\n      \"conditionOperator\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"deliveryExceptionReasonDefinitionId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"serviceLevelId\": \"<uuid>\",\n      \"organizationId\": \"<uuid>\",\n      \"conditionId\": \"<uuid>\",\n      \"thresholdValue\": \"<integer>\",\n      \"conditionOperator\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"deliveryExceptionReasonDefinitionId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6e5ffdf8-feca-27ba-83ed-91cc732152ad\",\n  \"condition\": {\n    \"id\": \"504c55ff-a533-b433-76a7-9bc38c66baed\",\n    \"condition\": \"string\",\n    \"noun\": \"string\",\n    \"createdAt\": \"string\",\n    \"updatedAt\": \"string\"\n  },\n  \"thresholdValue\": 7827,\n  \"conditionOperator\": \"string\",\n  \"notes\": \"string\",\n  \"deliveryExceptionReasonDefinitionId\": \"4bd29e16-fa28-8ab8-edb5-14e93f4652ef\",\n  \"enabled\": true,\n  \"createdAt\": \"1984-10-19T16:19:37.548Z\",\n  \"updatedAt\": \"1955-11-16T17:17:14.331Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "877299b3-a4bd-4551-8bbb-c203843f9fed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"serviceLevelId\": \"<uuid>\",\n      \"organizationId\": \"<uuid>\",\n      \"conditionId\": \"<uuid>\",\n      \"thresholdValue\": \"<integer>\",\n      \"conditionOperator\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"deliveryExceptionReasonDefinitionId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"serviceLevelId\": \"<uuid>\",\n      \"organizationId\": \"<uuid>\",\n      \"conditionId\": \"<uuid>\",\n      \"thresholdValue\": \"<integer>\",\n      \"conditionOperator\": \"<string>\",\n      \"notes\": \"<string>\",\n      \"deliveryExceptionReasonDefinitionId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e84cc66c-2a92-413e-8fe1-43bb9a820671",
+          "name": "Get Exception Alert",
+          "request": {
+            "name": "Get Exception Alert",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "exception-alert",
+                ":exceptionAlertId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "exceptionAlertId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6eddd3db-9dfe-4407-940e-d479979fc5f7",
+              "name": "Exception Alert",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alert",
+                    ":exceptionAlertId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionAlertId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6e5ffdf8-feca-27ba-83ed-91cc732152ad\",\n  \"condition\": {\n    \"id\": \"504c55ff-a533-b433-76a7-9bc38c66baed\",\n    \"condition\": \"string\",\n    \"noun\": \"string\",\n    \"createdAt\": \"string\",\n    \"updatedAt\": \"string\"\n  },\n  \"thresholdValue\": 7827,\n  \"conditionOperator\": \"string\",\n  \"notes\": \"string\",\n  \"deliveryExceptionReasonDefinitionId\": \"4bd29e16-fa28-8ab8-edb5-14e93f4652ef\",\n  \"enabled\": true,\n  \"createdAt\": \"1984-10-19T16:19:37.548Z\",\n  \"updatedAt\": \"1955-11-16T17:17:14.331Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e829660-6e7e-4678-bb38-014bbe3c69ac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alert",
+                    ":exceptionAlertId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionAlertId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75e7356f-ca5a-428b-9c0f-732f80dec00c",
+          "name": "Update Exception Alert",
+          "request": {
+            "name": "Update Exception Alert",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "exception-alert",
+                ":exceptionAlertId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "exceptionAlertId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conditionId\": \"<uuid>\",\n  \"thresholdValue\": \"<integer>\",\n  \"conditionOperator\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"deliveryExceptionReasonDefinitionId\": \"<uuid>\",\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db8535c5-eb62-459d-9df6-20e5951c17e6",
+              "name": "Exception Alert",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alert",
+                    ":exceptionAlertId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionAlertId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditionId\": \"<uuid>\",\n  \"thresholdValue\": \"<integer>\",\n  \"conditionOperator\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"deliveryExceptionReasonDefinitionId\": \"<uuid>\",\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6e5ffdf8-feca-27ba-83ed-91cc732152ad\",\n  \"condition\": {\n    \"id\": \"504c55ff-a533-b433-76a7-9bc38c66baed\",\n    \"condition\": \"string\",\n    \"noun\": \"string\",\n    \"createdAt\": \"string\",\n    \"updatedAt\": \"string\"\n  },\n  \"thresholdValue\": 7827,\n  \"conditionOperator\": \"string\",\n  \"notes\": \"string\",\n  \"deliveryExceptionReasonDefinitionId\": \"4bd29e16-fa28-8ab8-edb5-14e93f4652ef\",\n  \"enabled\": true,\n  \"createdAt\": \"1984-10-19T16:19:37.548Z\",\n  \"updatedAt\": \"1955-11-16T17:17:14.331Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd6b4405-a479-451d-a306-944f5b890dd9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alert",
+                    ":exceptionAlertId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionAlertId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditionId\": \"<uuid>\",\n  \"thresholdValue\": \"<integer>\",\n  \"conditionOperator\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"deliveryExceptionReasonDefinitionId\": \"<uuid>\",\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ae968c5-9192-435d-99d3-08440631a1a3",
+          "name": "Remove Exception Alert",
+          "request": {
+            "name": "Remove Exception Alert",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "exception-alert",
+                ":exceptionAlertId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "exceptionAlertId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "235485b7-d3dd-4a0f-b667-909e9528ea21",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alert",
+                    ":exceptionAlertId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionAlertId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19257cda-59e8-4d5b-89f2-8a6123d815a1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alert",
+                    ":exceptionAlertId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "exceptionAlertId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62a45616-63e3-4c89-bcaf-fa50286bf9ff",
+          "name": "Apply exception alert to delivery",
+          "request": {
+            "name": "Apply exception alert to delivery",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "exception-alert",
+                "apply-to-delivery",
+                ":deliveryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"selectedAlerts\": [\n    {\n      \"condition\": \"<string>\"\n    },\n    {\n      \"condition\": \"<string>\"\n    }\n  ],\n  \"preventExceptionDuplication\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "149879ec-7b61-499e-a72c-b679e158a078",
+              "name": "Exception Alert",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alert",
+                    "apply-to-delivery",
+                    ":deliveryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"selectedAlerts\": [\n    {\n      \"condition\": \"<string>\"\n    },\n    {\n      \"condition\": \"<string>\"\n    }\n  ],\n  \"preventExceptionDuplication\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93b7b17c-0dd5-48b1-bde0-5ff74232cdfc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "exception-alert",
+                    "apply-to-delivery",
+                    ":deliveryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"selectedAlerts\": [\n    {\n      \"condition\": \"<string>\"\n    },\n    {\n      \"condition\": \"<string>\"\n    }\n  ],\n  \"preventExceptionDuplication\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8621550e-5dc4-4911-ad66-3764f1d8f1cc",
+    "name": "OneRail Operation Dashboard Exception Alert API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,205 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Ratecards Market API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Ratecards Market
+paths:
+  /v1/ratecards/markets:
+    post:
+      x-exegesis-controller: RatecardsMarket
+      summary: Create a new market
+      description: Create a new market in the Rate Cards service
+      operationId: createMarket
+      security:
+      - ApiKey: []
+        AppId: []
+      - bearer: []
+      parameters:
+      - name: organizationId
+        in: query
+        required: false
+        description: Optional organization ID to scope the market to
+        schema:
+          type: string
+      tags:
+      - Ratecards Market
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Payload for creating a new market in the Rate Cards service
+              required:
+              - name
+              - geopoly
+              properties:
+                name:
+                  type: string
+                  description: The name of the market
+                geopoly:
+                  type: object
+                  description: 'GeoJSON representation of the polygon geometry.
+
+                    Example: {"type":"Polygon","coordinates":[[[-80.0,25.0],[-80.0,26.0],[-79.0,26.0],[-79.0,25.0],[-80.0,25.0]]]}
+
+                    '
+                  required:
+                  - coordinates
+                  - type
+                  properties:
+                    coordinates:
+                      type: array
+                      description: The coordinates of the polygon
+                      items:
+                        type: array
+                        items:
+                          type: array
+                          minItems: 2
+                          maxItems: 2
+                          items:
+                            type: number
+                    type:
+                      type: string
+                      enum:
+                      - Polygon
+                cellIds:
+                  type:
+                  - array
+                  - 'null'
+                  description: H3 cell IDs to associate with this market. Can be empty, but cannot contain null elements.
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Successfully created market
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Market record from the Rate Cards service
+                properties:
+                  publicId:
+                    type: string
+                    description: The public unique identifier of the market
+                  name:
+                    type: string
+                    description: The name of the market
+                  geopoly:
+                    type:
+                    - object
+                    - 'null'
+                    description: GeoJSON representation of the polygon geometry
+                  organizationId:
+                    type:
+                    - string
+                    - 'null'
+                    description: The organization ID this market belongs to, or null for global markets
+                  createdAt:
+                    type: string
+                    format: date-time
+                    description: Timestamp when the market was created
+                  createdById:
+                    type:
+                    - string
+                    - 'null'
+                    description: ID of the user who created the market
+                  createdByName:
+                    type:
+                    - string
+                    - 'null'
+                    description: Name of the user who created the market
+        '400':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/ratecards/markets/{marketPublicId}:
+    parameters:
+    - name: marketPublicId
+      in: path
+      required: true
+      description: The public ID of the market
+      schema:
+        type: string
+    delete:
+      x-exegesis-controller: RatecardsMarket
+      summary: Delete a market
+      description: Soft delete a market in the Rate Cards service
+      operationId: deleteMarket
+      security:
+      - ApiKey: []
+        AppId: []
+      - bearer: []
+      tags:
+      - Ratecards Market
+      responses:
+        '200':
+          description: Successfully deleted market
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

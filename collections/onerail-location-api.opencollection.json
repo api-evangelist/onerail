@@ -1,0 +1,519 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Location API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Location",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all locations user has access to",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/location",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all locations user has access to"
+        },
+        {
+          "info": {
+            "name": "Creates a new Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/location",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Location"
+        },
+        {
+          "info": {
+            "name": "Get location by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/location/:locationId",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get location by id"
+        },
+        {
+          "info": {
+            "name": "Updates location",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/location/:locationId",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates location"
+        },
+        {
+          "info": {
+            "name": "Remove location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/location/:locationId",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove location"
+        },
+        {
+          "info": {
+            "name": "Get Location's users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/location/:locationId/users",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path",
+                "description": "location id"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search user by name"
+              }
+            ]
+          },
+          "docs": "Get Location's users"
+        },
+        {
+          "info": {
+            "name": "adds Location's users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/location/:locationId/users",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path",
+                "description": "location id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "adds Location's users"
+        },
+        {
+          "info": {
+            "name": "Get Location's users (API)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/location/:locationId/users/api",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path",
+                "description": "location id"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search user by name"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Location's users (API)"
+        },
+        {
+          "info": {
+            "name": "deletes Location's users",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/location/:locationId/user/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "deletes Location's users"
+        },
+        {
+          "info": {
+            "name": "Get the customer locations for this shipper location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/location/:locationId/customer-locations",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { search: string }"
+              },
+              {
+                "name": "originLocationId",
+                "value": "",
+                "type": "query",
+                "description": "Origin location ID for orders with origin location"
+              }
+            ]
+          },
+          "docs": "Get the customer locations for this shipper location"
+        },
+        {
+          "info": {
+            "name": "CSV file with customer locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/location/bulk-customer-locations"
+          },
+          "docs": "CSV file with customer locations"
+        },
+        {
+          "info": {
+            "name": "Create a customer location for the shipper location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/location/:locationId/customer-location",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a customer location for the shipper location"
+        },
+        {
+          "info": {
+            "name": "Get customer location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/location/:locationId/customer-location/:customerLocationId",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerLocationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get customer location"
+        },
+        {
+          "info": {
+            "name": "Update customer location",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/location/:locationId/customer-location/:customerLocationId",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerLocationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update customer location"
+        },
+        {
+          "info": {
+            "name": "Remove customer location association to the shipper location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/location/:locationId/customer-location/:customerLocationId",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerLocationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove customer location association to the shipper location"
+        },
+        {
+          "info": {
+            "name": "Change an existing associated customer location to a different shipper location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/location/:locationId/customer-location/:customerLocationId/change-association",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "customerLocationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change an existing associated customer location to a different shipper location"
+        },
+        {
+          "info": {
+            "name": "Bulk delete selected customer locations for the shipper location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/location/:locationId/bulk",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk delete selected customer locations for the shipper location"
+        },
+        {
+          "info": {
+            "name": "Bulk delete ALL customer locations for the shipper location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/location/:locationId/bulk",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Bulk delete ALL customer locations for the shipper location"
+        },
+        {
+          "info": {
+            "name": "Update location by storeNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/location/:storeNumber/by-store-number",
+            "params": [
+              {
+                "name": "storeNumber",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update location by storeNumber"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

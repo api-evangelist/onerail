@@ -1,0 +1,377 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Shipper Contract API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipper Contract",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Get Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/shipper-contract/:shipperContractId",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Update Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/shipper-contract/:shipperContractId",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Remove Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/shipper-contract/:shipperContractId",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Create an SLA for a Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract/:shipperContractId/sla",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an SLA for a Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Get all SLAs for a Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/shipper-contract/:shipperContractId/slas",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get all SLAs for a Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Get basic info for all SLAs for a Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/shipper-contract/:shipperContractId/slas-info",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get basic info for all SLAs for a Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Notify OneRail Approver to approve SLAs for a Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract/:shipperContractId/submit-approval",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Notify OneRail Approver to approve SLAs for a Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Get all sla template for this Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/shipper-contract/:shipperContractId/shipper-contract-sla-templates",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get all sla template for this Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Update Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/shipper-contract/:shipperContractId/shipper-contract-sla-templates",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Get all lp contract sla for this Shipper Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/shipper-contract/:shipperContractId/lp-contract-sla",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "query",
+                "description": "Organization id to filter contracts by"
+              }
+            ]
+          },
+          "docs": "Get all lp contract sla for this Shipper Contract"
+        },
+        {
+          "info": {
+            "name": "Update LP Contract Sla",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/shipper-contract/:shipperContractId/lp-contract-sla",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update LP Contract Sla"
+        },
+        {
+          "info": {
+            "name": "Send boolean base on all slas have been approved",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/shipper-contract/:shipperContractId/all-slas-approved",
+            "params": [
+              {
+                "name": "shipperContractId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Send boolean base on all slas have been approved"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

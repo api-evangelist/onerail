@@ -1,0 +1,157 @@
+{
+  "item": [
+    {
+      "id": "55199cba-0932-418c-8390-5244c0df1cec",
+      "name": "Fleet Assets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62bd64c0-d6c6-45c2-8bc8-a1089a87b4ff",
+          "name": "Global list of fleet assets that can be required to complete a contract",
+          "request": {
+            "name": "Global list of fleet assets that can be required to complete a contract",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "fleet-assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9dae717c-f273-4e84-8bb7-699b87b28015",
+              "name": "Fleet Assets data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet-assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fleetVehicles\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  ],\n  \"pickUpSpeeds\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"value\": 7643.228395337786\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"value\": 4956.881339796585\n    }\n  ],\n  \"dropOffSpeeds\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"value\": 3116.8487621485074\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"value\": 8897.906297325377\n    }\n  ],\n  \"capabilityTags\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"fleetCategory\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"fleetCategory\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8adea74e-d62d-423f-a8aa-908f5dcc3734",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fleet-assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b0b7bc4c-6871-4f73-b46c-ddbbfe75a04e",
+    "name": "OneRail Operation Dashboard Fleet Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

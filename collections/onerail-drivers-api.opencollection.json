@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Drivers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drivers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get drivers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/drivers",
+            "params": [
+              {
+                "name": "availability",
+                "value": "",
+                "type": "query",
+                "description": "Driver availability"
+              },
+              {
+                "name": "locationId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by driver location.  Ignored if orgazation id is given."
+              },
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by organization.  This will cause any location id to be ignored."
+              }
+            ]
+          },
+          "docs": "Get drivers"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

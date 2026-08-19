@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Freight Audit & Pay API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Freight Audit & Pay",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization summaries for Freight Audit & Pay",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/freight-audit-pay/organizations/summary",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns lightweight organization summary records for the requested organization IDs.\nResults are constrained by the caller's organization access. Unauthorized and missing\norganization IDs are silently omitted from the response.\n"
+        },
+        {
+          "info": {
+            "name": "Get delivery attempts for a specific organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/freight-audit-pay/organizations/:organizationId/delivery-attempts",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID to filter delivery attempts"
+              },
+              {
+                "name": "viewType",
+                "value": "",
+                "type": "query",
+                "description": "Determines how the organization is interpreted and which costs are returned.\n- shipper: the organization is the shipper being billed; costs are filtered to shipper costs and shipper location RBAC applies.\n- lsp: the organization is the logistics provider being paid; costs are filtered to LSP costs.\n"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by (case-insensitive).\n\nAllowed values:\n- DeliveryDate (terminal state date; maps to endStateAt)\n- OrderId\n- DeliveryId\n- AttemptId\n- RouteId\n- ShipperOrganizationName\n- AssignedDriverName\n- DeliveryState\n- UpdatedAt\n"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "search",
+                "value": "ORD-123",
+                "type": "query",
+                "description": "Search term to filter delivery attempts by delivery attempt ID or order ID (substring match on both fields)"
+              },
+              {
+                "name": "deliveryAttemptIds",
+                "value": "123e4567-e89b-12d3-a456-426614174000,123e4567-e89b-12d3-a456-426614174001",
+                "type": "query",
+                "description": "Specific delivery attempt IDs to retrieve (exact match, takes precedence over search).\nSupplied as repeated query keys, e.g. `?deliveryAttemptIds=<id1>&deliveryAttemptIds=<id2>`.\n"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns delivery attempts for a specific organization, scoped by the viewType parameter:\nshipper billing (the organization is the shipper) or LSP payment (the organization is the\nlogistics provider). Costs are filtered to the requested view type.\n\nAs of ITO_DEV-785 eligibility filters (billing period, shipperBillable/lpPayable flags,\nrequired FAP fields) no longer apply so the FAP UI can search any attempts the user wants to\nattach. The FAP API batch-attach owns final eligibility decisions.\n**At"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

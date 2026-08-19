@@ -1,0 +1,304 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Route API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Route",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Accepts a filter to determine which deliveries to revoke the routes for and Only cancel deliveries that are not in a \"final\" status, final statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/cancel-expired-deliveries",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Accepts a filter to determine which deliveries to revoke the routes for and Only cancel deliveries that are not in a \"final\" status, final statuses"
+        },
+        {
+          "info": {
+            "name": "Gets one route by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/route/:routeId",
+            "params": [
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path",
+                "description": "route id"
+              }
+            ]
+          },
+          "docs": "Gets one route by id"
+        },
+        {
+          "info": {
+            "name": "Get information for risky route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/route/:routeId/risky",
+            "params": [
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information for risky route"
+        },
+        {
+          "info": {
+            "name": "Get external rates with available drivers for route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/route/:routeId/rates-with-drivers",
+            "params": [
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get external rates with available drivers for route"
+        },
+        {
+          "info": {
+            "name": "Get external rates with available drivers for multiple routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/routes/bulk-rates-with-drivers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns carriers that can handle ALL specified routes, with rate information per route"
+        },
+        {
+          "info": {
+            "name": "Removes all deliveries and fleet vehicles from route and deletes the route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/route/:routeId/revoke",
+            "params": [
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path",
+                "description": "route id"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes all deliveries and fleet vehicles from route and deletes the route"
+        },
+        {
+          "info": {
+            "name": "Gets all routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/routes",
+            "params": [
+              {
+                "name": "organizationIds",
+                "value": "",
+                "type": "query",
+                "description": "organizationIds to filter down to."
+              },
+              {
+                "name": "locationIds",
+                "value": "",
+                "type": "query",
+                "description": "locationIds to filter down to."
+              },
+              {
+                "name": "routeStatuses",
+                "value": "",
+                "type": "query",
+                "description": "routeStatuses to filter down to."
+              },
+              {
+                "name": "driverAssignedToRoute",
+                "value": "",
+                "type": "query",
+                "description": "driverAssignedToRoute to filter down to."
+              }
+            ]
+          },
+          "docs": "Gets all routes"
+        },
+        {
+          "info": {
+            "name": "Create new orders within one or more routes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/routes",
+            "params": [
+              {
+                "name": "organizationIds",
+                "value": "",
+                "type": "query",
+                "description": "organizationIds to filter down to."
+              },
+              {
+                "name": "locationIds",
+                "value": "",
+                "type": "query",
+                "description": "locationIds to filter down to."
+              },
+              {
+                "name": "routeStatuses",
+                "value": "",
+                "type": "query",
+                "description": "routeStatuses to filter down to."
+              },
+              {
+                "name": "driverAssignedToRoute",
+                "value": "",
+                "type": "query",
+                "description": "driverAssignedToRoute to filter down to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new orders within one or more routes."
+        },
+        {
+          "info": {
+            "name": "Update exist route.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/routes",
+            "params": [
+              {
+                "name": "organizationIds",
+                "value": "",
+                "type": "query",
+                "description": "organizationIds to filter down to."
+              },
+              {
+                "name": "locationIds",
+                "value": "",
+                "type": "query",
+                "description": "locationIds to filter down to."
+              },
+              {
+                "name": "routeStatuses",
+                "value": "",
+                "type": "query",
+                "description": "routeStatuses to filter down to."
+              },
+              {
+                "name": "driverAssignedToRoute",
+                "value": "",
+                "type": "query",
+                "description": "driverAssignedToRoute to filter down to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update exist route."
+        },
+        {
+          "info": {
+            "name": "Create routes with orders for specific organizationId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/routes/organization/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organization id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create routes with orders for specific organizationId"
+        },
+        {
+          "info": {
+            "name": "Update route deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/routes/:orgSourcedIdentifier/deliveries",
+            "params": [
+              {
+                "name": "orgSourcedIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update route deliveries"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,887 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard LP Market API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: LP Market
+paths:
+  /v1/lp-market:
+    post:
+      x-exegesis-controller: LpMarket
+      summary: Create LP Market
+      operationId: createLpMarket
+      tags:
+      - LP Market
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: LP Market
+              required:
+              - name
+              - shippingModeId
+              - organizationId
+              - market
+              - serviceHours
+              properties:
+                name:
+                  type: string
+                pickUpSlaId:
+                  type:
+                  - string
+                  - 'null'
+                  description: Reference to Pick up speed
+                dropOffSlaId:
+                  type:
+                  - string
+                  - 'null'
+                  description: Reference to Drop off speed
+                shippingModeId:
+                  type: string
+                  format: uuid
+                shippingModeIds:
+                  type:
+                  - array
+                  - 'null'
+                  description: Shipping Mode ids to associate with this lp market
+                  items:
+                    type: string
+                    format: uuid
+                organizationId:
+                  type: string
+                  format: uuid
+                market:
+                  type: object
+                  description: Market
+                  required:
+                  - name
+                  - location
+                  - radiusMiles
+                  - locationPoly
+                  properties:
+                    name:
+                      type: string
+                    location:
+                      $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                    radiusMiles:
+                      type: number
+                      description: radius in miles
+                    locationPoly:
+                      type: array
+                      items:
+                        type: array
+                        items:
+                          type: number
+                teamIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                fleetVehicles:
+                  type: array
+                  description: Fleet Vehicles ids to associate with this lp market
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                capabilityTags:
+                  type: array
+                  description: Capability Tags ids to associate with this lp market
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                insuranceAndCompliance:
+                  type: object
+                  description: Insurance And Compliance
+                  properties:
+                    cargoUsd:
+                      type: number
+                    autoLiabilityUsd:
+                      type: number
+                    commercialGeneralLiabilityUsd:
+                      type: number
+                    workersCompensationUsd:
+                      type: number
+                    umbrellaUsd:
+                      type: number
+                    bondedUsd:
+                      type: number
+                    hazardousMaterialsExclusion:
+                      type: boolean
+                    fmcsa:
+                      type: boolean
+                serviceHours:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items'
+                ownFleetVehicles:
+                  type: array
+                  items:
+                    type: object
+                    description: Own fleet vehicle
+                    required:
+                    - name
+                    - maxWeightLbs
+                    - vin
+                    - costPerMileCent
+                    - fleetVehicleCompartments
+                    properties:
+                      name:
+                        type: string
+                      maxWeightLbs:
+                        type: integer
+                      vin:
+                        type: string
+                      costPerMileCent:
+                        type: integer
+                      fleetVehicleCompartments:
+                        type: array
+                        items:
+                          $ref: '#/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items'
+                      active:
+                        type: boolean
+                pickUpLocationId:
+                  type: string
+                  format: uuid
+                sendOnboardingCompleteEmail:
+                  type: boolean
+      responses:
+        '200':
+          description: LP Market
+          content:
+            application/json:
+              schema:
+                type: object
+                description: LP Market
+                properties:
+                  id:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  name:
+                    type: string
+                  pickUpSlaId:
+                    type: string
+                    description: Reference to Pick up speed
+                  dropOffSlaId:
+                    type: string
+                    description: Reference to Drop off speed
+                  shippingMode:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                  shippingModes:
+                    type: array
+                    description: Shipping Modes associated with this lp market
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        name:
+                          type: string
+                  organizationId:
+                    type: string
+                    format: uuid
+                  market:
+                    $ref: '#/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema'
+                  createdAt:
+                    type: string
+                    format: date
+                  teamIds:
+                    type: array
+                    items:
+                      type: string
+                      format: uuid
+                  ownFleetVehicles:
+                    type: array
+                    items:
+                      type: object
+                      description: Own fleet vehicle
+                      properties:
+                        id:
+                          type:
+                          - string
+                          - 'null'
+                          format: uuid
+                        name:
+                          type: string
+                        maxWeightLbs:
+                          type: integer
+                        vin:
+                          type: string
+                        costPerMileCent:
+                          type: integer
+                        lpMarketId:
+                          type:
+                          - string
+                          - 'null'
+                          format: uuid
+                        fleetVehicleId:
+                          type:
+                          - string
+                          - 'null'
+                          format: uuid
+                        fleetVehicleCompartments:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type:
+                                - string
+                                - 'null'
+                                format: uuid
+                              openingWidthIn:
+                                type: integer
+                              openingHeightIn:
+                                type: integer
+                              compartmentLengthIn:
+                                type: integer
+                              compartmentWidthIn:
+                                type: integer
+                              compartmentHeightIn:
+                                type: integer
+                        active:
+                          type: boolean
+                  pickUpLocationId:
+                    type: string
+                    format: uuid
+                  capabilityTags:
+                    type: array
+                    description: Capability Tags ids to associate with this lp market
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                  insuranceAndCompiance:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      cargoUsd:
+                        type: integer
+                      autoLiabilityUsd:
+                        type: integer
+                      commercialGeneralLiabilityUsd:
+                        type: integer
+                      workersCompensationUsd:
+                        type: integer
+                      umbrellaUsd:
+                        type: integer
+                      bondedUsd:
+                        type: integer
+                      hazardousMaterialsExclusion:
+                        type: boolean
+                      fmcsa:
+                        type: boolean
+                  serviceHours:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      dayOfWeek:
+                        type: integer
+                      startMin:
+                        type: integer
+                      endMin:
+                        type: integer
+                      holidayId:
+                        type: string
+                        format: uuid
+                      holiday:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          holidayName:
+                            type: string
+                          sort:
+                            type: integer
+                      LpMarketServiceHours:
+                        type: object
+                        properties:
+                          serviceHourId:
+                            type: string
+                            format: uuid
+                          LpMarketId:
+                            type: string
+                            format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/lp-market/{lpMarketId}:
+    parameters:
+    - name: lpMarketId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: LpMarket
+      summary: Get LP Market
+      operationId: getLpMarket
+      tags:
+      - LP Market
+      responses:
+        '200':
+          description: LP Market
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1lp-market/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: LpMarket
+      summary: Update LP Market
+      operationId: updateLpMarket
+      tags:
+      - LP Market
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: LP Market
+              properties:
+                name:
+                  type: string
+                pickUpSlaId:
+                  type:
+                  - string
+                  - 'null'
+                  description: Reference to Pick up speed
+                dropOffSlaId:
+                  type:
+                  - string
+                  - 'null'
+                  description: Reference to Drop off speed
+                shippingModeId:
+                  type: string
+                  format: uuid
+                market:
+                  $ref: '#/paths/~1v1~1market~1%7BmarketId%7D~1update-radius/put/responses/200/content/application~1json/schema'
+                teamIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                fleetVehicles:
+                  type: array
+                  description: Fleet Vehicles ids to associate with this lp market
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                capabilityTags:
+                  type: array
+                  description: Capability Tags ids to associate with this lp market
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                insuranceAndCompliance:
+                  anyOf:
+                  - $ref: '#/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D/put/requestBody/content/application~1json/schema/properties/insuranceAndCompliance'
+                  - $ref: '#/paths/~1v1~1lp-market/post/requestBody/content/application~1json/schema/properties/insuranceAndCompliance'
+                serviceHours:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items'
+                ownFleetVehicles:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1v1~1own-fleet-vehicle~1%7BownFleetVehicleId%7D/get/responses/200/content/application~1json/schema'
+                pickUpLocationId:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: LP Market
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1lp-market/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: LpMarket
+      summary: Remove LP Market
+      operationId: removeLpMarket
+      tags:
+      - LP Market
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/lp-market/shipping-modes:
+    get:
+      x-exegesis-controller: LpMarket
+      summary: Get shipping modes
+      operationId: getShippingModes
+      tags:
+      - LP Market
+      responses:
+        '200':
+          description: Shipping modes records
+          content:
+            application/json:
+              schema:
+                description: Shipping Modes
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/lp-market/filter-by-id/api:
+    get:
+      x-exegesis-controller: LpMarket
+      summary: Get LP Markets filtered by IDs
+      security:
+      - ApiKey: []
+        AppId: []
+      operationId: getLPMarketsByIds
+      parameters:
+      - name: ids
+        in: query
+        description: Comma separated list of LP Market IDs to filter by
+        required: true
+        schema:
+          type: string
+      - name: shipperOrganizationId
+        in: query
+        description: Optional shipper organization ID used to resolve the effective dispatch platform setting
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: shipperLocationId
+        in: query
+        description: Optional shipper location ID used to resolve a location-specific dispatch platform setting
+        required: false
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - LP Market
+      responses:
+        '200':
+          description: Markets
+          content:
+            application/json:
+              schema:
+                type: array
+                description: LP Markets fetched by IDs (used by rate card microservice)
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                    organization:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        name:
+                          type: string
+                        dynamicPriceLp:
+                          type: boolean
+                        dot:
+                          type:
+                          - string
+                          - 'null'
+                        dispatchPlatform:
+                          type:
+                          - object
+                          - 'null'
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            name:
+                              type: string
+                            dispatchPlatformSetting:
+                              type:
+                              - object
+                              - 'null'
+                              description: Resolved dispatch platform setting selected for an LP market and shipper context
+                              properties:
+                                id:
+                                  type: string
+                                  format: uuid
+                                name:
+                                  type: string
+                                data:
+                                  type:
+                                  - object
+                                  - 'null'
+                                dispatchPlatformId:
+                                  type: string
+                                  format: uuid
+                                organizationId:
+                                  type:
+                                  - string
+                                  - 'null'
+                                  format: uuid
+                                lpOrganizationId:
+                                  type:
+                                  - string
+                                  - 'null'
+                                  format: uuid
+                                shipperLocationId:
+                                  type:
+                                  - string
+                                  - 'null'
+                                  format: uuid
+                        organizationDOT:
+                          type:
+                          - object
+                          - 'null'
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            dotNumber:
+                              type: number
+                            status:
+                              type: string
+                              enum:
+                              - ACTIVE
+                              - INACTIVE
+                              - OUT-OF-SERVICE
+                            authorityStatus:
+                              type: string
+                              enum:
+                              - AUTHORIZED
+                              - NOT-AUTHORIZED
+                              - OUT-OF-SERVICE
+                            carrierOperationStatus:
+                              type:
+                              - string
+                              - 'null'
+                              enum:
+                              - INTERSTATE
+                              - INTRASTATE-ONLY-HM
+                              - INTRASTATE-ONLY-NON-HM
+                            operationsClassifications:
+                              type:
+                              - array
+                              - 'null'
+                              items:
+                                type: string
+                                enum:
+                                - AUTH_FOR_HIRE
+                                - EXEMPT_FOR_HIRE
+                                - PRIVATE_PROPERTY
+                                - PRIVATE_PASS_BUSINESS
+                                - PRIVATE_PASS_NON_BUSINESS
+                                - MIGRANT
+                                - US_MAIL
+                                - FED_GOVT
+                                - STATE_GOVT
+                                - LOCAL_GOVT
+                                - INDIAN_NATION
+                            cargoClasses:
+                              type:
+                              - array
+                              - 'null'
+                              items:
+                                type: string
+                                enum:
+                                - GENERAL_FREIGHT
+                                - HOUSEHOLD_GOODS
+                                - METAL_SHEETS_COILS_ROLLS
+                                - MOTOR_VEHICLES
+                                - DRIVE_TOW_AWAY
+                                - LOGS_POLES_BEAMS_LUMBER
+                                - BUILDING_MATERIALS
+                                - MOBILE_HOMES
+                                - MACHINERY_LARGE_OBJECTS
+                                - FRESH_PRODUCE
+                                - LIQUIDS_GASES
+                                - INTERMODAL_CONT
+                                - PASSENGERS
+                                - OILFIELD_EQUIPMENT
+                                - LIVESTOCK
+                                - GRAIN_FEED_HAY
+                                - COAL_COKE
+                                - MEAT
+                                - GARBAGE_REFUSE
+                                - US_MAIL
+                                - CHEMICALS
+                                - COMMODITIES_DRY_BULK
+                                - REFRIGERATED_FOOD
+                                - BEVERAGES
+                                - PAPER_PRODUCTS
+                                - UTILITIES
+                                - AGRICULTURAL_FARM_SUPPLIES
+                                - CONSTRUCTION
+                                - WATER_WELL
+                            mcmxff:
+                              type: string
+                    pickUpSla:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        name:
+                          type: string
+                        value:
+                          type: integer
+                    dropOffSla:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        name:
+                          type: string
+                        value:
+                          type: integer
+                    serviceHours:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1location~1%7BstoreNumber%7D~1by-store-number/put/responses/200/content/application~1json/schema/properties/serviceHours/items'
+                    capabilityTags:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                    fleetVehicles:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          name:
+                            type: string
+                          sortWeight:
+                            type: integer
+                    ownFleetVehicles:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1lp-market/post/responses/200/content/application~1json/schema/properties/ownFleetVehicles/items'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/organization/{organizationId}/lp-market/sync-associations:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: LpMarket
+      summary: Sync LP market associations
+      operationId: syncLpMarketAssociations
+      tags:
+      - LP Market
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                lpMarketIds:
+                  type: array
+                  description: Optional list of LP market ids to sync. If omitted, all LP markets for the organization are synced.
+                  items:
+                    type: string
+                    format: uuid
+                dryRun:
+                  type: boolean
+                  description: When true, validates and builds events but does not publish to Kafka.
+      responses:
+        '200':
+          description: Sync result
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - organizationId
+                - dryRun
+                - marketsProcessed
+                - eventsPublished
+                - failures
+                - failedLpMarketIds
+                properties:
+                  organizationId:
+                    type: string
+                    format: uuid
+                  dryRun:
+                    type: boolean
+                  marketsProcessed:
+                    type: integer
+                    minimum: 0
+                  eventsPublished:
+                    type: integer
+                    minimum: 0
+                  failures:
+                    type: integer
+                    minimum: 0
+                  failedLpMarketIds:
+                    type: array
+                    items:
+                      type: string
+                      format: uuid
+        '403':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/market/{marketId}/update-radius:
+    parameters:
+    - name: marketId
+      in: path
+      required: true
+      schema:
+        type: string
+    put:
+      x-exegesis-controller: LpMarket
+      summary: Updates radius
+      operationId: updateRadius
+      tags:
+      - LP Market
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: LP Market
+              properties:
+                distance:
+                  type: number
+      responses:
+        '200':
+          description: Market
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Market
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  location:
+                    $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                  radiusMiles:
+                    type: number
+                    description: radius in miles
+                  locationPoly:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: number
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

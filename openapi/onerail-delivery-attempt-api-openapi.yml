@@ -1,0 +1,548 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Delivery Attempt API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Delivery Attempt
+paths:
+  /v1/delivery/{deliveryId}/attempt:
+    parameters:
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      x-exegesis-controller: Delivery
+      summary: Creates an attempt for the delivery
+      operationId: createAttempt
+      tags:
+      - Delivery Attempt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Attempt data
+              required:
+              - deliveryAttempt
+              properties:
+                deliveryAttempt:
+                  type: object
+                  properties:
+                    lpContractSlaId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                      description: LP contract SLA ID to use for assigning the attempt
+                    lpOrganizationId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                      description: LP organization ID to use for assigning the attempt
+                deliveryCost:
+                  type: object
+                  properties:
+                    computedCostCent:
+                      type: integer
+                      description: Optional LP computed cost, in cents
+                deliveryStatus:
+                  type: object
+                  properties:
+                    tmsLinkURL:
+                      type: string
+                      description: Optional link to TMS tracking
+                    lpDeliveryId:
+                      type: string
+                      description: Optional task/job id the courier assigned for the delivery
+      responses:
+        '200':
+          description: Delivery Attempt record
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1delivery-attempt~1%7BdeliveryAttemptId%7D/put/responses/200/content/application~1json/schema/properties/deliveryAttempt'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery/{deliveryId}/attempt/api:
+    parameters:
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      security:
+      - ApiKey: []
+        AppId: []
+      x-exegesis-controller: Delivery
+      summary: Creates an attempt for the delivery (API)
+      operationId: createAttemptApi
+      tags:
+      - Delivery Attempt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Attempt data
+              required:
+              - deliveryAttempt
+              properties:
+                deliveryAttempt:
+                  type: object
+                  properties:
+                    lpContractSlaId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                      description: LP contract SLA ID to use for assigning the attempt
+                    lpOrganizationId:
+                      type:
+                      - string
+                      - 'null'
+                      format: uuid
+                      description: LP organization ID to use for assigning the attempt
+                deliveryCost:
+                  type: object
+                  properties:
+                    computedCostCent:
+                      type: integer
+                      description: Optional LP computed cost, in cents
+                deliveryStatus:
+                  type: object
+                  properties:
+                    tmsLinkURL:
+                      type: string
+                      description: Optional link to TMS tracking
+                    lpDeliveryId:
+                      type: string
+                      description: Optional task/job id the courier assigned for the delivery
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1attempt/post/responses/200'
+        '400':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery-attempt/{deliveryAttemptId}:
+    parameters:
+    - name: deliveryAttemptId
+      in: path
+      required: true
+      schema:
+        type: string
+    put:
+      x-exegesis-controller: DeliveryAttempt
+      summary: Update a delivery attempt's details
+      operationId: updateDeliveryAttempt
+      tags:
+      - Delivery Attempt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Attempt detail data
+              properties:
+                deliveryCost:
+                  type: object
+                  properties:
+                    computedCostCent:
+                      type: integer
+                      description: Optional LP computed cost, in cents
+                deliveryStatus:
+                  type: object
+                  description: Optional delivery status data
+                  properties:
+                    driverName:
+                      type: string
+                    driverPhone:
+                      type: string
+                    driverNotes:
+                      type: string
+                    tmsLinkURL:
+                      type: string
+                    eta:
+                      type: string
+                      format: date-time
+                    lpDeliveryId:
+                      type: string
+                deliveryRating:
+                  description: Optional delivery rating
+                  $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1rating/post/requestBody/content/application~1json/schema'
+                deliveryStateChange:
+                  type: object
+                  description: Optional change of happenedOn timestamp
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    happenedOn:
+                      type: string
+                      format: date-time
+                      description: Date-time in UTC
+      responses:
+        '200':
+          description: Delivery attempt updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deliveryAttempt:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      state:
+                        type: string
+                        enum:
+                        - DISPATCHING
+                        - ASSIGNED
+                        - ACCEPTED_BY_LP
+                        - DRIVER_ASSIGNED
+                        - EN_ROUTE_TO_PICKUP
+                        - ARRIVED_FOR_PICKUP
+                        - PICKED_UP
+                        - EN_ROUTE_TO_DELIVERY
+                        - ARRIVED_FOR_DELIVERY
+                        - DELIVERED
+                        - DISPATCH_ERROR
+                        - INCOMPLETE
+                        - ONERAIL_PROCESSING
+                        - CANCELED_BY_LP
+                        - REVOKED_BY_ONERAIL
+                        - CANCELED_BY_SHIPPER
+                        - ROUTED
+                      failureReason:
+                        type: string
+                      shipperBillable:
+                        type: boolean
+                      lpPayable:
+                        type: boolean
+                      durationMin:
+                        type: integer
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      deliveryStatus:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          location:
+                            $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                          driverName:
+                            type: string
+                          driverPhone:
+                            type: string
+                          eta:
+                            type: string
+                            format: date-time
+                          driverNotes:
+                            type: string
+                          tmsLinkURL:
+                            type: string
+                          lpDeliveryId:
+                            type: string
+                          lpDeliveryData:
+                            type: string
+                      deliveryStateChanges:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                              format: uuid
+                            state:
+                              type: string
+                              enum:
+                              - DISPATCHING
+                              - ASSIGNED
+                              - ACCEPTED_BY_LP
+                              - DRIVER_ASSIGNED
+                              - EN_ROUTE_TO_PICKUP
+                              - ARRIVED_FOR_PICKUP
+                              - PICKED_UP
+                              - EN_ROUTE_TO_DELIVERY
+                              - ARRIVED_FOR_DELIVERY
+                              - DELIVERED
+                              - DISPATCH_ERROR
+                              - INCOMPLETE
+                              - ONERAIL_PROCESSING
+                              - CANCELED_BY_LP
+                              - REVOKED_BY_ONERAIL
+                              - CANCELED_BY_SHIPPER
+                              - ROUTED
+                              - DRAFT
+                              - READY_TO_DISPATCH
+                              - SCHEDULED
+                              - CANCELED_BY_ONERAIL
+                            driverName:
+                              type:
+                              - string
+                              - 'null'
+                            driverPhone:
+                              type:
+                              - string
+                              - 'null'
+                            location:
+                              $ref: '#/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location'
+                            happenedOn:
+                              type: string
+                              format: date-time
+                            createdBy:
+                              type:
+                              - object
+                              - 'null'
+                              properties:
+                                id:
+                                  type: string
+                                  format: uuid
+                                firstName:
+                                  type: string
+                                lastName:
+                                  type: string
+                      lpContractSla:
+                        $ref: '#/paths/~1v1~1lp-contract-sla~1%7BlpContractSlaId%7D/get/responses/200/content/application~1json/schema'
+                      deliveryCost:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          computedCostCent:
+                            type: integer
+                          actualCostCent:
+                            type: integer
+                          lpContractSlaId:
+                            type: string
+                            format: uuid
+                          lpContractSla:
+                            type: object
+                            description: LP Contract SLA
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              approvedOn:
+                                type: string
+                                format: date-time
+                              approvedById:
+                                type: string
+                                format: uuid
+                              shipperContractSlaId:
+                                type: string
+                                format: uuid
+                                description: Reference to Shipper Contract SLA
+                              organizationId:
+                                type: string
+                                format: uuid
+                              createdAt:
+                                type: string
+                                format: date-time
+                              lpSignatureId:
+                                type: string
+                                format: uuid
+                              oneRailSignatureId:
+                                type: string
+                                format: uuid
+                      deliveryCostDeviations:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            reason:
+                              type: string
+                            costCent:
+                              type: integer
+                      createdBy:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          firstName:
+                            type: string
+                          lastName:
+                            type: string
+                      delivery:
+                        type: object
+                        properties:
+                          state:
+                            type: string
+                          deliveryAttemptId:
+                            type: string
+                            format: uuid
+                  deliveryRating:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      rating:
+                        type: integer
+                      feedback:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery-attempt/{deliveryAttemptId}/delivery-state-change:
+    parameters:
+    - name: deliveryAttemptId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: DeliveryAttempt
+      summary: Creates a delivery state change for the delivery attempt
+      operationId: createDeliveryStateChange
+      tags:
+      - Delivery Attempt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Event data
+              required:
+              - state
+              - happenedOn
+              properties:
+                state:
+                  type: string
+                  enum:
+                  - ACCEPTED_BY_LP
+                  - DRIVER_ASSIGNED
+                  - EN_ROUTE_TO_PICKUP
+                  - ARRIVED_FOR_PICKUP
+                  - PICKED_UP
+                  - EN_ROUTE_TO_DELIVERY
+                  - ARRIVED_FOR_DELIVERY
+                  - DELIVERED
+                  - CANCELED_BY_LP
+                  - REVOKED_BY_ONERAIL
+                happenedOn:
+                  type: string
+                  format: date-time
+                  description: Date-time in UTC
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1delivery~1%7BdeliveryId%7D~1attempt/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery-attempt/{deliveryAttemptId}/set-as-active:
+    parameters:
+    - name: deliveryAttemptId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: DeliveryAttempt
+      summary: Sets the attempt as the active attempt
+      operationId: setActiveAttempt
+      tags:
+      - Delivery Attempt
+      requestBody:
+        required: false
+        description: Empty Body
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Success
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

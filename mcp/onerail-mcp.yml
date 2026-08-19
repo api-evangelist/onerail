@@ -129,3 +129,9 @@ excluded_operations:
   reason: OAuth token exchange - handled by the transport, not exposed as a tool
 operations_api: Not modelled as tools. The Operations API (438 operations) is account administration and
   is a poor fit for agent exposure without a curated allow-list.
+deployment:
+  mode: none
+  verified: derived
+  tools: 25
+  checked: '2026-08-12'
+  source: catalog MCP census

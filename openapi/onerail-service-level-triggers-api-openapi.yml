@@ -1,0 +1,223 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Service Level Triggers API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Service Level Triggers
+paths:
+  /v1/service-level/{serviceLevelId}/triggers:
+    parameters:
+    - name: serviceLevelId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: ServiceLevel
+      summary: Get all triggers for a service level
+      operationId: getTriggers
+      tags:
+      - Service Level Triggers
+      responses:
+        '200':
+          description: Service level triggers sorted ascending
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1v1~1service-level~1%7BserviceLevelId%7D~1trigger/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/service-level/{serviceLevelId}/trigger:
+    parameters:
+    - name: serviceLevelId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: ServiceLevel
+      summary: Create a service level trigger
+      operationId: createTrigger
+      tags:
+      - Service Level Triggers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - triggerTimeMins
+              properties:
+                triggerTimeMins:
+                  type: integer
+                  description: Minutes since midnight if repeating is false, otherwise an interval (e.g. 10 for 10 mins)
+                repeating:
+                  type: boolean
+                  default: false
+                repeatStartTimeMins:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Minutes since midnight
+                repeatEndTimeMins:
+                  type:
+                  - integer
+                  - 'null'
+                  description: Minutes since midnight
+      responses:
+        '200':
+          description: Service level trigger
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  triggerTimeMins:
+                    type: integer
+                  serviceLevelId:
+                    type: string
+                    format: uuid
+                  repeating:
+                    type: boolean
+                  repeatStartTimeMins:
+                    type:
+                    - integer
+                    - 'null'
+                  repeatEndTimeMins:
+                    type:
+                    - integer
+                    - 'null'
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/service-level/{serviceLevelId}/trigger/{triggerId}:
+    parameters:
+    - name: serviceLevelId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: triggerId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: ServiceLevel
+      summary: Get trigger for a service level
+      operationId: getTrigger
+      tags:
+      - Service Level Triggers
+      responses:
+        '200':
+          description: Service level trigger
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1service-level~1%7BserviceLevelId%7D~1trigger/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: ServiceLevel
+      summary: Update trigger for service level
+      operationId: updateTrigger
+      tags:
+      - Service Level Triggers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1service-level~1%7BserviceLevelId%7D~1trigger/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: Updated service level trigger
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1service-level~1%7BserviceLevelId%7D~1trigger/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: ServiceLevel
+      summary: Remove a service level trigger
+      operationId: removeTrigger
+      tags:
+      - Service Level Triggers
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

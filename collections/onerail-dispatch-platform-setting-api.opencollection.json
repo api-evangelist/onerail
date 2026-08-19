@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Dispatch Platform Setting API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dispatch Platform Setting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Dispatch platform setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/dispatch-platform-setting/:dispatchPlatformSettingId",
+            "params": [
+              {
+                "name": "dispatchPlatformSettingId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Dispatch platform setting"
+        },
+        {
+          "info": {
+            "name": "Update a Dispatch platform setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/dispatch-platform-setting/:dispatchPlatformSettingId",
+            "params": [
+              {
+                "name": "dispatchPlatformSettingId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Dispatch platform setting"
+        },
+        {
+          "info": {
+            "name": "Remove a dispatch platform setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/dispatch-platform-setting/:dispatchPlatformSettingId",
+            "params": [
+              {
+                "name": "dispatchPlatformSettingId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a dispatch platform setting"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

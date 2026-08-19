@@ -1,0 +1,2722 @@
+{
+  "item": [
+    {
+      "id": "84dc72e8-3846-465b-b20b-8f2a6798df99",
+      "name": "Route",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "166d0cb9-a081-4873-af12-31c61c03519b",
+          "name": "Accepts a filter to determine which deliveries to revoke the routes for and Only cancel deliveries that are not in a \"final\" status, final statuses",
+          "request": {
+            "name": "Accepts a filter to determine which deliveries to revoke the routes for and Only cancel deliveries that are not in a \"final\" status, final statuses",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cancel-expired-deliveries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organizationId\": \"<uuid>\",\n  \"attemptedDeliveries\": \"<boolean>\",\n  \"requireOrderStatuses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ignoreFDOPackingDeliveries\": \"<boolean>\",\n  \"triggerAtMidnight\": \"<boolean>\",\n  \"createdAtStart\": \"<dateTime>\",\n  \"createdAtEnd\": \"<dateTime>\",\n  \"reportOnly\": \"<boolean>\",\n  \"manualDispatch\": \"<boolean>\",\n  \"shipperContractSlaIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"deliveryStatuses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bins\": \"<integer,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2904330-48e7-4b68-89ca-5d21381e7443",
+              "name": "Revoked routes and cancel deliveries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cancel-expired-deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationId\": \"<uuid>\",\n  \"attemptedDeliveries\": \"<boolean>\",\n  \"requireOrderStatuses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ignoreFDOPackingDeliveries\": \"<boolean>\",\n  \"triggerAtMidnight\": \"<boolean>\",\n  \"createdAtStart\": \"<dateTime>\",\n  \"createdAtEnd\": \"<dateTime>\",\n  \"reportOnly\": \"<boolean>\",\n  \"manualDispatch\": \"<boolean>\",\n  \"shipperContractSlaIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"deliveryStatuses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bins\": \"<integer,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ef8cbfe-c91b-458d-82b9-2f700e20ff73",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cancel-expired-deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationId\": \"<uuid>\",\n  \"attemptedDeliveries\": \"<boolean>\",\n  \"requireOrderStatuses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ignoreFDOPackingDeliveries\": \"<boolean>\",\n  \"triggerAtMidnight\": \"<boolean>\",\n  \"createdAtStart\": \"<dateTime>\",\n  \"createdAtEnd\": \"<dateTime>\",\n  \"reportOnly\": \"<boolean>\",\n  \"manualDispatch\": \"<boolean>\",\n  \"shipperContractSlaIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"deliveryStatuses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bins\": \"<integer,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10279b97-3f2a-4236-864c-805514b25dad",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cancel-expired-deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationId\": \"<uuid>\",\n  \"attemptedDeliveries\": \"<boolean>\",\n  \"requireOrderStatuses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ignoreFDOPackingDeliveries\": \"<boolean>\",\n  \"triggerAtMidnight\": \"<boolean>\",\n  \"createdAtStart\": \"<dateTime>\",\n  \"createdAtEnd\": \"<dateTime>\",\n  \"reportOnly\": \"<boolean>\",\n  \"manualDispatch\": \"<boolean>\",\n  \"shipperContractSlaIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"deliveryStatuses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bins\": \"<integer,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54a15629-87f2-4f3b-8e4e-2a85d67941be",
+          "name": "Gets one route by id",
+          "request": {
+            "name": "Gets one route by id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "route",
+                ":routeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "routeId",
+                  "description": "(Required) route id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "098f645a-f4fb-43d4-9111-ee5afacd33e2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "routeId",
+                      "description": "(Required) route id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"233103c2-15fd-c565-d59a-e4a62288339e\",\n  \"status\": \"string\",\n  \"createdAt\": \"1972-05-07T04:39:25.548Z\",\n  \"updatedAt\": \"2003-08-03T03:51:16.501Z\",\n  \"userId\": \"548113b0-8809-98c6-2d20-f9dcd23b2735\",\n  \"expectedCompletionDate\": \"1951-02-09T23:32:42.356Z\",\n  \"plannedStartAt\": null,\n  \"calculatedShipperCostCent\": 9828.746819767219,\n  \"calculatedLpCostCent\": 165.48720326407084,\n  \"totalDurationSecondsEstimate\": 828.9223435400372,\n  \"totalMilesEstimate\": 634.9685373410551,\n  \"orgSourcedIdentifier\": null,\n  \"pathCoordinates\": null,\n  \"routeStops\": [\n    {\n      \"id\": \"6eabf367-24de-f486-99f8-0e31908746ac\",\n      \"eta\": \"2001-06-26T11:59:40.446Z\",\n      \"computedLegDistanceMile\": 9312.127681358927,\n      \"computedLegDurationSeconds\": 4669.935331747743,\n      \"routeId\": \"b73a80c2-03f9-2c69-f404-268f99c20e35\",\n      \"deliveryId\": \"1dd25b09-613d-489e-38e6-cef6c37993aa\",\n      \"stopType\": \"PICKUP\",\n      \"order\": 6275.940102920427,\n      \"delivery\": {\n        \"id\": \"921ff998-a962-b6ef-cc6d-584e50187881\",\n        \"orderId\": \"2ccbced5-c9bf-37ab-2420-896181ee82c4\",\n        \"order\": {\n          \"id\": \"551efb7c-20e8-7221-b80d-7322cecd553d\",\n          \"organizationId\": \"d85e297b-b887-b8c0-e76c-8cdf17fd5498\"\n        }\n      }\n    },\n    {\n      \"id\": \"3a639b98-1d9e-9341-0c3d-a4cc0a331137\",\n      \"eta\": \"1960-05-13T20:45:56.557Z\",\n      \"computedLegDistanceMile\": 2168.810951978659,\n      \"computedLegDurationSeconds\": 8144.571024360993,\n      \"routeId\": \"88afe6f4-7a98-912e-cc00-9c0c70251786\",\n      \"deliveryId\": \"268ab474-b460-7623-2cd7-32abc66b5b43\",\n      \"stopType\": \"PICKUP\",\n      \"order\": 2571.1022168694685,\n      \"delivery\": {\n        \"id\": \"290c02c8-b08a-beee-278b-ff7ae7aeb8f9\",\n        \"orderId\": \"a48b3987-4d4b-f1f3-0ff6-f30dfa482d95\",\n        \"order\": {\n          \"id\": \"40485656-9ea7-cd3a-f822-66447a1362fd\",\n          \"organizationId\": \"91b337d2-6282-1979-d120-851abf401f2a\"\n        }\n      }\n    }\n  ],\n  \"ownFleetVehicles\": [\n    {\n      \"id\": \"8f6c9aa7-93af-2bbf-bda8-c8856b18a087\",\n      \"name\": \"string\",\n      \"maxWeightLbs\": 7920.88750544495,\n      \"vin\": \"string\",\n      \"costPerMileCent\": 3735.322164284641,\n      \"lpMarketId\": \"bb309d61-d9be-572e-d06a-386a57277696\",\n      \"currentRouteId\": \"a4e44635-7f79-fa23-7a43-4755a02d118c\",\n      \"fleetVehicleId\": \"ebe49bfc-164c-87e9-5c60-c1efb855fdc9\",\n      \"driverId\": null,\n      \"active\": false,\n      \"createdAt\": \"2013-03-17T17:20:16.471Z\",\n      \"OwnFleetVehicleRoute\": {\n        \"ownFleetVehicleId\": \"a9c643dc-a164-4399-44f3-85da69220e0b\",\n        \"routeId\": \"80e8c496-8adb-0f49-6332-153a2086892d\"\n      }\n    },\n    {\n      \"id\": \"1e5520c3-c37a-4f94-b504-db8aa2c7de80\",\n      \"name\": \"string\",\n      \"maxWeightLbs\": 4940.734637948882,\n      \"vin\": \"string\",\n      \"costPerMileCent\": 8846.13662087997,\n      \"lpMarketId\": \"a920a9f1-93a0-44e5-b95b-f0660cd3d44d\",\n      \"currentRouteId\": \"07bc158f-197f-200e-9d81-69a1591891bb\",\n      \"fleetVehicleId\": \"15826937-4c23-474a-3a4f-35ebaddb812b\",\n      \"driverId\": null,\n      \"active\": true,\n      \"createdAt\": \"2022-06-28T22:37:39.085Z\",\n      \"OwnFleetVehicleRoute\": {\n        \"ownFleetVehicleId\": \"f9a396e0-ac66-4f18-352b-b01dce99c609\",\n        \"routeId\": \"6ebe8651-1268-6605-3a98-5bdd73b20015\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef98fa37-58da-44d3-8afe-0b45444d1ec4",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "routeId",
+                      "description": "(Required) route id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d3351c7-aa3a-4ef6-8a8c-29ac3afbc10c",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "routeId",
+                      "description": "(Required) route id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77b600aa-355c-4110-898e-a6b11d36e3f6",
+          "name": "Get information for risky route",
+          "request": {
+            "name": "Get information for risky route",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "route",
+                ":routeId",
+                "risky"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "routeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1906fad2-4f92-4697-a41f-f9c50de7fc0b",
+              "name": "Risky route information with carriers, costs, and drivers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "risky"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"organizationId\": \"string\",\n    \"organizationName\": \"string\",\n    \"organizationLogo\": \"string\",\n    \"phoneNumber\": null,\n    \"costCents\": 3406.165496770954,\n    \"organizationSlaId\": null,\n    \"drivers\": [\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      }\n    ]\n  },\n  {\n    \"organizationId\": \"string\",\n    \"organizationName\": \"string\",\n    \"organizationLogo\": \"string\",\n    \"phoneNumber\": null,\n    \"costCents\": 8870.161564157868,\n    \"organizationSlaId\": null,\n    \"drivers\": [\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be9b5f83-dc39-4502-8229-0f21950fcee8",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "risky"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "619b8c0b-2897-4285-a824-c8b69b3c48b4",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "risky"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56efb57a-a581-49d3-a5c0-e70444869358",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "risky"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e1c472b-42cf-444f-8057-31ae15384859",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "risky"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91b1a655-4790-4320-8b06-644be1ca2bc6",
+          "name": "Get external rates with available drivers for route",
+          "request": {
+            "name": "Get external rates with available drivers for route",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "route",
+                ":routeId",
+                "rates-with-drivers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "routeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6093c82e-37a0-4d00-8a3f-8da197e81935",
+              "name": "External rates with available drivers information for route",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "rates-with-drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"organizationId\": \"string\",\n    \"organizationName\": \"string\",\n    \"organizationLogo\": \"string\",\n    \"phoneNumber\": null,\n    \"costCents\": 4427.144699750798,\n    \"rateId\": \"string\",\n    \"organizationSlaId\": null,\n    \"drivers\": [\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      }\n    ]\n  },\n  {\n    \"organizationId\": \"string\",\n    \"organizationName\": \"string\",\n    \"organizationLogo\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"costCents\": 2664.8082631964207,\n    \"rateId\": \"string\",\n    \"organizationSlaId\": \"string\",\n    \"drivers\": [\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7925049-e595-4383-87d9-e429a5650857",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "rates-with-drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9efda40-49b6-477a-ae37-4b9003f887bc",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "rates-with-drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "code": 512,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9d2f1f6-8233-44c0-98b2-0474e95995a5",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "rates-with-drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "routeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ba6d15f-a538-4a31-a37d-37fb757130e6",
+          "name": "Get external rates with available drivers for multiple routes",
+          "request": {
+            "name": "Get external rates with available drivers for multiple routes",
+            "description": {
+              "content": "Returns carriers that can handle ALL specified routes, with rate information per route",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "routes",
+                "bulk-rates-with-drivers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"routeIds\": [\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1f10230d-10cb-40ee-b903-c811c6c97859",
+              "name": "External rates with available drivers for carriers that can handle all routes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes",
+                    "bulk-rates-with-drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeIds\": [\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"organizationId\": \"string\",\n    \"organizationName\": \"string\",\n    \"organizationLogo\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"organizationSlaId\": \"string\",\n    \"drivers\": [\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      }\n    ],\n    \"ratesByRoute\": {\n      \"key_0\": [\n        {\n          \"rateId\": \"string\",\n          \"costCents\": 6829.596286894235\n        },\n        {\n          \"rateId\": \"string\",\n          \"costCents\": 5376.781267716706\n        }\n      ],\n      \"key_1\": [\n        {\n          \"rateId\": \"string\",\n          \"costCents\": 4926.5682997320955\n        },\n        {\n          \"rateId\": \"string\",\n          \"costCents\": 7184.894038564339\n        }\n      ],\n      \"key_2\": [\n        {\n          \"rateId\": \"string\",\n          \"costCents\": 7268.639763274772\n        },\n        {\n          \"rateId\": \"string\",\n          \"costCents\": 4256.832338895079\n        }\n      ]\n    }\n  },\n  {\n    \"organizationId\": \"string\",\n    \"organizationName\": \"string\",\n    \"organizationLogo\": null,\n    \"phoneNumber\": \"string\",\n    \"organizationSlaId\": \"string\",\n    \"drivers\": [\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driver\": {\n          \"id\": \"string\",\n          \"availability\": \"string\",\n          \"ownFleetVehicle\": {},\n          \"distance\": {}\n        }\n      }\n    ],\n    \"ratesByRoute\": {\n      \"key_0\": [\n        {\n          \"rateId\": \"string\",\n          \"costCents\": 6884.46489358883\n        },\n        {\n          \"rateId\": \"string\",\n          \"costCents\": 863.7479467675513\n        }\n      ],\n      \"key_1\": [\n        {\n          \"rateId\": \"string\",\n          \"costCents\": 3642.5583778849314\n        },\n        {\n          \"rateId\": \"string\",\n          \"costCents\": 6109.523976027801\n        }\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "249d89e9-01aa-4ca4-bbe2-f356019c56ca",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes",
+                    "bulk-rates-with-drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeIds\": [\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf8af7d8-d898-4c78-b92b-1739371cb11c",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes",
+                    "bulk-rates-with-drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeIds\": [\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abb70514-b9f7-4c91-b3d8-e9b5693b66e5",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes",
+                    "bulk-rates-with-drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeIds\": [\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 512,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c0ef544-2fec-4019-8515-b9fb99daae8e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes",
+                    "bulk-rates-with-drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeIds\": [\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "296dfcdb-ac44-4695-a7a0-b084368b5819",
+          "name": "Removes all deliveries and fleet vehicles from route and deletes the route",
+          "request": {
+            "name": "Removes all deliveries and fleet vehicles from route and deletes the route",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "route",
+                ":routeId",
+                "revoke"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "routeId",
+                  "description": "(Required) route id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "44983750-38ed-45d7-861c-073e4e3c5ef7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "revoke"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "routeId",
+                      "description": "(Required) route id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"numOfVehicles\": 9560.996438365302,\n  \"deliveriesCanceled\": [\n    \"d6c4549c-bb35-91e1-f6eb-fbf9aa918830\",\n    \"c140fd4f-c9f7-24e5-8d2f-563082e59ecc\"\n  ],\n  \"deliveriesNotCanceled\": [\n    \"1d19267d-e126-ecf0-c2e2-ed39fbf63149\",\n    \"a46e9623-dfc0-6bc8-9fd8-b07567fe5fbb\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9127322c-df17-4e0e-910a-f31b058a2bd6",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "route",
+                    ":routeId",
+                    "revoke"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "routeId",
+                      "description": "(Required) route id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6eb36092-2839-4765-bd27-e2f4340991a6",
+          "name": "Gets all routes",
+          "request": {
+            "name": "Gets all routes",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "routes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organizationIds",
+                  "value": "<string>",
+                  "description": "organizationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "organizationIds",
+                  "value": "<string>",
+                  "description": "organizationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "locationIds",
+                  "value": "<string>",
+                  "description": "locationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "locationIds",
+                  "value": "<string>",
+                  "description": "locationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "routeStatuses",
+                  "value": "<string>",
+                  "description": "routeStatuses to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "routeStatuses",
+                  "value": "<string>",
+                  "description": "routeStatuses to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "driverAssignedToRoute",
+                  "value": "<boolean>",
+                  "description": "driverAssignedToRoute to filter down to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf393556-4de8-4cef-8911-aa70ebf62b8a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "driverAssignedToRoute",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"1cbece1c-89f4-8ce9-257e-ee9532947ceb\",\n    \"status\": \"string\",\n    \"createdAt\": \"2023-11-20T06:10:19.904Z\",\n    \"updatedAt\": \"2004-02-05T04:03:27.265Z\",\n    \"userId\": \"cd0ae1c2-c38a-23b3-6eef-a7a2b2e693e9\",\n    \"expectedCompletionDate\": \"2016-01-24T13:19:23.208Z\",\n    \"plannedStartAt\": null,\n    \"calculatedShipperCostCent\": null,\n    \"calculatedLpCostCent\": null,\n    \"totalDurationSecondsEstimate\": 9582.092504469154,\n    \"totalMilesEstimate\": null,\n    \"orgSourcedIdentifier\": \"string\",\n    \"pathCoordinates\": null,\n    \"routeStops\": [\n      {\n        \"id\": \"aeab5b0f-6a54-fd00-cb5e-0418126ddb62\",\n        \"eta\": null,\n        \"computedLegDistanceMile\": null,\n        \"computedLegDurationSeconds\": null,\n        \"routeId\": \"4f4e2029-bfad-6166-4529-28b33b4e5bc8\",\n        \"deliveryId\": \"c93a82bc-c1c1-9d54-d612-896405961bf0\",\n        \"stopType\": \"PICKUP\",\n        \"order\": 6530.6334105087835\n      },\n      {\n        \"id\": \"526272dc-ab45-c0cc-1ad7-adc462b42ec5\",\n        \"eta\": \"2020-03-07T22:42:13.956Z\",\n        \"computedLegDistanceMile\": null,\n        \"computedLegDurationSeconds\": 1199.425433970034,\n        \"routeId\": \"d7121168-c743-455f-bb8c-eddab9b67dbf\",\n        \"deliveryId\": \"e7b9ff7b-79cc-24bf-0809-23c5603805a0\",\n        \"stopType\": \"PICKUP\",\n        \"order\": 4700.568285266552\n      }\n    ],\n    \"ownFleetVehicles\": [\n      {\n        \"id\": \"90c4b6bd-d1ac-8940-a626-b4a554172371\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 4471.924769589948,\n        \"vin\": \"string\",\n        \"costPerMileCent\": 7944.556019966561,\n        \"lpMarketId\": \"bd426a1d-f187-2564-bad2-2a7ca586bffd\",\n        \"currentRouteId\": \"6111b2af-c6d7-abd1-0d3b-b0320dbb0e56\",\n        \"fleetVehicleId\": \"23356993-1627-5bdf-58f4-18e54763bf0d\",\n        \"driverId\": null,\n        \"active\": true,\n        \"createdAt\": \"2008-02-21T20:24:46.699Z\",\n        \"OwnFleetVehicleRoute\": {\n          \"ownFleetVehicleId\": \"f21a5a62-999b-a5a9-95dc-0e5eac1306d8\",\n          \"routeId\": \"c079d8f6-6ca7-b09c-c067-6274da70d5ca\"\n        }\n      },\n      {\n        \"id\": \"159166ff-bb72-311f-dd06-9e83c7539c13\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 6255.880666665167,\n        \"vin\": \"string\",\n        \"costPerMileCent\": 1933.4957481789993,\n        \"lpMarketId\": \"5d8f5e17-091f-544f-3342-f4e585292701\",\n        \"currentRouteId\": \"0796de7f-f726-cee3-eab3-9c9d29beccb2\",\n        \"fleetVehicleId\": \"f1f48404-b16d-783c-8023-843afeb7763a\",\n        \"driverId\": null,\n        \"active\": false,\n        \"createdAt\": \"2003-08-15T09:15:04.823Z\",\n        \"OwnFleetVehicleRoute\": {\n          \"ownFleetVehicleId\": \"6a74fa14-6c1c-5c23-9ace-a03e2c4429a7\",\n          \"routeId\": \"03c27277-1783-7844-e5c6-8e3d00dc80f8\"\n        }\n      }\n    ],\n    \"deliveries\": [\n      {\n        \"id\": \"1cf0a053-1d3d-001a-7fb1-5436bbd8561f\",\n        \"orderId\": \"ff39b036-19ee-8eb7-61d7-fd276ac619cd\",\n        \"fromId\": \"1598ce16-57ce-e5b8-b5c6-e51b6a207518\",\n        \"toId\": \"c634209a-963d-90de-4e79-9f61d65567d5\",\n        \"altFromId\": null,\n        \"altToId\": \"8daed04f-4313-da3c-2c6c-d0b34ea936e5\",\n        \"state\": \"string\",\n        \"dispatchAt\": null,\n        \"deliverySpeedMin\": 1547.200764405785,\n        \"deliveryRatingId\": null,\n        \"startTime\": \"1971-01-23T09:43:04.546Z\",\n        \"createdAt\": \"2003-08-24T01:14:07.863Z\",\n        \"updatedAt\": \"1992-02-09T04:11:17.934Z\",\n        \"driversLocationId\": null\n      },\n      {\n        \"id\": \"6eacefff-e7e2-5014-28a1-5c0d938a1420\",\n        \"orderId\": \"065fb8a2-8019-7c12-e1c2-70f6b7b554db\",\n        \"fromId\": \"a5e1b66b-3d0a-c1c2-f405-fcd9b50411e0\",\n        \"toId\": \"0ec8dc4f-a460-8033-fe95-4d91cc261f4a\",\n        \"altFromId\": null,\n        \"altToId\": null,\n        \"state\": \"string\",\n        \"dispatchAt\": \"1950-06-21T07:44:54.168Z\",\n        \"deliverySpeedMin\": 8610.752991134688,\n        \"deliveryRatingId\": \"d8e9f009-7b33-2bca-955a-41b65ee23c7c\",\n        \"startTime\": null,\n        \"createdAt\": \"1961-04-19T00:51:12.323Z\",\n        \"updatedAt\": \"2016-02-03T11:04:19.189Z\",\n        \"driversLocationId\": null\n      }\n    ],\n    \"routeVehicleHub\": {\n      \"id\": \"e3fe7859-4155-f432-0ce8-822d6d386ee5\",\n      \"routeId\": \"843fe98b-47b0-d2c7-062c-467dd28ad76f\",\n      \"locationId\": \"c712516d-7511-61f0-c531-d2cec3df34ef\",\n      \"location\": {\n        \"id\": \"eb4a808b-0b35-497a-2828-afa8aa3068ee\",\n        \"address\": \"string\",\n        \"contactName\": \"string\",\n        \"location\": [\n          3877.271355503794,\n          401.46960647537645\n        ],\n        \"name\": \"string\",\n        \"storeNumber\": null\n      }\n    }\n  },\n  {\n    \"id\": \"35d39899-e667-0b55-28c0-a08f18127dba\",\n    \"status\": \"string\",\n    \"createdAt\": \"1964-05-07T13:45:43.963Z\",\n    \"updatedAt\": \"1999-12-23T03:51:31.399Z\",\n    \"userId\": \"f56640c9-2061-8c2f-5209-379bffc4925c\",\n    \"expectedCompletionDate\": \"1960-07-04T21:19:39.557Z\",\n    \"plannedStartAt\": null,\n    \"calculatedShipperCostCent\": 2744.876887394997,\n    \"calculatedLpCostCent\": 9940.056097950574,\n    \"totalDurationSecondsEstimate\": null,\n    \"totalMilesEstimate\": 6882.2827838845415,\n    \"orgSourcedIdentifier\": \"string\",\n    \"pathCoordinates\": null,\n    \"routeStops\": [\n      {\n        \"id\": \"400bb5ce-0bd5-3265-f6ee-cd4622036ddc\",\n        \"eta\": null,\n        \"computedLegDistanceMile\": null,\n        \"computedLegDurationSeconds\": 3007.3347516892336,\n        \"routeId\": \"135c75f5-9d03-8ed4-6056-2a446bb5d15e\",\n        \"deliveryId\": \"ab886683-5d28-e424-c53a-38458f777a54\",\n        \"stopType\": \"PICKUP\",\n        \"order\": 8233.933043905112\n      },\n      {\n        \"id\": \"af239814-2eda-8838-29f2-ad6ea23589e6\",\n        \"eta\": \"1976-10-23T00:46:09.684Z\",\n        \"computedLegDistanceMile\": 2847.072011732439,\n        \"computedLegDurationSeconds\": 5156.576255414402,\n        \"routeId\": \"0710141e-e6b3-27ef-5990-a432e4e24923\",\n        \"deliveryId\": \"a3d176d7-6314-86cb-d44c-0744a6b5bf5c\",\n        \"stopType\": \"DROPOFF\",\n        \"order\": 1115.7171061553718\n      }\n    ],\n    \"ownFleetVehicles\": [\n      {\n        \"id\": \"de8bd7fe-8af5-7172-5c3e-e9041a1677be\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 1439.5161779193554,\n        \"vin\": \"string\",\n        \"costPerMileCent\": 5998.7414472693345,\n        \"lpMarketId\": \"30f3932f-bfa2-012b-282e-e6f0ab80b19c\",\n        \"currentRouteId\": \"f9349375-7f9e-351d-3e0b-0acafbfbb27f\",\n        \"fleetVehicleId\": \"2908c839-6088-26b2-e4a8-35bd049788b7\",\n        \"driverId\": null,\n        \"active\": true,\n        \"createdAt\": \"1973-06-28T19:06:31.142Z\",\n        \"OwnFleetVehicleRoute\": {\n          \"ownFleetVehicleId\": \"514fe53f-2bbf-5924-17c5-842450d0122f\",\n          \"routeId\": \"22151b0f-f2c2-fc8c-c4e6-bf249d619a0e\"\n        }\n      },\n      {\n        \"id\": \"e9fe564d-24f7-e1bd-89fb-81ad76d7da33\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 1167.836012080573,\n        \"vin\": \"string\",\n        \"costPerMileCent\": 8188.1621980941945,\n        \"lpMarketId\": \"d898f385-6cc7-4f20-c367-a69476459ecf\",\n        \"currentRouteId\": \"8a69a7c1-7a27-98a9-524d-7a8f87de8a4c\",\n        \"fleetVehicleId\": \"1e8e0868-1d96-4c81-f040-0bec8e2dc8f3\",\n        \"driverId\": null,\n        \"active\": false,\n        \"createdAt\": \"1992-04-10T06:13:47.889Z\",\n        \"OwnFleetVehicleRoute\": {\n          \"ownFleetVehicleId\": \"71579b17-1c74-31a1-b01a-5a468d3ef9aa\",\n          \"routeId\": \"f9e56aca-7179-c57d-cce0-1eacb15046b9\"\n        }\n      }\n    ],\n    \"deliveries\": [\n      {\n        \"id\": \"2a96c3f8-0fe2-b9a2-1772-ebd85c392c26\",\n        \"orderId\": \"d0756199-4d6c-a689-5d9d-b7e787ec6cf0\",\n        \"fromId\": \"bc45811c-8261-8b05-742a-aa3cf5a0a4c1\",\n        \"toId\": \"33b70632-d2b8-5de6-4610-a3e0e76ca789\",\n        \"altFromId\": \"eaadc6e0-f32d-9b21-4c6c-233a88a6f4a3\",\n        \"altToId\": \"74a65b29-4af7-fdce-d08e-11ef9f7d4165\",\n        \"state\": \"string\",\n        \"dispatchAt\": null,\n        \"deliverySpeedMin\": 2819.8748217274197,\n        \"deliveryRatingId\": null,\n        \"startTime\": \"1980-08-28T17:27:28.433Z\",\n        \"createdAt\": \"1980-03-24T06:53:15.112Z\",\n        \"updatedAt\": \"1982-02-03T10:09:20.172Z\",\n        \"driversLocationId\": null\n      },\n      {\n        \"id\": \"0b06ae2b-72a8-db81-7b29-7810972137c6\",\n        \"orderId\": \"277b25a1-d159-142a-4723-81ccb848c2e4\",\n        \"fromId\": \"f831135b-86d1-de23-ec17-75a79c43dc3a\",\n        \"toId\": \"2fdd03d9-2415-2e69-f8e6-e1f0b051a38d\",\n        \"altFromId\": \"7ed435a9-55a9-64c6-176f-007b5d79aed8\",\n        \"altToId\": null,\n        \"state\": \"string\",\n        \"dispatchAt\": \"2006-07-04T02:11:58.980Z\",\n        \"deliverySpeedMin\": 7598.243706661208,\n        \"deliveryRatingId\": \"7410fd6e-5ee5-eb6d-1f40-840a017d9ca8\",\n        \"startTime\": \"1970-11-01T11:42:18.204Z\",\n        \"createdAt\": \"2004-04-30T06:16:05.927Z\",\n        \"updatedAt\": \"1952-07-29T00:21:10.959Z\",\n        \"driversLocationId\": \"8e3167d6-2328-cb2c-bbed-5ff0b8075f0b\"\n      }\n    ],\n    \"routeVehicleHub\": {\n      \"id\": \"5477c72d-0643-8fd1-c303-f1b53a3bee68\",\n      \"routeId\": \"df3fc0ba-4007-3865-ebb1-92622153f73f\",\n      \"locationId\": \"97c031d9-6f3d-9cbf-def8-04748fcc9bb8\",\n      \"location\": {\n        \"id\": \"9f8e347c-ec40-b255-e34c-91ebcc667c6d\",\n        \"address\": \"string\",\n        \"contactName\": null,\n        \"location\": [\n          2825.690827154791,\n          2291.551454030769\n        ],\n        \"name\": \"string\",\n        \"storeNumber\": null\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc4dc1ed-1169-4810-913c-b6939526b9d1",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "driverAssignedToRoute",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd667725-3a21-48b8-bae1-20a5561d3b3e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "driverAssignedToRoute",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c44f7fd9-79c7-417c-9afc-d13d2a2153eb",
+          "name": "Create new orders within one or more routes.",
+          "request": {
+            "name": "Create new orders within one or more routes.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "routes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organizationIds",
+                  "value": "<string>",
+                  "description": "organizationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "organizationIds",
+                  "value": "<string>",
+                  "description": "organizationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "locationIds",
+                  "value": "<string>",
+                  "description": "locationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "locationIds",
+                  "value": "<string>",
+                  "description": "locationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "routeStatuses",
+                  "value": "<string>",
+                  "description": "routeStatuses to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "routeStatuses",
+                  "value": "<string>",
+                  "description": "routeStatuses to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "driverAssignedToRoute",
+                  "value": "<boolean>",
+                  "description": "driverAssignedToRoute to filter down to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "fileData",
+                  "type": "file",
+                  "description": "CSV File upload"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "af0cad1f-4c31-4659-b45c-aa5240e19fb7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "driverAssignedToRoute",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "CSV File upload",
+                        "type": "text/plain"
+                      },
+                      "key": "fileData",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"failedOrders\": [\n    {\n      \"orderId\": \"string\",\n      \"routeId\": \"string\",\n      \"reason\": \"string\"\n    },\n    {\n      \"orderId\": \"string\",\n      \"routeId\": \"string\",\n      \"reason\": \"string\"\n    }\n  ],\n  \"failedRoutes\": [\n    \"string\",\n    \"string\"\n  ],\n  \"successfulRoutes\": [\n    {\n      \"orgSourcedIdentifer\": \"string\",\n      \"deliveryIds\": [\n        \"044dc1a4-1cc3-58db-df8d-96fa08d76b8e\",\n        \"789be2e0-3664-2b05-19ba-ad7488696e1a\"\n      ]\n    },\n    {\n      \"orgSourcedIdentifer\": \"string\",\n      \"deliveryIds\": [\n        \"f52ed2c5-d513-3beb-6dee-93798a88b896\",\n        \"b6f8f1f3-096f-9266-f7f0-ae75c8b34aa2\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cfed901-41d6-40d4-b093-559c25d64687",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "driverAssignedToRoute",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "CSV File upload",
+                        "type": "text/plain"
+                      },
+                      "key": "fileData",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ad175f2-18f7-4cea-9f3b-f943f3120d32",
+          "name": "Update exist route.",
+          "request": {
+            "name": "Update exist route.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "routes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organizationIds",
+                  "value": "<string>",
+                  "description": "organizationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "organizationIds",
+                  "value": "<string>",
+                  "description": "organizationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "locationIds",
+                  "value": "<string>",
+                  "description": "locationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "locationIds",
+                  "value": "<string>",
+                  "description": "locationIds to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "routeStatuses",
+                  "value": "<string>",
+                  "description": "routeStatuses to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "routeStatuses",
+                  "value": "<string>",
+                  "description": "routeStatuses to filter down to."
+                },
+                {
+                  "disabled": false,
+                  "key": "driverAssignedToRoute",
+                  "value": "<boolean>",
+                  "description": "driverAssignedToRoute to filter down to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "fileData",
+                  "type": "file",
+                  "description": "CSV File upload"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8bad7fe8-5955-4f4f-96f2-d7f382de4034",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "driverAssignedToRoute",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "CSV File upload",
+                        "type": "text/plain"
+                      },
+                      "key": "fileData",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"failedRoutes\": [\n    \"string\",\n    \"string\"\n  ],\n  \"successfulRoutes\": [\n    {\n      \"orgSourcedIdentifer\": \"string\",\n      \"deliveryIds\": [\n        \"58515337-8a5a-6438-9a7d-9f232e741fea\",\n        \"29b2079f-6d06-e6a7-44d0-370979babe59\"\n      ]\n    },\n    {\n      \"orgSourcedIdentifer\": \"string\",\n      \"deliveryIds\": [\n        \"58aeed24-8936-8231-8aad-e341e77bec7f\",\n        \"39a0a874-12dc-b52d-dd80-d6e3e90bb487\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62d75fc7-74ab-4e45-9013-bf8fc00b986d",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organizationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routeStatuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "driverAssignedToRoute",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "CSV File upload",
+                        "type": "text/plain"
+                      },
+                      "key": "fileData",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9b9972f-133b-452a-bf2b-a87ea66839c4",
+          "name": "Create routes with orders for specific organizationId",
+          "request": {
+            "name": "Create routes with orders for specific organizationId",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "routes",
+                "organization",
+                ":organizationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) organization id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "processInBackground",
+                  "value": "false",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "fileData",
+                  "type": "file",
+                  "description": "CSV File upload"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8d6ebb76-30f1-4647-847e-7cf77e75fd15",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes",
+                    "organization",
+                    ":organizationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organization id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "processInBackground",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "CSV File upload",
+                        "type": "text/plain"
+                      },
+                      "key": "fileData",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"failedOrders\": [\n    {\n      \"orderId\": \"string\",\n      \"routeId\": \"string\",\n      \"reason\": \"string\"\n    },\n    {\n      \"orderId\": \"string\",\n      \"routeId\": \"string\",\n      \"reason\": \"string\"\n    }\n  ],\n  \"failedRoutes\": [\n    \"string\",\n    \"string\"\n  ],\n  \"successfulRoutes\": [\n    {\n      \"orgSourcedIdentifer\": \"string\",\n      \"deliveryIds\": [\n        \"044dc1a4-1cc3-58db-df8d-96fa08d76b8e\",\n        \"789be2e0-3664-2b05-19ba-ad7488696e1a\"\n      ]\n    },\n    {\n      \"orgSourcedIdentifer\": \"string\",\n      \"deliveryIds\": [\n        \"f52ed2c5-d513-3beb-6dee-93798a88b896\",\n        \"b6f8f1f3-096f-9266-f7f0-ae75c8b34aa2\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11cbae50-b6f7-40b3-bf19-221827114cbe",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes",
+                    "organization",
+                    ":organizationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organization id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "processInBackground",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "CSV File upload",
+                        "type": "text/plain"
+                      },
+                      "key": "fileData",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e7a7b78-b81f-41ab-8868-b0965c9a2f09",
+          "name": "Update route deliveries",
+          "request": {
+            "name": "Update route deliveries",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "routes",
+                ":orgSourcedIdentifier",
+                "deliveries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgSourcedIdentifier",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dispatchToOnerail\": false,\n  \"skipOptimizer\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70ad1667-1da7-479e-ad36-09ec3569a444",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes",
+                    ":orgSourcedIdentifier",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgSourcedIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dispatchToOnerail\": false,\n  \"skipOptimizer\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deliveryIds\": [\n    \"b7991ae2-f8ba-ed2e-575d-d0612d55f387\",\n    \"1540a884-6091-c194-9199-4ad88e3ede1a\"\n  ],\n  \"orgSourcedIdentifier\": \"string\",\n  \"warnings\": [\n    \"b615f6a6-53eb-4b60-e9c9-3d3f732d179d\",\n    \"472ee8a8-af34-58f3-f4ed-cfa48f3590c5\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "175c634b-4494-4321-9c30-78acdbe55691",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "routes",
+                    ":orgSourcedIdentifier",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgSourcedIdentifier",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dispatchToOnerail\": false,\n  \"skipOptimizer\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6779,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5948be09-9d69-445d-8410-222d9edd1411",
+    "name": "OneRail Operation Dashboard Route API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,2729 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Organization API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all organizations user has access to",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organizations",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Partial Organization name"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Filter by active status"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Shipper or LP"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get all organizations user has access to"
+        },
+        {
+          "info": {
+            "name": "Get all organizations user has access to, with reduced payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v2/organizations",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search term"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activeness status (optional)"
+              }
+            ]
+          },
+          "docs": "Get all organizations user has access to, with reduced payload"
+        },
+        {
+          "info": {
+            "name": "Get all organizations user has access to, with reduced payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v3/organizations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get all organizations user has access to, with reduced payload"
+        },
+        {
+          "info": {
+            "name": "Search Users in different organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organizations/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Users in different organizations"
+        },
+        {
+          "info": {
+            "name": "Creates a new Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Organization"
+        },
+        {
+          "info": {
+            "name": "Get organization preferences by api key and appId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/preferences/api",
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get organization preferences by api key and appId"
+        },
+        {
+          "info": {
+            "name": "Get organization by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization by id"
+        },
+        {
+          "info": {
+            "name": "Updates Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates Organization"
+        },
+        {
+          "info": {
+            "name": "Partial Updates Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/organization/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partial Updates Organization"
+        },
+        {
+          "info": {
+            "name": "Get organization by id (API)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/api",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get organization by id (API)"
+        },
+        {
+          "info": {
+            "name": "Gets children organizations of the given Organization Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/shippers",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pickupLocationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "originLocationId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets children organizations of the given Organization Id"
+        },
+        {
+          "info": {
+            "name": "Get organization's locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/locations",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "canDispatchDeliveries",
+                "value": "",
+                "type": "query",
+                "description": "If true, returns only locations that can dispatch deliveries."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { search: string, storeNumber: string }"
+              },
+              {
+                "name": "isLpShipper",
+                "value": "",
+                "type": "query",
+                "description": "Determines whether the caller is an LP Shipper user or not"
+              }
+            ]
+          },
+          "docs": "Get organization's locations"
+        },
+        {
+          "info": {
+            "name": "Creates or updates organization primary location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/primary-location",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates organization primary location"
+        },
+        {
+          "info": {
+            "name": "Sets organization as inactive",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/organization/:organizationId/inactivate",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets organization as inactive"
+        },
+        {
+          "info": {
+            "name": "Update organization webhook URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/organization/:organizationId/webhook-url",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update organization webhook URL"
+        },
+        {
+          "info": {
+            "name": "Update organization DOT information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/dot",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update organization DOT information"
+        },
+        {
+          "info": {
+            "name": "Get organization's users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/users",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { search: string, ids: string[] }"
+              }
+            ]
+          },
+          "docs": "Get organization's users"
+        },
+        {
+          "info": {
+            "name": "Get organization's users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/drivers",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { availability: DriverAvailability[], teamIds: string[], lpMarketIds: string[], includePickupLocationIds: boolean }"
+              },
+              {
+                "name": "fromIds",
+                "value": "",
+                "type": "query",
+                "description": "JSON array of location ids, optional"
+              }
+            ]
+          },
+          "docs": "Get organization's users"
+        },
+        {
+          "info": {
+            "name": "Get organization by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/column-mappings",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization by id"
+        },
+        {
+          "info": {
+            "name": "Get driver tooltip info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/driver/:driverId/tooltip",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "driverId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get driver tooltip info"
+        },
+        {
+          "info": {
+            "name": "get distance between users and first route pickup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/user/distances",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "get distance between users and first route pickup"
+        },
+        {
+          "info": {
+            "name": "Get organization user's locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/user/:userId/locations",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get organization user's locations"
+        },
+        {
+          "info": {
+            "name": "Get Available Lp Contracts for a Org ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/available-lp-contracts",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "total",
+                "value": "",
+                "type": "query",
+                "description": "Total number of items that returned"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              }
+            ]
+          },
+          "docs": "Get Available Lp Contracts for a Org ID"
+        },
+        {
+          "info": {
+            "name": "Get organization's roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/roles",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get organization's roles"
+        },
+        {
+          "info": {
+            "name": "Get roles that loggin user has the ability to assign.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/assignable-roles",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get roles that loggin user has the ability to assign."
+        },
+        {
+          "info": {
+            "name": "Get organization's fleet assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/fleet-assets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization's fleet assets"
+        },
+        {
+          "info": {
+            "name": "Create Fleet Assets for an Organization at the global level",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/fleet-assets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Fleet Assets for an Organization at the global level"
+        },
+        {
+          "info": {
+            "name": "Update Fleet Assets for an Organization at the global level",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/fleet-assets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Fleet Assets for an Organization at the global level"
+        },
+        {
+          "info": {
+            "name": "Get organization's External fleet assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/external-fleet-assets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization's External fleet assets"
+        },
+        {
+          "info": {
+            "name": "Create External Fleet Assets for an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/external-fleet-assets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create External Fleet Assets for an Organization"
+        },
+        {
+          "info": {
+            "name": "remove External Fleet Assets for an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/external-fleet-assets/:fleetVehicleId/remove",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fleetVehicleId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "remove External Fleet Assets for an Organization"
+        },
+        {
+          "info": {
+            "name": "Creates users from a CSV file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/bulk-users",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Creates users from a CSV file"
+        },
+        {
+          "info": {
+            "name": "Bulk update users by passing in an array of users with attributes to update and either an ID or an employeeId to help identify the user (if both are included in a user, employeeId will be updated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/bulk-users",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk update users by passing in an array of users with attributes to update and either an ID or an employeeId to help identify the user (if both are included in a user, employeeId will be updated)"
+        },
+        {
+          "info": {
+            "name": "Get organization's LP Markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/lp-markets",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { name: string }"
+              }
+            ]
+          },
+          "docs": "Get organization's LP Markets"
+        },
+        {
+          "info": {
+            "name": "Get organization's Shipper Contracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/shipper-contracts",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get organization's Shipper Contracts"
+        },
+        {
+          "info": {
+            "name": "Get all shipper contracts of all generated lp contract slas for this orgnization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/lp-contracts",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get all shipper contracts of all generated lp contract slas for this orgnization"
+        },
+        {
+          "info": {
+            "name": "Get organization's Shipper Contracts that have at least 1 sla",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/shipper-contract-with-slas",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get organization's Shipper Contracts that have at least 1 sla"
+        },
+        {
+          "info": {
+            "name": "Data for creating a new Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/related"
+          },
+          "docs": "Data for creating a new Organization"
+        },
+        {
+          "info": {
+            "name": "Get organization's deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/deliveries",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { state: DeliveryState[], shipperIds: string[], lpIds: string[], fromIds: string[], search: string, searchOrderId: string, searchShipmentId: string }"
+              },
+              {
+                "name": "leaderId",
+                "value": "",
+                "type": "query",
+                "description": "Delivery ID of leader to filter and return all follower deliveries"
+              },
+              {
+                "name": "searchShipmentId",
+                "value": "",
+                "type": "query",
+                "description": "Text to search for partial match in the shipmentId field"
+              },
+              {
+                "name": "lpIds",
+                "value": "",
+                "type": "query",
+                "description": "Filter and return orders with LP IDs in the list of lpIds provided.  Treated as an array, more than one instance of lpIds can be provided"
+              },
+              {
+                "name": "template",
+                "value": "",
+                "type": "query",
+                "description": "Filter out some of the returned response data needed for a page"
+              },
+              {
+                "name": "customField",
+                "value": "",
+                "type": "query",
+                "description": "Filter's by custom fields specific to each shipper.  The parameter is provided as `customField=fieldName:value`.  Can be provided more than once for multiple values or fields."
+              }
+            ]
+          },
+          "docs": "Get organization's deliveries"
+        },
+        {
+          "info": {
+            "name": "Creates a new delivery for the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/delivery",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Creates a new delivery for the organization"
+        },
+        {
+          "info": {
+            "name": "Get a delivery for the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/delivery/:deliveryId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a delivery for the organization"
+        },
+        {
+          "info": {
+            "name": "Updates a delivery for the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/delivery/:deliveryId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a delivery for the organization"
+        },
+        {
+          "info": {
+            "name": "Patches a delivery for the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/organization/:organizationId/delivery/:deliveryId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patches a delivery for the organization"
+        },
+        {
+          "info": {
+            "name": "Uploads a proof of delivery image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/delivery/:deliveryId/image",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "fileData",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Uploads a proof of delivery image"
+        },
+        {
+          "info": {
+            "name": "Get all POP or POD images for delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/delivery/:deliveryId/images-download",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organization id"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path",
+                "description": "Delivery id"
+              }
+            ]
+          },
+          "docs": "Get all POP or POD images for delivery"
+        },
+        {
+          "info": {
+            "name": "Soft delete proof images (POP/POD) for a delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/delivery/:deliveryId/images-delete",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Soft delete proof images (POP/POD) for a delivery"
+        },
+        {
+          "info": {
+            "name": "Get a delivery's attempts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/delivery/:deliveryId/delivery-attempts",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a delivery's attempts"
+        },
+        {
+          "info": {
+            "name": "Get a delivery's attempts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v2/organization/:organizationId/delivery/:deliveryId/delivery-attempts",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Only get the limit value of delivery attempts to retreive from a delivery"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Get delivery attepts starting at the offset value (assuming you start your count at 0)"
+              }
+            ]
+          },
+          "docs": "Get a delivery's attempts"
+        },
+        {
+          "info": {
+            "name": "Get a delivery's attempts with api key and app Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v2/organization/delivery/:deliveryId/delivery-attempts-api",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Only get the limit value of delivery attempts to retreive from a delivery"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Get delivery attempts starting at the offset value (assuming you start your count at 0)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a delivery's attempts with api key and app Id"
+        },
+        {
+          "info": {
+            "name": "Gets the file uploads in relation to a provided organization id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/file-uploads",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organization id"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "status filter"
+              },
+              {
+                "name": "rangeType",
+                "value": "",
+                "type": "query",
+                "description": "date range type"
+              },
+              {
+                "name": "startOn",
+                "value": "",
+                "type": "query",
+                "description": "daterange starts on"
+              },
+              {
+                "name": "endOn",
+                "value": "",
+                "type": "query",
+                "description": "date range ends on"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "entityType",
+                "value": "",
+                "type": "query",
+                "description": "Entity type to show"
+              }
+            ]
+          },
+          "docs": "Gets the file uploads in relation to a provided organization id"
+        },
+        {
+          "info": {
+            "name": "Delete organization's Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/bulk-products-delete",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete organization's Products"
+        },
+        {
+          "info": {
+            "name": "Restore organization's Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/bulk-products-restore",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restore organization's Products"
+        },
+        {
+          "info": {
+            "name": "Get product for oganization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/product/:productId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get product for oganization"
+        },
+        {
+          "info": {
+            "name": "Edit organization's Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/product/:productId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit organization's Product"
+        },
+        {
+          "info": {
+            "name": "Get organization's Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/products",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { search: string }"
+              }
+            ]
+          },
+          "docs": "Get organization's Products"
+        },
+        {
+          "info": {
+            "name": "Get organization's boxes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/boxes",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get organization's boxes"
+        },
+        {
+          "info": {
+            "name": "Get organization's boxes via api",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/boxes/api",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get organization's boxes via api"
+        },
+        {
+          "info": {
+            "name": "Get organization's service levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/service-levels",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get organization's service levels"
+        },
+        {
+          "info": {
+            "name": "Get one or more organization's service levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organizations/service-levels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get one or more organization's service levels"
+        },
+        {
+          "info": {
+            "name": "Get organization's service levels using api",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/service-levels/api",
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get organization's service levels using api"
+        },
+        {
+          "info": {
+            "name": "Create organization's service level",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/service-level",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create organization's service level"
+        },
+        {
+          "info": {
+            "name": "Get service level details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/service-level/:serviceLevelId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "serviceLevelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get service level details"
+        },
+        {
+          "info": {
+            "name": "update organization's service level",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/service-level/:serviceLevelId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "serviceLevelId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "update organization's service level"
+        },
+        {
+          "info": {
+            "name": "Get service level details",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/organization/:organizationId/service-level/:serviceLevelId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "serviceLevelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get service level details"
+        },
+        {
+          "info": {
+            "name": "update organization's service level active state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/service-level/:serviceLevelId/set-active-state",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "serviceLevelId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deactivateSla",
+                "value": "",
+                "type": "query",
+                "description": "Will inactivate all active SLAs associated with this service level"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "update organization's service level active state"
+        },
+        {
+          "info": {
+            "name": "Get organization's delivery state mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/delivery-state-mapping",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization's delivery state mapping"
+        },
+        {
+          "info": {
+            "name": "Creates a new order for the organization with one or more deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/order",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Creates a new order for the organization with one or more deliveries"
+        },
+        {
+          "info": {
+            "name": "Adds one or more deliveries to an existing order for the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/order/:orderId/add-deliveries",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "copy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Adds one or more deliveries to an existing order for the organization"
+        },
+        {
+          "info": {
+            "name": "Adds one or more returns to an existing order for the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/order/:orderId/add-returns",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Adds one or more returns to an existing order for the organization"
+        },
+        {
+          "info": {
+            "name": "Adds one or more returns to an existing order for the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/order/:orderId/add-returns/:deliveryId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Adds one or more returns to an existing order for the organization"
+        },
+        {
+          "info": {
+            "name": "Create Fleet Assets for an Organization at the global level",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/own-fleet",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "activeOnly",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Fleet Assets for an Organization at the global level"
+        },
+        {
+          "info": {
+            "name": "List of carriers (LPs) with signed contracts with th organizationId provided",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/carriers",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List of carriers (LPs) with signed contracts with th organizationId provided"
+        },
+        {
+          "info": {
+            "name": "List of shippers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organizations/shippers",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              }
+            ]
+          },
+          "docs": "List of shippers"
+        },
+        {
+          "info": {
+            "name": "List of LP orgs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organizations/lps",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              }
+            ]
+          },
+          "docs": "List of LP orgs"
+        },
+        {
+          "info": {
+            "name": "Get organization tree by id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/tree",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization Id"
+              }
+            ]
+          },
+          "docs": "Get organization tree by id."
+        },
+        {
+          "info": {
+            "name": "Get SeasonPricings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/season-pricing",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization Id"
+              }
+            ]
+          },
+          "docs": "Get SeasonPricings"
+        },
+        {
+          "info": {
+            "name": "Create SeasonPricing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/season-pricing",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create SeasonPricing"
+        },
+        {
+          "info": {
+            "name": "Update SeasonPricing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/season-pricing/:seasonPricingId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization Id"
+              },
+              {
+                "name": "seasonPricingId",
+                "value": "",
+                "type": "path",
+                "description": "SeasonPricing Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update SeasonPricing"
+        },
+        {
+          "info": {
+            "name": "Remove SeasonPricing",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/organization/:organizationId/season-pricing/:seasonPricingId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization Id"
+              },
+              {
+                "name": "seasonPricingId",
+                "value": "",
+                "type": "path",
+                "description": "SeasonPricing Id"
+              }
+            ]
+          },
+          "docs": "Remove SeasonPricing"
+        },
+        {
+          "info": {
+            "name": "Holiday",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/holiday/list",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization Id"
+              }
+            ]
+          },
+          "docs": "Holiday"
+        },
+        {
+          "info": {
+            "name": "Get LP settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/lp-settings",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get LP settings"
+        },
+        {
+          "info": {
+            "name": "Update LP settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/lp-settings",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update LP settings"
+        },
+        {
+          "info": {
+            "name": "Get organization custom settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/custom-settings",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get organization custom settings"
+        },
+        {
+          "info": {
+            "name": "Update organization custom settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/custom-settings",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update organization custom settings"
+        },
+        {
+          "info": {
+            "name": "Get an LP's deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/get-lp-deliveries",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { state: string, fromId: string, serviceLevelId: string }"
+              }
+            ]
+          },
+          "docs": "Get an LP's deliveries"
+        },
+        {
+          "info": {
+            "name": "Get LP features",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/lp-features",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get LP features"
+        },
+        {
+          "info": {
+            "name": "Update LP features",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/lp-features",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update LP features"
+        },
+        {
+          "info": {
+            "name": "Get contracts associated from the service levels ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/contracts-by-service-levels",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "serviceLevels",
+                "value": "",
+                "type": "query",
+                "description": "Service level ids."
+              }
+            ]
+          },
+          "docs": "Get contracts associated from the service levels ids"
+        },
+        {
+          "info": {
+            "name": "Create LP Shippers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/create-lp-shipper",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create LP Shippers"
+        },
+        {
+          "info": {
+            "name": "Update LP show-hidden-subscription-plans features",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/toggle-show-hidden-subscription-plans",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update LP show-hidden-subscription-plans features"
+        },
+        {
+          "info": {
+            "name": "Upserts Shipper LP Configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/shipper-lp-configuration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upserts Shipper LP Configurations"
+        },
+        {
+          "info": {
+            "name": "Delete Shipper LP Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/shipper-lp-configuration/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Shipper LP Configuration"
+        },
+        {
+          "info": {
+            "name": "Get LP Ranking Data Domain Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/lpranking-datadomain-configuration",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get LP Ranking Data Domain Configuration"
+        },
+        {
+          "info": {
+            "name": "Upserts LP Ranking Data Domain Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/lpranking-datadomain-configuration",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upserts LP Ranking Data Domain Configuration"
+        },
+        {
+          "info": {
+            "name": "Get organization's geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/geofence",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization's geofence"
+        },
+        {
+          "info": {
+            "name": "Create organization's geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/geofence",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create organization's geofence"
+        },
+        {
+          "info": {
+            "name": "Update organization's geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/geofence",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update organization's geofence"
+        },
+        {
+          "info": {
+            "name": "Get organization's login security configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/login-security-config",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization's login security configuration"
+        },
+        {
+          "info": {
+            "name": "Create or update organization's login security configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/login-security-config",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update organization's login security configuration"
+        },
+        {
+          "info": {
+            "name": "Get organization's LP Configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/lp-configurations",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organizationId"
+              }
+            ]
+          },
+          "docs": "Get organization's LP Configs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

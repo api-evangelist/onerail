@@ -1,0 +1,252 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Shipper Contract SLA API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipper Contract SLA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Shipper Contract SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/shipper-contract-sla/:shipperContractSlaId",
+            "params": [
+              {
+                "name": "shipperContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipper Contract SLA"
+        },
+        {
+          "info": {
+            "name": "Update Shipper Contract SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/shipper-contract-sla/:shipperContractSlaId",
+            "params": [
+              {
+                "name": "shipperContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Shipper Contract SLA"
+        },
+        {
+          "info": {
+            "name": "Approve an SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla/:shipperContractSlaId/approve",
+            "params": [
+              {
+                "name": "shipperContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve an SLA"
+        },
+        {
+          "info": {
+            "name": "Create Shipper signature for an SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla/:shipperContractSlaId/shipper-sign",
+            "params": [
+              {
+                "name": "shipperContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Shipper signature for an SLA"
+        },
+        {
+          "info": {
+            "name": "Create OneRail signature for an SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla/:shipperContractSlaId/onerail-sign",
+            "params": [
+              {
+                "name": "shipperContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create OneRail signature for an SLA"
+        },
+        {
+          "info": {
+            "name": "Get Shipper Contract SLA Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/shipper-contract-sla/:shipperContractSlaId/template",
+            "params": [
+              {
+                "name": "shipperContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipper Contract SLA Template"
+        },
+        {
+          "info": {
+            "name": "Get Shipper Contract SLA Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla/:shipperContractSlaId/duplicate",
+            "params": [
+              {
+                "name": "shipperContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Shipper Contract SLA Template"
+        },
+        {
+          "info": {
+            "name": "Set ShipperContractSla active state",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla/:shipperContractSlaId/set-active-state",
+            "params": [
+              {
+                "name": "shipperContractSlaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set ShipperContractSla active state"
+        },
+        {
+          "info": {
+            "name": "Bulk approve an array of SLA ids",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla/bulk-approve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk approve an array of SLA ids"
+        },
+        {
+          "info": {
+            "name": "Create Bulk Shipper signature for an SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla/bulk-shipper-sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Bulk Shipper signature for an SLA"
+        },
+        {
+          "info": {
+            "name": "Create Bulk OneRail signature for an SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla/bulk-onerail-sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Bulk OneRail signature for an SLA"
+        },
+        {
+          "info": {
+            "name": "Bulk approve, create Bulk Shipper signature, create Bulk OneRail signature for an SLA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla/approve-and-sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk approve, create Bulk Shipper signature, create Bulk OneRail signature for an SLA"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

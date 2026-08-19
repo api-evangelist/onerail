@@ -1,0 +1,213 @@
+{
+  "item": [
+    {
+      "id": "d63de7a9-63a8-4703-a3f6-17424b0aea87",
+      "name": "AssociatedLocation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da9729a1-9d68-4bcf-9727-c095ec59474d",
+          "name": "Get Associated Locations for an Organization",
+          "request": {
+            "name": "Get Associated Locations for an Organization",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "associated-locations",
+                ":organizationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"originLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pagination\": {\n    \"offset\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"sortby\": \"<string>\",\n    \"order\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9df54031-b318-4db6-99aa-75560dba073f",
+              "name": "List of associated origin location IDs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "associated-locations",
+                    ":organizationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"originLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pagination\": {\n    \"offset\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"sortby\": \"<string>\",\n    \"order\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"storeNumber\": \"string\",\n    \"msa\": \"string\",\n    \"address\": {\n      \"city\": \"string\",\n      \"label\": \"string\",\n      \"state\": \"string\",\n      \"county\": \"string\",\n      \"street\": \"string\",\n      \"street2\": \"string\",\n      \"district\": \"string\",\n      \"stateCode\": \"string\",\n      \"postalCode\": \"string\",\n      \"countryCode\": \"string\",\n      \"countryName\": \"string\",\n      \"houseNumber\": \"string\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"storeNumber\": \"string\",\n    \"msa\": \"string\",\n    \"address\": {\n      \"city\": \"string\",\n      \"label\": \"string\",\n      \"state\": \"string\",\n      \"county\": \"string\",\n      \"street\": \"string\",\n      \"street2\": \"string\",\n      \"district\": \"string\",\n      \"stateCode\": \"string\",\n      \"postalCode\": \"string\",\n      \"countryCode\": \"string\",\n      \"countryName\": \"string\",\n      \"houseNumber\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d351c489-5eb8-4024-aa6e-75238206471e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "associated-locations",
+                    ":organizationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"originLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pagination\": {\n    \"offset\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"sortby\": \"<string>\",\n    \"order\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f864a0d1-71a7-45c1-909d-3076f3456a6c",
+    "name": "OneRail Operation Dashboard Associated Location API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

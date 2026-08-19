@@ -1,0 +1,272 @@
+{
+  "item": [
+    {
+      "id": "cc55ee40-870c-4850-85da-114f19ca888b",
+      "name": "Drivers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "19b827b7-776c-4969-a9ae-86e18147c77c",
+          "name": "Get drivers",
+          "request": {
+            "name": "Get drivers",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "drivers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "availability",
+                  "value": "<string>",
+                  "description": "Driver availability"
+                },
+                {
+                  "disabled": false,
+                  "key": "availability",
+                  "value": "<string>",
+                  "description": "Driver availability"
+                },
+                {
+                  "disabled": false,
+                  "key": "locationId",
+                  "value": "<uuid>",
+                  "description": "Filter by driver location.  Ignored if orgazation id is given."
+                },
+                {
+                  "disabled": false,
+                  "key": "organizationId",
+                  "value": "<uuid>",
+                  "description": "Filter by organization.  This will cause any location id to be ignored."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c155d163-f445-479a-8ea5-affd8c40bce3",
+              "name": "Array of drivers and associated user data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "availability",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "availability",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "organizationId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"drivers\": [\n    {\n      \"id\": \"8903b92d-12de-709d-91bc-cbbb948274e9\",\n      \"availability\": \"OFFLINE\",\n      \"ownFleetVehicleId\": \"d13cbf35-ff10-31a5-3440-3c76d6f7a9db\",\n      \"freelancer\": true,\n      \"user\": {\n        \"active\": true,\n        \"id\": \"a81bc8e8-fb1e-cee6-06c0-e03bf126c090\",\n        \"employeeId\": \"string\",\n        \"firstName\": \"string\",\n        \"fleetId\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driverId\": \"dd480261-2e76-0ba0-d66e-6000d9af906c\"\n      }\n    },\n    {\n      \"id\": \"aeebada3-0ea0-61ea-ee5a-1e45ea46af49\",\n      \"availability\": \"ON_DUTY\",\n      \"ownFleetVehicleId\": \"42b54625-65a8-f5eb-0008-72e1a2725ddb\",\n      \"freelancer\": true,\n      \"user\": {\n        \"active\": true,\n        \"id\": \"63e3f85d-59e5-c212-51c4-fe4b942e0322\",\n        \"employeeId\": \"string\",\n        \"firstName\": \"string\",\n        \"fleetId\": \"string\",\n        \"lastName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"driverId\": \"32832a67-e59c-4755-3d1b-b044fdb28ac0\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2daeb2f-0e5f-480c-b833-da8e9b430297",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "availability",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "availability",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "organizationId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e87f8880-0650-4bfb-892e-8300b0d26994",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "drivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "availability",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "availability",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "organizationId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a07c3076-a2bd-4afb-9229-df5a1adeccfc",
+    "name": "OneRail Operation Dashboard Drivers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

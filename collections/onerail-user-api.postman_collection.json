@@ -1,0 +1,4401 @@
+{
+  "item": [
+    {
+      "id": "96dbc925-11b3-4b9e-ab53-0a0ca2d5de26",
+      "name": "User",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1babc51-a6c7-4bfa-a9cf-80e7b0dbd12b",
+          "name": "Creates and returns an authentication token",
+          "request": {
+            "name": "Creates and returns an authentication token",
+            "description": {},
+            "url": {
+              "path": [
+                "user",
+                "authenticate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"password_is_token\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d46af8a-71fb-4209-9993-26c7e24f2649",
+              "name": "User token created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "authenticate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"password_is_token\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12b7ce2b-2817-4980-9029-2ee6e956815a",
+              "name": "Unauthorized - invalid credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "authenticate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"password_is_token\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 6764,\n  \"errors\": {},\n  \"errorDetails\": [\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46d7a188-1ddb-4c0e-810b-899480b5ebc9",
+              "name": "Unexpected error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "authenticate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"password_is_token\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 7657,\n  \"errors\": {},\n  \"errorDetails\": [\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"pointer\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13b60391-6cb8-4739-9f8e-ae76e8bf493d",
+          "name": "Gets driver status",
+          "request": {
+            "name": "Gets driver status",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organization",
+                ":organizationId",
+                "user",
+                "status"
+              ],
+              "host": [
+                "{{v1-organization-organizationId-user-status-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userIds",
+                  "value": "<uuid>",
+                  "description": "(Required) Array of userId's"
+                },
+                {
+                  "disabled": false,
+                  "key": "userIds",
+                  "value": "<uuid>",
+                  "description": "(Required) Array of userId's"
+                },
+                {
+                  "disabled": false,
+                  "key": "locationId",
+                  "value": "<uuid>",
+                  "description": "Location Id"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) Organization Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e37cccb4-074b-41d6-ba37-8c531eea8d86",
+              "name": "User Status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "user",
+                    "status"
+                  ],
+                  "host": [
+                    "{{v1-organization-organizationId-user-status-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userIds",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "userIds",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "locationId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) Organization Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"status\": 9205.955672348955\n  },\n  {\n    \"id\": \"string\",\n    \"status\": 7409.149216123907\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b307c8a6-40a1-4fad-9f86-5a7604a4a1ac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "user",
+                    "status"
+                  ],
+                  "host": [
+                    "{{v1-organization-organizationId-user-status-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userIds",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "userIds",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "locationId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) Organization Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d3dcce6-7747-489c-9c60-9daa26a7abef",
+          "name": "Creates a new User",
+          "request": {
+            "name": "Creates a new User",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user"
+              ],
+              "host": [
+                "{{v1-user-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"organizationId\": \"<uuid>\",\n  \"phoneNumber\": \"<string,null>\",\n  \"active\": \"<boolean>\",\n  \"driver\": {\n    \"value\": \"reference #/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1/properties/driver not found in the OpenAPI spec\"\n  },\n  \"title\": \"<string,null>\",\n  \"employeeId\": \"<string,null>\",\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"mvrCertified\": false,\n  \"organizations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67652a0b-c48f-45f2-a7fd-c8a153eb8f20",
+              "name": "User record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user"
+                  ],
+                  "host": [
+                    "{{v1-user-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"organizationId\": \"<uuid>\",\n  \"phoneNumber\": \"<string,null>\",\n  \"active\": \"<boolean>\",\n  \"driver\": {\n    \"value\": \"reference #/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1/properties/driver not found in the OpenAPI spec\"\n  },\n  \"title\": \"<string,null>\",\n  \"employeeId\": \"<string,null>\",\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"mvrCertified\": false,\n  \"organizations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e2ab396-66cd-42f4-a573-c38778634bbb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user"
+                  ],
+                  "host": [
+                    "{{v1-user-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"organizationId\": \"<uuid>\",\n  \"phoneNumber\": \"<string,null>\",\n  \"active\": \"<boolean>\",\n  \"driver\": {\n    \"value\": \"reference #/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1/properties/driver not found in the OpenAPI spec\"\n  },\n  \"title\": \"<string,null>\",\n  \"employeeId\": \"<string,null>\",\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"mvrCertified\": false,\n  \"organizations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4216d47-6ef3-4fce-b960-5db58c31867c",
+          "name": "Get user's record",
+          "request": {
+            "name": "Get user's record",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId"
+              ],
+              "host": [
+                "{{v1-user-userId-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "37600f92-d748-4e65-a601-7a543f7f123e",
+              "name": "User record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa89dc09-d5c5-4837-907e-29be081271ea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "896c0546-86d0-4880-8742-6307e25b4662",
+          "name": "Update user's record",
+          "request": {
+            "name": "Update user's record",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId"
+              ],
+              "host": [
+                "{{v1-user-userId-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"organizationId\": \"<uuid>\",\n  \"phoneNumber\": \"<string,null>\",\n  \"active\": \"<boolean>\",\n  \"driver\": {\n    \"value\": \"reference #/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1/properties/driver not found in the OpenAPI spec\"\n  },\n  \"title\": \"<string,null>\",\n  \"employeeId\": \"<string,null>\",\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"mvrCertified\": false,\n  \"organizations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b68add4-99e2-456e-9ac3-02fdffe70207",
+              "name": "User record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"organizationId\": \"<uuid>\",\n  \"phoneNumber\": \"<string,null>\",\n  \"active\": \"<boolean>\",\n  \"driver\": {\n    \"value\": \"reference #/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1/properties/driver not found in the OpenAPI spec\"\n  },\n  \"title\": \"<string,null>\",\n  \"employeeId\": \"<string,null>\",\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"mvrCertified\": false,\n  \"organizations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45fa7ebc-fccd-4971-b452-4e7e528bb99f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"organizationId\": \"<uuid>\",\n  \"phoneNumber\": \"<string,null>\",\n  \"active\": \"<boolean>\",\n  \"driver\": {\n    \"value\": \"reference #/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1/properties/driver not found in the OpenAPI spec\"\n  },\n  \"title\": \"<string,null>\",\n  \"employeeId\": \"<string,null>\",\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"mvrCertified\": false,\n  \"organizations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"preferences\": {\n    \"value\": \"reference #/paths/~1v1~1preferences~1default/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fdceeb2-1399-40d0-af96-e83d6893c503",
+          "name": "Deletes User",
+          "request": {
+            "name": "Deletes User",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId"
+              ],
+              "host": [
+                "{{v1-user-userId-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "481a6d67-e774-47b2-804f-6066e51ad9ad",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6c2d9a8-c4e7-4234-80a5-57cc137533b2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc5a17d4-5fef-4a5a-9ecf-f5838dc18031",
+          "name": "Resend welcome email",
+          "request": {
+            "name": "Resend welcome email",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "welcome-email"
+              ],
+              "host": [
+                "{{v1-user-userId-welcome-email-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "312b4dff-c297-4e3b-9e8d-3d612d6d2983",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "welcome-email"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-welcome-email-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eee24744-e2d8-4938-a033-b580cfe9180d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "welcome-email"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-welcome-email-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2304513f-c282-460f-a69c-e21b33b031b2",
+          "name": "Update user roles",
+          "request": {
+            "name": "Update user roles",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "roles"
+              ],
+              "host": [
+                "{{v1-user-userId-roles-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  },\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "867e4ba5-3c4b-45fe-b5eb-dd0f3f554f51",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  },\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f38b677-3c59-4103-b4c0-67b2c67d0d60",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  },\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00a85991-4b58-4b47-839b-6b86c94256a6",
+          "name": "Get all user's roles and permissions",
+          "request": {
+            "name": "Get all user's roles and permissions",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "roles"
+              ],
+              "host": [
+                "{{v1-user-userId-roles-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cbdc3ef2-ddd6-4a84-818a-27cd5af4c0ba",
+              "name": "User roles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"role\": {\n      \"value\": \"reference #/paths/~1v1~1role/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"context\": \"<string>\",\n    \"excludesPermissions\": null,\n    \"contextId\": \"687cc230-7e7c-27f8-72a8-0ae826ca4ea8\"\n  },\n  {\n    \"role\": {\n      \"value\": \"reference #/paths/~1v1~1role/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"context\": \"<string>\",\n    \"excludesPermissions\": null,\n    \"contextId\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ea5939d-ea85-4e78-bc8e-7697360865a3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b26625c6-c38a-4060-bb08-8698afdf1a17",
+          "name": "Get all user's roles and permissions (API)",
+          "request": {
+            "name": "Get all user's roles and permissions (API)",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "roles",
+                "api"
+              ],
+              "host": [
+                "{{v1-user-userId-roles-api-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "48930e58-dd8d-4a00-a6da-6d510c9e7f84",
+              "name": "User roles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "roles",
+                    "api"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-roles-api-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"role\": {\n      \"value\": \"reference #/paths/~1v1~1role/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"context\": \"<string>\",\n    \"excludesPermissions\": null,\n    \"contextId\": \"687cc230-7e7c-27f8-72a8-0ae826ca4ea8\"\n  },\n  {\n    \"role\": {\n      \"value\": \"reference #/paths/~1v1~1role/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"context\": \"<string>\",\n    \"excludesPermissions\": null,\n    \"contextId\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1bc8501-57a1-4437-ab08-72be6ed7f215",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "roles",
+                    "api"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-roles-api-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cd16322-12a5-4ae8-9c13-e2c1b10dd60b",
+          "name": "Get All user's permissions across all roles. Only displays permissions to loggin user.",
+          "request": {
+            "name": "Get All user's permissions across all roles. Only displays permissions to loggin user.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "permissions"
+              ],
+              "host": [
+                "{{v1-user-userId-permissions-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c2793269-0581-43b3-be83-cbd70bf10827",
+              "name": "Permission Records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-permissions-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"6b7d87a1-ed19-a5d3-17db-b415b2d4c104\",\n    \"name\": \"string\",\n    \"label\": \"string\"\n  },\n  {\n    \"id\": \"f5f4e5ca-8541-395d-257d-cf6420090db5\",\n    \"name\": \"string\",\n    \"label\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5df2b1b-bd56-4da2-b034-c7946adec91a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-permissions-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de0aef81-7cba-4b05-bcd1-d86d0a50749e",
+          "name": "Updates a user's last known geo location by fleet id",
+          "request": {
+            "name": "Updates a user's last known geo location by fleet id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                "fleet",
+                ":fleetId",
+                "last-known-driver-location"
+              ],
+              "host": [
+                "{{v1-user-fleet-fleetId-last-known-driver-location-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fleetId",
+                  "description": "(Required) Fleet Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8c54ffdb-5b92-41f1-a973-fc2247385144",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    "fleet",
+                    ":fleetId",
+                    "last-known-driver-location"
+                  ],
+                  "host": [
+                    "{{v1-user-fleet-fleetId-last-known-driver-location-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fleetId",
+                      "description": "(Required) Fleet Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "125b9004-dcdc-42db-bdba-e35a9a6ce818",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    "fleet",
+                    ":fleetId",
+                    "last-known-driver-location"
+                  ],
+                  "host": [
+                    "{{v1-user-fleet-fleetId-last-known-driver-location-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fleetId",
+                      "description": "(Required) Fleet Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31bf0bc7-0e32-49ba-b26f-25e1b20dca9e",
+          "name": "Create user view filter",
+          "request": {
+            "name": "Create user view filter",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "user-view"
+              ],
+              "host": [
+                "{{v1-user-userId-user-view-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": \"<string>\",\n  \"filter\": \"<object,null>\",\n  \"name\": \"<string>\",\n  \"default\": false,\n  \"order\": \"<integer>\",\n  \"columns\": \"<array,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9acb751b-6a22-4e24-9ddc-476ff90b1988",
+              "name": "User record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-view"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-view-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": \"<string>\",\n  \"filter\": \"<object,null>\",\n  \"name\": \"<string>\",\n  \"default\": false,\n  \"order\": \"<integer>\",\n  \"columns\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"users\",\n  \"filter\": \"string\",\n  \"name\": \"string\",\n  \"id\": \"string\",\n  \"userId\": \"72b83223-ca06-e0c2-d0da-268eb472a2c1\",\n  \"default\": false,\n  \"order\": 0,\n  \"columns\": null,\n  \"createdAt\": \"1952-01-16T01:54:17.857Z\",\n  \"updatedAt\": \"1970-07-22T12:39:44.737Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6869c1fb-0173-47ba-82fc-96dda07d5ac1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-view"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-view-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": \"<string>\",\n  \"filter\": \"<object,null>\",\n  \"name\": \"<string>\",\n  \"default\": false,\n  \"order\": \"<integer>\",\n  \"columns\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87436d5c-c8cd-48a2-a538-62ddd04a81f0",
+          "name": "Get user view filter",
+          "request": {
+            "name": "Get user view filter",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "user-view",
+                ":userViewId"
+              ],
+              "host": [
+                "{{v1-user-userId-user-view-userViewId-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userViewId",
+                  "description": "(Required) User View id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "63372adf-4441-402f-9dbf-2a2dd61f42d2",
+              "name": "User view details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-view",
+                    ":userViewId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-view-userViewId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userViewId",
+                      "description": "(Required) User View id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"users\",\n  \"filter\": \"string\",\n  \"name\": \"string\",\n  \"id\": \"string\",\n  \"userId\": \"72b83223-ca06-e0c2-d0da-268eb472a2c1\",\n  \"default\": false,\n  \"order\": 0,\n  \"columns\": null,\n  \"createdAt\": \"1952-01-16T01:54:17.857Z\",\n  \"updatedAt\": \"1970-07-22T12:39:44.737Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edc5380e-9576-4abe-9db3-e3da4e3420bf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-view",
+                    ":userViewId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-view-userViewId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userViewId",
+                      "description": "(Required) User View id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b35d06f3-df36-44ab-86ae-cac224d0e8a7",
+          "name": "Update User View filter",
+          "request": {
+            "name": "Update User View filter",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "user-view",
+                ":userViewId"
+              ],
+              "host": [
+                "{{v1-user-userId-user-view-userViewId-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userViewId",
+                  "description": "(Required) User View id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": \"<string>\",\n  \"filter\": \"<object,null>\",\n  \"name\": \"<string>\",\n  \"default\": false,\n  \"order\": \"<integer>\",\n  \"columns\": \"<array,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5972f1d1-5987-428d-8e61-1da8666009de",
+              "name": "User record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-view",
+                    ":userViewId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-view-userViewId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userViewId",
+                      "description": "(Required) User View id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": \"<string>\",\n  \"filter\": \"<object,null>\",\n  \"name\": \"<string>\",\n  \"default\": false,\n  \"order\": \"<integer>\",\n  \"columns\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page\": \"users\",\n  \"filter\": \"string\",\n  \"name\": \"string\",\n  \"id\": \"string\",\n  \"userId\": \"72b83223-ca06-e0c2-d0da-268eb472a2c1\",\n  \"default\": false,\n  \"order\": 0,\n  \"columns\": null,\n  \"createdAt\": \"1952-01-16T01:54:17.857Z\",\n  \"updatedAt\": \"1970-07-22T12:39:44.737Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5f78040-b51f-44a2-a85e-1bc3924ff048",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-view",
+                    ":userViewId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-view-userViewId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userViewId",
+                      "description": "(Required) User View id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": \"<string>\",\n  \"filter\": \"<object,null>\",\n  \"name\": \"<string>\",\n  \"default\": false,\n  \"order\": \"<integer>\",\n  \"columns\": \"<array,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bca937c2-873f-4953-8915-8f20571cc709",
+          "name": "Delete User View filter",
+          "request": {
+            "name": "Delete User View filter",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "user-view",
+                ":userViewId"
+              ],
+              "host": [
+                "{{v1-user-userId-user-view-userViewId-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userViewId",
+                  "description": "(Required) User View id"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2158f17b-48ba-432b-b5ed-0a71c387f335",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-view",
+                    ":userViewId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-view-userViewId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userViewId",
+                      "description": "(Required) User View id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a3c3bf9-b8d3-4970-b0de-6c36dad3f771",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-view",
+                    ":userViewId"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-view-userViewId-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userViewId",
+                      "description": "(Required) User View id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f78ebe95-e1ca-4776-b6bb-bc491765d74c",
+          "name": "Get all user views filter",
+          "request": {
+            "name": "Get all user views filter",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "user-views"
+              ],
+              "host": [
+                "{{v1-user-userId-user-views-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>",
+                  "description": "Filter returned views by page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b7fac773-4673-4dd5-8afe-fb863b23eecd",
+              "name": "List of user views",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-views"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-views-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"page\": \"dashboard-users\",\n      \"filter\": null,\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"userId\": \"3593c143-7ffa-792e-43a3-5691c3c3299e\",\n      \"default\": false,\n      \"order\": 0,\n      \"columns\": null,\n      \"createdAt\": \"1999-08-22T04:39:17.750Z\",\n      \"updatedAt\": \"1954-09-16T10:42:35.560Z\"\n    },\n    {\n      \"page\": \"dashboard\",\n      \"filter\": \"string\",\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"userId\": \"3442ce00-4ad7-b4c8-5f1c-9d354f9f98ed\",\n      \"default\": false,\n      \"order\": 0,\n      \"columns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createdAt\": \"2022-01-23T00:42:48.343Z\",\n      \"updatedAt\": \"2005-02-24T00:03:32.358Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4427a8e-6fcf-4643-b831-7eb089afbf01",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-views"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-views-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbab8f23-348d-4a6c-a211-8460a681c51b",
+          "name": "Bulk update user view order",
+          "request": {
+            "name": "Bulk update user view order",
+            "description": {
+              "content": "Updates the order field for multiple user views at once. Does not affect other fields like default/favorite status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                ":userId",
+                "user-views",
+                "cardinality"
+              ],
+              "host": [
+                "{{v1-user-userId-user-views-cardinality-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"views\": [\n    {\n      \"id\": \"<uuid>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1f1a5fe9-391e-4a25-a8c5-787a94d4e824",
+              "name": "Successfully updated view orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-views",
+                    "cardinality"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-views-cardinality-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"views\": [\n    {\n      \"id\": \"<uuid>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"updated\": 4699\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90ef966c-43a4-47a2-9d2b-99b561548cc7",
+              "name": "Bad request - no views provided, invalid format, or duplicate view IDs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-views",
+                    "cardinality"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-views-cardinality-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"views\": [\n    {\n      \"id\": \"<uuid>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0240678-c9d1-4a44-a2b0-b2694b0d457e",
+              "name": "One or more views not found or do not belong to user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-views",
+                    "cardinality"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-views-cardinality-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"views\": [\n    {\n      \"id\": \"<uuid>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5da8a8e6-e50f-4763-9871-24ea894e1c79",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    ":userId",
+                    "user-views",
+                    "cardinality"
+                  ],
+                  "host": [
+                    "{{v1-user-userId-user-views-cardinality-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"views\": [\n    {\n      \"id\": \"<uuid>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d76637ea-3b56-4e0f-b567-4fecfa3ff016",
+          "name": "check if latest privacy policy accepted by User",
+          "request": {
+            "name": "check if latest privacy policy accepted by User",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                "policy-check"
+              ],
+              "host": [
+                "{{v1-user-policy-check-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ba98cf27-d672-4d6d-a354-9b8a536cc71a",
+              "name": "Latest privacy policy acceptance result for User.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    "policy-check"
+                  ],
+                  "host": [
+                    "{{v1-user-policy-check-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"policyCheckPassed\": true,\n  \"policy\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9edc1917-3f8a-4e69-936f-10a2d098c1ae",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    "policy-check"
+                  ],
+                  "host": [
+                    "{{v1-user-policy-check-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08ed232a-c6b3-4862-a1c5-f44d920e4f2a",
+          "name": "Update policy accept",
+          "request": {
+            "name": "Update policy accept",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "user",
+                "policy-accept"
+              ],
+              "host": [
+                "{{v1-user-policy-accept-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"policyVersion\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf7114fe-64ed-4fad-8128-f3b4b8f15ce7",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    "policy-accept"
+                  ],
+                  "host": [
+                    "{{v1-user-policy-accept-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"policyVersion\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1adf452e-9c2b-411c-806b-689da2e2c642",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "user",
+                    "policy-accept"
+                  ],
+                  "host": [
+                    "{{v1-user-policy-accept-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"policyVersion\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0fb16df-e36c-4699-967e-13cedf43b467",
+          "name": "Update user roles",
+          "request": {
+            "name": "Update user roles",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organization",
+                ":organizationId",
+                "user",
+                ":userId",
+                "roles"
+              ],
+              "host": [
+                "{{v1-organization-organizationId-user-userId-roles-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) organization id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  },\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9c02eee0-f853-4aee-80b1-f3725a4b6c41",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-organization-organizationId-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organization id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  },\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5110fac8-9399-4b43-866c-a0cf92a1c416",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-organization-organizationId-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organization id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  },\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbd7daec-2b93-4603-aec9-f4548723a82d",
+          "name": "Get all user's roles and permissions for the specified organization",
+          "request": {
+            "name": "Get all user's roles and permissions for the specified organization",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organization",
+                ":organizationId",
+                "user",
+                ":userId",
+                "roles"
+              ],
+              "host": [
+                "{{v1-organization-organizationId-user-userId-roles-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) organization id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0e5a7c51-c479-4c26-8db8-0988f9dd6913",
+              "name": "User roles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-organization-organizationId-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organization id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"role\": {\n      \"value\": \"reference #/paths/~1v1~1role/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"context\": \"<string>\",\n    \"excludesPermissions\": null,\n    \"contextId\": \"687cc230-7e7c-27f8-72a8-0ae826ca4ea8\"\n  },\n  {\n    \"role\": {\n      \"value\": \"reference #/paths/~1v1~1role/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"context\": \"<string>\",\n    \"excludesPermissions\": null,\n    \"contextId\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4422026b-1085-4cfd-bc63-363e5beac586",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-organization-organizationId-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) organization id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b861063-6679-4142-b318-898cfa575fa2",
+          "name": "Update user roles",
+          "request": {
+            "name": "Update user roles",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "user",
+                ":userId",
+                "roles"
+              ],
+              "host": [
+                "{{v1-location-locationId-user-userId-roles-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) location id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  },\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f16b3678-8050-44ac-950a-d68deacaa2a3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-location-locationId-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  },\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf2b2e2e-ac4a-47fe-8541-98ac0bbdfcd4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-location-locationId-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  },\n  {\n    \"roleId\": \"<uuid>\",\n    \"context\": \"<string>\",\n    \"contextId\": \"<string,null-uuid>\",\n    \"excludesPermissions\": \"<array,null>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a4d1292-2f58-42b6-83b9-e33d629f5772",
+          "name": "Get all user's roles and permissions for the specified location",
+          "request": {
+            "name": "Get all user's roles and permissions for the specified location",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "location",
+                ":locationId",
+                "user",
+                ":userId",
+                "roles"
+              ],
+              "host": [
+                "{{v1-location-locationId-user-userId-roles-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userId",
+                  "description": "(Required) User id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationId",
+                  "description": "(Required) location id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "47912af4-4acb-4136-972c-e33f31f6d702",
+              "name": "User roles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-location-locationId-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"role\": {\n      \"value\": \"reference #/paths/~1v1~1role/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"context\": \"<string>\",\n    \"excludesPermissions\": null,\n    \"contextId\": \"687cc230-7e7c-27f8-72a8-0ae826ca4ea8\"\n  },\n  {\n    \"role\": {\n      \"value\": \"reference #/paths/~1v1~1role/post/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"context\": \"<string>\",\n    \"excludesPermissions\": null,\n    \"contextId\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84339d6e-ef5d-4a25-ab89-6392e19692d1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "location",
+                    ":locationId",
+                    "user",
+                    ":userId",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{v1-location-locationId-user-userId-roles-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userId",
+                      "description": "(Required) User id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationId",
+                      "description": "(Required) location id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-organization-organizationId-user-status-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-userId-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-userId-welcome-email-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-userId-roles-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-userId-roles-api-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-userId-permissions-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-fleet-fleetId-last-known-driver-location-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-userId-user-view-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-userId-user-view-userViewId-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-userId-user-views-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-userId-user-views-cardinality-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-policy-check-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-user-policy-accept-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-organization-organizationId-user-userId-roles-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "v1-location-locationId-user-userId-roles-Url"
+    }
+  ],
+  "info": {
+    "_postman_id": "da38d1c3-369d-4363-b528-a3382e3e4a3a",
+    "name": "Onerail User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged User across 2 of this provider's published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

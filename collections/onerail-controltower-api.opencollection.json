@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Control Tower API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ControlTower",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reject routes and deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/bulk-rejection",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reject routes and deliveries"
+        },
+        {
+          "info": {
+            "name": "Deletes routes and deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/bulk-cancelation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes routes and deliveries"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

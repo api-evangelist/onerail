@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Cost API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cost",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an externally-sourced adjustment cost on a delivery attempt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/delivery-attempt/:deliveryAttemptId/costs/adjustments",
+            "params": [
+              {
+                "name": "deliveryAttemptId",
+                "value": "",
+                "type": "path",
+                "description": "Delivery attempt UUID that the cost belongs to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Inserts a single adjustment Cost into the Core operations DB on behalf of an\nexternal producer (today: the FAP `InvoiceCostSyncService`; tomorrow: any\nother service-to-service producer that owns its own idempotency keys).\nStamps `reason = ADJUSTMENT` server-side; the sub-category is selected by\nthe caller via `costAdjustmentReasonId`, which must resolve to a row in\n`CostAdjustmentReasons`.\n\nIdempotency: the request body `sourceCostId` is the producer's globally\nunique identifier for this cost (e"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

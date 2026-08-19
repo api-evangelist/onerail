@@ -1,0 +1,1318 @@
+openapi: 3.2.0
+info:
+  version: 0.0.3
+  title: OneRail Delivery Cloud - Delivery Routes API
+  description: Allows authorized 3rd parties to request new deliveries through the OneRail network
+  license:
+    name: UNLICENSED
+security:
+- ApiKey: []
+  AppId: []
+tags:
+- name: Routes
+paths:
+  /v1/routes:
+    post:
+      x-exegesis-controller: Routes
+      summary: Create new orders within one or more routes.
+      operationId: createRoutes
+      tags:
+      - Routes
+      requestBody:
+        description: Multiple orders with route options.
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - routes
+              properties:
+                routes:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                    - orders
+                    properties:
+                      id:
+                        type: string
+                        minLength: 5
+                        maxLength: 255
+                        description: Custom route id - Will create default if none is given.
+                        pattern: ^[a-zA-Z0-9:_-]+$
+                      dispatchToOnerail:
+                        type: boolean
+                        default: false
+                        description: Use if route needs to be dispatched to OneRail.
+                      skipOptimizer:
+                        type: boolean
+                        default: false
+                        description: Set to true to skip route optimization step and keep delivery sequence.
+                      overflowToOnerail:
+                        type: boolean
+                        default: false
+                        description: Set to true to allow the overflow of routed deliveries to external.
+                      orders:
+                        type: array
+                        items:
+                          type: object
+                          required:
+                          - orderId
+                          - deliveries
+                          properties:
+                            orderId:
+                              description: Unique order id identifying this order
+                              type: string
+                            netAmountCent:
+                              type: number
+                              description: Net Amount, in cents
+                              default: 0
+                            barCode:
+                              type:
+                              - string
+                              - 'null'
+                            state:
+                              type: string
+                              enum:
+                              - DRAFT
+                              - READY_TO_DISPATCH
+                            status:
+                              type: string
+                              description: Order's status. Defaults to PICKING
+                              enum:
+                              - PICKING
+                              - PACKING
+                              - SHIPPING
+                              default: PICKING
+                            deliveries:
+                              description: List of deliveries for the order
+                              type: array
+                              items:
+                                type: object
+                                description: Delivery
+                                required:
+                                - to
+                                - deliveryType
+                                - deliverySpeedMin
+                                - state
+                                properties:
+                                  from:
+                                    description: Pick up location. Pass in the id, or address info, or
+                                      store number to look up the location
+                                    type: object
+                                    properties:
+                                      id:
+                                        type:
+                                        - string
+                                        - 'null'
+                                        format: uuid
+                                      name:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      address:
+                                        type:
+                                        - object
+                                        - 'null'
+                                        properties:
+                                          address1:
+                                            type: string
+                                          address2:
+                                            type: string
+                                          city:
+                                            type: string
+                                          state:
+                                            type: string
+                                          postalCode:
+                                            type: string
+                                          country:
+                                            type: string
+                                            default: US
+                                            description: Two charter uppercase country code by ISO-3166
+                                      latitude:
+                                        type:
+                                        - number
+                                        - 'null'
+                                        format: float
+                                      longitude:
+                                        type:
+                                        - number
+                                        - 'null'
+                                        format: float
+                                      storeNumber:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      instructions:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      contactName:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      phoneNumber:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      contactEmailAddress:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      windows:
+                                        type:
+                                        - object
+                                        - 'null'
+                                        properties:
+                                          opensOn:
+                                            type: string
+                                            description: datetime in ISO format
+                                          closesOn:
+                                            type: string
+                                            description: datetime in ISO format
+                                      appointment:
+                                        type:
+                                        - object
+                                        - 'null'
+                                        properties:
+                                          durationMins:
+                                            type: number
+                                            description: minutes as an integer
+                                          description:
+                                            type: string
+                                      capabilityTags:
+                                        type: array
+                                        items:
+                                          oneOf:
+                                          - type: string
+                                            format: uuid
+                                          - type: object
+                                      physicalLocation:
+                                        type:
+                                        - object
+                                        - 'null'
+                                        properties:
+                                          altLocation:
+                                            type: object
+                                            properties:
+                                              latitude:
+                                                type: number
+                                              longitude:
+                                                type: number
+                                  to:
+                                    description: Drop off location. Pass in complete location info. Lat/Long
+                                      are optional and will be populated if not passed.
+                                    type: object
+                                    properties:
+                                      id:
+                                        type:
+                                        - string
+                                        - 'null'
+                                        format: uuid
+                                      name:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      address:
+                                        type: object
+                                        properties:
+                                          address1:
+                                            type: string
+                                          address2:
+                                            type: string
+                                          city:
+                                            type: string
+                                          state:
+                                            type: string
+                                          postalCode:
+                                            type: string
+                                          country:
+                                            type: string
+                                            default: US
+                                            description: Two charter uppercase country code by ISO-3166
+                                      latitude:
+                                        type:
+                                        - number
+                                        - 'null'
+                                        format: float
+                                      longitude:
+                                        type:
+                                        - number
+                                        - 'null'
+                                        format: float
+                                      storeNumber:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      instructions:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      contactName:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      phoneNumber:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      contactEmailAddress:
+                                        type:
+                                        - string
+                                        - 'null'
+                                      windows:
+                                        type:
+                                        - object
+                                        - 'null'
+                                        properties:
+                                          opensOn:
+                                            type: string
+                                            description: datetime in ISO format
+                                          closesOn:
+                                            type: string
+                                            description: datetime in ISO format
+                                      appointment:
+                                        type:
+                                        - object
+                                        - 'null'
+                                        properties:
+                                          durationMins:
+                                            type: number
+                                            description: minutes as an integer
+                                          description:
+                                            type: string
+                                      capabilityTags:
+                                        type: array
+                                        items:
+                                          oneOf:
+                                          - type: string
+                                            format: uuid
+                                          - type: object
+                                      physicalLocation:
+                                        type:
+                                        - object
+                                        - 'null'
+                                        properties:
+                                          altLocation:
+                                            type: object
+                                            properties:
+                                              latitude:
+                                                type: number
+                                              longitude:
+                                                type: number
+                                  labelType:
+                                    type: string
+                                    description: The type of label to print on the delivery
+                                  requestLabel:
+                                    type: boolean
+                                    default: false
+                                    description: Indicates if a label should be requested for this delivery
+                                  deliveryType:
+                                    description: Select if delivery is for a BUSINESS or RESIDENTIAL
+                                    type: string
+                                    enum:
+                                    - BUSINESS
+                                    - RESIDENTIAL
+                                    default: RESIDENTIAL
+                                  deliveryOptions:
+                                    description: Optional list of delivery options
+                                    type: array
+                                    items:
+                                      type: string
+                                    uniqueItems: true
+                                    example:
+                                    - REQUIRE_SIGNATURE
+                                    - REQUIRE_OVER_21
+                                    - HIPAA
+                                    - REQUEST_PARCEL_PICKUP
+                                    - REQUEST_PROOF_OF_PICKUP
+                                  notes:
+                                    type:
+                                    - string
+                                    - 'null'
+                                    description: Optional delivery notes
+                                  isReturn:
+                                    type: boolean
+                                    default: false
+                                    description: Is it a return delivery?
+                                  orderItems:
+                                    description: List of items for the delivery
+                                    type: array
+                                    items:
+                                      type: object
+                                      required:
+                                      - quantity
+                                      properties:
+                                        description:
+                                          type:
+                                          - string
+                                          - 'null'
+                                        identifier:
+                                          type:
+                                          - string
+                                          - 'null'
+                                        priceCent:
+                                          description: Price in cents
+                                          type:
+                                          - number
+                                          - 'null'
+                                        lengthIn:
+                                          description: item length in inches. Smallest value is an inch.
+                                            Float values are rounded up
+                                          type:
+                                          - number
+                                          - 'null'
+                                        widthIn:
+                                          description: item width in inches. Smallest value is an inch.
+                                            Float values are rounded up
+                                          type:
+                                          - number
+                                          - 'null'
+                                        heightIn:
+                                          description: item height in inches. Smallest value is an inch.
+                                            Float values are rounded up
+                                          type:
+                                          - number
+                                          - 'null'
+                                        weightLbs:
+                                          description: Item weight in pounds. Float values are rounded
+                                            up
+                                          type:
+                                          - number
+                                          - 'null'
+                                        quantity:
+                                          description: How many of this item
+                                          type: integer
+                                          default: 1
+                                        sortOrdinal:
+                                          type:
+                                          - integer
+                                          - 'null'
+                                        nmfc:
+                                          type:
+                                          - string
+                                          - 'null'
+                                          description: The national motor freight code for this delivery.
+                                            This is a convenience function to set the same NMFC code for
+                                            all the containers or order items in this delivery.
+                                          example: 82790-11
+                                        freightClass:
+                                          type:
+                                          - string
+                                          - 'null'
+                                          enum:
+                                          - '50'
+                                          - '55'
+                                          - '60'
+                                          - '65'
+                                          - '70'
+                                          - '77.5'
+                                          - '85'
+                                          - '92.5'
+                                          - '100'
+                                          - '110'
+                                          - '125'
+                                          - '150'
+                                          - '175'
+                                          - '200'
+                                          - '250'
+                                          - '300'
+                                          - '400'
+                                          - '500'
+                                          - null
+                                          description: The freight class for this delivery. This is a
+                                            convenience function to set the same freight class for all
+                                            the containers or order items in this delivery.
+                                        hazardousMaterialDetails:
+                                          type:
+                                          - object
+                                          - 'null'
+                                          properties:
+                                            identificationNumber:
+                                              type:
+                                              - string
+                                              - 'null'
+                                              description: Number to identify hazard as designated by
+                                                shipper (example UN or NP numbers)
+                                            properShippingName:
+                                              description: The proper shipping name identified by the
+                                                Shipping Table as desingnated by the shipper
+                                              type:
+                                              - string
+                                              - 'null'
+                                            packagingGroup:
+                                              type:
+                                              - string
+                                              - 'null'
+                                              description: designation for the group of packages provided
+                                                by the shipper
+                                            packagingType:
+                                              type:
+                                              - string
+                                              - 'null'
+                                              description: The type of package holding the hazardous material
+                                                as designated by the shipper
+                                            hazardClass:
+                                              type:
+                                              - string
+                                              - 'null'
+                                              description: Value from the hazard classification system
+                                            hazardSubClass:
+                                              type:
+                                              - string
+                                              - 'null'
+                                              description: Value from the hazard classification system
+                                                for the sub class
+                                            technicalName:
+                                              type:
+                                              - string
+                                              - 'null'
+                                              description: Technical description given by the shipper
+                                                for the hazardous item
+                                            dotLabeling:
+                                              type:
+                                              - string
+                                              - 'null'
+                                              description: Type of label to be placed on the items
+                                            fedExPackagingType:
+                                              type:
+                                              - string
+                                              - 'null'
+                                              description: Type of packagying type to be applied for fedex
+                                        doNotRotate:
+                                          type: boolean
+                                          default: false
+                                  emergencyContact:
+                                    type:
+                                    - object
+                                    - 'null'
+                                    properties:
+                                      contactName:
+                                        type:
+                                        - string
+                                        - 'null'
+                                        description: Emergency contact name
+                                      contactTitle:
+                                        type:
+                                        - string
+                                        - 'null'
+                                        description: Emergency contact title
+                                      phoneNumber:
+                                        type:
+                                        - string
+                                        - 'null'
+                                        description: Emergency contact phone number
+                                      email:
+                                        type:
+                                        - string
+                                        - 'null'
+                                        description: Emergency contact email
+                                  capabilityTags:
+                                    type: array
+                                    items:
+                                      type: string
+                                      format: uuid
+                                    description: List of capability IDs
+                                  shipperContractSlaId:
+                                    type:
+                                    - string
+                                    - 'null'
+                                    format: uuid
+                                    description: Shipper Contract SLA ID
+                                  deliverySpeedMin:
+                                    type: number
+                                    description: Delivery Speed, in minutes
+                                  state:
+                                    type: string
+                                    description: State of the delivery order. Defaults to READY_TO_DISPATCH
+                                    enum:
+                                    - DRAFT
+                                    - READY_TO_DISPATCH
+                                    default: READY_TO_DISPATCH
+                                  shipperExtraData:
+                                    type:
+                                    - object
+                                    - 'null'
+                                    description: JSON blob that the customer can use to store additional
+                                      info they may need.
+                                  serviceLevel:
+                                    type:
+                                    - string
+                                    - 'null'
+                                    description: Service Level name of sla to match this delivery
+                                  shipmentId:
+                                    type:
+                                    - string
+                                    - 'null'
+                                    description: Shipper's shipmentId to associate with the delivery
+                                  contactPreference:
+                                    type:
+                                    - string
+                                    - 'null'
+                                    enum:
+                                    - EMAIL
+                                    - SMS
+                                    - BOTH
+                                    - null
+                                    default: null
+                                  containers:
+                                    type: array
+                                    items:
+                                      type: object
+                                      oneOf:
+                                      - type: object
+                                        required:
+                                        - name
+                                        - totalWeightLbs
+                                        - items
+                                        properties:
+                                          name:
+                                            type: string
+                                          totalWeightLbs:
+                                            type: number
+                                            description: Weight of container and all items inside it
+                                          shipperContainerId:
+                                            type: string
+                                          shipperExtraData:
+                                            type: object
+                                            description: Any additional shipping data in JSON format
+                                          items:
+                                            type: array
+                                            items:
+                                              $ref: '#/paths/~1v1~1routes/post/requestBody/content/application~1json/schema/properties/routes/items/properties/orders/items/properties/deliveries/items/properties/orderItems/items'
+                                          subContainerQuantity:
+                                            type:
+                                            - number
+                                            - 'null'
+                                          uniqueSubLabels:
+                                            type:
+                                            - boolean
+                                            - 'null'
+                                          nmfc:
+                                            type:
+                                            - string
+                                            - 'null'
+                                            description: The national motor freight code for this delivery.
+                                              This is a convenience function to set the same NMFC code
+                                              for all the containers or order items in this delivery.
+                                            example: 82790-11
+                                          hazardousMaterialDetails:
+                                            type:
+                                            - object
+                                            - 'null'
+                                            properties:
+                                              signatoryContactField:
+                                                type:
+                                                - string
+                                                - 'null'
+                                                description: Person responsible for hazmat shipment compliance
+                                              emergencyContactNumber:
+                                                type:
+                                                - string
+                                                - 'null'
+                                                description: Phone number of emergency contact for hazmat
+                                                  shipment
+                                              signatoryContactTitle:
+                                                type:
+                                                - string
+                                                - 'null'
+                                                description: Professional title of person responsible
+                                                  for the hazmat shipment compliance
+                                              signatoryContactPlace:
+                                                type:
+                                                - string
+                                                - 'null'
+                                                description: Organization (company) name or code
+                                              offeror:
+                                                type:
+                                                - string
+                                                - 'null'
+                                                description: Organization (company) name or code
+                                              dotLabeling:
+                                                type:
+                                                - string
+                                                - 'null'
+                                                description: Type of label to be placed on the container
+                                              authorization:
+                                                type:
+                                                - string
+                                                - 'null'
+                                                description: Part of DOT Labeling
+                                              fedExPackagingType:
+                                                type:
+                                                - string
+                                                - 'null'
+                                                description: Type of packaging type to be applied for
+                                                  fedex
+                                          freightClass:
+                                            type:
+                                            - string
+                                            - 'null'
+                                            enum:
+                                            - '50'
+                                            - '55'
+                                            - '60'
+                                            - '65'
+                                            - '70'
+                                            - '77.5'
+                                            - '85'
+                                            - '92.5'
+                                            - '100'
+                                            - '110'
+                                            - '125'
+                                            - '150'
+                                            - '175'
+                                            - '200'
+                                            - '250'
+                                            - '300'
+                                            - '400'
+                                            - '500'
+                                            - null
+                                            description: The freight class for this delivery. This is
+                                              a convenience function to set the same freight class for
+                                              all the containers or order items in this delivery.
+                                          containers:
+                                            type: array
+                                            items:
+                                              oneOf:
+                                              - $ref: '#/paths/~1v1~1routes/post/requestBody/content/application~1json/schema/properties/routes/items/properties/orders/items/properties/deliveries/items/properties/containers/items/oneOf/0'
+                                              - $ref: '#/paths/~1v1~1routes/post/requestBody/content/application~1json/schema/properties/routes/items/properties/orders/items/properties/deliveries/items/properties/containers/items/oneOf/1'
+                                            example:
+                                            - name: inner-predefined-container
+                                              totalWeightLbs: 5
+                                              items:
+                                              - description: Widget
+                                                quantity: 2
+                                                weightLbs: 2.5
+                                            - containerType: BOX
+                                              lengthIn: 12
+                                              widthIn: 8
+                                              heightIn: 6
+                                              totalWeightLbs: 10
+                                              items:
+                                              - description: Gadget
+                                                quantity: 1
+                                                weightLbs: 10
+                                      - type: object
+                                        required:
+                                        - containerType
+                                        - lengthIn
+                                        - widthIn
+                                        - heightIn
+                                        - totalWeightLbs
+                                        - items
+                                        properties:
+                                          containerType:
+                                            type: string
+                                            enum:
+                                            - BOX
+                                            - BAG
+                                            - BALE
+                                            - BUCKET
+                                            - BUNDLE
+                                            - CAN
+                                            - CARTON
+                                            - CASE
+                                            - COIL
+                                            - CRATE
+                                            - CYLINDER
+                                            - DRUM
+                                            - PAIL
+                                            - PLT
+                                            - PIECES
+                                            - REEL
+                                            - ROLL
+                                            - SKID
+                                            - TOTE
+                                            - TUBE
+                                            - MAGAZINE
+                                            - POUND
+                                            - PIECE
+                                            - PACKAGE
+                                            - TL
+                                            - FTL
+                                            - GAYLORD
+                                          lengthIn:
+                                            type: number
+                                            description: Length in inches of this item
+                                          widthIn:
+                                            type: number
+                                            description: Width in inches of this item
+                                          heightIn:
+                                            type: number
+                                            description: Height in inches of this item
+                                          totalWeightLbs:
+                                            type: number
+                                            description: Weight of container and all items inside it
+                                          shipperContainerId:
+                                            type: string
+                                          shipperExtraData:
+                                            type: object
+                                            description: Any additional shipping data in JSON format
+                                          items:
+                                            type: array
+                                            items:
+                                              $ref: '#/paths/~1v1~1routes/post/requestBody/content/application~1json/schema/properties/routes/items/properties/orders/items/properties/deliveries/items/properties/orderItems/items'
+                                          subContainerQuantity:
+                                            type:
+                                            - number
+                                            - 'null'
+                                          uniqueSubLabels:
+                                            type:
+                                            - boolean
+                                            - 'null'
+                                          nmfc:
+                                            type:
+                                            - string
+                                            - 'null'
+                                            description: The national motor freight code for this delivery.
+                                              This is a convenience function to set the same NMFC code
+                                              for all the containers or order items in this delivery.
+                                            example: 82790-11
+                                          freightClass:
+                                            type:
+                                            - string
+                                            - 'null'
+                                            enum:
+                                            - '50'
+                                            - '55'
+                                            - '60'
+                                            - '65'
+                                            - '70'
+                                            - '77.5'
+                                            - '85'
+                                            - '92.5'
+                                            - '100'
+                                            - '110'
+                                            - '125'
+                                            - '150'
+                                            - '175'
+                                            - '200'
+                                            - '250'
+                                            - '300'
+                                            - '400'
+                                            - '500'
+                                            - null
+                                            description: The freight class for this delivery. This is
+                                              a convenience function to set the same freight class for
+                                              all the containers or order items in this delivery.
+                                          hazardousMaterialDetails:
+                                            type:
+                                            - object
+                                            - 'null'
+                                            $ref: '#/paths/~1v1~1routes/post/requestBody/content/application~1json/schema/properties/routes/items/properties/orders/items/properties/deliveries/items/properties/containers/items/oneOf/0/properties/hazardousMaterialDetails'
+                                          doNotRotate:
+                                            type: boolean
+                                            default: false
+                                          containers:
+                                            type: array
+                                            items:
+                                              oneOf:
+                                              - $ref: '#/paths/~1v1~1routes/post/requestBody/content/application~1json/schema/properties/routes/items/properties/orders/items/properties/deliveries/items/properties/containers/items/oneOf/0'
+                                              - $ref: '#/paths/~1v1~1routes/post/requestBody/content/application~1json/schema/properties/routes/items/properties/orders/items/properties/deliveries/items/properties/containers/items/oneOf/1'
+                                            example:
+                                            - name: inner-predefined-container
+                                              totalWeightLbs: 5
+                                              items:
+                                              - description: Widget
+                                                quantity: 2
+                                                weightLbs: 2.5
+                                            - containerType: BOX
+                                              lengthIn: 12
+                                              widthIn: 8
+                                              heightIn: 6
+                                              totalWeightLbs: 10
+                                              items:
+                                              - description: Gadget
+                                                quantity: 1
+                                                weightLbs: 10
+                                  dispatchAt:
+                                    type:
+                                    - string
+                                    - 'null'
+                                    description: datetime in ISO format
+                                    format: date-time
+                                  nmfc:
+                                    type:
+                                    - string
+                                    - 'null'
+                                    description: The national motor freight code for this delivery. This
+                                      is a convenience function to set the same NMFC code for all the
+                                      containers or order items in this delivery.
+                                    example: 82790-11
+                                  freightClass:
+                                    type:
+                                    - string
+                                    - 'null'
+                                    enum:
+                                    - '50'
+                                    - '55'
+                                    - '60'
+                                    - '65'
+                                    - '70'
+                                    - '77.5'
+                                    - '85'
+                                    - '92.5'
+                                    - '100'
+                                    - '110'
+                                    - '125'
+                                    - '150'
+                                    - '175'
+                                    - '200'
+                                    - '250'
+                                    - '300'
+                                    - '400'
+                                    - '500'
+                                    - null
+                                    description: The freight class for this delivery. This is a convenience
+                                      function to set the same freight class for all the containers or
+                                      order items in this delivery.
+                                  deliveryFiles:
+                                    $ref: '#/components/schemas/Delivery/properties/deliveryFiles'
+                            nmfc:
+                              type:
+                              - string
+                              - 'null'
+                              description: The national motor freight code for this delivery. This is
+                                a convenience function to set the same NMFC code for all the containers
+                                or order items in this delivery.
+                              example: 82790-11
+                            freightClass:
+                              type:
+                              - string
+                              - 'null'
+                              enum:
+                              - '50'
+                              - '55'
+                              - '60'
+                              - '65'
+                              - '70'
+                              - '77.5'
+                              - '85'
+                              - '92.5'
+                              - '100'
+                              - '110'
+                              - '125'
+                              - '150'
+                              - '175'
+                              - '200'
+                              - '250'
+                              - '300'
+                              - '400'
+                              - '500'
+                              - null
+                              description: The freight class for this delivery. This is a convenience
+                                function to set the same freight class for all the containers or order
+                                items in this delivery.
+                            originLocation:
+                              description: Origin location. Pass in the id, or address info, or store
+                                number to look up the location
+                              type:
+                              - object
+                              - 'null'
+                              properties:
+                                id:
+                                  type:
+                                  - string
+                                  - 'null'
+                                  format: uuid
+                                name:
+                                  type:
+                                  - string
+                                  - 'null'
+                                address:
+                                  type:
+                                  - object
+                                  - 'null'
+                                  properties:
+                                    address1:
+                                      type: string
+                                    address2:
+                                      type: string
+                                    city:
+                                      type: string
+                                    state:
+                                      type: string
+                                    postalCode:
+                                      type: string
+                                    country:
+                                      type: string
+                                      default: US
+                                      description: Two charter uppercase country code by ISO-3166
+                                latitude:
+                                  type:
+                                  - number
+                                  - 'null'
+                                  format: float
+                                longitude:
+                                  type:
+                                  - number
+                                  - 'null'
+                                  format: float
+                                storeNumber:
+                                  type:
+                                  - string
+                                  - 'null'
+                                instructions:
+                                  type:
+                                  - string
+                                  - 'null'
+                                contactName:
+                                  type:
+                                  - string
+                                  - 'null'
+                                phoneNumber:
+                                  type:
+                                  - string
+                                  - 'null'
+                                contactEmailAddress:
+                                  type:
+                                  - string
+                                  - 'null'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  failedOrders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        orderId:
+                          type: string
+                        routeId:
+                          type: string
+                        reason:
+                          type: string
+                  failedRoutes:
+                    type: array
+                    items:
+                      type: string
+                  successfulRoutes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        orgSourcedIdentifer:
+                          type: string
+                        deliveryIds:
+                          type: array
+                          items:
+                            type: string
+                            format: uuid
+        '422':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+components:
+  schemas:
+    Delivery:
+      required:
+      - deliveryType
+      - orderData
+      - pickUpData
+      - dropOffData
+      properties:
+        notes:
+          type: string
+          maxLength: 255
+          description: Delivery Notes
+        contractId:
+          type: string
+          description: The OneRail contract to deliver this package under
+        requestLabel:
+          type: boolean
+          default: false
+          description: Request a shipping label be added to the response. Default false
+        labelType:
+          type: string
+          enum:
+          - png
+          - pdf
+          - zpl
+          default: png
+          description: Format of shipping label generated by Onerail. Represented as a base64-encoded
+            string in the response
+        carrierLabelType:
+          type:
+          - string
+          - 'null'
+          description: Format of shipping label generated by a carrier.
+        carrierCode:
+          type:
+          - string
+          - 'null'
+          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS).
+            Contact OneRail to obtain a list of valid carrier codes.
+
+            '
+          example: FDEX
+        carrierServiceName:
+          type:
+          - string
+          - 'null'
+          description: 'Name of the specific carrier service level requested for the delivery. Contact
+            OneRail to obtain a list of valid carrier service names.
+
+            '
+          example: FEDEX_EXPRESS_SAVER
+        deliveryType:
+          $ref: '#/components/schemas/DeliveryType'
+        deliveryOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+        customerData:
+          $ref: '#/components/schemas/CustomerData'
+        orderData:
+          $ref: '#/components/schemas/OrderData'
+        pickUpData:
+          $ref: '#/components/schemas/LocationInfo'
+        dropOffData:
+          $ref: '#/components/schemas/LocationInfo'
+        shipperExtraData:
+          type: object
+          description: JSON blob that the customer can use to store additional info they may need.
+        state:
+          type: string
+          enum:
+          - DRAFT
+          - READY_TO_DISPATCH
+          default: READY_TO_DISPATCH
+        serviceLevel:
+          type:
+          - string
+          - 'null'
+        shipmentId:
+          type:
+          - string
+          - 'null'
+        contactPreference:
+          type:
+          - string
+          - 'null'
+          enum:
+          - EMAIL
+          - SMS
+          - BOTH
+          - null
+          default: null
+        dispatchAt:
+          type:
+          - string
+          - 'null'
+          description: 'datetime in ISO format, typically UTC (for example, ending in "Z") or another
+            offset-aware date-time. Availability checks treat dispatchAt and any provided delivery window
+            timestamps as absolute instants and convert them to the relevant local timezone before comparing
+            against service-level times. When dispatchAt is omitted, availability checks use the current
+            time as the dispatch time. If pickup windows are provided, service-level cutoff and end-of-day
+            evaluation use the pickup window open time instead of dispatchAt. Service-level cutoff values
+            are evaluated as minutes from midnight in the pickup location''s local timezone; service-level
+            end-of-day values are evaluated as minutes from midnight in the dropoff location''s local
+            timezone.
+
+            '
+          format: date-time
+        nmfc:
+          type:
+          - string
+          - 'null'
+          description: The national motor freight code for this delivery. This is a convenience function
+            to set the same NMFC code for all the containers or order items in this delivery.
+          example: 82790-11
+        freightClass:
+          type:
+          - string
+          - 'null'
+          enum:
+          - '50'
+          - '55'
+          - '60'
+          - '65'
+          - '70'
+          - '77.5'
+          - '85'
+          - '92.5'
+          - '100'
+          - '110'
+          - '125'
+          - '150'
+          - '175'
+          - '200'
+          - '250'
+          - '300'
+          - '400'
+          - '500'
+          - null
+          description: The freight class for this delivery. This is a convenience function to set the
+            same freight class for all the containers or order items in this delivery.
+        numericSystem:
+          type: string
+          default: IMPERIAL
+          enum:
+          - IMPERIAL
+          - METRIC
+        deliveryFiles:
+          description: Delivery Files
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            required:
+            - fileType
+            - fileLink
+            properties:
+              fileType:
+                type: string
+                example: Invoice
+                enum:
+                - BOL
+                - Weight Inspection
+                - Pallet Label
+                - Package Label
+                - Delivery Receipt
+                - Invoice
+                - Hazmat Document
+                description: allowed file types BOL, Weight Inspection, Pallet Label, Package Label, Delivery
+                  Receipt, Invoice and Hazmat Document
+              fileLink:
+                type: string
+                example: https://oneraildev.blob.core.windows.net/dev/20221023-123613103-45672570-fb26-46a0-9cc0-21fc8eeed42f.pdf
+        emergencyContact:
+          $ref: '#/components/schemas/EmergencyContact'
+        deliveryInternationalDetails:
+          type: object
+          description: 'Export compliance information used for international shipments.
+
+
+            Only one of the fields should be provided depending on the regulatory requirements:
+
+
+            - If EEI filing in AES is required → provide `aesItn`
+
+
+            - If EEI filing is not required → provide `ftrExemption`
+
+            '
+          properties:
+            ftrExemptionCode:
+              type:
+              - string
+              - 'null'
+              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
+
+
+                Example: ''NO EEI 30.37(a)''
+
+                '
+              example: NO EEI 30.37(a)
+            aesItn:
+              type:
+              - string
+              - 'null'
+              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI
+                submission.
+
+
+                Format: ''AES X20250427123456''
+
+                '
+              example: AES X20250427123456
+            itemCategory:
+              type:
+              - string
+              - 'null'
+              description: Represents a classification/type of items.
+              enum:
+              - merchandise
+              - returned_goods
+              - documents
+              - gift
+              - sample
+              - other
+              example: merchandise
+            itemDescription:
+              type:
+              - string
+              - 'null'
+              description: A free-text explanation of what the contents are (only applicable if "itemCategory"
+                is "other").
+              example: The items have air tight seals
+            shippingRestriction:
+              type:
+              - string
+              - 'null'
+              description: Represents any type of limitation (e.g., hazardous, embargoed).
+              enum:
+              - none
+              - other
+              - quarantine
+              - sanitary_phytosanitary_inspection
+              example: none
+            restrictionNotes:
+              type:
+              - string
+              - 'null'
+              description: Free-text comments clarifying or explaining the restriction (only applicable
+                if "shippingRestriction" is not "none").
+            isCustomsCertified:
+              type:
+              - boolean
+              - 'null'
+              description: Boolean flag indicating certification status.
+            certifyingParty:
+              type:
+              - string
+              - 'null'
+              description: Name of the person or entity signing the customs form.
+        nonDeliveryBehavior:
+          type:
+          - string
+          - 'null'
+          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values\
+            \ are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package\
+            \ will not be returned and may be discarded or handled at the carrier's discretion.\n"
+          enum:
+          - return
+          - abandon
+        shopRates:
+          type:
+          - boolean
+          - 'null'
+          default: false
+          description: Wait for delivery calculations to complete before returning the response.
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+    ApiKeyAndAppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY-AND-APP-ID

@@ -1,0 +1,227 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Preference API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Preference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get default preference object for any context",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/preferences/default"
+          },
+          "docs": "get default preference object for any context"
+        },
+        {
+          "info": {
+            "name": "Get Preference record by context id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/preferences/:contextId",
+            "params": [
+              {
+                "name": "contextId",
+                "value": "",
+                "type": "path",
+                "description": "User/Location/Organization id"
+              }
+            ]
+          },
+          "docs": "Get Preference record by context id"
+        },
+        {
+          "info": {
+            "name": "Get date format preference for a specific context",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/preferences/:contextType/:contextId/date-format",
+            "params": [
+              {
+                "name": "contextType",
+                "value": "",
+                "type": "path",
+                "description": "The context level for the preference"
+              },
+              {
+                "name": "contextId",
+                "value": "",
+                "type": "path",
+                "description": "User/Location/Organization id"
+              }
+            ]
+          },
+          "docs": "Get date format preference for a specific context"
+        },
+        {
+          "info": {
+            "name": "Set date format preference for a specific context",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/preferences/:contextType/:contextId/date-format",
+            "params": [
+              {
+                "name": "contextType",
+                "value": "",
+                "type": "path",
+                "description": "The context level for the preference"
+              },
+              {
+                "name": "contextId",
+                "value": "",
+                "type": "path",
+                "description": "User/Location/Organization id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set date format preference for a specific context"
+        },
+        {
+          "info": {
+            "name": "Get time format preference for a specific context",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/preferences/:contextType/:contextId/time-format",
+            "params": [
+              {
+                "name": "contextType",
+                "value": "",
+                "type": "path",
+                "description": "The context level for the preference"
+              },
+              {
+                "name": "contextId",
+                "value": "",
+                "type": "path",
+                "description": "User/Location/Organization id"
+              }
+            ]
+          },
+          "docs": "Get time format preference for a specific context"
+        },
+        {
+          "info": {
+            "name": "Set time format preference for a specific context",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/preferences/:contextType/:contextId/time-format",
+            "params": [
+              {
+                "name": "contextType",
+                "value": "",
+                "type": "path",
+                "description": "The context level for the preference"
+              },
+              {
+                "name": "contextId",
+                "value": "",
+                "type": "path",
+                "description": "User/Location/Organization id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set time format preference for a specific context"
+        },
+        {
+          "info": {
+            "name": "List allowed timezones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/timezones"
+          },
+          "docs": "List allowed timezones"
+        },
+        {
+          "info": {
+            "name": "Get timezone preference for a specific context",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/preferences/:contextType/:contextId/timezone",
+            "params": [
+              {
+                "name": "contextType",
+                "value": "",
+                "type": "path",
+                "description": "The context level for the preference"
+              },
+              {
+                "name": "contextId",
+                "value": "",
+                "type": "path",
+                "description": "User/Location/Organization id"
+              }
+            ]
+          },
+          "docs": "Get timezone preference for a specific context"
+        },
+        {
+          "info": {
+            "name": "Set timezone preference for a specific context",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/preferences/:contextType/:contextId/timezone",
+            "params": [
+              {
+                "name": "contextType",
+                "value": "",
+                "type": "path",
+                "description": "The context level for the preference"
+              },
+              {
+                "name": "contextId",
+                "value": "",
+                "type": "path",
+                "description": "User/Location/Organization id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set timezone preference for a specific context"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

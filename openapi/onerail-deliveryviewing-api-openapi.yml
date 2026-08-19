@@ -1,0 +1,176 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Delivery Viewing API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: DeliveryViewing
+paths:
+  /v1/delivery/{deliveryId}/viewing:
+    parameters:
+    - name: deliveryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: DeliveryViewing
+      summary: Get list of all users actively viewing a page
+      operationId: getActiveViewers
+      parameters:
+      - name: userName
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: organizationName
+        in: query
+        required: true
+        schema:
+          type: string
+      tags:
+      - DeliveryViewing
+      responses:
+        '200':
+          description: Delivery Viewing Records
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: DeliveryViewing
+      summary: Remove current user from active delivery viewers
+      operationId: removeActiveViewer
+      tags:
+      - DeliveryViewing
+      responses:
+        '200':
+          description: Active viewer removed.
+        '404':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery/viewing/active:
+    post:
+      x-exegesis-controller: DeliveryViewing
+      summary: Get active viewers for many deliveries
+      operationId: getActiveViewersByDeliveries
+      tags:
+      - DeliveryViewing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - deliveryIds
+              properties:
+                deliveryIds:
+                  description: Array of delivery IDs to fetch active viewers for
+                  type: array
+                  maxItems: 100
+                  items:
+                    type: string
+                    format: uuid
+      responses:
+        '200':
+          description: Active delivery viewers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - deliveryId
+                  - viewingUsers
+                  properties:
+                    deliveryId:
+                      type: string
+                      format: uuid
+                    viewingUsers:
+                      type: array
+                      items:
+                        type: object
+                        required:
+                        - userName
+                        - organizationName
+                        - userId
+                        properties:
+                          userName:
+                            type: string
+                          organizationName:
+                            type: string
+                          userId:
+                            type: string
+                            format: uuid
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

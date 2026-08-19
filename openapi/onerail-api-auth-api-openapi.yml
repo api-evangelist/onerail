@@ -1,0 +1,238 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Api Auth API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Api Auth
+paths:
+  /v1/api-auths:
+    get:
+      x-exegesis-controller: ApiAuth
+      summary: Get all Api Auths
+      operationId: getAllApiAuths
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      tags:
+      - Api Auth
+      responses:
+        '200':
+          description: Api Auth Records
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - type: object
+                    description: Pagination
+                    required:
+                    - total
+                    properties:
+                      total:
+                        type: number
+                  - type: object
+                    description: Pagination Parameters
+                    required:
+                    - limit
+                    properties:
+                      offset:
+                        type: number
+                      limit:
+                        type: number
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/paths/~1v1~1api-auth/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/api-auth:
+    post:
+      x-exegesis-controller: ApiAuth
+      summary: Create an Api Auth
+      operationId: createApiAuth
+      tags:
+      - Api Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Api Auth
+              required:
+              - apiType
+              properties:
+                apiType:
+                  type: string
+                  maxLength: 255
+                organizationId:
+                  type:
+                  - string
+                  - 'null'
+                  format: uuid
+                extraData:
+                  type: object
+                  description: Any additional data in JSON format
+      responses:
+        '200':
+          description: Api Auth
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Api Auth
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  apiType:
+                    type: string
+                  apiKey:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  organization:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                  extraData:
+                    type: object
+                    description: Any additional data in JSON format
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/api-auth/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: ApiAuth
+      summary: Get Api Auth
+      operationId: getApiAuth
+      tags:
+      - Api Auth
+      responses:
+        '200':
+          description: Api Auth
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1api-auth/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: ApiAuth
+      summary: Delete an ApiAuth
+      operationId: removeApiAuth
+      tags:
+      - Api Auth
+      responses:
+        '200':
+          description: Success
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

@@ -1,0 +1,189 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard LP Market API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LP Market",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create LP Market",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/lp-market",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create LP Market"
+        },
+        {
+          "info": {
+            "name": "Get LP Market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/lp-market/:lpMarketId",
+            "params": [
+              {
+                "name": "lpMarketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get LP Market"
+        },
+        {
+          "info": {
+            "name": "Update LP Market",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/lp-market/:lpMarketId",
+            "params": [
+              {
+                "name": "lpMarketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update LP Market"
+        },
+        {
+          "info": {
+            "name": "Remove LP Market",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/lp-market/:lpMarketId",
+            "params": [
+              {
+                "name": "lpMarketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove LP Market"
+        },
+        {
+          "info": {
+            "name": "Get shipping modes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/lp-market/shipping-modes"
+          },
+          "docs": "Get shipping modes"
+        },
+        {
+          "info": {
+            "name": "Get LP Markets filtered by IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/lp-market/filter-by-id/api",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of LP Market IDs to filter by"
+              },
+              {
+                "name": "shipperOrganizationId",
+                "value": "",
+                "type": "query",
+                "description": "Optional shipper organization ID used to resolve the effective dispatch platform setting"
+              },
+              {
+                "name": "shipperLocationId",
+                "value": "",
+                "type": "query",
+                "description": "Optional shipper location ID used to resolve a location-specific dispatch platform setting"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get LP Markets filtered by IDs"
+        },
+        {
+          "info": {
+            "name": "Sync LP market associations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/lp-market/sync-associations",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sync LP market associations"
+        },
+        {
+          "info": {
+            "name": "Updates radius",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/market/:marketId/update-radius",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates radius"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

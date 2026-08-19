@@ -1,0 +1,1444 @@
+{
+  "item": [
+    {
+      "id": "2af63d80-950e-45c2-8215-028c42f56978",
+      "name": "LP Market",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d121989-82eb-4e66-9d90-1371aa38c190",
+          "name": "Create LP Market",
+          "request": {
+            "name": "Create LP Market",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-market"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"shippingModeId\": \"<uuid>\",\n  \"organizationId\": \"<uuid>\",\n  \"market\": {\n    \"name\": \"<string>\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"radiusMiles\": \"<number>\",\n    \"locationPoly\": [\n      [\n        \"<number>\",\n        \"<number>\"\n      ],\n      [\n        \"<number>\",\n        \"<number>\"\n      ]\n    ]\n  },\n  \"serviceHours\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"pickUpSlaId\": \"<string,null>\",\n  \"dropOffSlaId\": \"<string,null>\",\n  \"shippingModeIds\": \"<array,null>\",\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"fleetVehicles\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"capabilityTags\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"insuranceAndCompliance\": {\n    \"cargoUsd\": \"<number>\",\n    \"autoLiabilityUsd\": \"<number>\",\n    \"commercialGeneralLiabilityUsd\": \"<number>\",\n    \"workersCompensationUsd\": \"<number>\",\n    \"umbrellaUsd\": \"<number>\",\n    \"bondedUsd\": \"<number>\",\n    \"hazardousMaterialsExclusion\": \"<boolean>\",\n    \"fmcsa\": \"<boolean>\"\n  },\n  \"ownFleetVehicles\": [\n    {\n      \"name\": \"<string>\",\n      \"maxWeightLbs\": \"<integer>\",\n      \"vin\": \"<string>\",\n      \"costPerMileCent\": \"<integer>\",\n      \"fleetVehicleCompartments\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"maxWeightLbs\": \"<integer>\",\n      \"vin\": \"<string>\",\n      \"costPerMileCent\": \"<integer>\",\n      \"fleetVehicleCompartments\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"pickUpLocationId\": \"<uuid>\",\n  \"sendOnboardingCompleteEmail\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "12946e9d-f4d7-46e5-8769-d6d6344b5cd6",
+              "name": "LP Market",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"shippingModeId\": \"<uuid>\",\n  \"organizationId\": \"<uuid>\",\n  \"market\": {\n    \"name\": \"<string>\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"radiusMiles\": \"<number>\",\n    \"locationPoly\": [\n      [\n        \"<number>\",\n        \"<number>\"\n      ],\n      [\n        \"<number>\",\n        \"<number>\"\n      ]\n    ]\n  },\n  \"serviceHours\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"pickUpSlaId\": \"<string,null>\",\n  \"dropOffSlaId\": \"<string,null>\",\n  \"shippingModeIds\": \"<array,null>\",\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"fleetVehicles\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"capabilityTags\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"insuranceAndCompliance\": {\n    \"cargoUsd\": \"<number>\",\n    \"autoLiabilityUsd\": \"<number>\",\n    \"commercialGeneralLiabilityUsd\": \"<number>\",\n    \"workersCompensationUsd\": \"<number>\",\n    \"umbrellaUsd\": \"<number>\",\n    \"bondedUsd\": \"<number>\",\n    \"hazardousMaterialsExclusion\": \"<boolean>\",\n    \"fmcsa\": \"<boolean>\"\n  },\n  \"ownFleetVehicles\": [\n    {\n      \"name\": \"<string>\",\n      \"maxWeightLbs\": \"<integer>\",\n      \"vin\": \"<string>\",\n      \"costPerMileCent\": \"<integer>\",\n      \"fleetVehicleCompartments\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"maxWeightLbs\": \"<integer>\",\n      \"vin\": \"<string>\",\n      \"costPerMileCent\": \"<integer>\",\n      \"fleetVehicleCompartments\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"pickUpLocationId\": \"<uuid>\",\n  \"sendOnboardingCompleteEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f2c6d965-0eb4-b103-3c4f-0bd135e7dbe3\",\n  \"name\": \"string\",\n  \"pickUpSlaId\": \"string\",\n  \"dropOffSlaId\": \"string\",\n  \"shippingMode\": {\n    \"id\": \"77f99dd7-0421-10dc-7934-a37c99198d36\",\n    \"name\": \"string\"\n  },\n  \"shippingModes\": [\n    {\n      \"id\": \"1106cc6a-fe1b-e9e1-7a83-23b7ffa9f3e4\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"14db69b8-8d7a-88c6-2e82-ed1c685b5f90\",\n      \"name\": \"string\"\n    }\n  ],\n  \"organizationId\": \"9b9435dd-79b7-75b0-6a75-f62640d91d1b\",\n  \"market\": {\n    \"id\": \"8f4ca24e-f9af-3bfe-dc76-7e294fce2044\",\n    \"name\": \"string\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"radiusMiles\": 7056.631773077956,\n    \"locationPoly\": [\n      [\n        6761.253345841775,\n        7572.184145709142\n      ],\n      [\n        7856.912962602153,\n        7682.641745723967\n      ]\n    ]\n  },\n  \"createdAt\": \"1950-04-15\",\n  \"teamIds\": [\n    \"87aafb6a-ab08-4d69-a987-e84af4899b3b\",\n    \"4b156e0f-1558-37c5-6486-f38683e0c5e6\"\n  ],\n  \"ownFleetVehicles\": [\n    {\n      \"id\": null,\n      \"name\": \"string\",\n      \"maxWeightLbs\": 2504,\n      \"vin\": \"string\",\n      \"costPerMileCent\": 4256,\n      \"lpMarketId\": null,\n      \"fleetVehicleId\": \"02d67638-6b5b-c642-2747-3664a77ac50a\",\n      \"fleetVehicleCompartments\": [\n        {\n          \"id\": \"3ee9954a-54df-f00f-49c7-0fb6e23e19a2\",\n          \"openingWidthIn\": 2932,\n          \"openingHeightIn\": 8826,\n          \"compartmentLengthIn\": 3550,\n          \"compartmentWidthIn\": 4497,\n          \"compartmentHeightIn\": 3469\n        },\n        {\n          \"id\": \"a7211bec-835d-9924-4fa8-fde9233e29ad\",\n          \"openingWidthIn\": 753,\n          \"openingHeightIn\": 8307,\n          \"compartmentLengthIn\": 569,\n          \"compartmentWidthIn\": 6609,\n          \"compartmentHeightIn\": 240\n        }\n      ],\n      \"active\": true\n    },\n    {\n      \"id\": null,\n      \"name\": \"string\",\n      \"maxWeightLbs\": 1484,\n      \"vin\": \"string\",\n      \"costPerMileCent\": 3366,\n      \"lpMarketId\": \"f82734ce-06e1-5e92-8218-1ee7d2be4304\",\n      \"fleetVehicleId\": null,\n      \"fleetVehicleCompartments\": [\n        {\n          \"id\": null,\n          \"openingWidthIn\": 2599,\n          \"openingHeightIn\": 7259,\n          \"compartmentLengthIn\": 7730,\n          \"compartmentWidthIn\": 6993,\n          \"compartmentHeightIn\": 1865\n        },\n        {\n          \"id\": null,\n          \"openingWidthIn\": 3802,\n          \"openingHeightIn\": 2153,\n          \"compartmentLengthIn\": 3332,\n          \"compartmentWidthIn\": 5264,\n          \"compartmentHeightIn\": 2045\n        }\n      ],\n      \"active\": false\n    }\n  ],\n  \"pickUpLocationId\": \"0c6c450d-9e4b-3fdb-0dce-5ae09d5fe328\",\n  \"capabilityTags\": [\n    {\n      \"id\": \"82986ffb-580a-23f8-95a9-713c3459bf24\"\n    },\n    {\n      \"id\": \"361de919-a511-107f-8713-df0faffa1224\"\n    }\n  ],\n  \"insuranceAndCompiance\": {\n    \"id\": \"6950d72a-b750-c715-9dbb-b3cf8813dae9\",\n    \"cargoUsd\": 8040,\n    \"autoLiabilityUsd\": 5983,\n    \"commercialGeneralLiabilityUsd\": 1282,\n    \"workersCompensationUsd\": 7339,\n    \"umbrellaUsd\": 9173,\n    \"bondedUsd\": 4305,\n    \"hazardousMaterialsExclusion\": true,\n    \"fmcsa\": true\n  },\n  \"serviceHours\": {\n    \"id\": \"2751a2f2-5237-18c2-a1ac-82851618c1b4\",\n    \"dayOfWeek\": 8237,\n    \"startMin\": 2588,\n    \"endMin\": 2520,\n    \"holidayId\": \"b87f8c9b-70ff-7f17-ac62-c38ffc1057a1\",\n    \"holiday\": {\n      \"id\": \"1473dafa-04c3-22d2-b26d-2da4c10187f2\",\n      \"holidayName\": \"string\",\n      \"sort\": 6057\n    },\n    \"LpMarketServiceHours\": {\n      \"serviceHourId\": \"09d4c0d5-a2a0-5ec4-07da-172b9da8b63c\",\n      \"LpMarketId\": \"e49673a7-ffc0-4378-050f-e232a86f3bfe\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fec2f5d-2f6c-4842-aa65-4dc695790dbb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"shippingModeId\": \"<uuid>\",\n  \"organizationId\": \"<uuid>\",\n  \"market\": {\n    \"name\": \"<string>\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"radiusMiles\": \"<number>\",\n    \"locationPoly\": [\n      [\n        \"<number>\",\n        \"<number>\"\n      ],\n      [\n        \"<number>\",\n        \"<number>\"\n      ]\n    ]\n  },\n  \"serviceHours\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"pickUpSlaId\": \"<string,null>\",\n  \"dropOffSlaId\": \"<string,null>\",\n  \"shippingModeIds\": \"<array,null>\",\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"fleetVehicles\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"capabilityTags\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"insuranceAndCompliance\": {\n    \"cargoUsd\": \"<number>\",\n    \"autoLiabilityUsd\": \"<number>\",\n    \"commercialGeneralLiabilityUsd\": \"<number>\",\n    \"workersCompensationUsd\": \"<number>\",\n    \"umbrellaUsd\": \"<number>\",\n    \"bondedUsd\": \"<number>\",\n    \"hazardousMaterialsExclusion\": \"<boolean>\",\n    \"fmcsa\": \"<boolean>\"\n  },\n  \"ownFleetVehicles\": [\n    {\n      \"name\": \"<string>\",\n      \"maxWeightLbs\": \"<integer>\",\n      \"vin\": \"<string>\",\n      \"costPerMileCent\": \"<integer>\",\n      \"fleetVehicleCompartments\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"maxWeightLbs\": \"<integer>\",\n      \"vin\": \"<string>\",\n      \"costPerMileCent\": \"<integer>\",\n      \"fleetVehicleCompartments\": [\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        },\n        {\n          \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items not found in the OpenAPI spec\"\n        }\n      ],\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"pickUpLocationId\": \"<uuid>\",\n  \"sendOnboardingCompleteEmail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e223f2c8-0a2c-4b0b-8856-2d0e41430bf0",
+          "name": "Get LP Market",
+          "request": {
+            "name": "Get LP Market",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-market",
+                ":lpMarketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpMarketId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecb4a979-9e04-4351-a708-b0cb521022f4",
+              "name": "LP Market",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    ":lpMarketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpMarketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8659f8db-a4e6-43b2-ab93-fc45b86d7d6d\",\n  \"name\": \"string\",\n  \"pickUpSlaId\": \"string\",\n  \"dropOffSlaId\": \"string\",\n  \"shippingMode\": {\n    \"id\": \"181ee01a-178a-02e0-1813-317dd46fe350\",\n    \"name\": \"string\"\n  },\n  \"shippingModes\": [\n    {\n      \"id\": \"22718019-8fa9-bf3d-5864-d2b1abab66fc\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"578524da-132e-46d1-773e-99d07993365b\",\n      \"name\": \"string\"\n    }\n  ],\n  \"organizationId\": \"f5ddebf8-b393-b085-b82d-b9f6ad2833fb\",\n  \"market\": {\n    \"id\": \"e3e9de7e-ea07-ed04-6264-f96d127a9a63\",\n    \"name\": \"string\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"radiusMiles\": 8463.605944951678,\n    \"locationPoly\": [\n      [\n        7027.84231384072,\n        4295.689994674404\n      ],\n      [\n        3611.718402324373,\n        8768.06396727087\n      ]\n    ]\n  },\n  \"createdAt\": \"1969-05-22\",\n  \"teamIds\": [\n    \"0710d823-6c52-45b0-db2b-fe0a6cc20760\",\n    \"8134924b-3f82-25ed-fe45-cba975ab8367\"\n  ],\n  \"ownFleetVehicles\": [\n    {\n      \"id\": \"b1c9b827-a1c7-c5c5-d96b-9dde9a68373c\",\n      \"name\": \"string\",\n      \"maxWeightLbs\": 5200,\n      \"vin\": \"string\",\n      \"costPerMileCent\": 8816,\n      \"lpMarketId\": null,\n      \"fleetVehicleId\": null,\n      \"fleetVehicleCompartments\": [\n        {\n          \"id\": null,\n          \"openingWidthIn\": 7724,\n          \"openingHeightIn\": 6637,\n          \"compartmentLengthIn\": 2882,\n          \"compartmentWidthIn\": 3886,\n          \"compartmentHeightIn\": 710\n        },\n        {\n          \"id\": \"41fd176c-069a-ce7f-0b67-8f405d4bd6b1\",\n          \"openingWidthIn\": 2373,\n          \"openingHeightIn\": 597,\n          \"compartmentLengthIn\": 6464,\n          \"compartmentWidthIn\": 491,\n          \"compartmentHeightIn\": 8101\n        }\n      ],\n      \"active\": false\n    },\n    {\n      \"id\": null,\n      \"name\": \"string\",\n      \"maxWeightLbs\": 9880,\n      \"vin\": \"string\",\n      \"costPerMileCent\": 524,\n      \"lpMarketId\": null,\n      \"fleetVehicleId\": null,\n      \"fleetVehicleCompartments\": [\n        {\n          \"id\": null,\n          \"openingWidthIn\": 3764,\n          \"openingHeightIn\": 2622,\n          \"compartmentLengthIn\": 4986,\n          \"compartmentWidthIn\": 2734,\n          \"compartmentHeightIn\": 5065\n        },\n        {\n          \"id\": \"0844caf6-a9e2-5b28-6471-2e4c9020d7d0\",\n          \"openingWidthIn\": 9813,\n          \"openingHeightIn\": 5685,\n          \"compartmentLengthIn\": 5621,\n          \"compartmentWidthIn\": 739,\n          \"compartmentHeightIn\": 1644\n        }\n      ],\n      \"active\": true\n    }\n  ],\n  \"pickUpLocationId\": \"93e6d46b-1251-b15b-fbf4-fc0403a6c33f\",\n  \"capabilityTags\": [\n    {\n      \"id\": \"5a238067-f964-90cc-b4b5-757734c07f77\"\n    },\n    {\n      \"id\": \"d43d4295-e310-1ca2-a4fc-aca28da2cc3b\"\n    }\n  ],\n  \"insuranceAndCompiance\": {\n    \"id\": \"2c0b0fc9-a3fb-1e6a-ba94-9537e2690242\",\n    \"cargoUsd\": 9882,\n    \"autoLiabilityUsd\": 965,\n    \"commercialGeneralLiabilityUsd\": 8587,\n    \"workersCompensationUsd\": 5691,\n    \"umbrellaUsd\": 8957,\n    \"bondedUsd\": 1087,\n    \"hazardousMaterialsExclusion\": false,\n    \"fmcsa\": false\n  },\n  \"serviceHours\": {\n    \"id\": \"97f1081e-be62-830b-8e68-cdaccf385e65\",\n    \"dayOfWeek\": 7495,\n    \"startMin\": 6084,\n    \"endMin\": 5526,\n    \"holidayId\": \"b1f5853b-8840-7e15-1414-b53748040e96\",\n    \"holiday\": {\n      \"id\": \"bb1218ce-cf43-98c4-6a73-9f239da95bc1\",\n      \"holidayName\": \"string\",\n      \"sort\": 1805\n    },\n    \"LpMarketServiceHours\": {\n      \"serviceHourId\": \"c59f23ed-27d8-3c19-f08e-735d4c9fc056\",\n      \"LpMarketId\": \"d6619ba6-3a45-b67c-5ab6-ea3871ce69f0\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06634e30-db8c-4897-8bce-949b14362e05",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    ":lpMarketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpMarketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e24c89ca-e6df-4215-ac9a-2d1cd0e0fffa",
+          "name": "Update LP Market",
+          "request": {
+            "name": "Update LP Market",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-market",
+                ":lpMarketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpMarketId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pickUpSlaId\": \"<string,null>\",\n  \"dropOffSlaId\": \"<string,null>\",\n  \"shippingModeId\": \"<uuid>\",\n  \"market\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"radiusMiles\": \"<number>\",\n    \"locationPoly\": [\n      [\n        \"<number>\",\n        \"<number>\"\n      ],\n      [\n        \"<number>\",\n        \"<number>\"\n      ]\n    ]\n  },\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"fleetVehicles\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"capabilityTags\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"insuranceAndCompliance\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D/put/requestBody/content/application~1json/schema/properties/insuranceAndCompliance not found in the OpenAPI spec\"\n  },\n  \"serviceHours\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"ownFleetVehicles\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle~1%7BownFleetVehicleId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle~1%7BownFleetVehicleId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    }\n  ],\n  \"pickUpLocationId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9fa2c0b6-d38c-4a01-8f5c-340bdc1cc452",
+              "name": "LP Market",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    ":lpMarketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpMarketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pickUpSlaId\": \"<string,null>\",\n  \"dropOffSlaId\": \"<string,null>\",\n  \"shippingModeId\": \"<uuid>\",\n  \"market\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"radiusMiles\": \"<number>\",\n    \"locationPoly\": [\n      [\n        \"<number>\",\n        \"<number>\"\n      ],\n      [\n        \"<number>\",\n        \"<number>\"\n      ]\n    ]\n  },\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"fleetVehicles\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"capabilityTags\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"insuranceAndCompliance\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D/put/requestBody/content/application~1json/schema/properties/insuranceAndCompliance not found in the OpenAPI spec\"\n  },\n  \"serviceHours\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"ownFleetVehicles\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle~1%7BownFleetVehicleId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle~1%7BownFleetVehicleId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    }\n  ],\n  \"pickUpLocationId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e27ba058-a4e3-b200-eb78-426cd65cd253\",\n  \"name\": \"string\",\n  \"pickUpSlaId\": \"string\",\n  \"dropOffSlaId\": \"string\",\n  \"shippingMode\": {\n    \"id\": \"169895cb-9309-dfd2-d718-10d983643a50\",\n    \"name\": \"string\"\n  },\n  \"shippingModes\": [\n    {\n      \"id\": \"3074db49-9bd3-c18a-6014-db10df6e6244\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"12d1ab9e-9a8c-b0dc-80b1-cec8ead7dca0\",\n      \"name\": \"string\"\n    }\n  ],\n  \"organizationId\": \"58ca45a7-67ae-5bc1-d0f1-a282da05b58b\",\n  \"market\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"radiusMiles\": \"<number>\",\n    \"locationPoly\": [\n      [\n        \"<number>\",\n        \"<number>\"\n      ],\n      [\n        \"<number>\",\n        \"<number>\"\n      ]\n    ]\n  },\n  \"createdAt\": \"2026-06-02\",\n  \"teamIds\": [\n    \"0a6f0795-58bf-f795-ffaa-29a13d1102fb\",\n    \"83ba06d9-379b-c8bb-82e2-6982722b1659\"\n  ],\n  \"ownFleetVehicles\": [\n    {\n      \"id\": \"089963a2-d374-9f00-4ef6-8e2de37e7265\",\n      \"name\": \"string\",\n      \"maxWeightLbs\": 170,\n      \"vin\": \"string\",\n      \"costPerMileCent\": 5050,\n      \"lpMarketId\": null,\n      \"fleetVehicleId\": \"be69692c-a5a8-b69c-107d-7bfef33c19b9\",\n      \"fleetVehicleCompartments\": [\n        {\n          \"id\": null,\n          \"openingWidthIn\": 7950,\n          \"openingHeightIn\": 855,\n          \"compartmentLengthIn\": 6329,\n          \"compartmentWidthIn\": 9638,\n          \"compartmentHeightIn\": 6430\n        },\n        {\n          \"id\": null,\n          \"openingWidthIn\": 3827,\n          \"openingHeightIn\": 809,\n          \"compartmentLengthIn\": 5457,\n          \"compartmentWidthIn\": 5950,\n          \"compartmentHeightIn\": 4300\n        }\n      ],\n      \"active\": false\n    },\n    {\n      \"id\": \"f1077bfb-ce9d-7f9b-395a-4faf41f6ae3b\",\n      \"name\": \"string\",\n      \"maxWeightLbs\": 7734,\n      \"vin\": \"string\",\n      \"costPerMileCent\": 9082,\n      \"lpMarketId\": \"8a0f32bd-832e-cd08-5ab5-38dd51a2c097\",\n      \"fleetVehicleId\": \"0e318455-1569-69ad-0e90-ae3c25c39a16\",\n      \"fleetVehicleCompartments\": [\n        {\n          \"id\": null,\n          \"openingWidthIn\": 4430,\n          \"openingHeightIn\": 1688,\n          \"compartmentLengthIn\": 8963,\n          \"compartmentWidthIn\": 7789,\n          \"compartmentHeightIn\": 202\n        },\n        {\n          \"id\": \"7d2c0b0c-332d-7288-b36d-78167b377a5a\",\n          \"openingWidthIn\": 3028,\n          \"openingHeightIn\": 2974,\n          \"compartmentLengthIn\": 6103,\n          \"compartmentWidthIn\": 4205,\n          \"compartmentHeightIn\": 7277\n        }\n      ],\n      \"active\": true\n    }\n  ],\n  \"pickUpLocationId\": \"e6bcce7d-1913-84c8-cfcd-ac8c81160c87\",\n  \"capabilityTags\": [\n    {\n      \"id\": \"7c5adbd3-2173-eac5-abae-54f60471e355\"\n    },\n    {\n      \"id\": \"943682b8-3f1b-f2e2-3e66-0d0a949f7a90\"\n    }\n  ],\n  \"insuranceAndCompiance\": {\n    \"id\": \"3c54ad85-5d65-1aa0-373b-1eb594fb60c2\",\n    \"cargoUsd\": 3803,\n    \"autoLiabilityUsd\": 1219,\n    \"commercialGeneralLiabilityUsd\": 5730,\n    \"workersCompensationUsd\": 2945,\n    \"umbrellaUsd\": 7116,\n    \"bondedUsd\": 5032,\n    \"hazardousMaterialsExclusion\": false,\n    \"fmcsa\": true\n  },\n  \"serviceHours\": {\n    \"id\": \"2b04bf6f-2f3a-f3b3-12e4-38b446d6abf1\",\n    \"dayOfWeek\": 6430,\n    \"startMin\": 5345,\n    \"endMin\": 2336,\n    \"holidayId\": \"4d266bb4-6a9b-eca3-1888-9d32d85c6b95\",\n    \"holiday\": {\n      \"id\": \"f9b7d509-b6bf-e54c-54aa-420185f91d06\",\n      \"holidayName\": \"string\",\n      \"sort\": 7525\n    },\n    \"LpMarketServiceHours\": {\n      \"serviceHourId\": \"333410fc-7c92-648e-ca33-1b35f8a11684\",\n      \"LpMarketId\": \"fd8082eb-9d7a-4916-ed1f-e83fbb303540\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83a85242-7a17-41ae-907f-e35434a8dd55",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    ":lpMarketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpMarketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pickUpSlaId\": \"<string,null>\",\n  \"dropOffSlaId\": \"<string,null>\",\n  \"shippingModeId\": \"<uuid>\",\n  \"market\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"location\": {\n      \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n    },\n    \"radiusMiles\": \"<number>\",\n    \"locationPoly\": [\n      [\n        \"<number>\",\n        \"<number>\"\n      ],\n      [\n        \"<number>\",\n        \"<number>\"\n      ]\n    ]\n  },\n  \"teamIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"fleetVehicles\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"capabilityTags\": [\n    {\n      \"id\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\"\n    }\n  ],\n  \"insuranceAndCompliance\": {\n    \"value\": \"reference #/paths/~1v1~1shipper-contract~1%7BshipperContractId%7D/put/requestBody/content/application~1json/schema/properties/insuranceAndCompliance not found in the OpenAPI spec\"\n  },\n  \"serviceHours\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1location/post/requestBody/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n    }\n  ],\n  \"ownFleetVehicles\": [\n    {\n      \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle~1%7BownFleetVehicleId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference #/paths/~1v1~1own-fleet-vehicle~1%7BownFleetVehicleId%7D/get/responses/200/content/application~1json/schema not found in the OpenAPI spec\"\n    }\n  ],\n  \"pickUpLocationId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a09db542-78fd-4871-b2a1-38d9386cd97a",
+          "name": "Remove LP Market",
+          "request": {
+            "name": "Remove LP Market",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-market",
+                ":lpMarketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lpMarketId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "404eb888-9e4d-452f-a678-819f4beb3fc5",
+              "name": "Success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    ":lpMarketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpMarketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f256c2ce-7b35-416b-bb8d-999fd51e3663",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    ":lpMarketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lpMarketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d51b88f3-df21-446c-81b7-1613f49bfaec",
+          "name": "Get shipping modes",
+          "request": {
+            "name": "Get shipping modes",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-market",
+                "shipping-modes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3b11914-d55f-415e-9873-03b42d8c3b83",
+              "name": "Shipping modes records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    "shipping-modes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0096495c-ce15-4a8c-b6de-02cb9a1c612c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    "shipping-modes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07de1e6b-2dff-4589-ba7c-006783a870c7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    "shipping-modes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b38a96d0-861c-4252-9d9e-7179918abfed",
+          "name": "Get LP Markets filtered by IDs",
+          "request": {
+            "name": "Get LP Markets filtered by IDs",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "lp-market",
+                "filter-by-id",
+                "api"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Comma separated list of LP Market IDs to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "shipperOrganizationId",
+                  "value": "<uuid>",
+                  "description": "Optional shipper organization ID used to resolve the effective dispatch platform setting"
+                },
+                {
+                  "disabled": false,
+                  "key": "shipperLocationId",
+                  "value": "<uuid>",
+                  "description": "Optional shipper location ID used to resolve a location-specific dispatch platform setting"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dcf93983-b1d7-49da-b40b-6e82ff433203",
+              "name": "Markets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    "filter-by-id",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shipperOrganizationId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "shipperLocationId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"6c0aebdf-beb5-b7fc-44fb-f13766c587b0\",\n    \"name\": \"string\",\n    \"organization\": {\n      \"id\": \"b304101c-9217-1220-9b34-302bf925c2ef\",\n      \"name\": \"string\",\n      \"dynamicPriceLp\": true,\n      \"dot\": \"string\",\n      \"dispatchPlatform\": {\n        \"id\": \"3b52e7f3-ed18-99e9-fba1-ffa9c541430a\",\n        \"name\": \"string\",\n        \"dispatchPlatformSetting\": {\n          \"id\": \"3e16ae5c-19bc-220f-24d7-497ddb6b20bb\",\n          \"name\": \"string\",\n          \"data\": null,\n          \"dispatchPlatformId\": \"b956cf37-8c22-cb99-1f61-15e2888e80bd\",\n          \"organizationId\": null,\n          \"lpOrganizationId\": \"e7cebde2-bf3a-3107-ad76-41621a3e8ec3\",\n          \"shipperLocationId\": \"66d1749f-61a6-8ff8-858d-b840a34d0cee\"\n        }\n      },\n      \"organizationDOT\": {\n        \"id\": \"d5ea111f-d835-510e-8c1f-ebd67d13c69e\",\n        \"dotNumber\": 7471.761796878821,\n        \"status\": \"ACTIVE\",\n        \"authorityStatus\": \"NOT-AUTHORIZED\",\n        \"carrierOperationStatus\": \"INTRASTATE-ONLY-NON-HM\",\n        \"operationsClassifications\": null,\n        \"cargoClasses\": [\n          \"REFRIGERATED_FOOD\",\n          \"CHEMICALS\"\n        ],\n        \"mcmxff\": \"string\"\n      }\n    },\n    \"pickUpSla\": {\n      \"name\": \"string\",\n      \"value\": 53\n    },\n    \"dropOffSla\": {\n      \"name\": \"string\",\n      \"value\": 9309\n    },\n    \"serviceHours\": [\n      {\n        \"value\": \"reference #/paths/~1v1~1location~1%7BstoreNumber%7D~1by-store-number/put/responses/200/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/paths/~1v1~1location~1%7BstoreNumber%7D~1by-store-number/put/responses/200/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n      }\n    ],\n    \"capabilityTags\": [\n      {\n        \"id\": \"35acacf0-55c4-7771-9e49-b726172e13a6\"\n      },\n      {\n        \"id\": \"eba6dc9c-5f49-41b2-8b9c-8e72c54f5e5f\"\n      }\n    ],\n    \"fleetVehicles\": [\n      {\n        \"id\": \"50517f28-3c24-abbb-0fea-3c0d85bdf972\",\n        \"name\": \"string\",\n        \"sortWeight\": 2042\n      },\n      {\n        \"id\": \"e89ce0fb-1646-1a95-f7b3-93b24421d3fd\",\n        \"name\": \"string\",\n        \"sortWeight\": 4779\n      }\n    ],\n    \"ownFleetVehicles\": [\n      {\n        \"id\": null,\n        \"name\": \"string\",\n        \"maxWeightLbs\": 2529,\n        \"vin\": \"string\",\n        \"costPerMileCent\": 1355,\n        \"lpMarketId\": \"9a016e36-1896-4168-8695-2238767c723c\",\n        \"fleetVehicleId\": null,\n        \"fleetVehicleCompartments\": [\n          {\n            \"id\": \"4c7acaed-73a6-41a6-2153-da04b24d0a9c\",\n            \"openingWidthIn\": 4142,\n            \"openingHeightIn\": 295,\n            \"compartmentLengthIn\": 799,\n            \"compartmentWidthIn\": 6337,\n            \"compartmentHeightIn\": 7884\n          },\n          {\n            \"id\": \"c46ab2f3-072d-db68-6dd9-55fa311a8676\",\n            \"openingWidthIn\": 6378,\n            \"openingHeightIn\": 9910,\n            \"compartmentLengthIn\": 4741,\n            \"compartmentWidthIn\": 7324,\n            \"compartmentHeightIn\": 3129\n          }\n        ],\n        \"active\": true\n      },\n      {\n        \"id\": \"5cf63022-1a19-e235-658e-007d0aa1a0e7\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 722,\n        \"vin\": \"string\",\n        \"costPerMileCent\": 6925,\n        \"lpMarketId\": null,\n        \"fleetVehicleId\": \"dc56067e-8353-b081-d06d-317f3035ab9d\",\n        \"fleetVehicleCompartments\": [\n          {\n            \"id\": \"79e6fec1-1b8e-77fd-d238-00d7acee92a4\",\n            \"openingWidthIn\": 7548,\n            \"openingHeightIn\": 7596,\n            \"compartmentLengthIn\": 1725,\n            \"compartmentWidthIn\": 8001,\n            \"compartmentHeightIn\": 2030\n          },\n          {\n            \"id\": \"e09dec17-433e-68e5-45d9-eb277b1af6ee\",\n            \"openingWidthIn\": 6926,\n            \"openingHeightIn\": 7533,\n            \"compartmentLengthIn\": 5913,\n            \"compartmentWidthIn\": 4895,\n            \"compartmentHeightIn\": 9528\n          }\n        ],\n        \"active\": false\n      }\n    ]\n  },\n  {\n    \"id\": \"5db9f097-0f82-28f4-0084-f7a8cfee2ff6\",\n    \"name\": \"string\",\n    \"organization\": {\n      \"id\": \"b115c140-0038-1488-930c-d8576391c147\",\n      \"name\": \"string\",\n      \"dynamicPriceLp\": false,\n      \"dot\": \"string\",\n      \"dispatchPlatform\": {\n        \"id\": \"99ad7d99-2975-5676-a294-de934f3382d7\",\n        \"name\": \"string\",\n        \"dispatchPlatformSetting\": {\n          \"id\": \"6b964fa7-337a-005a-4826-6b6e6de58c58\",\n          \"name\": \"string\",\n          \"data\": null,\n          \"dispatchPlatformId\": \"052b972b-7fa3-dab1-f28d-95fc47237829\",\n          \"organizationId\": null,\n          \"lpOrganizationId\": \"2ab1a9e5-5d9b-a71f-cdf0-46dfc4f17276\",\n          \"shipperLocationId\": null\n        }\n      },\n      \"organizationDOT\": {\n        \"id\": \"4e305cdf-581b-d793-787f-d58376344d93\",\n        \"dotNumber\": 3790.467030303817,\n        \"status\": \"ACTIVE\",\n        \"authorityStatus\": \"AUTHORIZED\",\n        \"carrierOperationStatus\": \"INTERSTATE\",\n        \"operationsClassifications\": null,\n        \"cargoClasses\": null,\n        \"mcmxff\": \"string\"\n      }\n    },\n    \"pickUpSla\": {\n      \"name\": \"string\",\n      \"value\": 6710\n    },\n    \"dropOffSla\": {\n      \"name\": \"string\",\n      \"value\": 565\n    },\n    \"serviceHours\": [\n      {\n        \"value\": \"reference #/paths/~1v1~1location~1%7BstoreNumber%7D~1by-store-number/put/responses/200/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/paths/~1v1~1location~1%7BstoreNumber%7D~1by-store-number/put/responses/200/content/application~1json/schema/properties/serviceHours/items not found in the OpenAPI spec\"\n      }\n    ],\n    \"capabilityTags\": [\n      {\n        \"id\": \"4f777cc3-e4af-b651-2b02-e107252f7f78\"\n      },\n      {\n        \"id\": \"ae3d78d0-0ab0-305e-0c5c-b9434a950e7f\"\n      }\n    ],\n    \"fleetVehicles\": [\n      {\n        \"id\": \"7e25696a-2dd3-9927-eb30-4e6c1be197f8\",\n        \"name\": \"string\",\n        \"sortWeight\": 1892\n      },\n      {\n        \"id\": \"a56e0447-44c6-c5cd-880a-82c10e949505\",\n        \"name\": \"string\",\n        \"sortWeight\": 890\n      }\n    ],\n    \"ownFleetVehicles\": [\n      {\n        \"id\": \"bdc7125c-4ce0-822a-f6e9-10f6469f2d35\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 6716,\n        \"vin\": \"string\",\n        \"costPerMileCent\": 9666,\n        \"lpMarketId\": \"05ee6c1f-0c42-187c-b2ac-ded5aafafb1a\",\n        \"fleetVehicleId\": null,\n        \"fleetVehicleCompartments\": [\n          {\n            \"id\": \"7cc19fa6-ec44-f350-5f5c-23211722d406\",\n            \"openingWidthIn\": 528,\n            \"openingHeightIn\": 2682,\n            \"compartmentLengthIn\": 6907,\n            \"compartmentWidthIn\": 2373,\n            \"compartmentHeightIn\": 3217\n          },\n          {\n            \"id\": null,\n            \"openingWidthIn\": 4735,\n            \"openingHeightIn\": 2685,\n            \"compartmentLengthIn\": 2759,\n            \"compartmentWidthIn\": 925,\n            \"compartmentHeightIn\": 4270\n          }\n        ],\n        \"active\": true\n      },\n      {\n        \"id\": \"561d0b99-c389-f596-9bfd-752bdce82073\",\n        \"name\": \"string\",\n        \"maxWeightLbs\": 4538,\n        \"vin\": \"string\",\n        \"costPerMileCent\": 5091,\n        \"lpMarketId\": \"3ffb825c-63ff-b7a1-a0e8-b82a071f406d\",\n        \"fleetVehicleId\": \"ab0f4a2b-d43e-9b6e-90e4-3978157f2a23\",\n        \"fleetVehicleCompartments\": [\n          {\n            \"id\": null,\n            \"openingWidthIn\": 4783,\n            \"openingHeightIn\": 7442,\n            \"compartmentLengthIn\": 3127,\n            \"compartmentWidthIn\": 1730,\n            \"compartmentHeightIn\": 9655\n          },\n          {\n            \"id\": \"c6471db5-616d-655d-25c0-cb80cf13d1db\",\n            \"openingWidthIn\": 3359,\n            \"openingHeightIn\": 5670,\n            \"compartmentLengthIn\": 5407,\n            \"compartmentWidthIn\": 2906,\n            \"compartmentHeightIn\": 3056\n          }\n        ],\n        \"active\": true\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e178643-aa73-41a8-a7bf-4ba31596864f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "lp-market",
+                    "filter-by-id",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shipperOrganizationId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "shipperLocationId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f51cd40-4179-4473-9657-1f720ee62da7",
+          "name": "Sync LP market associations",
+          "request": {
+            "name": "Sync LP market associations",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "organization",
+                ":organizationId",
+                "lp-market",
+                "sync-associations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lpMarketIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"dryRun\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a1c39e4-56b3-45b9-ac71-6211ae017af8",
+              "name": "Sync result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "lp-market",
+                    "sync-associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lpMarketIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"dryRun\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationId\": \"6cf03a0b-0c27-099b-afaf-257458102307\",\n  \"dryRun\": true,\n  \"marketsProcessed\": 2291,\n  \"eventsPublished\": 4806,\n  \"failures\": 3765,\n  \"failedLpMarketIds\": [\n    \"b8326dd4-2f01-8d2e-c121-5e6c112c18ff\",\n    \"b42aed48-e813-90c6-6e08-bffcba093d6d\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2dde3e35-0f76-414f-b6b4-4c797bd1b29a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "lp-market",
+                    "sync-associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lpMarketIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"dryRun\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9bfd0a11-49da-4bea-8068-0dc5c88a3699",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "organization",
+                    ":organizationId",
+                    "lp-market",
+                    "sync-associations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lpMarketIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"dryRun\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bb640fd-fc6d-4e8c-b68a-8f970bc35af0",
+          "name": "Updates radius",
+          "request": {
+            "name": "Updates radius",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "market",
+                ":marketId",
+                "update-radius"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distance\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3b3b37f6-164a-4593-932c-16a17af5b899",
+              "name": "Market",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "market",
+                    ":marketId",
+                    "update-radius"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distance\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"location\": {\n    \"value\": \"reference #/paths/~1v1~1location/get/responses/200/content/application~1json/schema/items/properties/location not found in the OpenAPI spec\"\n  },\n  \"radiusMiles\": \"<number>\",\n  \"locationPoly\": [\n    [\n      \"<number>\",\n      \"<number>\"\n    ],\n    [\n      \"<number>\",\n      \"<number>\"\n    ]\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a46b63fb-7ecd-4528-8fb9-680f6ae59b6d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "market",
+                    ":marketId",
+                    "update-radius"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distance\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83eee929-19ed-428d-9983-f93d2c654c52",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "market",
+                    ":marketId",
+                    "update-radius"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distance\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "89862430-ac34-48ca-a44a-f54df220c56e",
+    "name": "OneRail Operation Dashboard LP Market API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

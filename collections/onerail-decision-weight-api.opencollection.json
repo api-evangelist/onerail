@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Decision Weight API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Decision Weight",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Decision Weights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/decision-weights",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "query",
+                "description": "Organization Id"
+              },
+              {
+                "name": "marketModifierId",
+                "value": "",
+                "type": "query",
+                "description": "Market Modifier Id"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Get Decision Weights"
+        },
+        {
+          "info": {
+            "name": "Bulk Create Decision Weights",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/decision-weight/bulk-create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk Create Decision Weights"
+        },
+        {
+          "info": {
+            "name": "Bulk Delete Decision Weights",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/decision-weight/bulk-delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk Delete Decision Weights"
+        },
+        {
+          "info": {
+            "name": "Bulk Update Decision Weights",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/decision-weight/bulk-update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk Update Decision Weights"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

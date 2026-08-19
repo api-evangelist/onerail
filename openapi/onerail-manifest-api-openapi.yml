@@ -1,0 +1,232 @@
+openapi: 3.2.0
+info:
+  title: Onerail Manifest API
+  version: '1.0'
+  description: 'Operations tagged Manifest across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: /
+  description: Default relative server URL
+tags:
+- name: Manifest
+paths:
+  /close-manifest:
+    x-exegesis-controller: Manifest
+    post:
+      tags:
+      - Manifest
+      summary: Close a carrier manifest
+      description: Close a carrier manifest. Required fields depend on `carrierCode`.
+      operationId: closeManifest
+      security:
+      - ApiKeyAndAppId: []
+      - ApiKey: []
+      - OAuth: []
+      - AppId: []
+      requestBody:
+        description: Manifest close request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloseManifestRequest'
+      responses:
+        '200':
+          description: Success. The manifest has been closed.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/close-manifest:
+    servers:
+    - url: /
+      description: Default relative server URL
+    post:
+      x-exegesis-controller: Manifest
+      summary: Closes a carrier manifest
+      description: Closes a carrier manifest for the authenticated shipper.
+      security:
+      - ApiKey: []
+        AppId: []
+      operationId: closeManifest
+      tags:
+      - Manifest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - carrierCode
+              - closedAt
+              - carrierServiceLevel
+              properties:
+                carrierCode:
+                  type: string
+                  enum:
+                  - FDEX
+                  - USPS
+                  - AMZN
+                  description: Carrier code
+                closedAt:
+                  type: string
+                  format: date-time
+                  description: Close date
+                carrierServiceLevel:
+                  type: string
+                  description: Carrier service level
+                manifestId:
+                  type:
+                  - string
+                  - 'null'
+                  description: Manifest ID
+                trackingNumber:
+                  type:
+                  - string
+                  - 'null'
+                  description: Tracking number
+                accountNumber:
+                  type:
+                  - string
+                  - 'null'
+                  description: Account number
+                locationId:
+                  type:
+                  - string
+                  - 'null'
+                  description: Location ID
+      responses:
+        '200':
+          description: Close Manifest Result
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - carrierCode
+                properties:
+                  carrierCode:
+                    type: string
+                  manifestId:
+                    type: string
+                  closedAt:
+                    type: string
+                    format: date-time
+        '400':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  schemas:
+    CloseManifestRequest:
+      type: object
+      required:
+      - carrierCode
+      - closedAt
+      - carrierServiceLevel
+      properties:
+        carrierCode:
+          type: string
+          enum:
+          - FDEX
+          - USPS
+          - AMZN
+          description: Carrier code
+        closedAt:
+          type: string
+          format: date-time
+          description: Close date
+          example: '2026-06-25T14:30:00Z'
+        carrierServiceLevel:
+          type: string
+          description: Carrier service level
+        manifestId:
+          type: string
+          description: Manifest ID
+        trackingNumber:
+          type: string
+          description: Tracking number
+        accountNumber:
+          type: string
+          description: Account number
+        locationId:
+          type: string
+          description: Location ID
+    Error:
+      required:
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        errors:
+          type: object
+        errorDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                description: A human-readable explanation specific to this occurrence of the problem
+              pointer:
+                type: string
+                description: A JSON Pointer [RFC6901] to the associated entity in the request document
+            required:
+            - detail
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+    ApiKeyAndAppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY-AND-APP-ID
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}
+x-refined-from:
+- onerail-delivery-api-openapi.yml
+- onerail-operations-api-openapi.yml

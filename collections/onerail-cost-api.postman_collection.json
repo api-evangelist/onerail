@@ -1,0 +1,427 @@
+{
+  "item": [
+    {
+      "id": "e715cc2d-a53c-49a0-b23a-5263df6f15f5",
+      "name": "Cost",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31bdef42-7d89-4134-a558-09816ece8db0",
+          "name": "Create an externally-sourced adjustment cost on a delivery attempt",
+          "request": {
+            "name": "Create an externally-sourced adjustment cost on a delivery attempt",
+            "description": {
+              "content": "Inserts a single adjustment Cost into the Core operations DB on behalf of an\nexternal producer (today: the FAP `InvoiceCostSyncService`; tomorrow: any\nother service-to-service producer that owns its own idempotency keys).\nStamps `reason = ADJUSTMENT` server-side; the sub-category is selected by\nthe caller via `costAdjustmentReasonId`, which must resolve to a row in\n`CostAdjustmentReasons`.\n\nIdempotency: the request body `sourceCostId` is the producer's globally\nunique identifier for this cost (e.g. FAP `InvoiceCost.PublicId`). If a\nCost row already exists with this `sourceCostId`, the endpoint returns\n200 with the existing record instead of creating a duplicate. Otherwise,\na new Cost is inserted and returned with 201. The unique index on\n`Costs.sourceCostId` counts soft-deleted rows too, so a previously\nsoft-deleted match also returns 200 (operator deletion intent is\npreserved; the row is not resurrected).\n\n`adjustmentUserId`, when supplied, must resolve to an existing `Users`\nrow in Core; unknown IDs are rejected with 400. Omit or send null for\nadjustments created by automated/system flows that have no human actor —\n`sourceCostId` remains the authoritative marker that the row originated\nfrom an external producer, so callers are never required to invent a\nsynthetic user. A `cost_changes` Kafka event is always emitted with\n`newValues.sourceCostId` populated and `userId` set to the same\n`adjustmentUserId`; consumers use `sourceCostId` as an echo filter to\nskip self-originated events.\n\nAuthentication: OneRail-organization API key only (`X-OneRail-API-Key` +\n`X-OneRail-App-Id`). JWT and non-OneRail API keys are rejected with 403.\nThis is pure service-to-service — no user identity is resolved from the\nrequest and operator-driven adjustments belong on a separate user-JWT\nendpoint.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "delivery-attempt",
+                ":deliveryAttemptId",
+                "costs",
+                "adjustments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "deliveryAttemptId",
+                  "description": "(Required) Delivery attempt UUID that the cost belongs to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-ONERAIL-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceCostId\": \"<uuid>\",\n  \"costAdjustmentReasonId\": \"<uuid>\",\n  \"costCent\": \"<integer>\",\n  \"isShipper\": \"<boolean>\",\n  \"adjustmentUserId\": \"<string,null-uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d899f0c9-9969-468b-beef-1e33787f0264",
+              "name": "A Cost with this sourceCostId already exists (idempotent hit).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId",
+                    "costs",
+                    "adjustments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) Delivery attempt UUID that the cost belongs to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceCostId\": \"<uuid>\",\n  \"costAdjustmentReasonId\": \"<uuid>\",\n  \"costCent\": \"<integer>\",\n  \"isShipper\": \"<boolean>\",\n  \"adjustmentUserId\": \"<string,null-uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7ef056c5-eba0-b686-8881-78a49700d0b7\",\n  \"deliveryAttemptId\": \"dbdb5a45-8a7a-92a4-8846-9d9636941159\",\n  \"deliveryId\": \"b704d844-6028-b66c-2174-b268d13ed047\",\n  \"reason\": \"ACCESSORIAL\",\n  \"costCent\": 3696.289894856276,\n  \"isShipper\": null,\n  \"costAdjustmentReason\": {\n    \"id\": \"efa0fdb7-e35b-76eb-88c3-09b892ea3243\",\n    \"reason\": \"string\"\n  },\n  \"adjustmentUserId\": \"9dadc268-8b0d-f308-b955-3b069b62d8e4\",\n  \"sourceCostId\": \"9c47cb03-af7a-61f9-45a7-52b6c2ca0de8\",\n  \"createdAt\": \"2016-09-27T18:47:34.235Z\",\n  \"updatedAt\": \"2001-02-02T04:55:57.920Z\",\n  \"deletedAt\": \"2026-03-01T20:51:21.377Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4590b57e-93f0-4eb9-a5b5-17ce00a9d0e6",
+              "name": "New Cost was inserted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId",
+                    "costs",
+                    "adjustments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) Delivery attempt UUID that the cost belongs to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceCostId\": \"<uuid>\",\n  \"costAdjustmentReasonId\": \"<uuid>\",\n  \"costCent\": \"<integer>\",\n  \"isShipper\": \"<boolean>\",\n  \"adjustmentUserId\": \"<string,null-uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"5a20bc82-2947-cfe8-40ce-b0d7b4d026f1\",\n  \"deliveryAttemptId\": null,\n  \"deliveryId\": null,\n  \"reason\": \"PICKUP_PENALTIES\",\n  \"costCent\": 1161.2874707541532,\n  \"isShipper\": false,\n  \"costAdjustmentReason\": {\n    \"id\": \"a667cb27-b471-9310-9b4f-5871ab9943ae\",\n    \"reason\": \"string\"\n  },\n  \"adjustmentUserId\": \"11eec170-2d50-7b5f-21a8-00f13bfaf866\",\n  \"sourceCostId\": null,\n  \"createdAt\": \"1987-08-30T17:36:44.630Z\",\n  \"updatedAt\": \"2018-10-26T19:53:07.870Z\",\n  \"deletedAt\": \"1989-09-20T19:27:12.053Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5faff997-4a72-48c3-9cd0-5b4cba6e2914",
+              "name": "Invalid input (bad UUID, missing field, bad value, unknown reason or user).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId",
+                    "costs",
+                    "adjustments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) Delivery attempt UUID that the cost belongs to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceCostId\": \"<uuid>\",\n  \"costAdjustmentReasonId\": \"<uuid>\",\n  \"costCent\": \"<integer>\",\n  \"isShipper\": \"<boolean>\",\n  \"adjustmentUserId\": \"<string,null-uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2e7bc41-8ed3-4fde-80bf-b4607fd275bc",
+              "name": "Delivery attempt not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId",
+                    "costs",
+                    "adjustments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) Delivery attempt UUID that the cost belongs to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceCostId\": \"<uuid>\",\n  \"costAdjustmentReasonId\": \"<uuid>\",\n  \"costCent\": \"<integer>\",\n  \"isShipper\": \"<boolean>\",\n  \"adjustmentUserId\": \"<string,null-uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9028e7c3-e897-461a-833c-5aaf538e09b4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "delivery-attempt",
+                    ":deliveryAttemptId",
+                    "costs",
+                    "adjustments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "deliveryAttemptId",
+                      "description": "(Required) Delivery attempt UUID that the cost belongs to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-ONERAIL-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceCostId\": \"<uuid>\",\n  \"costAdjustmentReasonId\": \"<uuid>\",\n  \"costCent\": \"<integer>\",\n  \"isShipper\": \"<boolean>\",\n  \"adjustmentUserId\": \"<string,null-uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d18cc224-5fde-4a85-a6a1-3e8f1c7cfaad",
+    "name": "OneRail Operation Dashboard Cost API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

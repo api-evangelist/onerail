@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Delivery Cloud - Delivery Shipping Label API",
+    "version": "0.0.3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-ONERAIL-API-KEY",
+      "value": "{{X-ONERAIL-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipping Label",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns labels for all containers of the delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/shipping-label/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Either a OneRail Delivery ID or a shipper-supplied Order ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns labels for all containers of the delivery"
+        },
+        {
+          "info": {
+            "name": "Returns label for a specific container",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/shipping-label/:id/:containerId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Either a OneRail Delivery ID or a shipper-supplied Order ID"
+              },
+              {
+                "name": "containerId",
+                "value": "",
+                "type": "path",
+                "description": "Either a OneRail container ID or a shipper-supplied Order Container ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns label for a specific container"
+        },
+        {
+          "info": {
+            "name": "Returns labels for all containers of the delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/shipping-label/generate/:deliveryId",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path",
+                "description": "OneRail Delivery ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY-AND-APP-ID",
+              "value": "{{X-ONERAIL-API-KEY-AND-APP-ID}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns labels for all containers of the delivery"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

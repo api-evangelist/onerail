@@ -1,0 +1,583 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Authentication API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Authentication
+paths:
+  /v1/login/ord-sso-assert-and-login/{organizationId}:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: Authentication
+      summary: Post assert SAML data to OneRail then generate Access Token
+      operationId: ordSsoAssertAndLogin
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: User's authentication response.
+              properties:
+                accessToken:
+                  type: string
+                  description: User's JWT token
+                refreshToken:
+                  type: string
+                  description: Token client can use to refresh access token
+                id:
+                  type: string
+                  description: User's ID
+                emailAddress:
+                  type: string
+                  description: User's Email address
+                firstName:
+                  type: string
+                  description: User's Firstname
+                lastName:
+                  type: string
+                  description: User's Lastname
+                organizationId:
+                  type: string
+                  description: User's Organization ID
+                redirectUrl:
+                  type: string
+                  description: SSO Redirect URL
+      responses:
+        '200':
+          description: Redirect
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/login:
+    post:
+      x-exegesis-controller: Authentication
+      summary: Login User.
+      operationId: login
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - emailAddress
+              - password
+              properties:
+                emailAddress:
+                  $ref: '#/paths/~1v1~1reset-password/post/requestBody/content/application~1json/schema/properties/emailAddress'
+                password:
+                  type: string
+                  description: Password
+                  format: password
+      responses:
+        '200':
+          description: User Authentication Payload
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1refresh-token/post/responses/200/content/application~1json/schema'
+                - type: object
+                  description: User
+                  required:
+                  - emailAddress
+                  - firstName
+                  - lastName
+                  - organizationId
+                  properties:
+                    id:
+                      type: string
+                    createdById:
+                      type: string
+                    emailAddress:
+                      type: string
+                      format: email
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                    phoneNumber:
+                      type:
+                      - string
+                      - 'null'
+                    active:
+                      type: boolean
+                    driver:
+                      description: Driver
+                      type:
+                      - object
+                      - 'null'
+                      default: null
+                      properties:
+                        id:
+                          type:
+                          - string
+                          - 'null'
+                          format: uuid
+                        enableDriverPayout:
+                          type:
+                          - boolean
+                          - 'null'
+                        driverPayoutBaseRate:
+                          type: number
+                          format: float
+                        driverPayoutUseDefault:
+                          type:
+                          - boolean
+                          - 'null'
+                    title:
+                      type:
+                      - string
+                      - 'null'
+                    organizationId:
+                      type: string
+                      format: uuid
+                    teamIds:
+                      type: array
+                      items:
+                        type: string
+                        format: uuid
+                    roles:
+                      type: array
+                      items:
+                        type: object
+                        description: Role
+                        required:
+                        - id
+                        - name
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          name:
+                            type: string
+                    employeeId:
+                      type:
+                      - string
+                      - 'null'
+                    fleetId:
+                      type:
+                      - string
+                      - 'null'
+                    mvrCertified:
+                      type: boolean
+                      default: false
+                    organizations:
+                      type: array
+                      items:
+                        type: string
+                    preferences:
+                      $ref: '#/paths/~1v1~1preferences~1%7BcontextId%7D/get/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/login/sso-token:
+    post:
+      x-exegesis-controller: Authentication
+      summary: Login User with a single sign on token.
+      operationId: loginWithSsoToken
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ssoToken
+              properties:
+                ssoToken:
+                  type: string
+                emailAddress:
+                  $ref: '#/paths/~1v1~1reset-password/post/requestBody/content/application~1json/schema/properties/emailAddress'
+      responses:
+        '200':
+          description: User Authentication Payload
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1refresh-token/post/responses/200/content/application~1json/schema'
+                - $ref: '#/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/verify-email:
+    get:
+      x-exegesis-controller: Authentication
+      summary: Verify a FedEx SSO merchant email address.
+      operationId: verifyEmail
+      tags:
+      - Authentication
+      security: []
+      parameters:
+      - name: verificationToken
+        in: query
+        required: true
+        schema:
+          type: string
+        description: JWT verification token from the email verification link.
+      responses:
+        '302':
+          description: Redirects to the FedEx frontend with either ssoToken or emailVerificationError query params.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/refresh-token:
+    post:
+      x-exegesis-controller: Authentication
+      summary: Refresh JWT token
+      description: Refreshes JWT token
+      operationId: refreshToken
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - refreshToken
+              properties:
+                refreshToken:
+                  type: string
+                  description: Token client can use to refresh access token
+      responses:
+        '200':
+          description: Refreshed access token
+          content:
+            application/json:
+              schema:
+                type: object
+                description: User's authentication payload.
+                required:
+                - accessToken
+                - refreshToken
+                properties:
+                  accessToken:
+                    type: string
+                    description: User's JWT token
+                  refreshToken:
+                    type: string
+                    description: Token client can use to refresh access token
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/reset-password:
+    post:
+      x-exegesis-controller: Authentication
+      summary: Reset user password
+      description: Kicks off user's password reset process and sends an email
+      operationId: resetPassword
+      security: []
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - emailAddress
+              properties:
+                emailAddress:
+                  type: string
+                  description: Email address
+                  format: email
+                uiRedesign:
+                  type: boolean
+                  description: Set to true for redesign link
+                  default: false
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1bulk-dispatch/post/responses/200'
+  /v1/reset-token-valid:
+    post:
+      x-exegesis-controller: Authentication
+      summary: Check validity of reset token
+      description: Check validity of reset token
+      operationId: validateResetToken
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - resetToken
+              properties:
+                resetToken:
+                  type: string
+                  description: Token client can use to reset password
+      responses:
+        '200':
+          description: is Reset token valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: True if operation was successful
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/update-password:
+    post:
+      x-exegesis-controller: Authentication
+      summary: Updates user's password.
+      operationId: updatePassword
+      security: []
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - resetToken
+              - newPassword
+              properties:
+                resetToken:
+                  type: string
+                  description: reset token
+                newPassword:
+                  description: User's new password
+                  $ref: '#/paths/~1v1~1login/post/requestBody/content/application~1json/schema/properties/password'
+      responses:
+        '200':
+          description: access and refresh tokens
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1refresh-token/post/responses/200/content/application~1json/schema'
+                - $ref: '#/paths/~1v1~1login/post/responses/200/content/application~1json/schema/allOf/1'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/check-sso:
+    post:
+      x-exegesis-controller: Authentication
+      summary: Check user if part of single sign on org.
+      operationId: checkSSO
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - emailAddress
+              properties:
+                emailAddress:
+                  $ref: '#/paths/~1v1~1reset-password/post/requestBody/content/application~1json/schema/properties/emailAddress'
+                organizationId:
+                  type: string
+                  description: Optional organization ID to bypass email-domain lookup (e.g. for dedicated client login pages).
+      responses:
+        '200':
+          description: Returns array of redirect URLs if they exist
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  description: Array of user organization redirect URLs for single sign on, or empty array.
+                  properties:
+                    redirectUrl:
+                      type: string
+                      description: URL to organizations single sign on.
+                    organizationName:
+                      type: string
+                      description: Name of the organization
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/zendesk-sso:
+    get:
+      x-exegesis-controller: Authentication
+      summary: Check user and returns Zendesk KH Auth token
+      operationId: zendeskSSOToken
+      tags:
+      - Authentication
+      responses:
+        '200':
+          description: Returns token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/sso-multi-organizations:
+    post:
+      x-exegesis-controller: Authentication
+      summary: Get list of related organizations that share an ssoEmailSuffix.
+      operationId: ssoMultiOrganizations
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - emailAddress
+              properties:
+                emailAddress:
+                  $ref: '#/paths/~1v1~1reset-password/post/requestBody/content/application~1json/schema/properties/emailAddress'
+      responses:
+        '200':
+          description: Returns array of organizations matching the provided ssoEmailSuffix if they exist
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  description: Array of organizations that share an ssoEmailSuffix.
+                  properties:
+                    id:
+                      type: string
+                      description: Organization's ID
+                    name:
+                      type: string
+                      description: Name of the organization
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/assert/{organizationId}:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      description: 'Organization id for SAML ACS. For FedEx **customer (child org)** SSO, this is the same value as the integration doc’s `userCheck` segment (child org id in OneRail). FedEx IdP has no org concept; OneRail still routes the POST using the child org id encoded in this path.
+
+        '
+      schema:
+        type: string
+    post:
+      x-exegesis-controller: Authentication
+      summary: Post assert SAML data to OneRail
+      operationId: assert
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Redirect
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/saml/{organizationId}/metadata.xml:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Authentication
+      summary: Get organization saml metadata.xml
+      operationId: getOrganizationSaml
+      tags:
+      - Authentication
+      security: []
+      responses:
+        '200':
+          description: SAML XML
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

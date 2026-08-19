@@ -1,0 +1,300 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Box API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Box
+paths:
+  /v1/box:
+    post:
+      x-exegesis-controller: Box
+      summary: Create Box
+      operationId: createBox
+      tags:
+      - Box
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Box
+              required:
+              - name
+              - lengthIn
+              - widthIn
+              - heightIn
+              - organizationId
+              properties:
+                name:
+                  type: string
+                lengthIn:
+                  type: number
+                  description: Item length in inches. Smallest value is an inch. Float values are rounded up
+                widthIn:
+                  type: number
+                  description: Item width in inches. Smallest value is an inch. Float values are rounded up
+                heightIn:
+                  type: number
+                  description: Item height in inches. Smallest value is an inch. Float values are rounded up
+                maxWeight:
+                  type: number
+                  description: Item maxWeight. Float values are rounded up
+                organizationId:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: Box
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Box
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  lengthIn:
+                    type: number
+                  widthIn:
+                    type: number
+                  heightIn:
+                    type: number
+                  maxWeight:
+                    type: number
+                  organizationId:
+                    type: string
+                    format: uuid
+                  createdAt:
+                    description: Timestamp when the box was created
+                    type: string
+                    format: date-time
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/box/api:
+    post:
+      x-exegesis-controller: Box
+      summary: Create Box via api
+      operationId: createBoxApi
+      security:
+      - ApiKey: []
+        AppId: []
+      tags:
+      - Box
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Box
+              required:
+              - name
+              - lengthIn
+              - widthIn
+              - heightIn
+              properties:
+                name:
+                  type: string
+                lengthIn:
+                  type: number
+                  description: Item length in inches. Smallest value is an inch. Float values are rounded up
+                widthIn:
+                  type: number
+                  description: Item width in inches. Smallest value is an inch. Float values are rounded up
+                heightIn:
+                  type: number
+                  description: Item height in inches. Smallest value is an inch. Float values are rounded up
+                maxWeight:
+                  type: number
+                  description: Item maxWeight. Float values are rounded up
+      responses:
+        '200':
+          description: Box
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1box/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/box/{boxId}:
+    parameters:
+    - name: boxId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      x-exegesis-controller: Box
+      summary: Get Box
+      operationId: getBox
+      tags:
+      - Box
+      responses:
+        '200':
+          description: Box
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1box/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: Box
+      summary: Update a Box
+      operationId: updateBox
+      tags:
+      - Box
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Box
+              properties:
+                name:
+                  type: string
+                lengthIn:
+                  type: number
+                  description: Item length in inches. Smallest value is an inch. Float values are rounded up
+                widthIn:
+                  type: number
+                  description: Item width in inches. Smallest value is an inch. Float values are rounded up
+                heightIn:
+                  type: number
+                  description: Item height in inches. Smallest value is an inch. Float values are rounded up
+                maxWeight:
+                  type: number
+                  description: Item maxWeight. Float values are rounded up
+      responses:
+        '200':
+          description: Box
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1box/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: Box
+      summary: Remove box
+      operationId: removeBox
+      tags:
+      - Box
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/box/{boxId}/api:
+    parameters:
+    - name: boxId
+      in: path
+      required: true
+      schema:
+        type: string
+    put:
+      x-exegesis-controller: Box
+      security:
+      - ApiKey: []
+        AppId: []
+      summary: Update a Box via api
+      operationId: updateBoxApi
+      tags:
+      - Box
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1box~1%7BboxId%7D/put/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: Box
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1box/post/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    delete:
+      x-exegesis-controller: Box
+      security:
+      - ApiKey: []
+        AppId: []
+      summary: Remove box via api
+      operationId: removeApi
+      tags:
+      - Box
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

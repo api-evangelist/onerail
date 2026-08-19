@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Bulk Uploads API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bulk Uploads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets the file uploads in relation to a provided organization id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/file-uploads",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organization id"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "status filter"
+              },
+              {
+                "name": "rangeType",
+                "value": "",
+                "type": "query",
+                "description": "date range type"
+              },
+              {
+                "name": "startOn",
+                "value": "",
+                "type": "query",
+                "description": "daterange starts on"
+              },
+              {
+                "name": "endOn",
+                "value": "",
+                "type": "query",
+                "description": "date range ends on"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "entityType",
+                "value": "",
+                "type": "query",
+                "description": "Entity type to show"
+              }
+            ]
+          },
+          "docs": "Gets the file uploads in relation to a provided organization id"
+        },
+        {
+          "info": {
+            "name": "Gets information related to a specific file uploads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/file-upload/:fileUploadId",
+            "params": [
+              {
+                "name": "fileUploadId",
+                "value": "",
+                "type": "path",
+                "description": "file id"
+              }
+            ]
+          },
+          "docs": "Gets information related to a specific file uploads"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

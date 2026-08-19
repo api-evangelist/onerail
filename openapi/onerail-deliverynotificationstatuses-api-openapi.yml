@@ -1,0 +1,350 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Delivery Notification Statuses API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: DeliveryNotificationStatuses
+paths:
+  /v1/delivery/notification-statuses:
+    get:
+      x-exegesis-controller: DeliveryNotificationStatuses
+      summary: Get delivery notifications, used for getting delivery webhook notification state
+      operationId: getAllDeliveryNotificationStatuses
+      tags:
+      - DeliveryNotificationStatuses
+      parameters:
+      - name: offset
+        in: query
+        description: Number of items to skip before returning the results.
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of items to return.
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+      - name: sortby
+        in: query
+        description: Field to sort by
+        required: false
+        schema:
+          type: string
+          enum:
+          - createdAt
+          - updatedAt
+          - state
+      - name: order
+        in: query
+        description: Sort order
+        required: false
+        schema:
+          type: string
+          default: DESC
+          enum:
+          - ASC
+          - DESC
+      - name: status
+        in: query
+        description: Filter and return notifications with a state in this array of notification states
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - PENDING
+            - SUCCESS
+            - FAILED
+      responses:
+        '200':
+          description: Delivery Notification Records
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/paths/~1v1~1api-auths/get/responses/200/content/application~1json/schema/allOf/0'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        description: DeliveryNotification
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          deliveryId:
+                            type: string
+                            format: uuid
+                          status:
+                            type: string
+                            enum:
+                            - PENDING
+                            - SUCCESS
+                            - FAILED
+                          attempts:
+                            type: number
+                          lastAttempt:
+                            type: string
+                          lastResponseCode:
+                            type: string
+                          lastError:
+                            type: string
+                          createdAt:
+                            type: string
+                            format: date-time
+                          updatedAt:
+                            type: string
+                            format: date-time
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/delivery/notification-statuses/create:
+    post:
+      x-exegesis-controller: DeliveryNotificationStatuses
+      summary: Create a delivery notification status record.
+      operationId: createDeliveryNotificationStatus
+      tags:
+      - DeliveryNotificationStatuses
+      responses:
+        '200':
+          description: True or false
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - deliveryId
+              - event
+              properties:
+                deliveryId:
+                  description: The deliveryId that a new webhook was made for
+                  type: string
+                event:
+                  description: The error for failed webhook calls
+                  type: object
+  /v1/delivery/notification-statuses/create/api:
+    post:
+      security:
+      - ApiKey: []
+        AppId: []
+      x-exegesis-controller: DeliveryNotificationStatuses
+      summary: Create a delivery notification status record.
+      operationId: createApi
+      tags:
+      - DeliveryNotificationStatuses
+      responses:
+        '200':
+          description: True or false
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '400':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - deliveryId
+              - event
+              properties:
+                deliveryId:
+                  description: The deliveryId that a new webhook was made for
+                  type: string
+                event:
+                  description: The error for failed webhook calls
+                  type: object
+  /v1/delivery/notification-statuses/update:
+    post:
+      x-exegesis-controller: DeliveryNotificationStatuses
+      summary: Update a delivery notification with an webhook attempt.  Can be either successful or a failure with an error.
+      operationId: updateDeliveryNotificationStatus
+      tags:
+      - DeliveryNotificationStatuses
+      responses:
+        '200':
+          description: True or false
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - deliveryId
+              - responseCode
+              properties:
+                deliveryId:
+                  description: The deliveryId that a new webhook was made for
+                  type: string
+                  format: uuid
+                responseCode:
+                  description: The HTTP response code of the webhook attempt
+                  oneOf:
+                  - type: string
+                  - type: integer
+                error:
+                  description: The error for failed webhook calls
+                  type: string
+  /v1/delivery/notification-statuses/update/api:
+    post:
+      security:
+      - ApiKey: []
+        AppId: []
+      x-exegesis-controller: DeliveryNotificationStatuses
+      summary: Update a delivery notification with an webhook attempt. Can be either successful or a failure with an error. (API)
+      operationId: updateApi
+      tags:
+      - DeliveryNotificationStatuses
+      responses:
+        '200':
+          description: True or false
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '400':
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - deliveryId
+              - responseCode
+              properties:
+                deliveryId:
+                  description: The deliveryId that a new webhook was made for
+                  type: string
+                  format: uuid
+                responseCode:
+                  description: The HTTP response code of the webhook attempt
+                  oneOf:
+                  - type: string
+                  - type: integer
+                error:
+                  description: The error for failed webhook calls
+                  type: string
+  /v1/delivery/notification-statuses/retry-pending:
+    post:
+      x-exegesis-controller: DeliveryNotificationStatuses
+      summary: Retry any pending delivery notification statuses. Called by logic app
+      security:
+      - ApiKey: []
+        AppId: []
+      operationId: retryPendingDeliveryEvents
+      tags:
+      - DeliveryNotificationStatuses
+      responses:
+        '200':
+          description: True or false
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Own Fleet Vehicle API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Own Fleet Vehicle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets multiple Own Fleet Vehicles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/lp-market/:lpMarketId/own-fleet-vehicles",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "lpMarketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets multiple Own Fleet Vehicles"
+        },
+        {
+          "info": {
+            "name": "Gets a single Own Fleet Vehicle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/own-fleet-vehicle/:ownFleetVehicleId",
+            "params": [
+              {
+                "name": "ownFleetVehicleId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a single Own Fleet Vehicle"
+        },
+        {
+          "info": {
+            "name": "Removes a vehicle",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/own-fleet-vehicle/:ownFleetVehicleId",
+            "params": [
+              {
+                "name": "ownFleetVehicleId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Removes a vehicle"
+        },
+        {
+          "info": {
+            "name": "Creates an Own Fleet Vehicle",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/own-fleet-vehicle",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an Own Fleet Vehicle"
+        },
+        {
+          "info": {
+            "name": "Updates an Own Fleet Vehicle",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/own-fleet-vehicle",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an Own Fleet Vehicle"
+        },
+        {
+          "info": {
+            "name": "Gets multiple Own Fleet Vehicles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/freelancer/:userId/own-fleet-vehicles",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets multiple Own Fleet Vehicles"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

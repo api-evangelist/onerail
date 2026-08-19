@@ -1,0 +1,378 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: OneRail Operation Dashboard Own Fleet Vehicle API
+  description: Defines Operations Dashboard APIs
+  license:
+    name: UNLICENSED
+    url: ''
+servers:
+- url: /
+  description: Default relative server URL
+security:
+- bearer: []
+tags:
+- name: Own Fleet Vehicle
+paths:
+  /v1/organization/{organizationId}/lp-market/{lpMarketId}/own-fleet-vehicles:
+    parameters:
+    - name: organizationId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: lpMarketId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: OwnFleetVehicle
+      summary: Gets multiple Own Fleet Vehicles
+      operationId: getOwnFleetVehiclesByMarket
+      tags:
+      - Own Fleet Vehicle
+      responses:
+        '200':
+          description: Own Fleet Vehicle
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1v1~1own-fleet-vehicle~1%7BownFleetVehicleId%7D/get/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/own-fleet-vehicle/{ownFleetVehicleId}:
+    parameters:
+    - name: ownFleetVehicleId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    delete:
+      x-exegesis-controller: OwnFleetVehicle
+      summary: Removes a vehicle
+      operationId: removeOwnFleetVehicle
+      tags:
+      - Own Fleet Vehicle
+      responses:
+        '200':
+          description: Success.
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    get:
+      x-exegesis-controller: OwnFleetVehicle
+      summary: Gets a single Own Fleet Vehicle
+      operationId: getOwnFleetVehicle
+      tags:
+      - Own Fleet Vehicle
+      responses:
+        '200':
+          description: Own Fleet Vehicle
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Own fleet vehicle
+                properties:
+                  id:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  name:
+                    type: string
+                  maxWeightLbs:
+                    type: integer
+                  vin:
+                    type: string
+                  costPerMileCent:
+                    type: integer
+                  lpMarketId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  currentRouteId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  currentRoute:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      userId:
+                        type:
+                        - string
+                        - 'null'
+                        format: uuid
+                      orgSourcedIdentifier:
+                        type:
+                        - string
+                        - 'null'
+                  fleetVehicleId:
+                    type:
+                    - string
+                    - 'null'
+                    format: uuid
+                  fleetVehicleCompartments:
+                    type: array
+                    items:
+                      $ref: '#/paths/~1v1~1own-fleet-vehicle/put/responses/200/content/application~1json/schema/properties/fleetVehicleCompartments/items'
+                  active:
+                    type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/own-fleet-vehicle:
+    post:
+      x-exegesis-controller: OwnFleetVehicle
+      summary: Creates an Own Fleet Vehicle
+      operationId: createOwnFleetVehicle
+      tags:
+      - Own Fleet Vehicle
+      requestBody:
+        required: true
+        description: Own Fleet Vehicle
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Own fleet vehicle
+              required:
+              - name
+              - maxWeightLbs
+              - vin
+              - costPerMileCent
+              - lpMarketId
+              - fleetVehicleCompartments
+              properties:
+                name:
+                  type: string
+                maxWeightLbs:
+                  type: integer
+                vin:
+                  type: string
+                costPerMileCent:
+                  type: integer
+                lpMarketId:
+                  type: string
+                  format: uuid
+                fleetVehicleId:
+                  type: string
+                  format: uuid
+                fleetVehicleCompartments:
+                  type: array
+                  items:
+                    $ref: '#/paths/~1v1~1own-fleet-vehicle/put/requestBody/content/application~1json/schema/properties/fleetVehicleCompartments/items'
+                active:
+                  type: boolean
+      responses:
+        '200':
+          description: Own fleet vehicle created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1own-fleet-vehicle/put/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+    put:
+      x-exegesis-controller: OwnFleetVehicle
+      summary: Updates an Own Fleet Vehicle
+      operationId: updateOwnFleetVehicle
+      tags:
+      - Own Fleet Vehicle
+      requestBody:
+        required: true
+        description: Own Fleet Vehicle
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Own fleet vehicle
+              required:
+              - id
+              - lpMarketId
+              - organizationId
+              - fleetVehicleCompartments
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                lpMarketId:
+                  type: string
+                  format: uuid
+                fleetVehicleId:
+                  type: string
+                  format: uuid
+                organizationId:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                maxWeightLbs:
+                  type: integer
+                vin:
+                  type: string
+                costPerMileCent:
+                  type: integer
+                fleetVehicleCompartments:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      openingWidthIn:
+                        type: integer
+                      openingHeightIn:
+                        type: integer
+                      compartmentLengthIn:
+                        type: integer
+                      compartmentWidthIn:
+                        type: integer
+                      compartmentHeightIn:
+                        type: integer
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Own fleet vehicle
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  maxWeightLbs:
+                    type: integer
+                  vin:
+                    type: string
+                  costPerMileCent:
+                    type: integer
+                  lpMarketId:
+                    type: string
+                    format: uuid
+                  fleetVehicleId:
+                    type: string
+                    format: uuid
+                  fleetVehicleCompartments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type:
+                          - string
+                          - 'null'
+                          format: uuid
+                        openingWidthIn:
+                          type: integer
+                        openingHeightIn:
+                          type: integer
+                        compartmentLengthIn:
+                          type: integer
+                        compartmentWidthIn:
+                          type: integer
+                        compartmentHeightIn:
+                          type: integer
+                        fleetVehicleId:
+                          type:
+                          - string
+                          - 'null'
+                          format: uuid
+                        ownFleetVehicleId:
+                          type: string
+                          format: uuid
+                  active:
+                    type: boolean
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/freelancer/{userId}/own-fleet-vehicles:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      x-exegesis-controller: Freelancer
+      summary: Gets multiple Own Fleet Vehicles
+      operationId: getOwnFleetVehicles
+      tags:
+      - Own Fleet Vehicle
+      responses:
+        '200':
+          description: Own Fleet Vehicle
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1v1~1own-fleet-vehicle~1%7BownFleetVehicleId%7D/get/responses/200/content/application~1json/schema'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+      description: 'Shared secret key used for machine-to-machine integrations. Must be sent
+
+        together with `X-ONERAIL-APP-ID` and is validated against the stored ApiAuth
+
+        record for that application.
+
+        '
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+      description: 'Application identifier (UUID) that pairs with `X-ONERAIL-API-KEY` for
+
+        machine-to-machine integrations. Both headers are required for ApiKey-based
+
+        authentication.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}

@@ -1,0 +1,345 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Carrier API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Carrier",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get carrier's deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/carrier/:carrierId/deliveries",
+            "params": [
+              {
+                "name": "carrierId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { state: DeliveryState[], search: string, searchOrderId: string, searchShipmentId: string }"
+              }
+            ]
+          },
+          "docs": "Get carrier's deliveries"
+        },
+        {
+          "info": {
+            "name": "Resend to push-api /failed - moving delivery to CANCELED_BY_LP state",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/carrier/:carrierId/delivery/:deliveryId/failed",
+            "params": [
+              {
+                "name": "carrierId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resend to push-api /failed - moving delivery to CANCELED_BY_LP state"
+        },
+        {
+          "info": {
+            "name": "Create new route for delivery and assign driver with vehicle (OneRail)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/carrier/:carrierId/delivery/:deliveryId/route",
+            "params": [
+              {
+                "name": "carrierId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new route for delivery and assign driver with vehicle (OneRail)"
+        },
+        {
+          "info": {
+            "name": "Assign driver to exists carrier route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/carrier/:carrierId/route/:routeId/assign",
+            "params": [
+              {
+                "name": "carrierId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Assign driver to exists carrier route"
+        },
+        {
+          "info": {
+            "name": "Get a delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/carrier/:carrierId/delivery/select/:deliveryId",
+            "params": [
+              {
+                "name": "carrierId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "attributes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a delivery"
+        },
+        {
+          "info": {
+            "name": "Get the delivery's deliveryFiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/carrier/:carrierId/delivery/:deliveryId/deliveryfiles",
+            "params": [
+              {
+                "name": "carrierId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path",
+                "description": "delivery id"
+              },
+              {
+                "name": "fileType",
+                "value": "",
+                "type": "query",
+                "description": "file type string"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the delivery's deliveryFiles"
+        },
+        {
+          "info": {
+            "name": "Get a delivery's attempts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/carrier/:carrierId/delivery/:deliveryId/delivery-attempts",
+            "params": [
+              {
+                "name": "carrierId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a delivery's attempts"
+        },
+        {
+          "info": {
+            "name": "Get all POP or POD images for delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/carrier/:carrierId/delivery/:deliveryId/images-download",
+            "params": [
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path",
+                "description": "Delivery id"
+              },
+              {
+                "name": "carrierId",
+                "value": "",
+                "type": "path",
+                "description": "Carrier id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get all POP or POD images for delivery"
+        },
+        {
+          "info": {
+            "name": "Get organization's Products in service mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/carrier/:carrierId/products",
+            "params": [
+              {
+                "name": "carrierId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "query",
+                "description": "Delivery that is using in service mode."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { search: string }"
+              }
+            ]
+          },
+          "docs": "Get organization's Products in service mode"
+        },
+        {
+          "info": {
+            "name": "Partial update order from API call with one or more deliveries",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/v1/carrier/:carrierId/delivery/:deliveryId/partial-update-api",
+            "params": [
+              {
+                "name": "carrierId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Partial update order from API call with one or more deliveries"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

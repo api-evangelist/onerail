@@ -1,0 +1,237 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Authentication API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Post assert SAML data to OneRail then generate Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/login/ord-sso-assert-and-login/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post assert SAML data to OneRail then generate Access Token"
+        },
+        {
+          "info": {
+            "name": "Login User.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Login User."
+        },
+        {
+          "info": {
+            "name": "Login User with a single sign on token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/login/sso-token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Login User with a single sign on token."
+        },
+        {
+          "info": {
+            "name": "Verify a FedEx SSO merchant email address.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/verify-email",
+            "params": [
+              {
+                "name": "verificationToken",
+                "value": "",
+                "type": "query",
+                "description": "JWT verification token from the email verification link."
+              }
+            ]
+          },
+          "docs": "Verify a FedEx SSO merchant email address."
+        },
+        {
+          "info": {
+            "name": "Refresh JWT token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/refresh-token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refreshes JWT token"
+        },
+        {
+          "info": {
+            "name": "Reset user password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/reset-password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Kicks off user's password reset process and sends an email"
+        },
+        {
+          "info": {
+            "name": "Check validity of reset token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/reset-token-valid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check validity of reset token"
+        },
+        {
+          "info": {
+            "name": "Updates user's password.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/update-password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates user's password."
+        },
+        {
+          "info": {
+            "name": "Check user if part of single sign on org.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/check-sso",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check user if part of single sign on org."
+        },
+        {
+          "info": {
+            "name": "Check user and returns Zendesk KH Auth token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/zendesk-sso"
+          },
+          "docs": "Check user and returns Zendesk KH Auth token"
+        },
+        {
+          "info": {
+            "name": "Get list of related organizations that share an ssoEmailSuffix.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/sso-multi-organizations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get list of related organizations that share an ssoEmailSuffix."
+        },
+        {
+          "info": {
+            "name": "Post assert SAML data to OneRail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/assert/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization id for SAML ACS. For FedEx **customer (child org)** SSO, this is the same value as the integration doc’s `userCheck` segment (child org id in OneRail). FedEx IdP has no org concept; OneRail still routes the POST using the child org id encoded in this path.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post assert SAML data to OneRail"
+        },
+        {
+          "info": {
+            "name": "Get organization saml metadata.xml",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/saml/:organizationId/metadata.xml",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get organization saml metadata.xml"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

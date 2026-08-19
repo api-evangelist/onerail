@@ -1,0 +1,478 @@
+{
+  "item": [
+    {
+      "id": "6222a5df-6ed8-49dc-8a05-07871db9331e",
+      "name": "Freight Audit & Pay",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ae49122-6a3c-4e82-b204-9c8c1e62ff01",
+          "name": "Get organization summaries for Freight Audit & Pay",
+          "request": {
+            "name": "Get organization summaries for Freight Audit & Pay",
+            "description": {
+              "content": "Returns lightweight organization summary records for the requested organization IDs.\nResults are constrained by the caller's organization access. Unauthorized and missing\norganization IDs are silently omitted from the response.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "freight-audit-pay",
+                "organizations",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organizationIds\": [\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7ad6ef5-7c20-45ab-9a7c-a20cf30d755b",
+              "name": "Freight Audit & Pay organization summary records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "freight-audit-pay",
+                    "organizations",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationIds\": [\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"ebf9664b-7636-83f1-fd79-43d1233ebd42\",\n    \"name\": \"string\",\n    \"active\": true,\n    \"logoImageURL\": null,\n    \"dot\": \"string\",\n    \"ach\": null,\n    \"federalTaxId\": \"string\"\n  },\n  {\n    \"id\": \"ff95d5ab-c2f4-f114-4796-70f677d918b5\",\n    \"name\": \"string\",\n    \"active\": false,\n    \"logoImageURL\": \"string\",\n    \"dot\": \"string\",\n    \"ach\": \"string\",\n    \"federalTaxId\": null\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "204f2088-337f-4bbd-88ed-d052af8c53fa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "freight-audit-pay",
+                    "organizations",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationIds\": [\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f623ec6-c132-41f5-9f19-cee626d187bf",
+          "name": "Get delivery attempts for a specific organization",
+          "request": {
+            "name": "Get delivery attempts for a specific organization",
+            "description": {
+              "content": "Returns delivery attempts for a specific organization, scoped by the viewType parameter:\nshipper billing (the organization is the shipper) or LSP payment (the organization is the\nlogistics provider). Costs are filtered to the requested view type.\n\nAs of ITO_DEV-785 eligibility filters (billing period, shipperBillable/lpPayable flags,\nrequired FAP fields) no longer apply so the FAP UI can search any attempts the user wants to\nattach. The FAP API batch-attach owns final eligibility decisions.\n**At least one filter is required**: search parameter or deliveryAttemptIds. This prevents full table scans.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "freight-audit-pay",
+                "organizations",
+                ":organizationId",
+                "delivery-attempts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "viewType",
+                  "value": "<string>",
+                  "description": "(Required) Determines how the organization is interpreted and which costs are returned.\n- shipper: the organization is the shipper being billed; costs are filtered to shipper costs and shipper location RBAC applies.\n- lsp: the organization is the logistics provider being paid; costs are filtered to LSP costs.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "(Required) Number of items to skip before returning the results"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "(Required) Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Field to sort by (case-insensitive).\n\nAllowed values:\n- DeliveryDate (terminal state date; maps to endStateAt)\n- OrderId\n- DeliveryId\n- AttemptId\n- RouteId\n- ShipperOrganizationName\n- AssignedDriverName\n- DeliveryState\n- UpdatedAt\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "DESC",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search term to filter delivery attempts by delivery attempt ID or order ID (substring match on both fields)"
+                },
+                {
+                  "disabled": false,
+                  "key": "deliveryAttemptIds",
+                  "value": "<uuid>",
+                  "description": "Specific delivery attempt IDs to retrieve (exact match, takes precedence over search).\nSupplied as repeated query keys, e.g. `?deliveryAttemptIds=<id1>&deliveryAttemptIds=<id2>`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "deliveryAttemptIds",
+                  "value": "<uuid>",
+                  "description": "Specific delivery attempt IDs to retrieve (exact match, takes precedence over search).\nSupplied as repeated query keys, e.g. `?deliveryAttemptIds=<id1>&deliveryAttemptIds=<id2>`.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) Organization ID to filter delivery attempts"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7a7cb650-0621-4de4-9e77-8bbb736d6eee",
+              "name": "Delivery attempts for the requested view type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "freight-audit-pay",
+                    "organizations",
+                    ":organizationId",
+                    "delivery-attempts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "viewType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "ORD-123"
+                    },
+                    {
+                      "key": "deliveryAttemptIds",
+                      "value": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    {
+                      "key": "deliveryAttemptIds",
+                      "value": "123e4567-e89b-12d3-a456-426614174001"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) Organization ID to filter delivery attempts"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"deliveryId\": null,\n      \"orderId\": \"string\",\n      \"orderUuid\": \"832a4d09-7471-0192-e791-1edc5df9a0e4\",\n      \"routeId\": \"string\",\n      \"routeUuid\": \"6c4a3cc8-c776-1f9d-9e13-97620bf9c1ae\",\n      \"pickupWindow\": {\n        \"start\": \"1960-06-05T00:45:10.628Z\",\n        \"end\": null\n      },\n      \"deliveryDeadline\": null,\n      \"pickupLocation\": {\n        \"id\": \"d8d81683-91ef-4911-cecc-1f45df6cfc4b\",\n        \"address\": null,\n        \"name\": null,\n        \"contactName\": \"string\",\n        \"phoneNumber\": null,\n        \"location\": {\n          \"longitude\": 3909.3963707370303,\n          \"latitude\": null\n        }\n      },\n      \"dropoffLocation\": {\n        \"id\": \"ca7e16ea-ecd4-8025-066b-718d0907619f\",\n        \"address\": {},\n        \"name\": null,\n        \"contactName\": \"string\",\n        \"phoneNumber\": null,\n        \"timezone\": null,\n        \"location\": {\n          \"longitude\": null,\n          \"latitude\": null\n        }\n      },\n      \"totalItems\": 2514,\n      \"totalWeight\": 5230.443261582622,\n      \"totalVolume\": 6411.384375502644,\n      \"deliveryAttemptId\": \"d43c029e-7f77-41b5-d790-6c6daf94d55f\",\n      \"attemptNumber\": 7707,\n      \"state\": \"string\",\n      \"endStateAt\": null,\n      \"arrivedForPickupAt\": \"2018-05-19T13:42:08.246Z\",\n      \"driverName\": \"string\",\n      \"createdAt\": \"1952-12-20T11:01:56.758Z\",\n      \"updatedAt\": \"1986-12-16T21:58:05.754Z\",\n      \"costs\": [\n        {\n          \"id\": \"19ad2d0e-9d1b-af2e-78cc-97c8eb08e275\",\n          \"deliveryAttemptId\": \"8f3032fd-33c9-609b-6154-2985a01a97fe\",\n          \"reason\": \"ACCESSORIAL\",\n          \"costCent\": 4485,\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"costDetails\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"string\",\n              \"quantity\": 8424,\n              \"costCent\": 6528\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"string\",\n              \"quantity\": 3049,\n              \"costCent\": 6276\n            }\n          ],\n          \"costAdjustmentReasonId\": null\n        },\n        {\n          \"id\": \"562be629-32b2-3f5f-0fbe-aac004405566\",\n          \"deliveryAttemptId\": \"9194ff0c-c46e-5f7f-a782-079ead131667\",\n          \"reason\": \"DELIVERY_PENALTIES\",\n          \"costCent\": 3396,\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"costDetails\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"string\",\n              \"quantity\": 5783,\n              \"costCent\": 7683\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"string\",\n              \"quantity\": 6392,\n              \"costCent\": 4501\n            }\n          ],\n          \"costAdjustmentReasonId\": \"941abfe8-44ce-4fc5-6869-20976e60f92d\"\n        }\n      ],\n      \"serviceLevel\": {\n        \"agreementId\": \"ac964754-7d60-dd79-1a3b-25669418e36d\"\n      },\n      \"vehicle\": null,\n      \"routeDistance\": null,\n      \"shipperOrganizationId\": null,\n      \"shipperOrganizationName\": \"string\",\n      \"lspOrganizationId\": \"a0879560-f9b3-9a17-1710-badb8cb682d8\",\n      \"lspOrganizationName\": \"string\",\n      \"lpContractSlaId\": \"8e27e112-6ffb-9842-878d-e44474ec37aa\",\n      \"shipperContractId\": null,\n      \"shipperContractSlaId\": null,\n      \"shipperContractSlaName\": \"string\",\n      \"serviceLevelName\": null,\n      \"shipperRateCardVersionId\": \"ef1132a4-7282-fe93-deb7-e49788233d11\",\n      \"shipperRateCardName\": null,\n      \"lpRateCardVersionId\": null,\n      \"lpRateCardName\": null\n    },\n    {\n      \"deliveryId\": null,\n      \"orderId\": \"string\",\n      \"orderUuid\": \"b6dfea1a-94dc-e5f7-c8d4-1292badf0907\",\n      \"routeId\": null,\n      \"routeUuid\": null,\n      \"pickupWindow\": {\n        \"start\": \"1992-06-30T19:33:54.845Z\",\n        \"end\": \"2010-02-16T15:13:24.735Z\"\n      },\n      \"deliveryDeadline\": \"2000-09-27T07:11:11.522Z\",\n      \"pickupLocation\": {\n        \"id\": \"942a2feb-7ecf-80f4-7065-30aed7e71b2d\",\n        \"address\": null,\n        \"name\": \"string\",\n        \"contactName\": \"string\",\n        \"phoneNumber\": null,\n        \"location\": {\n          \"longitude\": 8200.663851344247,\n          \"latitude\": null\n        }\n      },\n      \"dropoffLocation\": {\n        \"id\": null,\n        \"address\": {},\n        \"name\": \"string\",\n        \"contactName\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"timezone\": null,\n        \"location\": {\n          \"longitude\": null,\n          \"latitude\": 2173.1993362285984\n        }\n      },\n      \"totalItems\": 8749,\n      \"totalWeight\": 9843.644705959196,\n      \"totalVolume\": 7911.678517135001,\n      \"deliveryAttemptId\": \"600b94a8-d810-df93-1e8c-d6122d9834d7\",\n      \"attemptNumber\": 8410,\n      \"state\": \"string\",\n      \"endStateAt\": null,\n      \"arrivedForPickupAt\": null,\n      \"driverName\": \"string\",\n      \"createdAt\": \"1964-09-05T15:00:29.036Z\",\n      \"updatedAt\": \"1981-11-08T03:12:19.935Z\",\n      \"costs\": [\n        {\n          \"id\": \"ca72eaf9-7428-1eee-6787-1ba55e65e284\",\n          \"deliveryAttemptId\": \"3842020a-040d-9f61-b209-37fa7434cfe7\",\n          \"reason\": \"BASE\",\n          \"costCent\": 5398,\n          \"name\": null,\n          \"type\": \"string\",\n          \"costDetails\": null,\n          \"costAdjustmentReasonId\": \"d479a5a5-760b-3b92-ac04-299ae81db0c1\"\n        },\n        {\n          \"id\": \"c0a1f25e-8d7e-6617-bf08-b629a516d4f6\",\n          \"deliveryAttemptId\": \"7a60131b-5591-4fd6-ae53-e873e9977072\",\n          \"reason\": \"BASE\",\n          \"costCent\": 7868,\n          \"name\": null,\n          \"type\": \"string\",\n          \"costDetails\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"string\",\n              \"quantity\": 3667,\n              \"costCent\": 2671\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"string\",\n              \"quantity\": 1694,\n              \"costCent\": 5130\n            }\n          ],\n          \"costAdjustmentReasonId\": \"ddf9a950-47d0-abc8-e36a-c3cec6513602\"\n        }\n      ],\n      \"serviceLevel\": {\n        \"agreementId\": null\n      },\n      \"vehicle\": null,\n      \"routeDistance\": null,\n      \"shipperOrganizationId\": null,\n      \"shipperOrganizationName\": null,\n      \"lspOrganizationId\": \"08979b53-9b5b-3e7f-d250-5e36d033ad15\",\n      \"lspOrganizationName\": null,\n      \"lpContractSlaId\": null,\n      \"shipperContractId\": null,\n      \"shipperContractSlaId\": null,\n      \"shipperContractSlaName\": null,\n      \"serviceLevelName\": null,\n      \"shipperRateCardVersionId\": null,\n      \"shipperRateCardName\": \"string\",\n      \"lpRateCardVersionId\": \"ce449942-cafa-951e-bea3-ba8e3ce91129\",\n      \"lpRateCardName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb09ecad-5985-4a87-b5c7-cd34d7cf0375",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "freight-audit-pay",
+                    "organizations",
+                    ":organizationId",
+                    "delivery-attempts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "viewType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "DESC"
+                    },
+                    {
+                      "key": "search",
+                      "value": "ORD-123"
+                    },
+                    {
+                      "key": "deliveryAttemptIds",
+                      "value": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    {
+                      "key": "deliveryAttemptIds",
+                      "value": "123e4567-e89b-12d3-a456-426614174001"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) Organization ID to filter delivery attempts"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4d330ee3-0beb-43b9-bd19-0d61b5f2dbed",
+    "name": "OneRail Operation Dashboard Freight Audit & Pay API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Defines Operations Dashboard APIs",
+      "type": "text/plain"
+    }
+  }
+}

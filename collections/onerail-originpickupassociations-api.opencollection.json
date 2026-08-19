@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Origin Pickup Associations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OriginPickupAssociations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all origin pickup associations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/:organizationId/origin-pickup-associations",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              }
+            ]
+          },
+          "docs": "Get all origin pickup associations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Fleet Assets API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fleet Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Global list of fleet assets that can be required to complete a contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/fleet-assets"
+          },
+          "docs": "Global list of fleet assets that can be required to complete a contract"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

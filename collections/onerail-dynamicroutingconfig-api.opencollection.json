@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Dynamic Routing Config API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DynamicRoutingConfig",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization's Dynamic Routing Configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/dynamic-routing-configs",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organizationId"
+              }
+            ]
+          },
+          "docs": "Get organization's Dynamic Routing Configs"
+        },
+        {
+          "info": {
+            "name": "Update Dynamic Routing Configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/dynamic-routing-configs",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "organizationId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Dynamic Routing Configurations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

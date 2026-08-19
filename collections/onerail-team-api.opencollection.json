@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Team API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Team",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization's teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/teams",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip before returning the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON string { lpMarketIds: string[], userIds: string[] }"
+              }
+            ]
+          },
+          "docs": "Get organization's teams"
+        },
+        {
+          "info": {
+            "name": "Creates a new Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organization/:organizationId/teams",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Team"
+        },
+        {
+          "info": {
+            "name": "Get team by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/organization/:organizationId/teams/:teamId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get team by id"
+        },
+        {
+          "info": {
+            "name": "Updates Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/organization/:organizationId/teams/:teamId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates Team"
+        },
+        {
+          "info": {
+            "name": "Remove team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/organization/:organizationId/teams/:teamId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove team"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

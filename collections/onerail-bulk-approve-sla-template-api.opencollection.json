@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Bulk Approve SLA Template API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bulk Approve SLA Template",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bulk approve an SLA Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/shipper-contract-sla-template/bulk-approve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk approve an SLA Template"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,743 @@
+openapi: 3.2.0
+info:
+  title: Onerail Visibility API
+  version: '1.0'
+  description: 'Operations tagged Visibility across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: /
+  description: Default relative server URL
+tags:
+- name: Visibility
+paths:
+  /visibility/create:
+    x-exegesis-controller: Visibility
+    post:
+      operationId: createVisibility
+      tags:
+      - Visibility
+      summary: Use the visibility endpoint
+      security:
+      - ApiKey: []
+      - OAuth: []
+      - AppId: []
+      requestBody:
+        description: Visibility request body
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Visibility
+              required:
+              - orderData
+              - deliveries
+              properties:
+                orderData:
+                  type: object
+                  description: Order Data
+                  required:
+                  - orderId
+                  properties:
+                    id:
+                      type: string
+                    orderId:
+                      type: string
+                      description: Order ID
+                      example: '123'
+                deliveries:
+                  type: array
+                  items:
+                    type: object
+                    description: Delivery Information
+                    required:
+                    - deliveryType
+                    properties:
+                      deliveryType:
+                        type: string
+                        enum:
+                        - BUSINESS
+                        default: BUSINESS
+                        example: BUSINESS
+                      pickUpData:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the location
+                            example: Example Location
+                          storeNumber:
+                            type: string
+                            description: The location number
+                            example: '12345'
+                          address1:
+                            type: string
+                            description: The first line of the location address
+                            example: 123 Main St
+                          address2:
+                            type: string
+                            description: The second line of the location address
+                            example: Suite 100
+                          city:
+                            type: string
+                            description: The city where the location is situated
+                            example: Exampleville
+                          state:
+                            type: string
+                            description: The state where the location is situated
+                            example: Examplestate
+                          country:
+                            type: string
+                            description: The country where the location is situated
+                            example: Examplecountry
+                          zip:
+                            type: string
+                            description: The ZIP or postal code of the location
+                            example: '12345'
+                          contactName:
+                            type: string
+                            description: The name of the location contact person
+                            example: John Doe
+                          contactPhone:
+                            type: string
+                            description: The phone number of the location contact person
+                            example: 555-123-4567
+                          contactEmailAddress:
+                            type: string
+                            description: The email address of the location contact person
+                            example: johndoe@example.com
+                          physicalLocation:
+                            type: object
+                            properties:
+                              altLocation:
+                                type: object
+                                properties:
+                                  latitude:
+                                    type: string
+                                    description: The latitude of the alternate location
+                                    example: '37.7749'
+                                  longitude:
+                                    type: string
+                                    description: The longitude of the alternate location
+                                    example: '-122.4194'
+                          dueDate:
+                            type: string
+                            description: Delivery due date
+                          windows:
+                            type: object
+                            description: Delivery window consisting of both opensOn and closesOn dates
+                            required:
+                            - opensOn
+                            - closesOn
+                            properties:
+                              opensOn:
+                                type: string
+                                description: datetime in ISO format
+                              closesOn:
+                                type: string
+                                description: datetime in ISO format
+                      dropOffData:
+                        $ref: '#/paths/~1visibility~1create/post/requestBody/content/application~1json/schema/properties/deliveries/items/properties/pickUpData'
+                      containers:
+                        type: array
+                        items:
+                          type: object
+                          description: Container Information
+                          properties:
+                            name:
+                              type: string
+                              description: The name of the container
+                              example: Container 1
+                            trackingInfo:
+                              type: object
+                              description: Tracking information of the container
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - LPN
+                                  description: The type of tracking code
+                                  example: LPN
+                                value:
+                                  type: string
+                                  description: The tracking code value
+                                  example: '123'
+                            totalWeight:
+                              type: number
+                              description: The total weight of the container
+                              example: 100.5
+                            shipperContainerId:
+                              type: string
+                              description: The identifier of the container provided by the shipper
+                              example: SHIP123
+                            shipperExtraData:
+                              type: object
+                              description: Additional information provided by the shipper
+                              default: {}
+                              example: {}
+                            containers:
+                              type: array
+                              items:
+                                $ref: '#/paths/~1visibility~1create/post/requestBody/content/application~1json/schema/properties/deliveries/items/properties/containers/items'
+                              description: Nested containers within the current container
+                            items:
+                              type: array
+                              items:
+                                $ref: '#/paths/~1visibility~1create/post/requestBody/content/application~1json/schema/properties/deliveries/items/properties/items/items'
+                              description: Items within the current container
+                            nmfc:
+                              type: string
+                              description: NMFC (National Motor Freight Classification) code of the container
+                              example: 82790-11
+                            freightClass:
+                              type: string
+                              description: Freight class of the container
+                              example: '50'
+                            trackingNumber:
+                              type: string
+                              description: Container tracking number
+                              example: ABC123
+                            length:
+                              type: number
+                              description: Dimension of container
+                              example: 4
+                            width:
+                              type: number
+                              description: Dimension of container
+                              example: 4
+                            height:
+                              type: number
+                              description: Dimension of container
+                              example: 4
+                            containerType:
+                              type: string
+                              description: Container type
+                              example: BOX
+                              enum:
+                              - BOX
+                              - BAG
+                              - BALE
+                              - BUCKET
+                              - BUNDLE
+                              - CAN
+                              - CARTON
+                              - CASE
+                              - COIL
+                              - CRATE
+                              - CYLINDER
+                              - DRUM
+                              - PAIL
+                              - PLT
+                              - PIECES
+                              - REEL
+                              - ROLL
+                              - SKID
+                              - TOTE
+                              - TUBE
+                              - MAGAZINE
+                              - POUND
+                              - PIECE
+                              - PACKAGE
+                              - TL
+                              - FTL
+                              - GAYLORD
+                            doNotRotate:
+                              type: boolean
+                              default: false
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          description: Information about an item
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                              description: The UUID of the item
+                              example: 4a3b2c1d-1234-5678-9abc-def012345678
+                            description:
+                              type: string
+                              description: The description of the item
+                              example: Item 1
+                            length:
+                              type: number
+                              description: The length of the item
+                              example: 10.2
+                            width:
+                              type: number
+                              description: The width of the item
+                              example: 5.7
+                            height:
+                              type: number
+                              description: The height of the item
+                              example: 3.8
+                            weight:
+                              type: number
+                              description: The weight of the item
+                              example: 2.5
+                            quantity:
+                              type: number
+                              description: The quantity of the item
+                              example: 3
+                            identifier:
+                              type: string
+                              description: The identifier of the item
+                              example: ABC123
+                            complexities:
+                              type: string
+                              description: The complexities associated with the item
+                              example: Complexity 1
+                            priceCent:
+                              type: number
+                              description: The price of the item in cents
+                              example: 500
+                            doNotRotate:
+                              type: boolean
+                              default: false
+                      carrierCode:
+                        type: string
+                        description: Carrier code
+                        example: ABC123
+                      lpDeliveryId:
+                        type: string
+                        description: The LP Delivery ID
+                        example: mockLpDeliveryId12345
+                      shipperExtraData:
+                        type: object
+                        description: JSON blob that the customer can use to store additional info they may need
+                        example: {}
+                      shipmentId:
+                        type: string
+                        description: String identifier value that represents the shipment
+                        example: ABC123
+                numericSystem:
+                  type: string
+                  description: Numerical system
+                  default: IMPERIAL
+                  enum:
+                  - IMPERIAL
+                  - METRIC
+      responses:
+        '200':
+          description: Create visibility response
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Response
+        '422':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /visibility/{orderId}/add-deliveries:
+    x-exegesis-controller: Visibility
+    post:
+      operationId: addVisibility
+      tags:
+      - Visibility
+      summary: Add visibility deliveries to order
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      security:
+      - ApiKey: []
+      - OAuth: []
+      - AppId: []
+      requestBody:
+        description: Visibility request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1visibility~1create/post/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: Add visibility response
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1visibility~1create/post/responses/200/content/application~1json/schema'
+        '422':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/visibility/create:
+    servers:
+    - url: /
+      description: Default relative server URL
+    post:
+      x-exegesis-controller: Visibility
+      summary: Creates a visibility from API call
+      security:
+      - ApiKey: []
+      - AppId: []
+      - OAuth: []
+      operationId: createVisibilityOrderFromApi
+      tags:
+      - Visibility
+      requestBody:
+        description: Visibility request body
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Visibility
+              required:
+              - orderData
+              - deliveries
+              properties:
+                orderData:
+                  type: object
+                  description: Order Data
+                  required:
+                  - orderId
+                  properties:
+                    orderId:
+                      type: string
+                      description: Order ID
+                      example: '123'
+                deliveries:
+                  type: array
+                  items:
+                    type: object
+                    description: Delivery Information
+                    required:
+                    - deliveryType
+                    properties:
+                      deliveryType:
+                        type: string
+                        enum:
+                        - BUSINESS
+                        default: BUSINESS
+                        example: BUSINESS
+                      pickUpData:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the location
+                            example: Example Location
+                          storeNumber:
+                            type: string
+                            description: The location number
+                            example: '12345'
+                          address1:
+                            type: string
+                            description: The first line of the location address
+                            example: 123 Main St
+                          address2:
+                            type: string
+                            description: The second line of the location address
+                            example: Suite 100
+                          city:
+                            type: string
+                            description: The city where the location is situated
+                            example: Exampleville
+                          state:
+                            type: string
+                            description: The state where the location is situated
+                            example: Examplestate
+                          country:
+                            type: string
+                            description: The country where the location is situated
+                            example: Examplecountry
+                          zip:
+                            type: string
+                            description: The ZIP or postal code of the location
+                            example: '12345'
+                          contactName:
+                            type: string
+                            description: The name of the location contact person
+                            example: John Doe
+                          contactPhone:
+                            type: string
+                            description: The phone number of the location contact person
+                            example: 555-123-4567
+                          contactEmailAddress:
+                            type: string
+                            description: The email address of the location contact person
+                            example: johndoe@example.com
+                          physicalLocation:
+                            type: object
+                            properties:
+                              altLocation:
+                                type: object
+                                properties:
+                                  latitude:
+                                    type: string
+                                    description: The latitude of the alternate location
+                                    example: '37.7749'
+                                  longitude:
+                                    type: string
+                                    description: The longitude of the alternate location
+                                    example: '-122.4194'
+                      dropOffData:
+                        $ref: '#/paths/~1v1~1visibility~1create/post/requestBody/content/application~1json/schema/properties/deliveries/items/properties/pickUpData'
+                      containers:
+                        type: array
+                        items:
+                          type: object
+                          description: Container Information
+                          properties:
+                            name:
+                              type: string
+                              description: The name of the container
+                              example: Container 1
+                            trackingInfo:
+                              type: object
+                              description: Tracking information of the container
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - LPN
+                                  description: The type of tracking code
+                                  example: LPN
+                                value:
+                                  type: string
+                                  description: The tracking code value
+                                  example: '123'
+                            totalWeight:
+                              type: number
+                              description: The total weight of the container
+                              example: 100.5
+                            shipperContainerId:
+                              type: string
+                              description: The identifier of the container provided by the shipper
+                              example: SHIP123
+                            shipperExtraData:
+                              type: object
+                              description: Additional information provided by the shipper
+                              default: {}
+                              example: {}
+                            containers:
+                              type: array
+                              items:
+                                $ref: '#/paths/~1v1~1visibility~1create/post/requestBody/content/application~1json/schema/properties/deliveries/items/properties/containers/items'
+                              description: Nested containers within the current container
+                            items:
+                              type: array
+                              items:
+                                $ref: '#/paths/~1v1~1visibility~1create/post/requestBody/content/application~1json/schema/properties/deliveries/items/properties/items/items'
+                              description: Items within the current container
+                            nmfc:
+                              type: string
+                              description: NMFC (National Motor Freight Classification) code of the container
+                              example: 82790-11
+                            freightClass:
+                              type: string
+                              description: Freight class of the container
+                              example: '50'
+                            trackingNumber:
+                              type: string
+                              description: Container tracking number
+                              example: ABC123
+                            length:
+                              type: number
+                              description: Dimension of container
+                              example: 4
+                            width:
+                              type: number
+                              description: Dimension of container
+                              example: 4
+                            height:
+                              type: number
+                              description: Dimension of container
+                              example: 4
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          description: Information about an item
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                              description: The UUID of the item
+                              example: 4a3b2c1d-1234-5678-9abc-def012345678
+                            description:
+                              type: string
+                              description: The description of the item
+                              example: Item 1
+                            length:
+                              type: number
+                              description: The length of the item
+                              example: 10.2
+                            width:
+                              type: number
+                              description: The width of the item
+                              example: 5.7
+                            height:
+                              type: number
+                              description: The height of the item
+                              example: 3.8
+                            weight:
+                              type: number
+                              description: The weight of the item
+                              example: 2.5
+                            quantity:
+                              type: number
+                              description: The quantity of the item
+                              example: 3
+                            identifier:
+                              type: string
+                              description: The identifier of the item
+                              example: ABC123
+                            complexities:
+                              type: string
+                              description: The complexities associated with the item
+                              example: Complexity 1
+                            priceCent:
+                              type: number
+                              description: The price of the item in cents
+                              example: 500
+                      lspIdentifier:
+                        type: string
+                        description: FREIGHT, SCAC, VAT, etc.
+                        example: ABC123
+                      carrierCode:
+                        type: string
+                        description: Carrier code
+                        example: ABC123
+                      lpDeliveryId:
+                        type: string
+                        description: The LP Delivery ID
+                        example: mockLpDeliveryId12345
+                      shipmentId:
+                        type: string
+                        description: String identifier value that represents the shipment
+                        example: ABC123
+                numericSystem:
+                  type: string
+                  description: Numerical system
+                  default: IMPERIAL
+                  enum:
+                  - IMPERIAL
+                  - METRIC
+      responses:
+        '200':
+          description: Create visibility response
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Response
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+  /v1/visibility/{orderId}/add-deliveries:
+    parameters:
+    - name: orderId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    servers:
+    - url: /
+      description: Default relative server URL
+    post:
+      x-exegesis-controller: Visibility
+      summary: Creates a visibility from API call
+      security:
+      - ApiKey: []
+      - AppId: []
+      - OAuth: []
+      operationId: addVisibilityDeliveriesToOrder
+      tags:
+      - Visibility
+      requestBody:
+        $ref: '#/paths/~1v1~1visibility~1create/post/requestBody'
+      responses:
+        '200':
+          $ref: '#/paths/~1v1~1visibility~1create/post/responses/200'
+        default:
+          $ref: '#/paths/~1v1~1routes/get/responses/404'
+components:
+  schemas:
+    Error:
+      required:
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        errors:
+          type: object
+        errorDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                description: A human-readable explanation specific to this occurrence of the problem
+              pointer:
+                type: string
+                description: A JSON Pointer [RFC6901] to the associated entity in the request document
+            required:
+            - detail
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY
+    AppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-APP-ID
+    ApiKeyAndAppId:
+      type: apiKey
+      in: header
+      name: X-ONERAIL-API-KEY-AND-APP-ID
+    bearer:
+      type: http
+      scheme: bearer
+      description: 'Standard JWT bearer token used for authenticated OmniPoint users
+
+        and internal service-to-service calls. Clients send `Authorization: Bearer <jwt>`
+
+        and the token is validated using the shared Core access token secret.
+
+        '
+    OAuth:
+      type: oauth2
+      description: 'OAuth 2.0 access token validated by the Operations service (e.g. Okta-backed
+
+        integrations). Clients obtain tokens from their own IdP outside of this API
+
+        and call endpoints with `Authorization: OAuth <access_token>`. The
+
+        `authorizationUrl` and `tokenUrl` values below are placeholders only to
+
+        satisfy the OpenAPI schema; this service does not call them directly and the
+
+        real IdP URLs are configured via environment and introspection logic in code.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://dummy-unused-url.com
+          tokenUrl: https://dummy-unused-url.com
+          scopes: {}
+x-refined-from:
+- onerail-delivery-api-openapi.yml
+- onerail-operations-api-openapi.yml

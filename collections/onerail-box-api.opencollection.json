@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Box API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Box",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/box",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Box"
+        },
+        {
+          "info": {
+            "name": "Create Box via api",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/box/api",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Box via api"
+        },
+        {
+          "info": {
+            "name": "Get Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/box/:boxId",
+            "params": [
+              {
+                "name": "boxId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Box"
+        },
+        {
+          "info": {
+            "name": "Update a Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/box/:boxId",
+            "params": [
+              {
+                "name": "boxId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Box"
+        },
+        {
+          "info": {
+            "name": "Remove box",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/box/:boxId",
+            "params": [
+              {
+                "name": "boxId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove box"
+        },
+        {
+          "info": {
+            "name": "Update a Box via api",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/v1/box/:boxId/api",
+            "params": [
+              {
+                "name": "boxId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a Box via api"
+        },
+        {
+          "info": {
+            "name": "Remove box via api",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/v1/box/:boxId/api",
+            "params": [
+              {
+                "name": "boxId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-ONERAIL-API-KEY",
+              "value": "{{X-ONERAIL-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove box via api"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneRail Operation Dashboard Organizations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of locations of one or different orgs for filtering",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/organizations/locations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get list of locations of one or different orgs for filtering"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
