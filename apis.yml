@@ -39,6 +39,19 @@ specificationVersion: '0.23'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
+- Last Mile Delivery
+- Delivery Orchestration
+- Logistics
+- Supply Chain
+- Route Optimization
+- courier-network
+- Shipping
+- Fleet Management
+- Transportation
+- Order Management
+- Webhook
+- Final Mile
+tags_raw:
 - last-mile-delivery
 - delivery-orchestration
 - logistics
@@ -64,6 +77,13 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
+  - Last Mile Delivery
+  - Delivery Orchestration
+  - Shipping
+  - Route Optimization
+  - Order Management
+  - courier-network
+  tags_raw:
   - last-mile-delivery
   - delivery-orchestration
   - shipping
@@ -300,6 +320,8 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
+  - Control Tower
+  tags_raw:
   - ControlTower
   properties:
   - type: OpenAPI
@@ -643,6 +665,8 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
+  - Health Check
+  tags_raw:
   - HealthCheck
   properties:
   - type: OpenAPI
@@ -677,6 +701,8 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
+  - Homes
+  tags_raw:
   - Home
   properties:
   - type: OpenAPI
@@ -796,6 +822,8 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
+  - Manifests
+  tags_raw:
   - Manifest
   properties:
   - type: OpenAPI
@@ -847,6 +875,8 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
+  - Authentication
+  tags_raw:
   - OAuth2
   properties:
   - type: OpenAPI
@@ -898,6 +928,8 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -967,6 +999,8 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
+  - Power BI
+  tags_raw:
   - PowerBi
   properties:
   - type: OpenAPI
