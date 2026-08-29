@@ -13,6 +13,18 @@ description: >-
   App ID / API Key header pair, and delivery status changes are pushed to shipper-configured webhook endpoints.
   OneRail is embedded in the IBM Sterling Order Management and Fulfillment Suite and in SAP environments, and serves
   wholesale, retail, automotive, pharma, industrial, grocery, furniture, and food and beverage shippers.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: sales-assisted
@@ -1394,6 +1406,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/onerail-capability-edges.yml
+  name: OneRail Business Capability Map
 - type: AgenticAccess
   url: agentic-access/onerail-agentic-access.yml
 - type: Website
