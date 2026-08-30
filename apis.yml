@@ -51,18 +51,18 @@ specificationVersion: '0.23'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
-- Last Mile Delivery
-- Delivery Orchestration
+- last-mile-delivery
+- delivery-orchestration
 - Logistics
 - Supply Chain
-- Route Optimization
+- route-optimization
 - courier-network
 - Shipping
-- Fleet Management
+- fleet-management
 - Transportation
-- Order Management
+- order-management
 - Webhook
-- Final Mile
+- final-mile
 tags_raw:
 - last-mile-delivery
 - delivery-orchestration
@@ -89,11 +89,11 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
-  - Last Mile Delivery
-  - Delivery Orchestration
+  - last-mile-delivery
+  - delivery-orchestration
   - Shipping
-  - Route Optimization
-  - Order Management
+  - route-optimization
+  - order-management
   - courier-network
   tags_raw:
   - last-mile-delivery
@@ -332,7 +332,7 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
-  - Control Tower
+  - ControlTower
   tags_raw:
   - ControlTower
   properties:
@@ -834,7 +834,7 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
-  - Manifests
+  - Manifest
   tags_raw:
   - Manifest
   properties:
@@ -1011,7 +1011,7 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
-  - Power BI
+  - PowerBi
   tags_raw:
   - PowerBi
   properties:
