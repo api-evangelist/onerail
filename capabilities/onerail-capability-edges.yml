@@ -1,0 +1,153 @@
+slug: onerail
+provider: OneRail
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 13
+edges:
+- tag: Delivery
+  spec_file: onerail-delivery-api-openapi.yml
+  capability_id: BC-2420.40
+  capability_id_l1: BC-2420
+  capability_name: Last-Mile Delivery Operations Management
+  confidence: 0.85
+  evidence: POST /delivery/create  Creates a new delivery; POST /delivery/{deliveryId}/reschedule  Reschedule
+    delivery; POST /delivery/{id}/cancel  Cancel a delivery
+  reason: Core surface for creating, rating, rescheduling and cancelling last-mile deliveries for a last-mile
+    delivery orchestration platform — execution of final-leg delivery orders. Some ambiguity vs booking/reservation
+    of capacity, but the vendor context ('last-mile delivery orchestration') points to last-mile delivery
+    operations.
+- tag: Exception Alert
+  spec_file: onerail-exception-alert-api-openapi.yml
+  capability_id: BC-2510.40
+  capability_id_l1: BC-2510
+  capability_name: Exception and Alert Management
+  confidence: 0.85
+  evidence: '"View all exception alerts for a given servicelevel"; "Create Exception Alert"; "Apply exception
+    alert to delivery"'
+  reason: Operations define and apply exception alerts against service levels and individual deliveries
+    — operational exception detection and stakeholder alerting on shipments, matching Exception and Alert
+    Management rather than IT monitoring.
+- tag: Freight Audit & Pay
+  spec_file: onerail-freight-audit-pay-api-openapi.yml
+  capability_id: BC-2530.20
+  capability_id_l1: BC-2530
+  capability_name: Freight Audit and Payment Management
+  confidence: 0.85
+  evidence: POST /v1/freight-audit-pay/organizations/summary "Get organization summaries for Freight Audit
+    & Pay"; "Get delivery attempts for a specific organization"
+  reason: Explicit freight audit and pay surface aggregating organization summaries and billable delivery
+    attempts, i.e. audit of carrier charges and payment — Freight Audit and Payment Management.
+- tag: Order
+  spec_file: onerail-order-api-openapi.yml
+  capability_id: BC-2420.40
+  capability_id_l1: BC-2420
+  capability_name: Last-Mile Delivery Operations Management
+  confidence: 0.8
+  evidence: createV2  Create an order with deliveries and returns; POST /v1/order/optimize/{organizationId}  optimize  Optimize
+    system orders; GET /v1/order/control-tower
+  reason: Operations create and amend delivery orders, add return deliveries, optimise multi-stop routes
+    and expose driver locations for a last-mile orchestration platform — final-leg delivery execution
+    and routing. Some spillover into control-tower visibility keeps this below 0.9.
+- tag: Delivery Attempt
+  spec_file: onerail-delivery-attempt-api-openapi.yml
+  capability_id: BC-2420.40
+  capability_id_l1: BC-2420
+  capability_name: Last-Mile Delivery Operations Management
+  confidence: 0.78
+  evidence: POST /v1/delivery/{deliveryId}/attempt  Creates an attempt for the delivery; POST /v1/delivery-attempt/{deliveryAttemptId}/delivery-state-change
+  reason: Delivery attempts and their state changes are last-mile execution artefacts (attempted delivery,
+    re-attempt, final-leg status), fitting last-mile delivery operations for this delivery-orchestration
+    vendor.
+- tag: Route
+  spec_file: onerail-route-api-openapi.yml
+  capability_id: BC-2420.40
+  capability_id_l1: BC-2420
+  capability_name: Last-Mile Delivery Operations Management
+  confidence: 0.78
+  evidence: POST /v1/routes createRoutes 'Create new orders within one or more routes'; GET /v1/route/{routeId}/rates-with-drivers
+    'Get external rates with available drivers for route'; POST /v1/route/{routeId}/revoke 'Removes all
+    deliveries and fleet vehicles from route'
+  reason: Operations build, price with available drivers, update and revoke delivery routes with their
+    deliveries and fleet vehicles — last-mile delivery routing and execution for this courier-orchestration
+    vendor.
+- tag: Own Fleet Vehicle
+  spec_file: onerail-own-fleet-vehicle-api-openapi.yml
+  capability_id: BC-2430
+  capability_id_l1: BC-2430
+  capability_name: Fleet & Mobile Asset Management
+  confidence: 0.75
+  evidence: POST /v1/own-fleet-vehicle  createOwnFleetVehicle  Creates an Own Fleet Vehicle; getOwnFleetVehiclesByMarket  Gets
+    multiple Own Fleet Vehicles
+  reason: Full CRUD over the shipper's own-fleet vehicle records, queried by market and by freelancer/driver
+    — maintenance of the mobile-asset register. No operation names maintenance, telematics, acquisition
+    or utilisation specifically, so no L2 is asserted.
+- tag: Ratecards Market
+  spec_file: onerail-ratecards-market-api-openapi.yml
+  capability_id: BC-2520.10
+  capability_id_l1: BC-2520
+  capability_name: Tariff and Rate Card Management
+  confidence: 0.72
+  evidence: POST /v1/ratecards/markets createMarket 'Create a new market'; DELETE /v1/ratecards/markets/{marketPublicId}
+  reason: Markets are maintained as structures under 'ratecards', i.e. the geographic dimension of freight
+    rate cards for a delivery-rate-shopping platform, so tariff/rate card definition is the supported
+    capability; only two CRUD ops, hence moderate confidence.
+- tag: User
+  spec_file: onerail-user-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: POST /user/authenticate 'Creates and returns an authentication token'; POST /v1/user/{userId}/roles
+    'Update user roles'; GET /v1/user/{userId}/permissions 'Get All user's permissions across all roles'
+  reason: Account provisioning, authentication token issuance, and role/permission assignment is identity
+    and access management. Confidence tempered because a few operations drift into driver status and last-known
+    location, which belong to fleet monitoring rather than IAM.
+- tag: Carrier
+  spec_file: onerail-carrier-api-openapi.yml
+  capability_id: BC-2420.40
+  capability_id_l1: BC-2420
+  capability_name: Last-Mile Delivery Operations Management
+  confidence: 0.7
+  evidence: POST /v1/carrier/{carrierId}/delivery/{deliveryId}/route  createRoute  Create new route for
+    delivery and assign driver with vehicle; POST .../images-download  Get all POP or POD images for delivery
+  reason: 'Operations execute last-mile delivery: route creation, driver/vehicle assignment, delivery
+    attempts and proof-of-delivery imagery. Sub-capability could arguably be Dispatch Management, hence
+    0.7.'
+- tag: Delivery Exception
+  spec_file: onerail-delivery-exception-api-openapi.yml
+  capability_id: BC-2510.40
+  capability_id_l1: BC-2510
+  capability_name: Exception and Alert Management
+  confidence: 0.7
+  evidence: POST /v1/delivery/{deliveryId}/exception  Creates a delivery exception; GET /v1/delivery-exception-reason-definitions  View
+    delivery exception reason deifinitions
+  reason: Operations capture, update, resolve and classify delivery exceptions with reason codes — operational
+    exception detection and tracking on shipments. Some ambiguity with operational disruption management,
+    so confidence held moderate.
+- tag: PowerBi
+  spec_file: onerail-powerbi-api-openapi.yml
+  capability_id: BC-610.50
+  capability_id_l1: BC-610
+  capability_name: Analytics & BI Management
+  confidence: 0.7
+  evidence: GET /v1/power-bi/embedable-report  getEmbedableReport  Get Embadable report
+  reason: Retrieval of an embeddable Power BI report is BI/analytics delivery to users. Single operation
+    and no schemas, so moderate confidence; it is an integration hook rather than a full analytics platform.
+- tag: Routes
+  spec_file: onerail-routes-api-openapi.yml
+  capability_id: BC-2420.40
+  capability_id_l1: BC-2420
+  capability_name: Last-Mile Delivery Operations Management
+  confidence: 0.7
+  evidence: 'POST /v1/routes createRoutes ''Create new orders within one or more routes.''; schemas: Delivery'
+  reason: Single operation creating delivery orders within routes, with a Delivery schema — last-mile
+    delivery route creation and execution.
