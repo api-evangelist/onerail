@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 13
+edge_count: 21
 edges:
 - tag: Delivery
   spec_file: onerail-delivery-api-openapi.yml
@@ -46,6 +46,17 @@ edges:
     & Pay"; "Get delivery attempts for a specific organization"
   reason: Explicit freight audit and pay surface aggregating organization summaries and billable delivery
     attempts, i.e. audit of carrier charges and payment — Freight Audit and Payment Management.
+- tag: Shipper Contract SLA
+  spec_file: onerail-shipper-contract-sla-api-openapi.yml
+  capability_id: BC-150.10
+  capability_id_l1: BC-150
+  capability_name: Contract Management
+  confidence: 0.85
+  evidence: POST /v1/shipper-contract-sla/{shipperContractSlaId}/shipper-sign  createShipperSignature  Create
+    Shipper signature for an SLA
+  reason: Approval, signature capture (both counterparties), duplication and activation of contractual
+    SLA documents — clearly contract lifecycle from drafting to execution.
+  recovered_from: sweep-20260828T235257Z-edges.json
 - tag: Order
   spec_file: onerail-order-api-openapi.yml
   capability_id: BC-2420.40
@@ -57,6 +68,17 @@ edges:
   reason: Operations create and amend delivery orders, add return deliveries, optimise multi-stop routes
     and expose driver locations for a last-mile orchestration platform — final-leg delivery execution
     and routing. Some spillover into control-tower visibility keeps this below 0.9.
+- tag: Shipper Contract
+  spec_file: onerail-shipper-contract-api-openapi.yml
+  capability_id: BC-150.10
+  capability_id_l1: BC-150
+  capability_name: Contract Management
+  confidence: 0.8
+  evidence: POST /v1/shipper-contract  createShipperContract  Create Shipper Contract  /  POST /v1/shipper-contract/{shipperContractId}/submit-approval  Notify
+    OneRail Approver to approve SLAs for a Shipper Contract
+  reason: Full lifecycle of customer (shipper) contracts and their attached SLAs including creation, update,
+    removal and approval routing — contract lifecycle management.
+  recovered_from: sweep-20260828T235257Z-edges.json
 - tag: Delivery Attempt
   spec_file: onerail-delivery-attempt-api-openapi.yml
   capability_id: BC-2420.40
@@ -79,6 +101,17 @@ edges:
   reason: Operations build, price with available drivers, update and revoke delivery routes with their
     deliveries and fleet vehicles — last-mile delivery routing and execution for this courier-orchestration
     vendor.
+- tag: Shipper Contract SLA Template
+  spec_file: onerail-shipper-contract-sla-template-api-openapi.yml
+  capability_id: BC-150.10
+  capability_id_l1: BC-150
+  capability_name: Contract Management
+  confidence: 0.78
+  evidence: POST /v1/shipper-contract-sla-template/{shipperContractSlaTemplateId}/approve  approveShipperContractSlaTemplate  Approve
+    an SLA Template
+  reason: Templating, approval routing and bulk generation/sending of contractual SLA documents is contract
+    drafting and lifecycle tooling under Contract Management.
+  recovered_from: sweep-20260828T235257Z-edges.json
 - tag: Own Fleet Vehicle
   spec_file: onerail-own-fleet-vehicle-api-openapi.yml
   capability_id: BC-2430
@@ -100,6 +133,16 @@ edges:
   reason: Markets are maintained as structures under 'ratecards', i.e. the geographic dimension of freight
     rate cards for a delivery-rate-shopping platform, so tariff/rate card definition is the supported
     capability; only two CRUD ops, hence moderate confidence.
+- tag: Shipping Label
+  spec_file: onerail-shipping-label-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.72
+  evidence: GET /shipping-label/{id}  labelInfo  Returns labels for all containers of the delivery
+  reason: Generates and retrieves shipping labels for the containers of a delivery — an execution artefact
+    of outbound transport/parcel handling, i.e. Logistics Operations Management.
+  recovered_from: vertical-automotive-mobility-edges.json
 - tag: User
   spec_file: onerail-user-api-openapi.yml
   capability_id: BC-620.20
@@ -122,6 +165,17 @@ edges:
   reason: 'Operations execute last-mile delivery: route creation, driver/vehicle assignment, delivery
     attempts and proof-of-delivery imagery. Sub-capability could arguably be Dispatch Management, hence
     0.7.'
+- tag: ControlTower
+  spec_file: onerail-controltower-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.7
+  evidence: POST /v1/bulk-rejection  bulkRejection  Reject routes and deliveries; POST /v1/bulk-cancelation  bulkCancelation  Deletes
+    routes and deliveries
+  reason: Bulk operational control over routes and deliveries — exception handling in transport execution,
+    consistent with logistics operations management rather than any IT or SaaS capability.
+  recovered_from: sweep-20260828T235257Z-edges.json
 - tag: Delivery Exception
   spec_file: onerail-delivery-exception-api-openapi.yml
   capability_id: BC-2510.40
@@ -133,6 +187,30 @@ edges:
   reason: Operations capture, update, resolve and classify delivery exceptions with reason codes — operational
     exception detection and tracking on shipments. Some ambiguity with operational disruption management,
     so confidence held moderate.
+- tag: LP Contract SLA
+  spec_file: onerail-lp-contract-sla-api-openapi.yml
+  capability_id: BC-500.20
+  capability_id_l1: BC-500
+  capability_name: Procurement Contract Management
+  confidence: 0.7
+  evidence: POST /v1/lp-contract-sla/{lpContractSlaId}/submit-approval "Notify OneRail Approver to approve
+    LP Contract SLAs"; POST .../lp-sign "LP Signature for LP Contract SLA"
+  reason: 'Full contract lifecycle for agreements with logistics providers (carriers, i.e. suppliers to
+    the platform): retrieve, update, route for approval, sign by both parties, activate. That is procurement
+    contract lifecycle management; some chance the intended fit is generic contract management or supplier
+    SLA performance.'
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Manifest
+  spec_file: onerail-manifest-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.7
+  evidence: POST /close-manifest  closeManifest  Close a carrier manifest
+  reason: Closing a carrier manifest is a concrete shipping/transport execution step in the last-mile
+    delivery operation, fitting logistics operations. Only one operation and a single request schema,
+    so confidence is bounded.
+  recovered_from: vertical-automotive-mobility-edges.json
 - tag: PowerBi
   spec_file: onerail-powerbi-api-openapi.yml
   capability_id: BC-610.50
@@ -142,6 +220,16 @@ edges:
   evidence: GET /v1/power-bi/embedable-report  getEmbedableReport  Get Embadable report
   reason: Retrieval of an embeddable Power BI report is BI/analytics delivery to users. Single operation
     and no schemas, so moderate confidence; it is an integration hook rather than a full analytics platform.
+- tag: RouteStopNote
+  spec_file: onerail-routestopnote-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.7
+  evidence: POST /v1/route/{routeId}/route-stop-notes  createRouteStopNote  Creates a route stop note
+  reason: Notes attached to stops on a delivery route are transport execution detail, supporting Logistics
+    Operations Management; narrow surface so confidence moderate.
+  recovered_from: sweep-20260828T235257Z-edges.json
 - tag: Routes
   spec_file: onerail-routes-api-openapi.yml
   capability_id: BC-2420.40
