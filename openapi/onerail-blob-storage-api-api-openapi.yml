@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   version: 1.0.0
-  title: OneRail Operation Dashboard Blob Storage API API
+  title: OneRail Operation Dashboard Blob Storage API
   description: Defines Operations Dashboard APIs
   license:
     name: UNLICENSED

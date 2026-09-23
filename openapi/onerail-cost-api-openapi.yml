@@ -86,9 +86,7 @@ paths:
 
         request and operator-driven adjustments belong on a separate user-JWT
 
-        endpoint.
-
-        '
+        endpoint.'
       operationId: createDeliveryAttemptAdjustmentCost
       tags:
       - Cost

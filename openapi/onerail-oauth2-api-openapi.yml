@@ -16,10 +16,7 @@ paths:
     post:
       tags:
       - OAuth2
-      summary: 'An endpoint that processes a clientId and clientSecret, verifies the client''s credentials,
-        and issues an access token for authorized API access upon successful validation.
-
-        '
+      summary: An endpoint that processes a clientId and clientSecret, verifies the client's…
       operationId: issueToken
       security: []
       requestBody:
@@ -63,20 +60,6 @@ components:
           type: string
         grant_type:
           type: string
-    OAuthTokenResponse:
-      type: object
-      required:
-      - access_token
-      - token_type
-      - expires_in
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-        expires_in:
-          description: Access token TTL in seconds
-          type: number
     Error:
       required:
       - message
@@ -101,6 +84,20 @@ components:
                 description: A JSON Pointer [RFC6901] to the associated entity in the request document
             required:
             - detail
+    OAuthTokenResponse:
+      type: object
+      required:
+      - access_token
+      - token_type
+      - expires_in
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          description: Access token TTL in seconds
+          type: number
   securitySchemes:
     ApiKey:
       type: apiKey

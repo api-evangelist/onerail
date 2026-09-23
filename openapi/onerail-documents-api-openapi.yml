@@ -16,15 +16,9 @@ paths:
     get:
       tags:
       - Documents
-      summary: Retrieve all documents associated with a specific delivery. This includes a variety of
-        documents required for the shipment process, such as shipping labels, hazard labels, Bills of
-        Lading (BOL), invoices, and additional delivery receipts.
+      summary: Retrieve all documents associated with a specific delivery.
       operationId: getDocuments
-      description: Fetches all documents linked to a given delivery or order ID. These documents may include
-        mandatory shipment documentation, regulatory compliance forms, hazardous materials labels (if
-        applicable), and other related paperwork essential for tracking and verification purposes. This
-        endpoint supports authentication and requires a valid `deliveryId` or `orderId` parameter to identify
-        the delivery in question.
+      description: Fetches all documents linked to a given delivery or order ID. These documents may include mandatory shipment documentation, regulatory compliance forms, hazardous materials labels (if applicable), and other related paperwork essential for tracking and verification purposes. This endpoint supports authentication and requires a valid `deliveryId` or `orderId` parameter to identify the delivery in question.
       security:
       - ApiKeyAndAppId: []
       - ApiKey: []
@@ -32,8 +26,7 @@ paths:
       parameters:
       - name: id
         in: path
-        description: The unique identifier for the delivery, used to locate and retrieve its associated
-          documents or order id .
+        description: The unique identifier for the delivery, used to locate and retrieve its associated documents or order id .
         required: true
         schema:
           type: string
@@ -46,8 +39,7 @@ paths:
           default: false
       - name: containerId
         in: query
-        description: Optional shipper container ID to filter documents for a specific container within
-          the delivery.
+        description: Optional shipper container ID to filter documents for a specific container within the delivery.
         required: false
         schema:
           type: string
@@ -69,15 +61,13 @@ paths:
                     example: 999-637-9299
                   documents:
                     type: array
-                    description: A list of documents associated with the delivery, providing important
-                      information like Bill of Lading (BOL), invoice, and any required compliance documents.
+                    description: A list of documents associated with the delivery, providing important information like Bill of Lading (BOL), invoice, and any required compliance documents.
                     items:
                       type: object
                       properties:
                         fileType:
                           type: string
-                          description: The type of document related to the delivery. Possible values include
-                            BOL, Invoice, Weight Inspection, Hazmat Document, and Delivery Receipt.
+                          description: The type of document related to the delivery. Possible values include BOL, Invoice, Weight Inspection, Hazmat Document, and Delivery Receipt.
                           enum:
                           - BOL
                           - Invoice
@@ -89,9 +79,7 @@ paths:
                           type:
                           - string
                           - 'null'
-                          description: A specific subtype of the document, if applicable. This helps the
-                            shipper understand the exact document they have received, such as OP950 for
-                            hazardous materials.
+                          description: A specific subtype of the document, if applicable. This helps the shipper understand the exact document they have received, such as OP950 for hazardous materials.
                           example: null
                         fileLink:
                           type: string
@@ -101,14 +89,11 @@ paths:
                           type:
                           - string
                           - 'null'
-                          description: The base64 encoded document, if applicable. Controlled by the withBase64
-                            query parameter.
+                          description: The base64 encoded document, if applicable. Controlled by the withBase64 query parameter.
                           example: iVBORw0KGg
                   containers:
                     type: array
-                    description: A list of containers or packages within the delivery. Each container
-                      includes information on shipping labels, container identifiers, and any hazardous
-                      material labeling.
+                    description: A list of containers or packages within the delivery. Each container includes information on shipping labels, container identifiers, and any hazardous material labeling.
                     items:
                       type: object
                       properties:
@@ -138,29 +123,25 @@ paths:
                           type:
                           - string
                           - 'null'
-                          description: The type or classification of the hazardous material label, if
-                            applicable.
+                          description: The type or classification of the hazardous material label, if applicable.
                           example: OP900
                         hazmatLabelLink:
                           type:
                           - string
                           - 'null'
-                          description: A URL link to the hazardous material label image or documentation,
-                            if applicable.
+                          description: A URL link to the hazardous material label image or documentation, if applicable.
                           example: https://onerail-delivery-api-staging.azurewebsites.net/assets/2fa9bb66-c0a2-462f-9afa-5c045a6edb53_Image1733165563.png
                         hazmatLabelBase64:
                           type:
                           - string
                           - 'null'
-                          description: The base64 encoded hazardous material label, if applicable. Controlled
-                            by the withBase64 query parameter.
+                          description: The base64 encoded hazardous material label, if applicable. Controlled by the withBase64 query parameter.
                           example: iVBORw0KGg...
                         shippingLabelBase64:
                           type:
                           - string
                           - 'null'
-                          description: The base64 encoded shipping label, if applicable. Controlled by
-                            the withBase64 query parameter.
+                          description: The base64 encoded shipping label, if applicable. Controlled by the withBase64 query parameter.
                           example: iVBORw0KGg...
         '404':
           description: Resource not found

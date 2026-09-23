@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Onerail Order API
   version: '1.0'
-  description: 'Operations tagged Order across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Order across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.json, onerail-operations-api-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /
   description: Default relative server URL
@@ -263,9 +263,6 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: Order
       summary: Optimize system orders
@@ -342,6 +339,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/order/optimize/{organizationId}/with-multiple-locations:
     parameters:
     - name: organizationId
@@ -350,9 +350,6 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: OrderOptimizer
       summary: Optimize system orders with multiple locations
@@ -416,10 +413,10 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
-  /v1/order/control-tower:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/order/control-tower:
     get:
       x-exegesis-controller: Order
       summary: Optimize system orders
@@ -831,13 +828,13 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
-  /v1/order/control-tower/locations:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/order/control-tower/locations:
     get:
       x-exegesis-controller: Order
-      summary: Load locations from an org that the user has access to.
+      summary: Load locations from an org that the user has access to
       operationId: controlTowerFilters
       parameters:
       - name: shipperId
@@ -868,10 +865,10 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
-  /v1/order/optimized-drivers-location:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/order/optimized-drivers-location:
     get:
       x-exegesis-controller: OrderOptimizer
       summary: Get Driver Locations of optimized orders
@@ -910,13 +907,13 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
-  /v1/bulk-orders-delete:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/bulk-orders-delete:
     post:
       x-exegesis-controller: Order
-      summary: Bulk delete orders and associated data. Request body should be an array of order IDs.
+      summary: Bulk delete orders and associated data.
       operationId: bulkDelete
       tags:
       - Order
@@ -942,10 +939,10 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
-  /v1/bulk-status:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/bulk-status:
     get:
       x-exegesis-controller: Order
       summary: Get status of a bulk process
@@ -973,10 +970,10 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
-  /v1/order/set-status:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/order/set-status:
     post:
       x-exegesis-controller: Order
       summary: Change orders status to Shipping
@@ -1009,10 +1006,10 @@ paths:
                     format: uuid
       security:
       - bearer: []
-  /v1/order/advance:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/order/advance:
     post:
       x-exegesis-controller: Order
       summary: Advance order status
@@ -1124,6 +1121,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/order/{orderId}:
     parameters:
     - name: orderId
@@ -1152,9 +1152,6 @@ paths:
       description: When false, the top-level `orderItems` list is omitted and not loaded; item bodies are fetched lazily via GET /v1/order/{orderId}/delivery/{deliveryId}/items. Deliveries and containers still expose `orderItemIds`. Defaults to true (full item list returned).
       schema:
         type: boolean
-    servers:
-    - url: /
-      description: Default relative server URL
     get:
       x-exegesis-controller: Order
       summary: Get a order details
@@ -1484,10 +1481,10 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
-  /v1/order/add-deliveries-api:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/order/add-deliveries-api:
     post:
       x-exegesis-controller: Order
       summary: Add one or more deliveries to an order using an apikey for auth
@@ -1517,10 +1514,10 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
-  /v1/order/add-returns-api:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/order/add-returns-api:
     post:
       x-exegesis-controller: Order
       summary: Add one or more returns to an order using an apikey for auth
@@ -1599,6 +1596,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/order/add-returns-api/{deliveryId}:
     parameters:
     - name: deliveryId
@@ -1606,12 +1606,9 @@ paths:
       required: true
       schema:
         type: string
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: Order
-      summary: Add one or more returns to an order using an apikey for auth, update original delivery's status to INCOMPLETE, filters list of LPs
+      summary: Add one or more returns to an order using an apikey for auth, update original…
       operationId: addReturnsToOrderFromApiDeliveryUpdate
       security:
       - ApiKey: []
@@ -1625,10 +1622,10 @@ paths:
           $ref: '#/paths/~1v1~1order~1api/post/responses/200'
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
-  /v1/order/api:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/order/api:
     post:
       x-exegesis-controller: Order
       summary: Creates an order from API call with one or more deliveries
@@ -2597,10 +2594,10 @@ paths:
                           type: string
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
-  /v1/order/partial-update-api:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/order/partial-update-api:
     patch:
       x-exegesis-controller: Order
       summary: Partial update order from API call with one or more deliveries
@@ -3027,6 +3024,9 @@ paths:
           $ref: '#/paths/~1v1~1order~1api/post/responses/200'
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/order/{orderId}/container/{containerId}/scan-history:
     parameters:
     - name: orderId
@@ -3041,9 +3041,6 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     get:
       x-exegesis-controller: Order
       summary: Get the scan history for a container inside an order
@@ -3100,6 +3097,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/order/{orderId}/delivery/{deliveryId}/items:
     parameters:
     - name: orderId
@@ -3128,9 +3128,6 @@ paths:
       schema:
         type: integer
         minimum: 0
-    servers:
-    - url: /
-      description: Default relative server URL
     get:
       x-exegesis-controller: Order
       summary: Get a paginated list of a delivery's order items
@@ -3160,58 +3157,330 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
 components:
   schemas:
-    Containers:
-      type: array
-      items:
-        type: object
-        oneOf:
-        - $ref: '#/components/schemas/PredefinedContainer'
-        - $ref: '#/components/schemas/CustomContainer'
-    HazardousMaterialOrderItemDetails:
-      type: object
+    ContainerOrderItem:
+      required:
+      - description
+      - length
+      - width
+      - height
+      - weight
+      - quantity
       properties:
-        identificationNumber:
+        id:
+          type: string
+          description: OneRail internal item id. if this id is valid OneRail line item it will be ignored during delivery creation.
+        description:
+          type: string
+          maxLength: 256
+          description: Description of this item
+        length:
+          type: number
+          description: Length in inches of this item
+        width:
+          type: number
+          description: Width in inches of this item
+        height:
+          type: number
+          description: Height in inches of this item
+        weight:
+          type: number
+          description: Weight in pounds (As a floating point number. Fractional pounds are ok)
+        quantity:
+          type: integer
+          description: The number of this same item included with the order
+        identifier:
+          type: string
+          maxLength: 64
+          description: Product SKU, ID, or UPC
+        complexities:
+          type: string
+          maxLength: 128
+        priceCent:
+          type: integer
+          description: Order amount (in cents)
+        hsCode:
           type:
           - string
           - 'null'
-          description: Number to identify hazard as designated by shipper (example UN or NP numbers)
-        properShippingName:
-          description: The proper shipping name identified by the Shipping Table as desingnated by the shipper
+          description: Harmonized System (HS) code for classifying goods.
+        countryOfManufacture:
           type:
           - string
           - 'null'
-        packagingGroup:
+          description: The country code where the item was manufactured
+          example: US
+        hazardousMaterialDetails:
+          type:
+          - object
+          - 'null'
+          $ref: '#/components/schemas/HazardousMaterialOrderItemDetails'
+        doNotRotate:
+          type: boolean
+          default: false
+    OrderDelivery:
+      required:
+      - deliveryType
+      - pickUpData
+      - dropOffData
+      properties:
+        labelType:
+          type: string
+          description: The type of label to print on the delivery
+        requestLabel:
+          type: boolean
+          default: false
+          description: Indicates if a label should be requested for this delivery
+        carrierLabelType:
           type:
           - string
           - 'null'
-          description: designation for the group of packages provided by the shipper
-        packagingType:
+          description: Format of shipping label generated by a carrier.
+        carrierCode:
           type:
           - string
           - 'null'
-          description: The type of package holding the hazardous material as designated by the shipper
-        hazardClass:
+          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS). Contact OneRail to obtain a list of valid carrier codes.
+
+            '
+          example: FDEX
+        carrierServiceName:
           type:
           - string
           - 'null'
-          description: Value from the hazard classification system
-        hazardSubClass:
+          description: 'Name of the specific carrier service level requested for the delivery. Contact OneRail to obtain a list of valid carrier service names.
+
+            '
+          example: FEDEX_EXPRESS_SAVER
+        shipmentId:
+          description: Shipment ID
           type:
           - string
           - 'null'
-          description: Value from the hazard classification system for the sub class
-        technicalName:
+        notes:
+          type: string
+          maxLength: 255
+          description: Delivery Notes
+        contactPreference:
           type:
           - string
           - 'null'
-          description: Technical description given by the shipper for the hazardous item
-        dotLabeling:
+          enum:
+          - EMAIL
+          - SMS
+          - BOTH
+          - null
+          default: null
+        deliveryType:
+          $ref: '#/components/schemas/DeliveryType'
+        pickUpData:
+          $ref: '#/components/schemas/LocationInfo'
+        dropOffData:
+          $ref: '#/components/schemas/LocationInfo'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        containers:
+          $ref: '#/components/schemas/Containers'
+        shipperExtraData:
+          type: object
+        dispatchAt:
           type:
           - string
           - 'null'
-          description: Type of label to be placed on the items
+          description: datetime in ISO format
+          format: date-time
+        nmfc:
+          type:
+          - string
+          - 'null'
+          description: The national motor freight code for this order. This is a convenience function to set the same NMFC code for all the containers or order items of all the deliveries in this order.
+          example: 82790-11
+        freightClass:
+          type:
+          - string
+          - 'null'
+          enum:
+          - '50'
+          - '55'
+          - '60'
+          - '65'
+          - '70'
+          - '77.5'
+          - '85'
+          - '92.5'
+          - '100'
+          - '110'
+          - '125'
+          - '150'
+          - '175'
+          - '200'
+          - '250'
+          - '300'
+          - '400'
+          - '500'
+          - null
+          description: The freight class for this order. This is a convenience function to set the same freight class for all the containers or order items of all the deliveries in this order.
+        deliveryFiles:
+          $ref: '#/components/schemas/Delivery/properties/deliveryFiles'
+        emergencyContact:
+          $ref: '#/components/schemas/EmergencyContact'
+        deliveryInternationalDetails:
+          type: object
+          description: 'Export compliance information used for international shipments.
+
+
+            Only one of the fields should be provided depending on the regulatory requirements:
+
+
+            - If EEI filing in AES is required → provide `aesItn`
+
+
+            - If EEI filing is not required → provide `ftrExemption`
+
+            '
+          properties:
+            ftrExemptionCode:
+              type:
+              - string
+              - 'null'
+              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
+
+
+                Example: ''NO EEI 30.37(a)''
+
+                '
+              example: NO EEI 30.37(a)
+            aesItn:
+              type:
+              - string
+              - 'null'
+              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
+
+
+                Format: ''AES X20250427123456''
+
+                '
+              example: AES X20250427123456
+            itemCategory:
+              type:
+              - string
+              - 'null'
+              description: Represents a classification/type of items.
+              enum:
+              - merchandise
+              - returned_goods
+              - documents
+              - gift
+              - sample
+              - other
+              example: merchandise
+            itemDescription:
+              type:
+              - string
+              - 'null'
+              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
+              example: The items have air tight seals
+            shippingRestriction:
+              type:
+              - string
+              - 'null'
+              description: Represents any type of limitation (e.g., hazardous, embargoed).
+              enum:
+              - none
+              - other
+              - quarantine
+              - sanitary_phytosanitary_inspection
+              example: none
+            restrictionNotes:
+              type:
+              - string
+              - 'null'
+              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
+            isCustomsCertified:
+              type:
+              - boolean
+              - 'null'
+              description: Boolean flag indicating certification status.
+            certifyingParty:
+              type:
+              - string
+              - 'null'
+              description: Name of the person or entity signing the customs form.
+        nonDeliveryBehavior:
+          type:
+          - string
+          - 'null'
+          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package will not be returned and may be discarded or handled at the carrier's discretion.\n"
+          enum:
+          - return
+          - abandon
+        parentId:
+          type: string
+          description: The return delivery's parent deliveryId, required for return deliveries
+    v2OrderRequest:
+      required:
+      - deliveries
+      - orderAction
+      - orderData
+      properties:
+        orderAction:
+          type: string
+          enum:
+          - CREATE
+          - ADD
+          - RETURN
+          default: CREATE
+        shopRates:
+          type: boolean
+          default: false
+        state:
+          type: string
+          enum:
+          - DRAFT
+          - READY_TO_DISPATCH
+          default: READY_TO_DISPATCH
+        serviceLevel:
+          type: string
+        deliveryOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+        orderData:
+          $ref: '#/components/schemas/OrderInfo'
+        deliveries:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderDelivery'
+        numericSystem:
+          type: string
+          default: IMPERIAL
+          enum:
+          - IMPERIAL
+          - METRIC
+        capabilityTags:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: object
+              properties:
+                id:
+                  type:
+                  - string
+                  - 'null'
+                  format: uuid
+                name:
+                  type:
+                  - string
+                  - 'null'
+                quantity:
+                  type: number
     OrderItem:
       required:
       - description
@@ -3292,6 +3561,946 @@ components:
         doNotRotate:
           type: boolean
           default: false
+    CapabilityTags:
+      type: array
+      items:
+        oneOf:
+        - type: string
+        - type: object
+          properties:
+            id:
+              type:
+              - string
+              - 'null'
+              format: uuid
+            name:
+              type:
+              - string
+              - 'null'
+            quantity:
+              type: number
+    ChildCustomContainer:
+      allOf:
+      - $ref: '#/components/schemas/CustomContainerBase'
+      - type: object
+      type: object
+      properties:
+        containers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GrandChildCustomContainer'
+    OriginLocation:
+      required:
+      - address1
+      - city
+      - state
+      - zip
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+          description: The name of the location
+        storeNumber:
+          type: string
+          maxLength: 32
+          description: Store number or store identifier
+        address1:
+          type: string
+          maxLength: 256
+        address2:
+          type: string
+          maxLength: 256
+        city:
+          type: string
+          maxLength: 64
+        state:
+          type: string
+          maxLength: 64
+        country:
+          type: string
+          maxLength: 32
+          default: US
+        zip:
+          type: string
+          maxLength: 32
+          description: Zip Code or Postal Code
+        instructions:
+          type: string
+          maxLength: 256
+          description: Instructions for a pickup or delivery
+        code:
+          type: string
+          maxLength: 64
+          description: Gate code or other code required to access location
+        contactName:
+          type: string
+          maxLength: 128
+          description: Person to contact at the location for pickup or dropoff
+        contactPhone:
+          type: string
+          maxLength: 32
+          description: Phone number for the contact at the location
+        contactEmailAddress:
+          type: string
+          maxLength: 128
+          description: Email address for the contact at the location
+    PredefinedContainer:
+      allOf:
+      - $ref: '#/components/schemas/PredefinedContainerBase'
+      - type: object
+      type: object
+      properties:
+        containers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChildPredefinedContainer'
+    LocationInfo:
+      required:
+      - address1
+      - city
+      - state
+      - zip
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+          description: The name of the location
+        storeNumber:
+          type: string
+          maxLength: 32
+          description: Store number or store identifier
+        address1:
+          type: string
+          maxLength: 256
+        address2:
+          type: string
+          maxLength: 256
+        city:
+          type: string
+          maxLength: 64
+        state:
+          type: string
+          maxLength: 64
+        country:
+          type: string
+          maxLength: 32
+          default: US
+        zip:
+          type: string
+          maxLength: 32
+          description: Zip Code or Postal Code
+        instructions:
+          type: string
+          maxLength: 256
+          description: Instructions for a pickup or delivery
+        code:
+          type: string
+          maxLength: 64
+          description: Gate code or other code required to access location
+        contactName:
+          type: string
+          maxLength: 128
+          description: Person to contact at the location for pickup or dropoff
+        contactPhone:
+          type: string
+          maxLength: 32
+          description: Phone number for the contact at the location
+        contactEmailAddress:
+          type: string
+          maxLength: 128
+          description: Email address for the contact at the location
+        dueDate:
+          type: string
+          description: Indicates when this location should be fulfilled by. Time format iso-8601
+        windows:
+          type: object
+          properties:
+            opensOn:
+              type: string
+              description: Open window datetime in format iso-8601
+            closesOn:
+              type: string
+              description: Close window datetime in format iso-8601
+        appointment:
+          type: object
+          properties:
+            durationMins:
+              type: number
+              description: The duration time in minutes (integer)
+            description:
+              type: string
+              description: The description of the appointment
+              maxLength: 255
+        physicalLocation:
+          type: object
+          properties:
+            altLocation:
+              type: object
+              properties:
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+            altAddress:
+              type: object
+              properties:
+                label:
+                  type: string
+                state:
+                  type: string
+                county:
+                  type:
+                  - string
+                  - 'null'
+                street:
+                  type:
+                  - string
+                  - 'null'
+                street2:
+                  type:
+                  - string
+                  - 'null'
+                address1:
+                  type:
+                  - string
+                  - 'null'
+                address2:
+                  type:
+                  - string
+                  - 'null'
+                district:
+                  type:
+                  - string
+                  - 'null'
+                stateCode:
+                  type: string
+                postalCode:
+                  type: string
+                city:
+                  type: string
+                countryCode:
+                  type: string
+                countryName:
+                  type: string
+                houseNumber:
+                  type:
+                  - string
+                  - 'null'
+                additionalData:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+        capabilityTags:
+          $ref: '#/components/schemas/CapabilityTags'
+    ReturnDeliveryCreate:
+      required:
+      - orderId
+      properties:
+        state:
+          type: string
+          enum:
+          - DRAFT
+          - READY_TO_DISPATCH
+          default: READY_TO_DISPATCH
+        serviceLevel:
+          type: string
+        status:
+          type: string
+        deliveryOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+        orderId:
+          type: string
+        deliveries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReturnDelivery'
+        shopRates:
+          type:
+          - boolean
+          - 'null'
+          default: false
+          description: Wait for delivery calculations to complete before returning the response.
+    DeliveryCreated:
+      properties:
+        delivery_id:
+          type: string
+          description: The delivery id
+        pickUpData:
+          type: object
+          properties:
+            address1:
+              type: string
+            address2:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            zip:
+              type: string
+              description: Zip Code or Postal Code
+            country:
+              type: string
+              default: US
+        dropOffData:
+          type: object
+          properties:
+            address1:
+              type: string
+            address2:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            zip:
+              type: string
+              description: Zip Code or Postal Code
+            country:
+              type: string
+              default: US
+        responseCode:
+          type:
+          - string
+          - 'null'
+          description: Failure code of API request
+        message:
+          type:
+          - string
+          - 'null'
+          description: Failure status text of API request
+        isNewRecord:
+          type: boolean
+          description: Delivery creation status
+        data:
+          type: object
+          $ref: '#/components/schemas/DeliveryData'
+        shipmentId:
+          type: string
+          description: The delivery shipmentId
+        contactPreference:
+          type:
+          - string
+          - 'null'
+          enum:
+          - EMAIL
+          - SMS
+          - BOTH
+          - null
+          default: null
+        label:
+          type:
+          - object
+          - 'null'
+          required:
+          - trackingId
+          - deliveryId
+          - labelType
+          - label
+          - containers
+          properties:
+            trackingId:
+              description: Master Tracking ID for whole delivery
+              type: string
+            deliveryId:
+              description: Delivery/Shipping ID
+              type: string
+            labelType:
+              description: label type, zpl, pdf or png
+              type: string
+              enum:
+              - png
+              - pdf
+              - zpl
+              default: png
+            label:
+              description: base64 encoded shipping label for the whole delivery
+              type:
+              - string
+              - 'null'
+            statusCode:
+              type: integer
+              format: int32
+              enum:
+              - 0
+              - 1
+              default: 0
+            statusDescription:
+              description: Status
+              type: string
+              enum:
+              - failure
+              - success
+              default: failure
+            scac:
+              description: scac
+              type: string
+            serviceCode:
+              description: Carrier Service code
+              type: string
+            containers:
+              type: array
+              items:
+                type: object
+                properties:
+                  label:
+                    type: string
+                    description: base64 encoded shipping label containing a label for each container in the delivery
+                  individualLabels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        label:
+                          type: string
+                        subContainer:
+                          type: number
+                  containerType:
+                    description: Container type
+                    type: string
+                  containerTrackingId:
+                    description: Container-specific Tracking ID
+                    type: string
+                  containerId:
+                    description: ContainerId ID
+                    type: string
+                  shipperContainerId:
+                    description: shipper container Id
+                    type: string
+                  subContainerQuantity:
+                    type:
+                    - number
+                    - 'null'
+                  uniqueSubLabels:
+                    type:
+                    - boolean
+                    - 'null'
+        deliveryFiles:
+          type: array
+          description: List of deliver files attached to a delivery
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                example: a990503f-4a10-422f-890f-b1986b1ca892
+              deliveryId:
+                type: string
+                example: 04d24d16-8bae-4e52-a8dd-0295085798a7
+              fileTypeId:
+                type: string
+                example: 82d5d924-3cfc-11ee-8b99-5654a12cf754
+              fileLink:
+                type: string
+                example: https://oneraildev.blob.core.windows.net/dev/20221023-123613103-45672570-fb26-46a0-9cc0-21fc8eeed42f-0.pdf
+              createdAt:
+                type: string
+                example: '2023-08-24T08:32:15.000Z'
+              updatedAt:
+                type: string
+                example: '2023-08-24T08:32:15.000Z'
+              fileType:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 82d5d924-3cfc-11ee-8b99-5654a12cf754
+                  fileType:
+                    type: string
+                    example: Invoice
+        contractedShipperCostCent:
+          type:
+          - integer
+          - 'null'
+          description: Shipper cost in cents
+    ReturnDelivery:
+      allOf:
+      - $ref: '#/components/schemas/OrderDelivery'
+      - type: object
+        required:
+        - parentId
+        properties:
+          parentId:
+            type: string
+            description: The return delivery's parent deliveryId
+    HazardousMaterialOrderItemDetails:
+      type: object
+      properties:
+        identificationNumber:
+          type:
+          - string
+          - 'null'
+          description: Number to identify hazard as designated by shipper (example UN or NP numbers)
+        properShippingName:
+          description: The proper shipping name identified by the Shipping Table as desingnated by the shipper
+          type:
+          - string
+          - 'null'
+        packagingGroup:
+          type:
+          - string
+          - 'null'
+          description: designation for the group of packages provided by the shipper
+        packagingType:
+          type:
+          - string
+          - 'null'
+          description: The type of package holding the hazardous material as designated by the shipper
+        hazardClass:
+          type:
+          - string
+          - 'null'
+          description: Value from the hazard classification system
+        hazardSubClass:
+          type:
+          - string
+          - 'null'
+          description: Value from the hazard classification system for the sub class
+        technicalName:
+          type:
+          - string
+          - 'null'
+          description: Technical description given by the shipper for the hazardous item
+        dotLabeling:
+          type:
+          - string
+          - 'null'
+          description: Type of label to be placed on the items
+    CustomContainer:
+      allOf:
+      - $ref: '#/components/schemas/CustomContainerBase'
+      - type: object
+      type: object
+      properties:
+        containers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChildCustomContainer'
+    v2OrderResponse:
+      properties:
+        responseCode:
+          type: string
+          description: Detail of API request
+        message:
+          type: string
+          description: Information on request status
+        id:
+          type: string
+          description: The order id
+        rates:
+          type: array
+          description: Rates for the created deliveries
+          items:
+            $ref: '#/components/schemas/RatesResponse'
+        deliveries:
+          type: array
+          description: The deliveries created
+          items:
+            $ref: '#/components/schemas/DeliveryData'
+    ChildPredefinedContainer:
+      allOf:
+      - $ref: '#/components/schemas/PredefinedContainerBase'
+      - type: object
+      type: object
+      properties:
+        containers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GrandChildPredefinedContainer'
+    Delivery:
+      required:
+      - deliveryType
+      - orderData
+      - pickUpData
+      - dropOffData
+      properties:
+        notes:
+          type: string
+          maxLength: 255
+          description: Delivery Notes
+        contractId:
+          type: string
+          description: The OneRail contract to deliver this package under
+        requestLabel:
+          type: boolean
+          default: false
+          description: Request a shipping label be added to the response. Default false
+        labelType:
+          type: string
+          enum:
+          - png
+          - pdf
+          - zpl
+          default: png
+          description: Format of shipping label generated by Onerail. Represented as a base64-encoded string in the response
+        carrierLabelType:
+          type:
+          - string
+          - 'null'
+          description: Format of shipping label generated by a carrier.
+        carrierCode:
+          type:
+          - string
+          - 'null'
+          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS). Contact OneRail to obtain a list of valid carrier codes.
+
+            '
+          example: FDEX
+        carrierServiceName:
+          type:
+          - string
+          - 'null'
+          description: 'Name of the specific carrier service level requested for the delivery. Contact OneRail to obtain a list of valid carrier service names.
+
+            '
+          example: FEDEX_EXPRESS_SAVER
+        deliveryType:
+          $ref: '#/components/schemas/DeliveryType'
+        deliveryOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+        customerData:
+          $ref: '#/components/schemas/CustomerData'
+        orderData:
+          $ref: '#/components/schemas/OrderData'
+        pickUpData:
+          $ref: '#/components/schemas/LocationInfo'
+        dropOffData:
+          $ref: '#/components/schemas/LocationInfo'
+        shipperExtraData:
+          type: object
+          description: JSON blob that the customer can use to store additional info they may need.
+        state:
+          type: string
+          enum:
+          - DRAFT
+          - READY_TO_DISPATCH
+          default: READY_TO_DISPATCH
+        serviceLevel:
+          type:
+          - string
+          - 'null'
+        shipmentId:
+          type:
+          - string
+          - 'null'
+        contactPreference:
+          type:
+          - string
+          - 'null'
+          enum:
+          - EMAIL
+          - SMS
+          - BOTH
+          - null
+          default: null
+        dispatchAt:
+          type:
+          - string
+          - 'null'
+          description: 'datetime in ISO format, typically UTC (for example, ending in "Z") or another offset-aware date-time. Availability checks treat dispatchAt and any provided delivery window timestamps as absolute instants and convert them to the relevant local timezone before comparing against service-level times. When dispatchAt is omitted, availability checks use the current time as the dispatch time. If pickup windows are provided, service-level cutoff and end-of-day evaluation use the pickup window open time instead of dispatchAt. Service-level cutoff values are evaluated as minutes from midnight in the pickup location''s local timezone; service-level end-of-day values are evaluated as minutes from midnight in the dropoff location''s local timezone.
+
+            '
+          format: date-time
+        nmfc:
+          type:
+          - string
+          - 'null'
+          description: The national motor freight code for this delivery. This is a convenience function to set the same NMFC code for all the containers or order items in this delivery.
+          example: 82790-11
+        freightClass:
+          type:
+          - string
+          - 'null'
+          enum:
+          - '50'
+          - '55'
+          - '60'
+          - '65'
+          - '70'
+          - '77.5'
+          - '85'
+          - '92.5'
+          - '100'
+          - '110'
+          - '125'
+          - '150'
+          - '175'
+          - '200'
+          - '250'
+          - '300'
+          - '400'
+          - '500'
+          - null
+          description: The freight class for this delivery. This is a convenience function to set the same freight class for all the containers or order items in this delivery.
+        numericSystem:
+          type: string
+          default: IMPERIAL
+          enum:
+          - IMPERIAL
+          - METRIC
+        deliveryFiles:
+          description: Delivery Files
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            required:
+            - fileType
+            - fileLink
+            properties:
+              fileType:
+                type: string
+                example: Invoice
+                enum:
+                - BOL
+                - Weight Inspection
+                - Pallet Label
+                - Package Label
+                - Delivery Receipt
+                - Invoice
+                - Hazmat Document
+                description: allowed file types BOL, Weight Inspection, Pallet Label, Package Label, Delivery Receipt, Invoice and Hazmat Document
+              fileLink:
+                type: string
+                example: https://oneraildev.blob.core.windows.net/dev/20221023-123613103-45672570-fb26-46a0-9cc0-21fc8eeed42f.pdf
+        emergencyContact:
+          $ref: '#/components/schemas/EmergencyContact'
+        deliveryInternationalDetails:
+          type: object
+          description: 'Export compliance information used for international shipments.
+
+
+            Only one of the fields should be provided depending on the regulatory requirements:
+
+
+            - If EEI filing in AES is required → provide `aesItn`
+
+
+            - If EEI filing is not required → provide `ftrExemption`
+
+            '
+          properties:
+            ftrExemptionCode:
+              type:
+              - string
+              - 'null'
+              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
+
+
+                Example: ''NO EEI 30.37(a)''
+
+                '
+              example: NO EEI 30.37(a)
+            aesItn:
+              type:
+              - string
+              - 'null'
+              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
+
+
+                Format: ''AES X20250427123456''
+
+                '
+              example: AES X20250427123456
+            itemCategory:
+              type:
+              - string
+              - 'null'
+              description: Represents a classification/type of items.
+              enum:
+              - merchandise
+              - returned_goods
+              - documents
+              - gift
+              - sample
+              - other
+              example: merchandise
+            itemDescription:
+              type:
+              - string
+              - 'null'
+              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
+              example: The items have air tight seals
+            shippingRestriction:
+              type:
+              - string
+              - 'null'
+              description: Represents any type of limitation (e.g., hazardous, embargoed).
+              enum:
+              - none
+              - other
+              - quarantine
+              - sanitary_phytosanitary_inspection
+              example: none
+            restrictionNotes:
+              type:
+              - string
+              - 'null'
+              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
+            isCustomsCertified:
+              type:
+              - boolean
+              - 'null'
+              description: Boolean flag indicating certification status.
+            certifyingParty:
+              type:
+              - string
+              - 'null'
+              description: Name of the person or entity signing the customs form.
+        nonDeliveryBehavior:
+          type:
+          - string
+          - 'null'
+          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package will not be returned and may be discarded or handled at the carrier's discretion.\n"
+          enum:
+          - return
+          - abandon
+        shopRates:
+          type:
+          - boolean
+          - 'null'
+          default: false
+          description: Wait for delivery calculations to complete before returning the response.
+    CustomContainerBase:
+      type: object
+      required:
+      - containerType
+      - length
+      - width
+      - height
+      - totalWeight
+      properties:
+        trackingInfo:
+          type:
+          - object
+          - 'null'
+          properties:
+            type:
+              type: string
+            value:
+              type: string
+        containerType:
+          type: string
+          enum:
+          - BOX
+          - BAG
+          - BALE
+          - BUCKET
+          - BUNDLE
+          - CAN
+          - CARTON
+          - CASE
+          - COIL
+          - CRATE
+          - CYLINDER
+          - DRUM
+          - PAIL
+          - PLT
+          - PIECES
+          - REEL
+          - ROLL
+          - SKID
+          - TOTE
+          - TUBE
+          - MAGAZINE
+          - POUND
+          - PIECE
+          - PACKAGE
+          - TL
+          - FTL
+          - GAYLORD
+        length:
+          type: number
+          description: Length in inches of this item
+        width:
+          type: number
+          description: Width in inches of this item
+        height:
+          type: number
+          description: Height in inches of this item
+        totalWeight:
+          type: number
+          description: Weight of container and all items inside it
+        shipperContainerId:
+          type: string
+        shipperExtraData:
+          type: object
+          description: Any additional shipping data in JSON format
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContainerOrderItem'
+        subContainerQuantity:
+          type:
+          - number
+          - 'null'
+        uniqueSubLabels:
+          type:
+          - boolean
+          - 'null'
+        nmfc:
+          type:
+          - string
+          - 'null'
+          description: The national motor freight code for this container.
+          example: 82790-11
+        hazardousMaterialDetails:
+          type:
+          - object
+          - 'null'
+          $ref: '#/components/schemas/HazardousMaterialContainerDetails'
+        freightClass:
+          type:
+          - string
+          - 'null'
+          enum:
+          - '50'
+          - '55'
+          - '60'
+          - '65'
+          - '70'
+          - '77.5'
+          - '85'
+          - '92.5'
+          - '100'
+          - '110'
+          - '125'
+          - '150'
+          - '175'
+          - '200'
+          - '250'
+          - '300'
+          - '400'
+          - '500'
+          - null
+          description: The freight class for this container.
+        doNotRotate:
+          type: boolean
+          default: false
     OrderCreated:
       properties:
         responseCode:
@@ -3307,6 +4516,434 @@ components:
           type: array
           description: The deliveries created
           $ref: '#/components/schemas/DeliveryData'
+    OrderUpdate:
+      required:
+      - orderId
+      properties:
+        state:
+          type: string
+          enum:
+          - DRAFT
+          - READY_TO_DISPATCH
+          default: READY_TO_DISPATCH
+        serviceLevel:
+          type: string
+        status:
+          type: string
+        deliveryOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+        orderId:
+          type: string
+        deliveries:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderDelivery'
+        numericSystem:
+          type: string
+          default: IMPERIAL
+          enum:
+          - IMPERIAL
+          - METRIC
+        shopRates:
+          type:
+          - boolean
+          - 'null'
+          default: false
+          description: Wait for delivery calculations to complete before returning the response.
+    OrderCreate:
+      properties:
+        state:
+          type: string
+          enum:
+          - DRAFT
+          - READY_TO_DISPATCH
+          default: READY_TO_DISPATCH
+        serviceLevel:
+          type: string
+        deliveryOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+        orderData:
+          $ref: '#/components/schemas/OrderInfo'
+        deliveries:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderDelivery'
+        numericSystem:
+          type: string
+          default: IMPERIAL
+          enum:
+          - IMPERIAL
+          - METRIC
+        capabilityTags:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: object
+              properties:
+                id:
+                  type:
+                  - string
+                  - 'null'
+                  format: uuid
+                name:
+                  type:
+                  - string
+                  - 'null'
+                quantity:
+                  type: number
+        shopRates:
+          type:
+          - boolean
+          - 'null'
+          default: false
+          description: Wait for delivery calculations to complete before returning the response.
+    DeliveryOptions:
+      type: string
+      enum:
+      - REQUIRE_SIGNATURE
+      - REQUIRE_OVER_21
+      - HIPAA
+      - REQUEST_PARCEL_PICKUP
+      - REQUEST_PROOF_OF_PICKUP
+    Error:
+      required:
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        errors:
+          type: object
+        errorDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                description: A human-readable explanation specific to this occurrence of the problem
+              pointer:
+                type: string
+                description: A JSON Pointer [RFC6901] to the associated entity in the request document
+            required:
+            - detail
+    GrandChildPredefinedContainer:
+      allOf:
+      - $ref: '#/components/schemas/PredefinedContainerBase'
+      - type: object
+      type: object
+      properties:
+        containers:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+    OrderPartialUpdate:
+      properties:
+        notes:
+          description: Delivery Notes
+          type: string
+          maxLength: 255
+        contractId:
+          description: The OneRail contract to deliver this package under
+          type: string
+          format: uuid
+        requestLabel:
+          description: Request a shipping label be added to the response.
+          type: boolean
+          default: false
+        requestIndividualLabels:
+          description: Request a shipping label be added to the response, with subcontainer labels broken out into separate items.
+          type: boolean
+          default: false
+        labelType:
+          description: Format of shipping label if requested. Represented as a base64-encoded string in the response if requested.
+          type: string
+          enum:
+          - png
+          - pdf
+          - zpl
+          default: png
+        carrierLabelType:
+          type:
+          - string
+          - 'null'
+          description: Format of shipping label generated by a carrier.
+        carrierCode:
+          type:
+          - string
+          - 'null'
+          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS). Contact OneRail to obtain a list of valid carrier codes.
+
+            '
+          example: FDEX
+        carrierServiceName:
+          type:
+          - string
+          - 'null'
+          description: 'Name of the specific carrier service level requested for the delivery. Contact OneRail to obtain a list of valid carrier service names.
+
+            '
+          example: FEDEX_EXPRESS_SAVER
+        deliveryType:
+          description: Type of delivery
+          $ref: '#/components/schemas/DeliveryType'
+        deliveryOptions:
+          description: Optional delivery requirements
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+        customerData:
+          description: Pickup contact
+          $ref: '#/components/schemas/CustomerData'
+        orderData:
+          $ref: '#/components/schemas/OrderData'
+        pickUpData:
+          $ref: '#/components/schemas/LocationInfo'
+        dropOffData:
+          $ref: '#/components/schemas/LocationInfo'
+        emergencyContact:
+          $ref: '#/components/schemas/EmergencyContact'
+        shipperExtraData:
+          description: Any additional shipping data in JSON format
+          type: object
+        state:
+          description: State of delivery
+          type:
+          - string
+          - 'null'
+          enum:
+          - DRAFT
+          - READY_TO_DISPATCH
+        serviceLevel:
+          type:
+          - string
+          - 'null'
+        shipmentId:
+          type:
+          - string
+          - 'null'
+        lpName:
+          type:
+          - string
+          - 'null'
+        contactPreference:
+          type:
+          - string
+          - 'null'
+          enum:
+          - EMAIL
+          - SMS
+          - BOTH
+        nmfc:
+          type:
+          - string
+          - 'null'
+          description: The national motor freight code for this order. This is a convenience function to set the same NMFC code for all the containers or order items of all the deliveries in this order.
+          example: 82790-11
+        freightClass:
+          type:
+          - string
+          - 'null'
+          enum:
+          - '50'
+          - '55'
+          - '60'
+          - '65'
+          - '70'
+          - '77.5'
+          - '85'
+          - '92.5'
+          - '100'
+          - '110'
+          - '125'
+          - '150'
+          - '175'
+          - '200'
+          - '250'
+          - '300'
+          - '400'
+          - '500'
+          - null
+          description: The freight class for this order. This is a convenience function to set the same freight class for all the containers or order items of all the deliveries in this order.
+        numericSystem:
+          type: string
+          default: IMPERIAL
+          enum:
+          - IMPERIAL
+          - METRIC
+        deliveryFiles:
+          $ref: '#/components/schemas/Delivery/properties/deliveryFiles'
+        deliveryInternationalDetails:
+          type:
+          - object
+          - 'null'
+          description: 'Export compliance information used for international shipments.
+
+
+            Only one of the fields should be provided depending on the regulatory requirements:
+
+
+            - If EEI filing in AES is required → provide `aesItn`
+
+
+            - If EEI filing is not required → provide `ftrExemption`
+
+            '
+          properties:
+            ftrExemptionCode:
+              type:
+              - string
+              - 'null'
+              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
+
+
+                Example: ''NO EEI 30.37(a)''
+
+                '
+              example: NO EEI 30.37(a)
+            aesItn:
+              type:
+              - string
+              - 'null'
+              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
+
+
+                Format: ''AES X20250427123456''
+
+                '
+              example: AES X20250427123456
+            itemCategory:
+              type:
+              - string
+              - 'null'
+              description: Represents a classification/type of items.
+              enum:
+              - merchandise
+              - returned_goods
+              - documents
+              - gift
+              - sample
+              - other
+              example: merchandise
+            itemDescription:
+              type:
+              - string
+              - 'null'
+              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
+              example: The items have air tight seals
+            shippingRestriction:
+              type:
+              - string
+              - 'null'
+              description: Represents any type of limitation (e.g., hazardous, embargoed).
+              enum:
+              - none
+              - other
+              - quarantine
+              - sanitary_phytosanitary_inspection
+              example: none
+            restrictionNotes:
+              type:
+              - string
+              - 'null'
+              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
+            isCustomsCertified:
+              type:
+              - boolean
+              - 'null'
+              description: Boolean flag indicating certification status.
+            certifyingParty:
+              type:
+              - string
+              - 'null'
+              description: Name of the person or entity signing the customs form.
+        nonDeliveryBehavior:
+          type:
+          - string
+          - 'null'
+          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package will not be returned and may be discarded or handled at the carrier's discretion.\n"
+          enum:
+          - return
+          - abandon
+    DeliveryOrderItemCreated:
+      type: object
+      properties:
+        weightLbs:
+          type: integer
+          description: Weight of the item in pounds.
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the item.
+        description:
+          type: string
+          description: Description of the item.
+        identifier:
+          type: string
+          description: Identifier for the item provided by the shipper.
+        priceCent:
+          type: integer
+          description: Price of the item in cents.
+        lengthIn:
+          type: integer
+          description: Length of the item in inches.
+        widthIn:
+          type: integer
+          description: Width of the item in inches.
+        heightIn:
+          type: integer
+          description: Height of the item in inches.
+        sortOrdinal:
+          type: integer
+          description: Ordinal value for sorting items.
+        nmfc:
+          type:
+          - string
+          - 'null'
+          description: National Motor Freight Classification (NMFC) code, if applicable.
+        freightClass:
+          type:
+          - string
+          - 'null'
+          description: Freight classification for the item, if applicable.
+        isDummy:
+          type:
+          - boolean
+          - 'null'
+          description: Indicates whether the item is a dummy entry.
+        hazardousMaterialDetails:
+          type: object
+          $ref: '#/components/schemas/HazardousMaterialOrderItemDetails'
+        doNotRotate:
+          type: boolean
+          default: false
+    CustomerData:
+      required:
+      - firstName
+      - lastName
+      - phone
+      properties:
+        firstName:
+          type: string
+          maxLength: 64
+        lastName:
+          type: string
+          maxLength: 64
+        phone:
+          type: string
+          maxLength: 32
+        emailAddress:
+          type: string
+          maxLength: 128
     OrderInfo:
       properties:
         orderId:
@@ -3359,11 +4996,6 @@ components:
           description: The freight class for this order item.
         originLocation:
           $ref: '#/components/schemas/OriginLocation'
-    DeliveryType:
-      type: string
-      enum:
-      - BUSINESS
-      - RESIDENTIAL
     DeliveryData:
       type: object
       properties:
@@ -3726,301 +5358,11 @@ components:
           - integer
           - 'null'
           description: Shipper cost in cents
-    CustomerData:
-      required:
-      - firstName
-      - lastName
-      - phone
-      properties:
-        firstName:
-          type: string
-          maxLength: 64
-        lastName:
-          type: string
-          maxLength: 64
-        phone:
-          type: string
-          maxLength: 32
-        emailAddress:
-          type: string
-          maxLength: 128
-    GrandChildCustomContainer:
-      allOf:
-      - $ref: '#/components/schemas/CustomContainerBase'
-      - type: object
-      type: object
-      properties:
-        containers:
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-    ContainerOrderItem:
-      required:
-      - description
-      - length
-      - width
-      - height
-      - weight
-      - quantity
-      properties:
-        id:
-          type: string
-          description: OneRail internal item id. if this id is valid OneRail line item it will be ignored during delivery creation.
-        description:
-          type: string
-          maxLength: 256
-          description: Description of this item
-        length:
-          type: number
-          description: Length in inches of this item
-        width:
-          type: number
-          description: Width in inches of this item
-        height:
-          type: number
-          description: Height in inches of this item
-        weight:
-          type: number
-          description: Weight in pounds (As a floating point number. Fractional pounds are ok)
-        quantity:
-          type: integer
-          description: The number of this same item included with the order
-        identifier:
-          type: string
-          maxLength: 64
-          description: Product SKU, ID, or UPC
-        complexities:
-          type: string
-          maxLength: 128
-        priceCent:
-          type: integer
-          description: Order amount (in cents)
-        hsCode:
-          type:
-          - string
-          - 'null'
-          description: Harmonized System (HS) code for classifying goods.
-        countryOfManufacture:
-          type:
-          - string
-          - 'null'
-          description: The country code where the item was manufactured
-          example: US
-        hazardousMaterialDetails:
-          type:
-          - object
-          - 'null'
-          $ref: '#/components/schemas/HazardousMaterialOrderItemDetails'
-        doNotRotate:
-          type: boolean
-          default: false
-    PredefinedContainer:
-      allOf:
-      - $ref: '#/components/schemas/PredefinedContainerBase'
-      - type: object
-      type: object
-      properties:
-        containers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ChildPredefinedContainer'
-    DeliveryCreated:
-      properties:
-        delivery_id:
-          type: string
-          description: The delivery id
-        pickUpData:
-          type: object
-          properties:
-            address1:
-              type: string
-            address2:
-              type: string
-            city:
-              type: string
-            state:
-              type: string
-            zip:
-              type: string
-              description: Zip Code or Postal Code
-            country:
-              type: string
-              default: US
-        dropOffData:
-          type: object
-          properties:
-            address1:
-              type: string
-            address2:
-              type: string
-            city:
-              type: string
-            state:
-              type: string
-            zip:
-              type: string
-              description: Zip Code or Postal Code
-            country:
-              type: string
-              default: US
-        responseCode:
-          type:
-          - string
-          - 'null'
-          description: Failure code of API request
-        message:
-          type:
-          - string
-          - 'null'
-          description: Failure status text of API request
-        isNewRecord:
-          type: boolean
-          description: Delivery creation status
-        data:
-          type: object
-          $ref: '#/components/schemas/DeliveryData'
-        shipmentId:
-          type: string
-          description: The delivery shipmentId
-        contactPreference:
-          type:
-          - string
-          - 'null'
-          enum:
-          - EMAIL
-          - SMS
-          - BOTH
-          - null
-          default: null
-        label:
-          type:
-          - object
-          - 'null'
-          required:
-          - trackingId
-          - deliveryId
-          - labelType
-          - label
-          - containers
-          properties:
-            trackingId:
-              description: Master Tracking ID for whole delivery
-              type: string
-            deliveryId:
-              description: Delivery/Shipping ID
-              type: string
-            labelType:
-              description: label type, zpl, pdf or png
-              type: string
-              enum:
-              - png
-              - pdf
-              - zpl
-              default: png
-            label:
-              description: base64 encoded shipping label for the whole delivery
-              type:
-              - string
-              - 'null'
-            statusCode:
-              type: integer
-              format: int32
-              enum:
-              - 0
-              - 1
-              default: 0
-            statusDescription:
-              description: Status
-              type: string
-              enum:
-              - failure
-              - success
-              default: failure
-            scac:
-              description: scac
-              type: string
-            serviceCode:
-              description: Carrier Service code
-              type: string
-            containers:
-              type: array
-              items:
-                type: object
-                properties:
-                  label:
-                    type: string
-                    description: base64 encoded shipping label containing a label for each container in the delivery
-                  individualLabels:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        label:
-                          type: string
-                        subContainer:
-                          type: number
-                  containerType:
-                    description: Container type
-                    type: string
-                  containerTrackingId:
-                    description: Container-specific Tracking ID
-                    type: string
-                  containerId:
-                    description: ContainerId ID
-                    type: string
-                  shipperContainerId:
-                    description: shipper container Id
-                    type: string
-                  subContainerQuantity:
-                    type:
-                    - number
-                    - 'null'
-                  uniqueSubLabels:
-                    type:
-                    - boolean
-                    - 'null'
-        deliveryFiles:
-          type: array
-          description: List of deliver files attached to a delivery
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                example: a990503f-4a10-422f-890f-b1986b1ca892
-              deliveryId:
-                type: string
-                example: 04d24d16-8bae-4e52-a8dd-0295085798a7
-              fileTypeId:
-                type: string
-                example: 82d5d924-3cfc-11ee-8b99-5654a12cf754
-              fileLink:
-                type: string
-                example: https://oneraildev.blob.core.windows.net/dev/20221023-123613103-45672570-fb26-46a0-9cc0-21fc8eeed42f-0.pdf
-              createdAt:
-                type: string
-                example: '2023-08-24T08:32:15.000Z'
-              updatedAt:
-                type: string
-                example: '2023-08-24T08:32:15.000Z'
-              fileType:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    example: 82d5d924-3cfc-11ee-8b99-5654a12cf754
-                  fileType:
-                    type: string
-                    example: Invoice
-        contractedShipperCostCent:
-          type:
-          - integer
-          - 'null'
-          description: Shipper cost in cents
+    DeliveryType:
+      type: string
+      enum:
+      - BUSINESS
+      - RESIDENTIAL
     PredefinedContainerBase:
       type: object
       required:
@@ -4095,7 +5437,80 @@ components:
           - '500'
           - null
           description: The freight class for this container.
-    ChildCustomContainer:
+    HazardousMaterialContainerDetails:
+      type: object
+      properties:
+        signatoryContactField:
+          type:
+          - string
+          - 'null'
+          description: Person responsible for hazmat shipment compliance
+        emergencyContactNumber:
+          type:
+          - string
+          - 'null'
+          description: Phone number of emergency contact for hazmat shipment
+        signatoryContactTitle:
+          type:
+          - string
+          - 'null'
+          description: Professional title of person responsible for the hazmat shipment compliance
+        signatoryContactPlace:
+          type:
+          - string
+          - 'null'
+          description: Organization (company) name or code
+        offeror:
+          type:
+          - string
+          - 'null'
+          description: Organization (company) name or code
+        dotLabeling:
+          type:
+          - string
+          - 'null'
+          description: Type of label to be placed on the container
+        authorization:
+          type:
+          - string
+          - 'null'
+          description: Part of DOT Labeling
+        fedExPackagingType:
+          type:
+          - string
+          - 'null'
+          description: Type of packaging type to be applied for fedex
+    Containers:
+      type: array
+      items:
+        type: object
+        oneOf:
+        - $ref: '#/components/schemas/PredefinedContainer'
+        - $ref: '#/components/schemas/CustomContainer'
+    EmergencyContact:
+      type: object
+      properties:
+        contactName:
+          type:
+          - string
+          - 'null'
+          description: Emergency contact name
+        contactTitle:
+          type:
+          - string
+          - 'null'
+          description: Emergency contact title
+        phoneNumber:
+          type:
+          - string
+          - 'null'
+          description: Emergency contact phone number
+        email:
+          type:
+          - string
+          - 'null'
+          description: Emergency contact email
+    GrandChildCustomContainer:
       allOf:
       - $ref: '#/components/schemas/CustomContainerBase'
       - type: object
@@ -4106,135 +5521,41 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/GrandChildCustomContainer'
-    CapabilityTags:
-      type: array
-      items:
-        oneOf:
-        - type: string
-        - type: object
-          properties:
-            id:
-              type:
-              - string
-              - 'null'
-              format: uuid
-            name:
-              type:
-              - string
-              - 'null'
-            quantity:
-              type: number
-    DeliveryOrderItemCreated:
+            type: object
+    RatesResponse:
       type: object
       properties:
-        weightLbs:
-          type: integer
-          description: Weight of the item in pounds.
-        id:
+        total:
+          type: number
+          description: Total price in cents
+        lpName:
           type: string
+          description: Name of the LP Selected
+        potentialLps:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              rate:
+                type: number
+        breakdown:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: number
+              type:
+                type: string
+                description: type of charge
+        deliveryId:
+          type:
+          - string
+          - 'null'
           format: uuid
-          description: Unique identifier for the item.
-        description:
-          type: string
-          description: Description of the item.
-        identifier:
-          type: string
-          description: Identifier for the item provided by the shipper.
-        priceCent:
-          type: integer
-          description: Price of the item in cents.
-        lengthIn:
-          type: integer
-          description: Length of the item in inches.
-        widthIn:
-          type: integer
-          description: Width of the item in inches.
-        heightIn:
-          type: integer
-          description: Height of the item in inches.
-        sortOrdinal:
-          type: integer
-          description: Ordinal value for sorting items.
-        nmfc:
-          type:
-          - string
-          - 'null'
-          description: National Motor Freight Classification (NMFC) code, if applicable.
-        freightClass:
-          type:
-          - string
-          - 'null'
-          description: Freight classification for the item, if applicable.
-        isDummy:
-          type:
-          - boolean
-          - 'null'
-          description: Indicates whether the item is a dummy entry.
-        hazardousMaterialDetails:
-          type: object
-          $ref: '#/components/schemas/HazardousMaterialOrderItemDetails'
-        doNotRotate:
-          type: boolean
-          default: false
-    v2OrderRequest:
-      required:
-      - deliveries
-      - orderAction
-      - orderData
-      properties:
-        orderAction:
-          type: string
-          enum:
-          - CREATE
-          - ADD
-          - RETURN
-          default: CREATE
-        shopRates:
-          type: boolean
-          default: false
-        state:
-          type: string
-          enum:
-          - DRAFT
-          - READY_TO_DISPATCH
-          default: READY_TO_DISPATCH
-        serviceLevel:
-          type: string
-        deliveryOptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryOptions'
-        orderData:
-          $ref: '#/components/schemas/OrderInfo'
-        deliveries:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderDelivery'
-        numericSystem:
-          type: string
-          default: IMPERIAL
-          enum:
-          - IMPERIAL
-          - METRIC
-        capabilityTags:
-          type: array
-          items:
-            oneOf:
-            - type: string
-            - type: object
-              properties:
-                id:
-                  type:
-                  - string
-                  - 'null'
-                  format: uuid
-                name:
-                  type:
-                  - string
-                  - 'null'
-                quantity:
-                  type: number
+          description: id of the delivery that was created
     OrderData:
       required:
       - orderId
@@ -4296,1327 +5617,6 @@ components:
           description: The freight class for this order item.
         originLocation:
           $ref: '#/components/schemas/OriginLocation'
-    OrderPartialUpdate:
-      properties:
-        notes:
-          description: Delivery Notes
-          type: string
-          maxLength: 255
-        contractId:
-          description: The OneRail contract to deliver this package under
-          type: string
-          format: uuid
-        requestLabel:
-          description: Request a shipping label be added to the response.
-          type: boolean
-          default: false
-        requestIndividualLabels:
-          description: Request a shipping label be added to the response, with subcontainer labels broken out into separate items.
-          type: boolean
-          default: false
-        labelType:
-          description: Format of shipping label if requested. Represented as a base64-encoded string in the response if requested.
-          type: string
-          enum:
-          - png
-          - pdf
-          - zpl
-          default: png
-        carrierLabelType:
-          type:
-          - string
-          - 'null'
-          description: Format of shipping label generated by a carrier.
-        carrierCode:
-          type:
-          - string
-          - 'null'
-          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS). Contact OneRail to obtain a list of valid carrier codes.
-
-            '
-          example: FDEX
-        carrierServiceName:
-          type:
-          - string
-          - 'null'
-          description: 'Name of the specific carrier service level requested for the delivery. Contact OneRail to obtain a list of valid carrier service names.
-
-            '
-          example: FEDEX_EXPRESS_SAVER
-        deliveryType:
-          description: Type of delivery
-          $ref: '#/components/schemas/DeliveryType'
-        deliveryOptions:
-          description: Optional delivery requirements
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryOptions'
-        customerData:
-          description: Pickup contact
-          $ref: '#/components/schemas/CustomerData'
-        orderData:
-          $ref: '#/components/schemas/OrderData'
-        pickUpData:
-          $ref: '#/components/schemas/LocationInfo'
-        dropOffData:
-          $ref: '#/components/schemas/LocationInfo'
-        emergencyContact:
-          $ref: '#/components/schemas/EmergencyContact'
-        shipperExtraData:
-          description: Any additional shipping data in JSON format
-          type: object
-        state:
-          description: State of delivery
-          type:
-          - string
-          - 'null'
-          enum:
-          - DRAFT
-          - READY_TO_DISPATCH
-        serviceLevel:
-          type:
-          - string
-          - 'null'
-        shipmentId:
-          type:
-          - string
-          - 'null'
-        lpName:
-          type:
-          - string
-          - 'null'
-        contactPreference:
-          type:
-          - string
-          - 'null'
-          enum:
-          - EMAIL
-          - SMS
-          - BOTH
-        nmfc:
-          type:
-          - string
-          - 'null'
-          description: The national motor freight code for this order. This is a convenience function to set the same NMFC code for all the containers or order items of all the deliveries in this order.
-          example: 82790-11
-        freightClass:
-          type:
-          - string
-          - 'null'
-          enum:
-          - '50'
-          - '55'
-          - '60'
-          - '65'
-          - '70'
-          - '77.5'
-          - '85'
-          - '92.5'
-          - '100'
-          - '110'
-          - '125'
-          - '150'
-          - '175'
-          - '200'
-          - '250'
-          - '300'
-          - '400'
-          - '500'
-          - null
-          description: The freight class for this order. This is a convenience function to set the same freight class for all the containers or order items of all the deliveries in this order.
-        numericSystem:
-          type: string
-          default: IMPERIAL
-          enum:
-          - IMPERIAL
-          - METRIC
-        deliveryFiles:
-          $ref: '#/components/schemas/Delivery/properties/deliveryFiles'
-        deliveryInternationalDetails:
-          type:
-          - object
-          - 'null'
-          description: 'Export compliance information used for international shipments.
-
-
-            Only one of the fields should be provided depending on the regulatory requirements:
-
-
-            - If EEI filing in AES is required → provide `aesItn`
-
-
-            - If EEI filing is not required → provide `ftrExemption`
-
-            '
-          properties:
-            ftrExemptionCode:
-              type:
-              - string
-              - 'null'
-              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
-
-
-                Example: ''NO EEI 30.37(a)''
-
-                '
-              example: NO EEI 30.37(a)
-            aesItn:
-              type:
-              - string
-              - 'null'
-              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
-
-
-                Format: ''AES X20250427123456''
-
-                '
-              example: AES X20250427123456
-            itemCategory:
-              type:
-              - string
-              - 'null'
-              description: Represents a classification/type of items.
-              enum:
-              - merchandise
-              - returned_goods
-              - documents
-              - gift
-              - sample
-              - other
-              example: merchandise
-            itemDescription:
-              type:
-              - string
-              - 'null'
-              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
-              example: The items have air tight seals
-            shippingRestriction:
-              type:
-              - string
-              - 'null'
-              description: Represents any type of limitation (e.g., hazardous, embargoed).
-              enum:
-              - none
-              - other
-              - quarantine
-              - sanitary_phytosanitary_inspection
-              example: none
-            restrictionNotes:
-              type:
-              - string
-              - 'null'
-              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
-            isCustomsCertified:
-              type:
-              - boolean
-              - 'null'
-              description: Boolean flag indicating certification status.
-            certifyingParty:
-              type:
-              - string
-              - 'null'
-              description: Name of the person or entity signing the customs form.
-        nonDeliveryBehavior:
-          type:
-          - string
-          - 'null'
-          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package will not be returned and may be discarded or handled at the carrier's discretion.\n"
-          enum:
-          - return
-          - abandon
-    ReturnDelivery:
-      allOf:
-      - $ref: '#/components/schemas/OrderDelivery'
-      - type: object
-        required:
-        - parentId
-        properties:
-          parentId:
-            type: string
-            description: The return delivery's parent deliveryId
-    Delivery:
-      required:
-      - deliveryType
-      - orderData
-      - pickUpData
-      - dropOffData
-      properties:
-        notes:
-          type: string
-          maxLength: 255
-          description: Delivery Notes
-        contractId:
-          type: string
-          description: The OneRail contract to deliver this package under
-        requestLabel:
-          type: boolean
-          default: false
-          description: Request a shipping label be added to the response. Default false
-        labelType:
-          type: string
-          enum:
-          - png
-          - pdf
-          - zpl
-          default: png
-          description: Format of shipping label generated by Onerail. Represented as a base64-encoded string in the response
-        carrierLabelType:
-          type:
-          - string
-          - 'null'
-          description: Format of shipping label generated by a carrier.
-        carrierCode:
-          type:
-          - string
-          - 'null'
-          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS). Contact OneRail to obtain a list of valid carrier codes.
-
-            '
-          example: FDEX
-        carrierServiceName:
-          type:
-          - string
-          - 'null'
-          description: 'Name of the specific carrier service level requested for the delivery. Contact OneRail to obtain a list of valid carrier service names.
-
-            '
-          example: FEDEX_EXPRESS_SAVER
-        deliveryType:
-          $ref: '#/components/schemas/DeliveryType'
-        deliveryOptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryOptions'
-        customerData:
-          $ref: '#/components/schemas/CustomerData'
-        orderData:
-          $ref: '#/components/schemas/OrderData'
-        pickUpData:
-          $ref: '#/components/schemas/LocationInfo'
-        dropOffData:
-          $ref: '#/components/schemas/LocationInfo'
-        shipperExtraData:
-          type: object
-          description: JSON blob that the customer can use to store additional info they may need.
-        state:
-          type: string
-          enum:
-          - DRAFT
-          - READY_TO_DISPATCH
-          default: READY_TO_DISPATCH
-        serviceLevel:
-          type:
-          - string
-          - 'null'
-        shipmentId:
-          type:
-          - string
-          - 'null'
-        contactPreference:
-          type:
-          - string
-          - 'null'
-          enum:
-          - EMAIL
-          - SMS
-          - BOTH
-          - null
-          default: null
-        dispatchAt:
-          type:
-          - string
-          - 'null'
-          description: 'datetime in ISO format, typically UTC (for example, ending in "Z") or another offset-aware date-time. Availability checks treat dispatchAt and any provided delivery window timestamps as absolute instants and convert them to the relevant local timezone before comparing against service-level times. When dispatchAt is omitted, availability checks use the current time as the dispatch time. If pickup windows are provided, service-level cutoff and end-of-day evaluation use the pickup window open time instead of dispatchAt. Service-level cutoff values are evaluated as minutes from midnight in the pickup location''s local timezone; service-level end-of-day values are evaluated as minutes from midnight in the dropoff location''s local timezone.
-
-            '
-          format: date-time
-        nmfc:
-          type:
-          - string
-          - 'null'
-          description: The national motor freight code for this delivery. This is a convenience function to set the same NMFC code for all the containers or order items in this delivery.
-          example: 82790-11
-        freightClass:
-          type:
-          - string
-          - 'null'
-          enum:
-          - '50'
-          - '55'
-          - '60'
-          - '65'
-          - '70'
-          - '77.5'
-          - '85'
-          - '92.5'
-          - '100'
-          - '110'
-          - '125'
-          - '150'
-          - '175'
-          - '200'
-          - '250'
-          - '300'
-          - '400'
-          - '500'
-          - null
-          description: The freight class for this delivery. This is a convenience function to set the same freight class for all the containers or order items in this delivery.
-        numericSystem:
-          type: string
-          default: IMPERIAL
-          enum:
-          - IMPERIAL
-          - METRIC
-        deliveryFiles:
-          description: Delivery Files
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-            required:
-            - fileType
-            - fileLink
-            properties:
-              fileType:
-                type: string
-                example: Invoice
-                enum:
-                - BOL
-                - Weight Inspection
-                - Pallet Label
-                - Package Label
-                - Delivery Receipt
-                - Invoice
-                - Hazmat Document
-                description: allowed file types BOL, Weight Inspection, Pallet Label, Package Label, Delivery Receipt, Invoice and Hazmat Document
-              fileLink:
-                type: string
-                example: https://oneraildev.blob.core.windows.net/dev/20221023-123613103-45672570-fb26-46a0-9cc0-21fc8eeed42f.pdf
-        emergencyContact:
-          $ref: '#/components/schemas/EmergencyContact'
-        deliveryInternationalDetails:
-          type: object
-          description: 'Export compliance information used for international shipments.
-
-
-            Only one of the fields should be provided depending on the regulatory requirements:
-
-
-            - If EEI filing in AES is required → provide `aesItn`
-
-
-            - If EEI filing is not required → provide `ftrExemption`
-
-            '
-          properties:
-            ftrExemptionCode:
-              type:
-              - string
-              - 'null'
-              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
-
-
-                Example: ''NO EEI 30.37(a)''
-
-                '
-              example: NO EEI 30.37(a)
-            aesItn:
-              type:
-              - string
-              - 'null'
-              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
-
-
-                Format: ''AES X20250427123456''
-
-                '
-              example: AES X20250427123456
-            itemCategory:
-              type:
-              - string
-              - 'null'
-              description: Represents a classification/type of items.
-              enum:
-              - merchandise
-              - returned_goods
-              - documents
-              - gift
-              - sample
-              - other
-              example: merchandise
-            itemDescription:
-              type:
-              - string
-              - 'null'
-              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
-              example: The items have air tight seals
-            shippingRestriction:
-              type:
-              - string
-              - 'null'
-              description: Represents any type of limitation (e.g., hazardous, embargoed).
-              enum:
-              - none
-              - other
-              - quarantine
-              - sanitary_phytosanitary_inspection
-              example: none
-            restrictionNotes:
-              type:
-              - string
-              - 'null'
-              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
-            isCustomsCertified:
-              type:
-              - boolean
-              - 'null'
-              description: Boolean flag indicating certification status.
-            certifyingParty:
-              type:
-              - string
-              - 'null'
-              description: Name of the person or entity signing the customs form.
-        nonDeliveryBehavior:
-          type:
-          - string
-          - 'null'
-          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package will not be returned and may be discarded or handled at the carrier's discretion.\n"
-          enum:
-          - return
-          - abandon
-        shopRates:
-          type:
-          - boolean
-          - 'null'
-          default: false
-          description: Wait for delivery calculations to complete before returning the response.
-    v2OrderResponse:
-      properties:
-        responseCode:
-          type: string
-          description: Detail of API request
-        message:
-          type: string
-          description: Information on request status
-        id:
-          type: string
-          description: The order id
-        rates:
-          type: array
-          description: Rates for the created deliveries
-          items:
-            $ref: '#/components/schemas/RatesResponse'
-        deliveries:
-          type: array
-          description: The deliveries created
-          items:
-            $ref: '#/components/schemas/DeliveryData'
-    CustomContainerBase:
-      type: object
-      required:
-      - containerType
-      - length
-      - width
-      - height
-      - totalWeight
-      properties:
-        trackingInfo:
-          type:
-          - object
-          - 'null'
-          properties:
-            type:
-              type: string
-            value:
-              type: string
-        containerType:
-          type: string
-          enum:
-          - BOX
-          - BAG
-          - BALE
-          - BUCKET
-          - BUNDLE
-          - CAN
-          - CARTON
-          - CASE
-          - COIL
-          - CRATE
-          - CYLINDER
-          - DRUM
-          - PAIL
-          - PLT
-          - PIECES
-          - REEL
-          - ROLL
-          - SKID
-          - TOTE
-          - TUBE
-          - MAGAZINE
-          - POUND
-          - PIECE
-          - PACKAGE
-          - TL
-          - FTL
-          - GAYLORD
-        length:
-          type: number
-          description: Length in inches of this item
-        width:
-          type: number
-          description: Width in inches of this item
-        height:
-          type: number
-          description: Height in inches of this item
-        totalWeight:
-          type: number
-          description: Weight of container and all items inside it
-        shipperContainerId:
-          type: string
-        shipperExtraData:
-          type: object
-          description: Any additional shipping data in JSON format
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContainerOrderItem'
-        subContainerQuantity:
-          type:
-          - number
-          - 'null'
-        uniqueSubLabels:
-          type:
-          - boolean
-          - 'null'
-        nmfc:
-          type:
-          - string
-          - 'null'
-          description: The national motor freight code for this container.
-          example: 82790-11
-        hazardousMaterialDetails:
-          type:
-          - object
-          - 'null'
-          $ref: '#/components/schemas/HazardousMaterialContainerDetails'
-        freightClass:
-          type:
-          - string
-          - 'null'
-          enum:
-          - '50'
-          - '55'
-          - '60'
-          - '65'
-          - '70'
-          - '77.5'
-          - '85'
-          - '92.5'
-          - '100'
-          - '110'
-          - '125'
-          - '150'
-          - '175'
-          - '200'
-          - '250'
-          - '300'
-          - '400'
-          - '500'
-          - null
-          description: The freight class for this container.
-        doNotRotate:
-          type: boolean
-          default: false
-    DeliveryOptions:
-      type: string
-      enum:
-      - REQUIRE_SIGNATURE
-      - REQUIRE_OVER_21
-      - HIPAA
-      - REQUEST_PARCEL_PICKUP
-      - REQUEST_PROOF_OF_PICKUP
-    HazardousMaterialContainerDetails:
-      type: object
-      properties:
-        signatoryContactField:
-          type:
-          - string
-          - 'null'
-          description: Person responsible for hazmat shipment compliance
-        emergencyContactNumber:
-          type:
-          - string
-          - 'null'
-          description: Phone number of emergency contact for hazmat shipment
-        signatoryContactTitle:
-          type:
-          - string
-          - 'null'
-          description: Professional title of person responsible for the hazmat shipment compliance
-        signatoryContactPlace:
-          type:
-          - string
-          - 'null'
-          description: Organization (company) name or code
-        offeror:
-          type:
-          - string
-          - 'null'
-          description: Organization (company) name or code
-        dotLabeling:
-          type:
-          - string
-          - 'null'
-          description: Type of label to be placed on the container
-        authorization:
-          type:
-          - string
-          - 'null'
-          description: Part of DOT Labeling
-        fedExPackagingType:
-          type:
-          - string
-          - 'null'
-          description: Type of packaging type to be applied for fedex
-    ChildPredefinedContainer:
-      allOf:
-      - $ref: '#/components/schemas/PredefinedContainerBase'
-      - type: object
-      type: object
-      properties:
-        containers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GrandChildPredefinedContainer'
-    RatesResponse:
-      type: object
-      properties:
-        total:
-          type: number
-          description: Total price in cents
-        lpName:
-          type: string
-          description: Name of the LP Selected
-        potentialLps:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              rate:
-                type: number
-        breakdown:
-          type: array
-          items:
-            type: object
-            properties:
-              value:
-                type: number
-              type:
-                type: string
-                description: type of charge
-        deliveryId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          description: id of the delivery that was created
-    OrderDelivery:
-      required:
-      - deliveryType
-      - pickUpData
-      - dropOffData
-      properties:
-        labelType:
-          type: string
-          description: The type of label to print on the delivery
-        requestLabel:
-          type: boolean
-          default: false
-          description: Indicates if a label should be requested for this delivery
-        carrierLabelType:
-          type:
-          - string
-          - 'null'
-          description: Format of shipping label generated by a carrier.
-        carrierCode:
-          type:
-          - string
-          - 'null'
-          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS). Contact OneRail to obtain a list of valid carrier codes.
-
-            '
-          example: FDEX
-        carrierServiceName:
-          type:
-          - string
-          - 'null'
-          description: 'Name of the specific carrier service level requested for the delivery. Contact OneRail to obtain a list of valid carrier service names.
-
-            '
-          example: FEDEX_EXPRESS_SAVER
-        shipmentId:
-          description: Shipment ID
-          type:
-          - string
-          - 'null'
-        notes:
-          type: string
-          maxLength: 255
-          description: Delivery Notes
-        contactPreference:
-          type:
-          - string
-          - 'null'
-          enum:
-          - EMAIL
-          - SMS
-          - BOTH
-          - null
-          default: null
-        deliveryType:
-          $ref: '#/components/schemas/DeliveryType'
-        pickUpData:
-          $ref: '#/components/schemas/LocationInfo'
-        dropOffData:
-          $ref: '#/components/schemas/LocationInfo'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderItem'
-        containers:
-          $ref: '#/components/schemas/Containers'
-        shipperExtraData:
-          type: object
-        dispatchAt:
-          type:
-          - string
-          - 'null'
-          description: datetime in ISO format
-          format: date-time
-        nmfc:
-          type:
-          - string
-          - 'null'
-          description: The national motor freight code for this order. This is a convenience function to set the same NMFC code for all the containers or order items of all the deliveries in this order.
-          example: 82790-11
-        freightClass:
-          type:
-          - string
-          - 'null'
-          enum:
-          - '50'
-          - '55'
-          - '60'
-          - '65'
-          - '70'
-          - '77.5'
-          - '85'
-          - '92.5'
-          - '100'
-          - '110'
-          - '125'
-          - '150'
-          - '175'
-          - '200'
-          - '250'
-          - '300'
-          - '400'
-          - '500'
-          - null
-          description: The freight class for this order. This is a convenience function to set the same freight class for all the containers or order items of all the deliveries in this order.
-        deliveryFiles:
-          $ref: '#/components/schemas/Delivery/properties/deliveryFiles'
-        emergencyContact:
-          $ref: '#/components/schemas/EmergencyContact'
-        deliveryInternationalDetails:
-          type: object
-          description: 'Export compliance information used for international shipments.
-
-
-            Only one of the fields should be provided depending on the regulatory requirements:
-
-
-            - If EEI filing in AES is required → provide `aesItn`
-
-
-            - If EEI filing is not required → provide `ftrExemption`
-
-            '
-          properties:
-            ftrExemptionCode:
-              type:
-              - string
-              - 'null'
-              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
-
-
-                Example: ''NO EEI 30.37(a)''
-
-                '
-              example: NO EEI 30.37(a)
-            aesItn:
-              type:
-              - string
-              - 'null'
-              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
-
-
-                Format: ''AES X20250427123456''
-
-                '
-              example: AES X20250427123456
-            itemCategory:
-              type:
-              - string
-              - 'null'
-              description: Represents a classification/type of items.
-              enum:
-              - merchandise
-              - returned_goods
-              - documents
-              - gift
-              - sample
-              - other
-              example: merchandise
-            itemDescription:
-              type:
-              - string
-              - 'null'
-              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
-              example: The items have air tight seals
-            shippingRestriction:
-              type:
-              - string
-              - 'null'
-              description: Represents any type of limitation (e.g., hazardous, embargoed).
-              enum:
-              - none
-              - other
-              - quarantine
-              - sanitary_phytosanitary_inspection
-              example: none
-            restrictionNotes:
-              type:
-              - string
-              - 'null'
-              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
-            isCustomsCertified:
-              type:
-              - boolean
-              - 'null'
-              description: Boolean flag indicating certification status.
-            certifyingParty:
-              type:
-              - string
-              - 'null'
-              description: Name of the person or entity signing the customs form.
-        nonDeliveryBehavior:
-          type:
-          - string
-          - 'null'
-          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package will not be returned and may be discarded or handled at the carrier's discretion.\n"
-          enum:
-          - return
-          - abandon
-        parentId:
-          type: string
-          description: The return delivery's parent deliveryId, required for return deliveries
-    Error:
-      required:
-      - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        errors:
-          type: object
-        errorDetails:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                description: A human-readable explanation specific to this occurrence of the problem
-              pointer:
-                type: string
-                description: A JSON Pointer [RFC6901] to the associated entity in the request document
-            required:
-            - detail
-    GrandChildPredefinedContainer:
-      allOf:
-      - $ref: '#/components/schemas/PredefinedContainerBase'
-      - type: object
-      type: object
-      properties:
-        containers:
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-    CustomContainer:
-      allOf:
-      - $ref: '#/components/schemas/CustomContainerBase'
-      - type: object
-      type: object
-      properties:
-        containers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ChildCustomContainer'
-    LocationInfo:
-      required:
-      - address1
-      - city
-      - state
-      - zip
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-          description: The name of the location
-        storeNumber:
-          type: string
-          maxLength: 32
-          description: Store number or store identifier
-        address1:
-          type: string
-          maxLength: 256
-        address2:
-          type: string
-          maxLength: 256
-        city:
-          type: string
-          maxLength: 64
-        state:
-          type: string
-          maxLength: 64
-        country:
-          type: string
-          maxLength: 32
-          default: US
-        zip:
-          type: string
-          maxLength: 32
-          description: Zip Code or Postal Code
-        instructions:
-          type: string
-          maxLength: 256
-          description: Instructions for a pickup or delivery
-        code:
-          type: string
-          maxLength: 64
-          description: Gate code or other code required to access location
-        contactName:
-          type: string
-          maxLength: 128
-          description: Person to contact at the location for pickup or dropoff
-        contactPhone:
-          type: string
-          maxLength: 32
-          description: Phone number for the contact at the location
-        contactEmailAddress:
-          type: string
-          maxLength: 128
-          description: Email address for the contact at the location
-        dueDate:
-          type: string
-          description: Indicates when this location should be fulfilled by. Time format iso-8601
-        windows:
-          type: object
-          properties:
-            opensOn:
-              type: string
-              description: Open window datetime in format iso-8601
-            closesOn:
-              type: string
-              description: Close window datetime in format iso-8601
-        appointment:
-          type: object
-          properties:
-            durationMins:
-              type: number
-              description: The duration time in minutes (integer)
-            description:
-              type: string
-              description: The description of the appointment
-              maxLength: 255
-        physicalLocation:
-          type: object
-          properties:
-            altLocation:
-              type: object
-              properties:
-                latitude:
-                  type: number
-                longitude:
-                  type: number
-            altAddress:
-              type: object
-              properties:
-                label:
-                  type: string
-                state:
-                  type: string
-                county:
-                  type:
-                  - string
-                  - 'null'
-                street:
-                  type:
-                  - string
-                  - 'null'
-                street2:
-                  type:
-                  - string
-                  - 'null'
-                address1:
-                  type:
-                  - string
-                  - 'null'
-                address2:
-                  type:
-                  - string
-                  - 'null'
-                district:
-                  type:
-                  - string
-                  - 'null'
-                stateCode:
-                  type: string
-                postalCode:
-                  type: string
-                city:
-                  type: string
-                countryCode:
-                  type: string
-                countryName:
-                  type: string
-                houseNumber:
-                  type:
-                  - string
-                  - 'null'
-                additionalData:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      key:
-                        type: string
-                      value:
-                        type: string
-        capabilityTags:
-          $ref: '#/components/schemas/CapabilityTags'
-    OrderCreate:
-      properties:
-        state:
-          type: string
-          enum:
-          - DRAFT
-          - READY_TO_DISPATCH
-          default: READY_TO_DISPATCH
-        serviceLevel:
-          type: string
-        deliveryOptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryOptions'
-        orderData:
-          $ref: '#/components/schemas/OrderInfo'
-        deliveries:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderDelivery'
-        numericSystem:
-          type: string
-          default: IMPERIAL
-          enum:
-          - IMPERIAL
-          - METRIC
-        capabilityTags:
-          type: array
-          items:
-            oneOf:
-            - type: string
-            - type: object
-              properties:
-                id:
-                  type:
-                  - string
-                  - 'null'
-                  format: uuid
-                name:
-                  type:
-                  - string
-                  - 'null'
-                quantity:
-                  type: number
-        shopRates:
-          type:
-          - boolean
-          - 'null'
-          default: false
-          description: Wait for delivery calculations to complete before returning the response.
-    OrderUpdate:
-      required:
-      - orderId
-      properties:
-        state:
-          type: string
-          enum:
-          - DRAFT
-          - READY_TO_DISPATCH
-          default: READY_TO_DISPATCH
-        serviceLevel:
-          type: string
-        status:
-          type: string
-        deliveryOptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryOptions'
-        orderId:
-          type: string
-        deliveries:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderDelivery'
-        numericSystem:
-          type: string
-          default: IMPERIAL
-          enum:
-          - IMPERIAL
-          - METRIC
-        shopRates:
-          type:
-          - boolean
-          - 'null'
-          default: false
-          description: Wait for delivery calculations to complete before returning the response.
-    EmergencyContact:
-      type: object
-      properties:
-        contactName:
-          type:
-          - string
-          - 'null'
-          description: Emergency contact name
-        contactTitle:
-          type:
-          - string
-          - 'null'
-          description: Emergency contact title
-        phoneNumber:
-          type:
-          - string
-          - 'null'
-          description: Emergency contact phone number
-        email:
-          type:
-          - string
-          - 'null'
-          description: Emergency contact email
-    OriginLocation:
-      required:
-      - address1
-      - city
-      - state
-      - zip
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-          description: The name of the location
-        storeNumber:
-          type: string
-          maxLength: 32
-          description: Store number or store identifier
-        address1:
-          type: string
-          maxLength: 256
-        address2:
-          type: string
-          maxLength: 256
-        city:
-          type: string
-          maxLength: 64
-        state:
-          type: string
-          maxLength: 64
-        country:
-          type: string
-          maxLength: 32
-          default: US
-        zip:
-          type: string
-          maxLength: 32
-          description: Zip Code or Postal Code
-        instructions:
-          type: string
-          maxLength: 256
-          description: Instructions for a pickup or delivery
-        code:
-          type: string
-          maxLength: 64
-          description: Gate code or other code required to access location
-        contactName:
-          type: string
-          maxLength: 128
-          description: Person to contact at the location for pickup or dropoff
-        contactPhone:
-          type: string
-          maxLength: 32
-          description: Phone number for the contact at the location
-        contactEmailAddress:
-          type: string
-          maxLength: 128
-          description: Email address for the contact at the location
-    ReturnDeliveryCreate:
-      required:
-      - orderId
-      properties:
-        state:
-          type: string
-          enum:
-          - DRAFT
-          - READY_TO_DISPATCH
-          default: READY_TO_DISPATCH
-        serviceLevel:
-          type: string
-        status:
-          type: string
-        deliveryOptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryOptions'
-        orderId:
-          type: string
-        deliveries:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReturnDelivery'
-        shopRates:
-          type:
-          - boolean
-          - 'null'
-          default: false
-          description: Wait for delivery calculations to complete before returning the response.
   securitySchemes:
     ApiKey:
       type: apiKey
@@ -5661,5 +5661,5 @@ components:
           tokenUrl: https://dummy-unused-url.com
           scopes: {}
 x-refined-from:
-- onerail-delivery-api-openapi.yml
-- onerail-operations-api-openapi.yml
+- onerail-delivery-api-openapi.json
+- onerail-operations-api-openapi.json

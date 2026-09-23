@@ -14,7 +14,7 @@ paths:
   /v1/routes:
     post:
       x-exegesis-controller: Routes
-      summary: Create new orders within one or more routes.
+      summary: Create new orders within one or more routes
       operationId: createRoutes
       tags:
       - Routes
@@ -97,8 +97,7 @@ paths:
                                 - state
                                 properties:
                                   from:
-                                    description: Pick up location. Pass in the id, or address info, or
-                                      store number to look up the location
+                                    description: Pick up location. Pass in the id, or address info, or store number to look up the location
                                     type: object
                                     properties:
                                       id:
@@ -200,8 +199,7 @@ paths:
                                               longitude:
                                                 type: number
                                   to:
-                                    description: Drop off location. Pass in complete location info. Lat/Long
-                                      are optional and will be populated if not passed.
+                                    description: Drop off location. Pass in complete location info. Lat/Long are optional and will be populated if not passed.
                                     type: object
                                     properties:
                                       id:
@@ -357,26 +355,22 @@ paths:
                                           - number
                                           - 'null'
                                         lengthIn:
-                                          description: item length in inches. Smallest value is an inch.
-                                            Float values are rounded up
+                                          description: item length in inches. Smallest value is an inch. Float values are rounded up
                                           type:
                                           - number
                                           - 'null'
                                         widthIn:
-                                          description: item width in inches. Smallest value is an inch.
-                                            Float values are rounded up
+                                          description: item width in inches. Smallest value is an inch. Float values are rounded up
                                           type:
                                           - number
                                           - 'null'
                                         heightIn:
-                                          description: item height in inches. Smallest value is an inch.
-                                            Float values are rounded up
+                                          description: item height in inches. Smallest value is an inch. Float values are rounded up
                                           type:
                                           - number
                                           - 'null'
                                         weightLbs:
-                                          description: Item weight in pounds. Float values are rounded
-                                            up
+                                          description: Item weight in pounds. Float values are rounded up
                                           type:
                                           - number
                                           - 'null'
@@ -392,9 +386,7 @@ paths:
                                           type:
                                           - string
                                           - 'null'
-                                          description: The national motor freight code for this delivery.
-                                            This is a convenience function to set the same NMFC code for
-                                            all the containers or order items in this delivery.
+                                          description: The national motor freight code for this delivery. This is a convenience function to set the same NMFC code for all the containers or order items in this delivery.
                                           example: 82790-11
                                         freightClass:
                                           type:
@@ -420,9 +412,7 @@ paths:
                                           - '400'
                                           - '500'
                                           - null
-                                          description: The freight class for this delivery. This is a
-                                            convenience function to set the same freight class for all
-                                            the containers or order items in this delivery.
+                                          description: The freight class for this delivery. This is a convenience function to set the same freight class for all the containers or order items in this delivery.
                                         hazardousMaterialDetails:
                                           type:
                                           - object
@@ -432,11 +422,9 @@ paths:
                                               type:
                                               - string
                                               - 'null'
-                                              description: Number to identify hazard as designated by
-                                                shipper (example UN or NP numbers)
+                                              description: Number to identify hazard as designated by shipper (example UN or NP numbers)
                                             properShippingName:
-                                              description: The proper shipping name identified by the
-                                                Shipping Table as desingnated by the shipper
+                                              description: The proper shipping name identified by the Shipping Table as desingnated by the shipper
                                               type:
                                               - string
                                               - 'null'
@@ -444,14 +432,12 @@ paths:
                                               type:
                                               - string
                                               - 'null'
-                                              description: designation for the group of packages provided
-                                                by the shipper
+                                              description: designation for the group of packages provided by the shipper
                                             packagingType:
                                               type:
                                               - string
                                               - 'null'
-                                              description: The type of package holding the hazardous material
-                                                as designated by the shipper
+                                              description: The type of package holding the hazardous material as designated by the shipper
                                             hazardClass:
                                               type:
                                               - string
@@ -461,14 +447,12 @@ paths:
                                               type:
                                               - string
                                               - 'null'
-                                              description: Value from the hazard classification system
-                                                for the sub class
+                                              description: Value from the hazard classification system for the sub class
                                             technicalName:
                                               type:
                                               - string
                                               - 'null'
-                                              description: Technical description given by the shipper
-                                                for the hazardous item
+                                              description: Technical description given by the shipper for the hazardous item
                                             dotLabeling:
                                               type:
                                               - string
@@ -533,8 +517,7 @@ paths:
                                     type:
                                     - object
                                     - 'null'
-                                    description: JSON blob that the customer can use to store additional
-                                      info they may need.
+                                    description: JSON blob that the customer can use to store additional info they may need.
                                   serviceLevel:
                                     type:
                                     - string
@@ -592,9 +575,7 @@ paths:
                                             type:
                                             - string
                                             - 'null'
-                                            description: The national motor freight code for this delivery.
-                                              This is a convenience function to set the same NMFC code
-                                              for all the containers or order items in this delivery.
+                                            description: The national motor freight code for this delivery. This is a convenience function to set the same NMFC code for all the containers or order items in this delivery.
                                             example: 82790-11
                                           hazardousMaterialDetails:
                                             type:
@@ -610,14 +591,12 @@ paths:
                                                 type:
                                                 - string
                                                 - 'null'
-                                                description: Phone number of emergency contact for hazmat
-                                                  shipment
+                                                description: Phone number of emergency contact for hazmat shipment
                                               signatoryContactTitle:
                                                 type:
                                                 - string
                                                 - 'null'
-                                                description: Professional title of person responsible
-                                                  for the hazmat shipment compliance
+                                                description: Professional title of person responsible for the hazmat shipment compliance
                                               signatoryContactPlace:
                                                 type:
                                                 - string
@@ -642,8 +621,7 @@ paths:
                                                 type:
                                                 - string
                                                 - 'null'
-                                                description: Type of packaging type to be applied for
-                                                  fedex
+                                                description: Type of packaging type to be applied for fedex
                                           freightClass:
                                             type:
                                             - string
@@ -668,9 +646,7 @@ paths:
                                             - '400'
                                             - '500'
                                             - null
-                                            description: The freight class for this delivery. This is
-                                              a convenience function to set the same freight class for
-                                              all the containers or order items in this delivery.
+                                            description: The freight class for this delivery. This is a convenience function to set the same freight class for all the containers or order items in this delivery.
                                           containers:
                                             type: array
                                             items:
@@ -765,9 +741,7 @@ paths:
                                             type:
                                             - string
                                             - 'null'
-                                            description: The national motor freight code for this delivery.
-                                              This is a convenience function to set the same NMFC code
-                                              for all the containers or order items in this delivery.
+                                            description: The national motor freight code for this delivery. This is a convenience function to set the same NMFC code for all the containers or order items in this delivery.
                                             example: 82790-11
                                           freightClass:
                                             type:
@@ -793,9 +767,7 @@ paths:
                                             - '400'
                                             - '500'
                                             - null
-                                            description: The freight class for this delivery. This is
-                                              a convenience function to set the same freight class for
-                                              all the containers or order items in this delivery.
+                                            description: The freight class for this delivery. This is a convenience function to set the same freight class for all the containers or order items in this delivery.
                                           hazardousMaterialDetails:
                                             type:
                                             - object
@@ -836,9 +808,7 @@ paths:
                                     type:
                                     - string
                                     - 'null'
-                                    description: The national motor freight code for this delivery. This
-                                      is a convenience function to set the same NMFC code for all the
-                                      containers or order items in this delivery.
+                                    description: The national motor freight code for this delivery. This is a convenience function to set the same NMFC code for all the containers or order items in this delivery.
                                     example: 82790-11
                                   freightClass:
                                     type:
@@ -864,18 +834,14 @@ paths:
                                     - '400'
                                     - '500'
                                     - null
-                                    description: The freight class for this delivery. This is a convenience
-                                      function to set the same freight class for all the containers or
-                                      order items in this delivery.
+                                    description: The freight class for this delivery. This is a convenience function to set the same freight class for all the containers or order items in this delivery.
                                   deliveryFiles:
                                     $ref: '#/components/schemas/Delivery/properties/deliveryFiles'
                             nmfc:
                               type:
                               - string
                               - 'null'
-                              description: The national motor freight code for this delivery. This is
-                                a convenience function to set the same NMFC code for all the containers
-                                or order items in this delivery.
+                              description: The national motor freight code for this delivery. This is a convenience function to set the same NMFC code for all the containers or order items in this delivery.
                               example: 82790-11
                             freightClass:
                               type:
@@ -901,12 +867,9 @@ paths:
                               - '400'
                               - '500'
                               - null
-                              description: The freight class for this delivery. This is a convenience
-                                function to set the same freight class for all the containers or order
-                                items in this delivery.
+                              description: The freight class for this delivery. This is a convenience function to set the same freight class for all the containers or order items in this delivery.
                             originLocation:
-                              description: Origin location. Pass in the id, or address info, or store
-                                number to look up the location
+                              description: Origin location. Pass in the id, or address info, or store number to look up the location
                               type:
                               - object
                               - 'null'
@@ -1052,8 +1015,7 @@ components:
           - pdf
           - zpl
           default: png
-          description: Format of shipping label generated by Onerail. Represented as a base64-encoded
-            string in the response
+          description: Format of shipping label generated by Onerail. Represented as a base64-encoded string in the response
         carrierLabelType:
           type:
           - string
@@ -1063,8 +1025,7 @@ components:
           type:
           - string
           - 'null'
-          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS).
-            Contact OneRail to obtain a list of valid carrier codes.
+          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS). Contact OneRail to obtain a list of valid carrier codes.
 
             '
           example: FDEX
@@ -1072,8 +1033,7 @@ components:
           type:
           - string
           - 'null'
-          description: 'Name of the specific carrier service level requested for the delivery. Contact
-            OneRail to obtain a list of valid carrier service names.
+          description: 'Name of the specific carrier service level requested for the delivery. Contact OneRail to obtain a list of valid carrier service names.
 
             '
           example: FEDEX_EXPRESS_SAVER
@@ -1122,15 +1082,7 @@ components:
           type:
           - string
           - 'null'
-          description: 'datetime in ISO format, typically UTC (for example, ending in "Z") or another
-            offset-aware date-time. Availability checks treat dispatchAt and any provided delivery window
-            timestamps as absolute instants and convert them to the relevant local timezone before comparing
-            against service-level times. When dispatchAt is omitted, availability checks use the current
-            time as the dispatch time. If pickup windows are provided, service-level cutoff and end-of-day
-            evaluation use the pickup window open time instead of dispatchAt. Service-level cutoff values
-            are evaluated as minutes from midnight in the pickup location''s local timezone; service-level
-            end-of-day values are evaluated as minutes from midnight in the dropoff location''s local
-            timezone.
+          description: 'datetime in ISO format, typically UTC (for example, ending in "Z") or another offset-aware date-time. Availability checks treat dispatchAt and any provided delivery window timestamps as absolute instants and convert them to the relevant local timezone before comparing against service-level times. When dispatchAt is omitted, availability checks use the current time as the dispatch time. If pickup windows are provided, service-level cutoff and end-of-day evaluation use the pickup window open time instead of dispatchAt. Service-level cutoff values are evaluated as minutes from midnight in the pickup location''s local timezone; service-level end-of-day values are evaluated as minutes from midnight in the dropoff location''s local timezone.
 
             '
           format: date-time
@@ -1138,8 +1090,7 @@ components:
           type:
           - string
           - 'null'
-          description: The national motor freight code for this delivery. This is a convenience function
-            to set the same NMFC code for all the containers or order items in this delivery.
+          description: The national motor freight code for this delivery. This is a convenience function to set the same NMFC code for all the containers or order items in this delivery.
           example: 82790-11
         freightClass:
           type:
@@ -1165,8 +1116,7 @@ components:
           - '400'
           - '500'
           - null
-          description: The freight class for this delivery. This is a convenience function to set the
-            same freight class for all the containers or order items in this delivery.
+          description: The freight class for this delivery. This is a convenience function to set the same freight class for all the containers or order items in this delivery.
         numericSystem:
           type: string
           default: IMPERIAL
@@ -1195,8 +1145,7 @@ components:
                 - Delivery Receipt
                 - Invoice
                 - Hazmat Document
-                description: allowed file types BOL, Weight Inspection, Pallet Label, Package Label, Delivery
-                  Receipt, Invoice and Hazmat Document
+                description: allowed file types BOL, Weight Inspection, Pallet Label, Package Label, Delivery Receipt, Invoice and Hazmat Document
               fileLink:
                 type: string
                 example: https://oneraildev.blob.core.windows.net/dev/20221023-123613103-45672570-fb26-46a0-9cc0-21fc8eeed42f.pdf
@@ -1232,8 +1181,7 @@ components:
               type:
               - string
               - 'null'
-              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI
-                submission.
+              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
 
 
                 Format: ''AES X20250427123456''
@@ -1257,8 +1205,7 @@ components:
               type:
               - string
               - 'null'
-              description: A free-text explanation of what the contents are (only applicable if "itemCategory"
-                is "other").
+              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
               example: The items have air tight seals
             shippingRestriction:
               type:
@@ -1275,8 +1222,7 @@ components:
               type:
               - string
               - 'null'
-              description: Free-text comments clarifying or explaining the restriction (only applicable
-                if "shippingRestriction" is not "none").
+              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
             isCustomsCertified:
               type:
               - boolean
@@ -1291,9 +1237,7 @@ components:
           type:
           - string
           - 'null'
-          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values\
-            \ are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package\
-            \ will not be returned and may be discarded or handled at the carrier's discretion.\n"
+          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package will not be returned and may be discarded or handled at the carrier's discretion.\n"
           enum:
           - return
           - abandon

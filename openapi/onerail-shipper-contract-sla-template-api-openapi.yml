@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   version: 1.0.0
-  title: OneRail Operation Dashboard Shipper Contract SLA Template API
+  title: OneRail Operation Dashboard Shipper Contract SLA Template…
   description: Defines Operations Dashboard APIs
   license:
     name: UNLICENSED

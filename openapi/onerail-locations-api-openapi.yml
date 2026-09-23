@@ -82,7 +82,13 @@ paths:
       - Locations
     post:
       x-exegesis-controller: Location
-      description: "Filter locations with one of the following items:\n- { search: { name: string, storeNumber: string, pickupLocationAddress: string } } you can pass search and filter locations by name, storeNumber, pickupLocationAddress includes search \n- or\n- { locationIds: [ uuid ] } you can pass locationIds as an array of locationId and search in locations by their id or ids\n"
+      description: 'Filter locations with one of the following items:
+
+        - { search: { name: string, storeNumber: string, pickupLocationAddress: string } } you can pass search and filter locations by name, storeNumber, pickupLocationAddress includes search
+
+        - or
+
+        - { locationIds: [ uuid ] } you can pass locationIds as an array of locationId and search in locations by their id or ids'
       summary: Get list of locations for filtering
       operationId: getFilterLocationsByPost
       requestBody:

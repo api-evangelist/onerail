@@ -2621,7 +2621,7 @@ paths:
         type: string
     get:
       x-exegesis-controller: Organization
-      summary: Get roles that loggin user has the ability to assign.
+      summary: Get roles that loggin user has the ability to assign
       operationId: getAssignableRoles
       tags:
       - Organization
@@ -2813,7 +2813,7 @@ paths:
         type: string
     put:
       x-exegesis-controller: User
-      summary: Bulk update users by passing in an array of users with attributes to update and either an ID or an employeeId to help identify the user (if both are included in a user, employeeId will be updated)
+      summary: Bulk update users by passing in an array of users with attributes to update and…
       operationId: bulkUpdate
       tags:
       - Organization
@@ -5525,7 +5525,7 @@ paths:
         format: uuid
     get:
       x-exegesis-controller: Organization
-      summary: Get organization tree by id.
+      summary: Get organization tree by id
       operationId: getOrganizationTree
       tags:
       - Organization

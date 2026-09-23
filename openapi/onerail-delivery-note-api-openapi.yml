@@ -12,7 +12,7 @@ servers:
 security:
 - bearer: []
 tags:
-- name: DeliveryNote
+- name: Delivery Note
 paths:
   /v1/delivery/{deliveryId}/delivery-note:
     parameters:
@@ -27,7 +27,7 @@ paths:
       summary: Creates a delivery note
       operationId: createDeliveryNote
       tags:
-      - DeliveryNote
+      - Delivery Note
       requestBody:
         required: true
         content:
@@ -249,7 +249,7 @@ paths:
       summary: Updates editable delivery note fields
       operationId: updateDeliveryNote
       tags:
-      - DeliveryNote
+      - Delivery Note
       requestBody:
         required: true
         content:
@@ -289,7 +289,7 @@ paths:
       summary: Deletes a delivery note and its note-owned attachments
       operationId: removeDeliveryNote
       tags:
-      - DeliveryNote
+      - Delivery Note
       responses:
         '200':
           description: Delivery note deleted
@@ -321,7 +321,7 @@ paths:
       summary: Get paginated delivery notes
       operationId: getAllDeliveryNotes
       tags:
-      - DeliveryNote
+      - Delivery Note
       parameters:
       - name: offset
         in: query

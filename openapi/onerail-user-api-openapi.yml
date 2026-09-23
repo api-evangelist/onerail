@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Onerail User API
   version: '1.0'
-  description: 'Operations tagged User across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged User across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.json, onerail-operations-api-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /
   description: Default relative server URL
@@ -49,9 +49,6 @@ paths:
       tags:
       - User
   /v1/organization/{organizationId}/user/status:
-    servers:
-    - url: /
-      description: Default relative server URL
     get:
       x-exegesis-controller: Organization
       summary: Gets driver status
@@ -104,10 +101,10 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
-  /v1/user:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/user:
     post:
       x-exegesis-controller: User
       summary: Creates a new User
@@ -178,6 +175,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/user/{userId}:
     parameters:
     - name: userId
@@ -187,9 +187,6 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     get:
       x-exegesis-controller: User
       summary: Get user's record
@@ -235,6 +232,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/user/{userId}/welcome-email:
     parameters:
     - name: userId
@@ -244,9 +244,6 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     get:
       x-exegesis-controller: User
       summary: Resend welcome email
@@ -260,6 +257,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/user/{userId}/roles:
     parameters:
     - name: userId
@@ -269,9 +269,6 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: User
       summary: Update user roles
@@ -359,6 +356,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/user/{userId}/roles/api:
     parameters:
     - name: userId
@@ -368,9 +368,6 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     get:
       x-exegesis-controller: User
       summary: Get all user's roles and permissions (API)
@@ -392,6 +389,9 @@ paths:
                   $ref: '#/paths/~1v1~1user~1%7BuserId%7D~1roles/get/responses/200/content/application~1json/schema/items'
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/user/{userId}/permissions:
     parameters:
     - name: userId
@@ -401,12 +401,9 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     get:
       x-exegesis-controller: User
-      summary: Get All user's permissions across all roles. Only displays permissions to loggin user.
+      summary: Get All user's permissions across all roles.
       operationId: getPermissions
       tags:
       - User
@@ -432,6 +429,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/user/fleet/{fleetId}/last-known-driver-location:
     parameters:
     - name: fleetId
@@ -440,9 +440,6 @@ paths:
       description: Fleet Id
       schema:
         type: string
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: User
       summary: Updates a user's last known geo location by fleet id
@@ -472,6 +469,9 @@ paths:
           $ref: '#/paths/~1v1~1bulk-dispatch/post/responses/200'
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/user/{userId}/user-view:
     parameters:
     - name: userId
@@ -481,9 +481,6 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: User
       summary: Create user view filter
@@ -545,6 +542,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/user/{userId}/user-view/{userViewId}:
     parameters:
     - name: userId
@@ -560,9 +560,6 @@ paths:
       description: User View id
       schema:
         type: string
-    servers:
-    - url: /
-      description: Default relative server URL
     get:
       x-exegesis-controller: User
       summary: Get user view filter
@@ -670,6 +667,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/user/{userId}/user-views:
     parameters:
     - name: userId
@@ -728,9 +728,6 @@ paths:
         - dashboard-users
         - invoices
         - disputes
-    servers:
-    - url: /
-      description: Default relative server URL
     get:
       x-exegesis-controller: User
       summary: Get all user views filter
@@ -755,6 +752,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/user/{userId}/user-views/cardinality:
     parameters:
     - name: userId
@@ -764,9 +764,6 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     put:
       x-exegesis-controller: User
       summary: Bulk update user view order
@@ -820,10 +817,10 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
-  /v1/user/policy-check:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/user/policy-check:
     get:
       x-exegesis-controller: User
       summary: check if latest privacy policy accepted by User
@@ -848,10 +845,10 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
-  /v1/user/policy-accept:
     servers:
     - url: /
       description: Default relative server URL
+  /v1/user/policy-accept:
     post:
       x-exegesis-controller: User
       summary: Update policy accept
@@ -877,6 +874,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/organization/{organizationId}/user/{userId}/roles:
     parameters:
     - name: userId
@@ -892,9 +892,6 @@ paths:
       description: organization id
       schema:
         type: string
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: User
       summary: Update user roles
@@ -934,6 +931,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/location/{locationId}/user/{userId}/roles:
     parameters:
     - name: userId
@@ -949,9 +949,6 @@ paths:
       description: location id
       schema:
         type: string
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: User
       summary: Update user roles
@@ -1017,6 +1014,9 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
       security:
       - bearer: []
+    servers:
+    - url: /
+      description: Default relative server URL
 components:
   schemas:
     UserCredentials:
@@ -1098,5 +1098,5 @@ components:
           tokenUrl: https://dummy-unused-url.com
           scopes: {}
 x-refined-from:
-- onerail-delivery-api-openapi.yml
-- onerail-operations-api-openapi.yml
+- onerail-delivery-api-openapi.json
+- onerail-operations-api-openapi.json

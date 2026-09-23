@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   version: 1.0.0
-  title: OneRail Operation Dashboard Delivery Notification Statuses API
+  title: OneRail Operation Dashboard Delivery Notification Statuses…
   description: Defines Operations Dashboard APIs
   license:
     name: UNLICENSED
@@ -117,7 +117,7 @@ paths:
   /v1/delivery/notification-statuses/create:
     post:
       x-exegesis-controller: DeliveryNotificationStatuses
-      summary: Create a delivery notification status record.
+      summary: Create a delivery notification status record
       operationId: createDeliveryNotificationStatus
       tags:
       - DeliveryNotificationStatuses
@@ -154,7 +154,7 @@ paths:
       - ApiKey: []
         AppId: []
       x-exegesis-controller: DeliveryNotificationStatuses
-      summary: Create a delivery notification status record.
+      summary: Create a delivery notification status record
       operationId: createApi
       tags:
       - DeliveryNotificationStatuses
@@ -190,7 +190,7 @@ paths:
   /v1/delivery/notification-statuses/update:
     post:
       x-exegesis-controller: DeliveryNotificationStatuses
-      summary: Update a delivery notification with an webhook attempt.  Can be either successful or a failure with an error.
+      summary: Update a delivery notification with an webhook attempt.
       operationId: updateDeliveryNotificationStatus
       tags:
       - DeliveryNotificationStatuses
@@ -233,7 +233,7 @@ paths:
       - ApiKey: []
         AppId: []
       x-exegesis-controller: DeliveryNotificationStatuses
-      summary: Update a delivery notification with an webhook attempt. Can be either successful or a failure with an error. (API)
+      summary: Update a delivery notification with an webhook attempt.
       operationId: updateApi
       tags:
       - DeliveryNotificationStatuses

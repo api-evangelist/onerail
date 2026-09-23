@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Onerail Home API
   version: '1.0'
-  description: 'Operations tagged Home across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Home across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.json, onerail-operations-api-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /
   description: Default relative server URL
@@ -74,5 +74,5 @@ components:
           tokenUrl: https://dummy-unused-url.com
           scopes: {}
 x-refined-from:
-- onerail-delivery-api-openapi.yml
-- onerail-operations-api-openapi.yml
+- onerail-delivery-api-openapi.json
+- onerail-operations-api-openapi.json

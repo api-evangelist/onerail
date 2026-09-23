@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Onerail Visibility API
   version: '1.0'
-  description: 'Operations tagged Visibility across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Visibility across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.json, onerail-operations-api-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /
   description: Default relative server URL
@@ -379,9 +379,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   /v1/visibility/create:
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: Visibility
       summary: Creates a visibility from API call
@@ -641,6 +638,9 @@ paths:
                 description: Response
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
+    servers:
+    - url: /
+      description: Default relative server URL
   /v1/visibility/{orderId}/add-deliveries:
     parameters:
     - name: orderId
@@ -649,9 +649,6 @@ paths:
       schema:
         type: string
         format: uuid
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: Visibility
       summary: Creates a visibility from API call
@@ -669,6 +666,9 @@ paths:
           $ref: '#/paths/~1v1~1visibility~1create/post/responses/200'
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
+    servers:
+    - url: /
+      description: Default relative server URL
 components:
   schemas:
     Error:
@@ -739,5 +739,5 @@ components:
           tokenUrl: https://dummy-unused-url.com
           scopes: {}
 x-refined-from:
-- onerail-delivery-api-openapi.yml
-- onerail-operations-api-openapi.yml
+- onerail-delivery-api-openapi.json
+- onerail-operations-api-openapi.json

@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   version: 1.0.0
-  title: OneRail Operation Dashboard Service Level Exception Conditions API
+  title: OneRail Operation Dashboard Service Level Exception…
   description: Defines Operations Dashboard APIs
   license:
     name: UNLICENSED

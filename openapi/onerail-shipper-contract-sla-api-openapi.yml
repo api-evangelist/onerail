@@ -502,7 +502,7 @@ paths:
   /v1/shipper-contract-sla/approve-and-sign:
     post:
       x-exegesis-controller: ShipperContractSla
-      summary: Bulk approve, create Bulk Shipper signature, create Bulk OneRail signature for an SLA
+      summary: Bulk approve, create Bulk Shipper signature, create Bulk OneRail signature for…
       operationId: bulkApproveAndSignShipperContractSlas
       tags:
       - Shipper Contract SLA

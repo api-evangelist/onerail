@@ -26,9 +26,7 @@ paths:
 
         Results are constrained by the caller''s organization access. Unauthorized and missing
 
-        organization IDs are silently omitted from the response.
-
-        '
+        organization IDs are silently omitted from the response.'
       operationId: getFapOrganizationSummaries
       tags:
       - Freight Audit & Pay
@@ -116,9 +114,7 @@ paths:
 
         attach. The FAP API batch-attach owns final eligibility decisions.
 
-        **At least one filter is required**: search parameter or deliveryAttemptIds. This prevents full table scans.
-
-        '
+        **At least one filter is required**: search parameter or deliveryAttemptIds. This prevents full table scans.'
       operationId: getOrganizationDeliveryAttempts
       security:
       - bearer: []

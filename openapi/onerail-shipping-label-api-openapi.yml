@@ -30,8 +30,7 @@ paths:
           type: string
       responses:
         '200':
-          description: Shipping label URL for each container as well as summary about each container and
-            the whole delivery
+          description: Shipping label URL for each container as well as summary about each container and the whole delivery
           content:
             application/json:
               schema:
@@ -101,8 +100,7 @@ paths:
           type: string
       responses:
         '200':
-          description: Shipping label URL for each container as well as summary about each container and
-            the whole delivery
+          description: Shipping label URL for each container as well as summary about each container and the whole delivery
           content:
             application/json:
               schema:
@@ -117,30 +115,6 @@ paths:
       - Shipping Label
 components:
   schemas:
-    ContainerLabelInfo:
-      properties:
-        trackingId:
-          type: string
-        deliveryId:
-          type: string
-        type:
-          type: string
-        statusCode:
-          type: integer
-        statusDescription:
-          type: string
-        scac:
-          type: string
-        serviceCode:
-          type: string
-        label:
-          type: string
-        containerId:
-          type: string
-        containerTrackingId:
-          type: string
-        shipperContainerId:
-          type: string
     LabelInfo:
       properties:
         trackingId:
@@ -194,6 +168,30 @@ components:
                 description: A JSON Pointer [RFC6901] to the associated entity in the request document
             required:
             - detail
+    ContainerLabelInfo:
+      properties:
+        trackingId:
+          type: string
+        deliveryId:
+          type: string
+        type:
+          type: string
+        statusCode:
+          type: integer
+        statusDescription:
+          type: string
+        scac:
+          type: string
+        serviceCode:
+          type: string
+        label:
+          type: string
+        containerId:
+          type: string
+        containerTrackingId:
+          type: string
+        shipperContainerId:
+          type: string
   securitySchemes:
     ApiKey:
       type: apiKey

@@ -68,7 +68,7 @@ paths:
   /v1/login:
     post:
       x-exegesis-controller: Authentication
-      summary: Login User.
+      summary: Login User
       operationId: login
       tags:
       - Authentication
@@ -193,7 +193,7 @@ paths:
   /v1/login/sso-token:
     post:
       x-exegesis-controller: Authentication
-      summary: Login User with a single sign on token.
+      summary: Login User with a single sign on token
       operationId: loginWithSsoToken
       tags:
       - Authentication
@@ -225,7 +225,7 @@ paths:
   /v1/verify-email:
     get:
       x-exegesis-controller: Authentication
-      summary: Verify a FedEx SSO merchant email address.
+      summary: Verify a FedEx SSO merchant email address
       operationId: verifyEmail
       tags:
       - Authentication
@@ -315,7 +315,6 @@ paths:
     post:
       x-exegesis-controller: Authentication
       summary: Check validity of reset token
-      description: Check validity of reset token
       operationId: validateResetToken
       tags:
       - Authentication
@@ -347,7 +346,7 @@ paths:
   /v1/update-password:
     post:
       x-exegesis-controller: Authentication
-      summary: Updates user's password.
+      summary: Updates user's password
       operationId: updatePassword
       security: []
       tags:
@@ -382,7 +381,7 @@ paths:
   /v1/check-sso:
     post:
       x-exegesis-controller: Authentication
-      summary: Check user if part of single sign on org.
+      summary: Check user if part of single sign on org
       operationId: checkSSO
       tags:
       - Authentication
@@ -442,7 +441,7 @@ paths:
   /v1/sso-multi-organizations:
     post:
       x-exegesis-controller: Authentication
-      summary: Get list of related organizations that share an ssoEmailSuffix.
+      summary: Get list of related organizations that share an ssoEmailSuffix
       operationId: ssoMultiOrganizations
       tags:
       - Authentication

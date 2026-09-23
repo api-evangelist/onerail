@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Onerail Manifest API
   version: '1.0'
-  description: 'Operations tagged Manifest across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.yml, onerail-operations-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Manifest across 2 of this provider''s published API definitions: onerail-delivery-api-openapi.json, onerail-operations-api-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /
   description: Default relative server URL
@@ -45,9 +45,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   /v1/close-manifest:
-    servers:
-    - url: /
-      description: Default relative server URL
     post:
       x-exegesis-controller: Manifest
       summary: Closes a carrier manifest
@@ -124,8 +121,35 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
+    servers:
+    - url: /
+      description: Default relative server URL
 components:
   schemas:
+    Error:
+      required:
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        errors:
+          type: object
+        errorDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                description: A human-readable explanation specific to this occurrence of the problem
+              pointer:
+                type: string
+                description: A JSON Pointer [RFC6901] to the associated entity in the request document
+            required:
+            - detail
     CloseManifestRequest:
       type: object
       required:
@@ -160,30 +184,6 @@ components:
         locationId:
           type: string
           description: Location ID
-    Error:
-      required:
-      - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        errors:
-          type: object
-        errorDetails:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                description: A human-readable explanation specific to this occurrence of the problem
-              pointer:
-                type: string
-                description: A JSON Pointer [RFC6901] to the associated entity in the request document
-            required:
-            - detail
   securitySchemes:
     ApiKey:
       type: apiKey
@@ -228,5 +228,5 @@ components:
           tokenUrl: https://dummy-unused-url.com
           scopes: {}
 x-refined-from:
-- onerail-delivery-api-openapi.yml
-- onerail-operations-api-openapi.yml
+- onerail-delivery-api-openapi.json
+- onerail-operations-api-openapi.json

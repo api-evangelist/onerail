@@ -17,7 +17,7 @@ paths:
   /v1/cancel-expired-deliveries:
     post:
       x-exegesis-controller: Delivery
-      summary: Accepts a filter to determine which deliveries to revoke the routes for and Only cancel deliveries that are not in a "final" status, final statuses
+      summary: Accepts a filter to determine which deliveries to revoke the routes for and…
       security:
       - ApiKey: []
         AppId: []
@@ -829,7 +829,7 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
     post:
       x-exegesis-controller: Route
-      summary: Create new orders within one or more routes.
+      summary: Create new orders within one or more routes
       operationId: createRoutes
       tags:
       - Route
@@ -919,7 +919,7 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
     put:
       x-exegesis-controller: Route
-      summary: Update exist route.
+      summary: Update exist route
       operationId: updateRoutes
       tags:
       - Route
