@@ -82,7 +82,7 @@
     "onerail-shipmentid-api-openapi.yml"
   ],
   "archived": [
-    "deleted 3 superseded output(s) from the previous generation"
+    "deleted 2 superseded output(s) from the previous generation"
   ],
   "errors": [
     "onerail-delivery-api-openapi.json: dangling $ref: #/paths/~1delivery~1%7Bid%7D~1details/get/responses/200/content/application~1json/schema",
@@ -326,8 +326,8 @@
     "tag 'Order' spans 2 source specs (onerail-delivery-api-openapi.json, onerail-operations-api-openapi.json): per-path servers applied",
     "tag 'User' spans 2 source specs (onerail-delivery-api-openapi.json, onerail-operations-api-openapi.json): per-path servers applied",
     "tag 'Visibility' spans 2 source specs (onerail-delivery-api-openapi.json, onerail-operations-api-openapi.json): per-path servers applied",
-    "superseded outputs removed: onerail-delivery-note-api-openapi.yml, onerail-health-check-api-openapi.yml, onerail-o-auth2-api-openapi.yml",
-    "apis.yml register: written (+3 apis, 75 total)"
+    "superseded outputs removed: onerail-delivery-note-api-openapi.yml, onerail-health-check-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 75 total)"
   ],
   "skipped": [
     "_original/onerail-operations-api-openapi.yml: archived document superseded by a larger archived document",
@@ -376,7 +376,7 @@
     "onerail-manifest-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "onerail-market-modifier-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "onerail-memwatch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "onerail-o-auth2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "onerail-oauth2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "onerail-order-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "onerail-organization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "onerail-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",

@@ -61,6 +61,7 @@ tags:
 - Order Management
 - Webhook
 - Final Mile
+- Delivery
 tags_raw:
 - last-mile-delivery
 - delivery-orchestration
@@ -74,6 +75,7 @@ tags_raw:
 - order-management
 - webhooks
 - final-mile
+- Delivery
 apis:
 - name: OneRail Delivery API
   description: >-
@@ -1378,8 +1380,6 @@ apis:
     https://developer.onerail.io/hc/en-us/articles/50724541394971-Getting-Started-with-Delivery-API
   baseURL: https://onerail-delivery-api-prod.azurewebsites.net
   tags:
-  - DeliveryNote
-  tags_raw:
   - Delivery Note
   properties:
   - type: OpenAPI

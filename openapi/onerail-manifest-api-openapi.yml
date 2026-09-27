@@ -52,7 +52,7 @@ paths:
       security:
       - ApiKey: []
         AppId: []
-      operationId: closeManifest
+      operationId: postV1CloseManifest
       tags:
       - Manifest
       requestBody:
@@ -121,6 +121,8 @@ paths:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
         default:
           $ref: '#/paths/~1v1~1routes/get/responses/404'
+      x-operation-id-source: normalized
+      x-operation-id-original: closeManifest
     servers:
     - url: /
       description: Default relative server URL
