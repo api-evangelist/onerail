@@ -6661,61 +6661,460 @@ paths:
       description: Default relative server URL
 components:
   schemas:
-    PredefinedContainer:
-      allOf:
-      - $ref: '#/components/schemas/PredefinedContainerBase'
-      - type: object
-      type: object
+    LocationInfo:
+      required:
+      - address1
+      - city
+      - state
+      - zip
       properties:
-        containers:
+        name:
           type:
-          - array
+          - string
           - 'null'
+          maxLength: 100
+          description: The name of the location
+        storeNumber:
+          type: string
+          maxLength: 32
+          description: Store number or store identifier
+        address1:
+          type: string
+          maxLength: 256
+        address2:
+          type: string
+          maxLength: 256
+        city:
+          type: string
+          maxLength: 64
+        state:
+          type: string
+          maxLength: 64
+        country:
+          type: string
+          maxLength: 32
+          default: US
+        zip:
+          type: string
+          maxLength: 32
+          description: Zip Code or Postal Code
+        instructions:
+          type: string
+          maxLength: 256
+          description: Instructions for a pickup or delivery
+        code:
+          type: string
+          maxLength: 64
+          description: Gate code or other code required to access location
+        contactName:
+          type: string
+          maxLength: 128
+          description: Person to contact at the location for pickup or dropoff
+        contactPhone:
+          type: string
+          maxLength: 32
+          description: Phone number for the contact at the location
+        contactEmailAddress:
+          type: string
+          maxLength: 128
+          description: Email address for the contact at the location
+        dueDate:
+          type: string
+          description: Indicates when this location should be fulfilled by. Time format iso-8601
+        windows:
+          type: object
+          properties:
+            opensOn:
+              type: string
+              description: Open window datetime in format iso-8601
+            closesOn:
+              type: string
+              description: Close window datetime in format iso-8601
+        appointment:
+          type: object
+          properties:
+            durationMins:
+              type: number
+              description: The duration time in minutes (integer)
+            description:
+              type: string
+              description: The description of the appointment
+              maxLength: 255
+        physicalLocation:
+          type: object
+          properties:
+            altLocation:
+              type: object
+              properties:
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+            altAddress:
+              type: object
+              properties:
+                label:
+                  type: string
+                state:
+                  type: string
+                county:
+                  type:
+                  - string
+                  - 'null'
+                street:
+                  type:
+                  - string
+                  - 'null'
+                street2:
+                  type:
+                  - string
+                  - 'null'
+                address1:
+                  type:
+                  - string
+                  - 'null'
+                address2:
+                  type:
+                  - string
+                  - 'null'
+                district:
+                  type:
+                  - string
+                  - 'null'
+                stateCode:
+                  type: string
+                postalCode:
+                  type: string
+                city:
+                  type: string
+                countryCode:
+                  type: string
+                countryName:
+                  type: string
+                houseNumber:
+                  type:
+                  - string
+                  - 'null'
+                additionalData:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+        capabilityTags:
+          $ref: '#/components/schemas/CapabilityTags'
+    DeliveryAvailabilityRequest:
+      type: object
+      required:
+      - pickUpData
+      - dropOffData
+      properties:
+        serviceLevels:
+          type: array
+          description: Optional list of service level names to check.
           items:
-            $ref: '#/components/schemas/ChildPredefinedContainer'
-    HazardousMaterialOrderItemDetails:
-      type: object
+            type: string
+        notes:
+          type: string
+          maxLength: 255
+          description: Delivery Notes
+        contractId:
+          type: string
+          description: The OneRail contract to deliver this package under
+        requestLabel:
+          type: boolean
+          default: false
+          description: Request a shipping label be added to the response. Default false
+        labelType:
+          type: string
+          enum:
+          - png
+          - pdf
+          - zpl
+          default: png
+          description: Format of shipping label generated by Onerail. Represented as a base64-encoded string in the response
+        carrierLabelType:
+          type:
+          - string
+          - 'null'
+          description: Format of shipping label generated by a carrier.
+        carrierCode:
+          type:
+          - string
+          - 'null'
+          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS). Contact OneRail to obtain a list of valid carrier codes.
+
+            '
+          example: FDEX
+        carrierServiceName:
+          type:
+          - string
+          - 'null'
+          description: 'Name of the specific carrier service level requested for the delivery. Contact OneRail to obtain a list of valid carrier service names.
+
+            '
+          example: FEDEX_EXPRESS_SAVER
+        deliveryType:
+          $ref: '#/components/schemas/DeliveryType'
+        deliveryOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+        customerData:
+          $ref: '#/components/schemas/CustomerData'
+        orderData:
+          $ref: '#/components/schemas/OrderData'
+        pickUpData:
+          $ref: '#/components/schemas/AvailabilityLocationInfo'
+        dropOffData:
+          $ref: '#/components/schemas/AvailabilityLocationInfo'
+        shipperExtraData:
+          type: object
+          description: JSON blob that the customer can use to store additional info they may need.
+        state:
+          type: string
+          enum:
+          - DRAFT
+          - READY_TO_DISPATCH
+          default: READY_TO_DISPATCH
+        serviceLevel:
+          type:
+          - string
+          - 'null'
+        shipmentId:
+          type:
+          - string
+          - 'null'
+        contactPreference:
+          type:
+          - string
+          - 'null'
+          enum:
+          - EMAIL
+          - SMS
+          - BOTH
+          - null
+          default: null
+        dispatchAt:
+          type:
+          - string
+          - 'null'
+          description: datetime in ISO format
+          format: date-time
+        nmfc:
+          type:
+          - string
+          - 'null'
+          description: The national motor freight code for this delivery. This is a convenience function to set the same NMFC code for all the containers or order items in this delivery.
+          example: 82790-11
+        freightClass:
+          type:
+          - string
+          - 'null'
+          enum:
+          - '50'
+          - '55'
+          - '60'
+          - '65'
+          - '70'
+          - '77.5'
+          - '85'
+          - '92.5'
+          - '100'
+          - '110'
+          - '125'
+          - '150'
+          - '175'
+          - '200'
+          - '250'
+          - '300'
+          - '400'
+          - '500'
+          - null
+          description: The freight class for this delivery. This is a convenience function to set the same freight class for all the containers or order items in this delivery.
+        numericSystem:
+          type: string
+          default: IMPERIAL
+          enum:
+          - IMPERIAL
+          - METRIC
+        deliveryFiles:
+          $ref: '#/components/schemas/Delivery/properties/deliveryFiles'
+        emergencyContact:
+          $ref: '#/components/schemas/EmergencyContact'
+        deliveryInternationalDetails:
+          type: object
+          description: 'Export compliance information used for international shipments.
+
+
+            Only one of the fields should be provided depending on the regulatory requirements:
+
+
+            - If EEI filing in AES is required → provide `aesItn`
+
+
+            - If EEI filing is not required → provide `ftrExemption`
+
+            '
+          properties:
+            ftrExemptionCode:
+              type:
+              - string
+              - 'null'
+              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
+
+
+                Example: ''NO EEI 30.37(a)''
+
+                '
+              example: NO EEI 30.37(a)
+            aesItn:
+              type:
+              - string
+              - 'null'
+              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
+
+
+                Format: ''AES X20250427123456''
+
+                '
+              example: AES X20250427123456
+            itemCategory:
+              type:
+              - string
+              - 'null'
+              description: Represents a classification/type of items.
+              enum:
+              - merchandise
+              - returned_goods
+              - documents
+              - gift
+              - sample
+              - other
+              example: merchandise
+            itemDescription:
+              type:
+              - string
+              - 'null'
+              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
+              example: The items have air tight seals
+            shippingRestriction:
+              type:
+              - string
+              - 'null'
+              description: Represents any type of limitation (e.g., hazardous, embargoed).
+              enum:
+              - none
+              - other
+              - quarantine
+              - sanitary_phytosanitary_inspection
+              example: none
+            restrictionNotes:
+              type:
+              - string
+              - 'null'
+              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
+            isCustomsCertified:
+              type:
+              - boolean
+              - 'null'
+              description: Boolean flag indicating certification status.
+            certifyingParty:
+              type:
+              - string
+              - 'null'
+              description: Name of the person or entity signing the customs form.
+        nonDeliveryBehavior:
+          type:
+          - string
+          - 'null'
+          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package will not be returned and may be discarded or handled at the carrier's discretion.\n"
+          enum:
+          - return
+          - abandon
+    OrderItem:
+      required:
+      - description
+      - length
+      - width
+      - height
+      - weight
+      - quantity
       properties:
-        identificationNumber:
+        id:
+          type: string
+          description: OneRail internal item id. if this id is valid OneRail line item it will be ignored during delivery creation.
+        description:
+          type: string
+          maxLength: 256
+          description: Description of this item
+        length:
+          type: number
+          description: Length in inches of this item
+        width:
+          type: number
+          description: Width in inches of this item
+        height:
+          type: number
+          description: Height in inches of this item
+        weight:
+          type: number
+          description: Weight in pounds (As a floating point number. Fractional pounds are ok)
+        quantity:
+          type: integer
+          description: The number of this same item included with the order
+        identifier:
+          type: string
+          maxLength: 64
+          description: Product SKU, ID, or UPC
+        complexities:
+          type: string
+          maxLength: 128
+        priceCent:
+          type: integer
+          description: Order amount (in cents)
+        nmfc:
           type:
           - string
           - 'null'
-          description: Number to identify hazard as designated by shipper (example UN or NP numbers)
-        properShippingName:
-          description: The proper shipping name identified by the Shipping Table as desingnated by the shipper
+          description: The national motor freight code for this order item.
+          example: 82790-11
+        freightClass:
           type:
           - string
           - 'null'
-        packagingGroup:
+          enum:
+          - '50'
+          - '55'
+          - '60'
+          - '65'
+          - '70'
+          - '77.5'
+          - '85'
+          - '92.5'
+          - '100'
+          - '110'
+          - '125'
+          - '150'
+          - '175'
+          - '200'
+          - '250'
+          - '300'
+          - '400'
+          - '500'
+          - null
+          description: The freight class for this order item.
+        hazardousMaterialDetails:
           type:
-          - string
+          - object
           - 'null'
-          description: designation for the group of packages provided by the shipper
-        packagingType:
-          type:
-          - string
-          - 'null'
-          description: The type of package holding the hazardous material as designated by the shipper
-        hazardClass:
-          type:
-          - string
-          - 'null'
-          description: Value from the hazard classification system
-        hazardSubClass:
-          type:
-          - string
-          - 'null'
-          description: Value from the hazard classification system for the sub class
-        technicalName:
-          type:
-          - string
-          - 'null'
-          description: Technical description given by the shipper for the hazardous item
-        dotLabeling:
-          type:
-          - string
-          - 'null'
-          description: Type of label to be placed on the items
+          $ref: '#/components/schemas/HazardousMaterialOrderItemDetails'
+        doNotRotate:
+          type: boolean
+          default: false
     DeliveryCreated:
       properties:
         delivery_id:
@@ -6909,509 +7308,6 @@ components:
           - integer
           - 'null'
           description: Shipper cost in cents
-    OriginLocation:
-      required:
-      - address1
-      - city
-      - state
-      - zip
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-          description: The name of the location
-        storeNumber:
-          type: string
-          maxLength: 32
-          description: Store number or store identifier
-        address1:
-          type: string
-          maxLength: 256
-        address2:
-          type: string
-          maxLength: 256
-        city:
-          type: string
-          maxLength: 64
-        state:
-          type: string
-          maxLength: 64
-        country:
-          type: string
-          maxLength: 32
-          default: US
-        zip:
-          type: string
-          maxLength: 32
-          description: Zip Code or Postal Code
-        instructions:
-          type: string
-          maxLength: 256
-          description: Instructions for a pickup or delivery
-        code:
-          type: string
-          maxLength: 64
-          description: Gate code or other code required to access location
-        contactName:
-          type: string
-          maxLength: 128
-          description: Person to contact at the location for pickup or dropoff
-        contactPhone:
-          type: string
-          maxLength: 32
-          description: Phone number for the contact at the location
-        contactEmailAddress:
-          type: string
-          maxLength: 128
-          description: Email address for the contact at the location
-    DeliveryData:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Delivery id
-        deliveryType:
-          description: Type of delivery
-          $ref: '#/components/schemas/DeliveryType'
-        notes:
-          type: string
-          description: Delivery Notes
-          maxLength: 255
-        state:
-          type: string
-          enum:
-          - DRAFT
-          - READY_TO_DISPATCH
-          default: READY_TO_DISPATCH
-        dispatchAt:
-          type:
-          - string
-          - 'null'
-          description: datetime in ISO format
-          format: date-time
-        deliveryInternationalDetails:
-          type: object
-          properties:
-            ftr:
-              type: string
-              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
-
-
-                Example: ''NO EEI 30.37(a)''
-
-                '
-              example: NO EEI 30.37(a)
-            aes:
-              type: string
-              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
-
-
-                Format: ''AES X20250427123456''
-
-                '
-              example: AES X20250427123456
-            itemCategory:
-              type:
-              - string
-              - 'null'
-              description: Represents a classification/type of items.
-              enum:
-              - merchandise
-              - returned_goods
-              - documents
-              - gift
-              - sample
-              - other
-              example: merchandise
-            itemDescription:
-              type:
-              - string
-              - 'null'
-              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
-              example: The items have air tight seals
-            shippingRestriction:
-              type:
-              - string
-              - 'null'
-              description: Represents any type of limitation (e.g., hazardous, embargoed).
-              enum:
-              - none
-              - other
-              - quarantine
-              - sanitary_phytosanitary_inspection
-              example: none
-            restrictionNotes:
-              type:
-              - string
-              - 'null'
-              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
-            isCustomsCertified:
-              type:
-              - boolean
-              - 'null'
-              description: Boolean flag indicating certification status.
-            certifyingParty:
-              type:
-              - string
-              - 'null'
-              description: Name of the person or entity signing the customs form.
-        to:
-          type: object
-          properties:
-            address:
-              type: object
-              properties:
-                city:
-                  type: string
-                label:
-                  type: string
-                state:
-                  type: string
-                county:
-                  type: string
-                street:
-                  type: string
-                district:
-                  type: string
-                stateCode:
-                  type: string
-                postalCode:
-                  type: string
-                countryCode:
-                  type: string
-                countryName:
-                  type: string
-                houseNumber:
-                  type: string
-            location:
-              type: object
-              properties:
-                longitude:
-                  type: number
-                  format: float
-                latitude:
-                  type: number
-                  format: float
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            accessCode:
-              type:
-              - string
-              - 'null'
-            shippingInstructions:
-              type:
-              - string
-              - 'null'
-            receivingInstructions:
-              type:
-              - string
-              - 'null'
-            contactName:
-              type: string
-            phoneNumber:
-              type: string
-            contactEmailAddress:
-              type: string
-              format: email
-            storeNumber:
-              type:
-              - string
-              - 'null'
-            timezone:
-              type: string
-            timezoneOffset:
-              type: integer
-            timezoneAbbreviation:
-              type: string
-            msa:
-              type: string
-            cutOffTimeMins:
-              type:
-              - integer
-              - 'null'
-            version:
-              type: integer
-            hasLoadingDock:
-              type: boolean
-            primaryContact:
-              type:
-              - string
-              - 'null'
-        from:
-          type: object
-          properties:
-            address:
-              type: object
-              properties:
-                city:
-                  type: string
-                label:
-                  type: string
-                state:
-                  type: string
-                county:
-                  type: string
-                street:
-                  type: string
-                district:
-                  type: string
-                stateCode:
-                  type: string
-                postalCode:
-                  type: string
-                countryCode:
-                  type: string
-                countryName:
-                  type: string
-                houseNumber:
-                  type: string
-            location:
-              type: object
-              properties:
-                longitude:
-                  type: number
-                  format: float
-                latitude:
-                  type: number
-                  format: float
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            accessCode:
-              type:
-              - string
-              - 'null'
-            shippingInstructions:
-              type:
-              - string
-              - 'null'
-            receivingInstructions:
-              type:
-              - string
-              - 'null'
-            contactName:
-              type: string
-            phoneNumber:
-              type: string
-            contactEmailAddress:
-              type: string
-              format: email
-            storeNumber:
-              type:
-              - string
-              - 'null'
-            timezone:
-              type: string
-            timezoneOffset:
-              type: integer
-            timezoneAbbreviation:
-              type: string
-            msa:
-              type: string
-            cutOffTimeMins:
-              type:
-              - integer
-              - 'null'
-            version:
-              type: integer
-            hasLoadingDock:
-              type: boolean
-            primaryContact:
-              type:
-              - string
-              - 'null'
-        emergencyContact:
-          type: object
-          properties:
-            contactName:
-              type: string
-              description: Person responsible for questions or issues pertaining the hazmat delivery
-            phoneNumber:
-              type: string
-              description: Phone number of the emergency contact person
-            email:
-              type: string
-              format: email
-              description: Email address of the emergency contact person
-            contactTitle:
-              type: string
-              format: uuid
-              description: Professional title of the emergency contact
-        orderItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryOrderItemCreated'
-        deliveryContainers:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                format: uuid
-              lengthIn:
-                type: integer
-              widthIn:
-                type: integer
-              heightIn:
-                type: integer
-              deliveryId:
-                type: string
-                format: uuid
-              orderId:
-                type: string
-                format: uuid
-              totalWeightLbs:
-                type: integer
-              containerTypeId:
-                type: string
-                format: uuid
-              trackingNumber:
-                type: string
-              shipperContainerId:
-                type: string
-              shipperExtraData:
-                type: object
-              labelURL:
-                type:
-                - string
-                - 'null'
-              subContainerQuantity:
-                type: integer
-              uniqueSubLabels:
-                type: boolean
-              nmfc:
-                type:
-                - string
-                - 'null'
-              freightClass:
-                type:
-                - string
-                - 'null'
-              predefinedContainer:
-                type:
-                - string
-                - 'null'
-              containerType:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    format: uuid
-                  name:
-                    type: string
-              hazardousMaterialDetails:
-                type:
-                - object
-                - 'null'
-                $ref: '#/components/schemas/HazardousMaterialContainerDetails'
-              orderItems:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DeliveryOrderItemCreated'
-              doNotRotate:
-                type: boolean
-                default: false
-        nonDeliveryBehavior:
-          type:
-          - string
-          - 'null'
-        contractedShipperCostCent:
-          type:
-          - integer
-          - 'null'
-          description: Shipper cost in cents
-    Containers:
-      type: array
-      items:
-        type: object
-        oneOf:
-        - $ref: '#/components/schemas/PredefinedContainer'
-        - $ref: '#/components/schemas/CustomContainer'
-    DeliveryType:
-      type: string
-      enum:
-      - BUSINESS
-      - RESIDENTIAL
-    RatesResponse:
-      type: object
-      properties:
-        total:
-          type: number
-          description: Total price in cents
-        lpName:
-          type: string
-          description: Name of the LP Selected
-        potentialLps:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              rate:
-                type: number
-        breakdown:
-          type: array
-          items:
-            type: object
-            properties:
-              value:
-                type: number
-              type:
-                type: string
-                description: type of charge
-        deliveryId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          description: id of the delivery that was created
-    ChildPredefinedContainer:
-      allOf:
-      - $ref: '#/components/schemas/PredefinedContainerBase'
-      - type: object
-      type: object
-      properties:
-        containers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GrandChildPredefinedContainer'
-    DeliveryOptions:
-      type: string
-      enum:
-      - REQUIRE_SIGNATURE
-      - REQUIRE_OVER_21
-      - HIPAA
-      - REQUEST_PARCEL_PICKUP
-      - REQUEST_PROOF_OF_PICKUP
-    CapabilityTags:
-      type: array
-      items:
-        oneOf:
-        - type: string
-        - type: object
-          properties:
-            id:
-              type:
-              - string
-              - 'null'
-              format: uuid
-            name:
-              type:
-              - string
-              - 'null'
-            quantity:
-              type: number
     DeliveryList:
       allOf:
       - allOf:
@@ -7812,1018 +7708,6 @@ components:
                   - BOTH
                   - null
                   default: null
-    OrderItem:
-      required:
-      - description
-      - length
-      - width
-      - height
-      - weight
-      - quantity
-      properties:
-        id:
-          type: string
-          description: OneRail internal item id. if this id is valid OneRail line item it will be ignored during delivery creation.
-        description:
-          type: string
-          maxLength: 256
-          description: Description of this item
-        length:
-          type: number
-          description: Length in inches of this item
-        width:
-          type: number
-          description: Width in inches of this item
-        height:
-          type: number
-          description: Height in inches of this item
-        weight:
-          type: number
-          description: Weight in pounds (As a floating point number. Fractional pounds are ok)
-        quantity:
-          type: integer
-          description: The number of this same item included with the order
-        identifier:
-          type: string
-          maxLength: 64
-          description: Product SKU, ID, or UPC
-        complexities:
-          type: string
-          maxLength: 128
-        priceCent:
-          type: integer
-          description: Order amount (in cents)
-        nmfc:
-          type:
-          - string
-          - 'null'
-          description: The national motor freight code for this order item.
-          example: 82790-11
-        freightClass:
-          type:
-          - string
-          - 'null'
-          enum:
-          - '50'
-          - '55'
-          - '60'
-          - '65'
-          - '70'
-          - '77.5'
-          - '85'
-          - '92.5'
-          - '100'
-          - '110'
-          - '125'
-          - '150'
-          - '175'
-          - '200'
-          - '250'
-          - '300'
-          - '400'
-          - '500'
-          - null
-          description: The freight class for this order item.
-        hazardousMaterialDetails:
-          type:
-          - object
-          - 'null'
-          $ref: '#/components/schemas/HazardousMaterialOrderItemDetails'
-        doNotRotate:
-          type: boolean
-          default: false
-    HazardousMaterialContainerDetails:
-      type: object
-      properties:
-        signatoryContactField:
-          type:
-          - string
-          - 'null'
-          description: Person responsible for hazmat shipment compliance
-        emergencyContactNumber:
-          type:
-          - string
-          - 'null'
-          description: Phone number of emergency contact for hazmat shipment
-        signatoryContactTitle:
-          type:
-          - string
-          - 'null'
-          description: Professional title of person responsible for the hazmat shipment compliance
-        signatoryContactPlace:
-          type:
-          - string
-          - 'null'
-          description: Organization (company) name or code
-        offeror:
-          type:
-          - string
-          - 'null'
-          description: Organization (company) name or code
-        dotLabeling:
-          type:
-          - string
-          - 'null'
-          description: Type of label to be placed on the container
-        authorization:
-          type:
-          - string
-          - 'null'
-          description: Part of DOT Labeling
-        fedExPackagingType:
-          type:
-          - string
-          - 'null'
-          description: Type of packaging type to be applied for fedex
-    LocationInfo:
-      required:
-      - address1
-      - city
-      - state
-      - zip
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-          description: The name of the location
-        storeNumber:
-          type: string
-          maxLength: 32
-          description: Store number or store identifier
-        address1:
-          type: string
-          maxLength: 256
-        address2:
-          type: string
-          maxLength: 256
-        city:
-          type: string
-          maxLength: 64
-        state:
-          type: string
-          maxLength: 64
-        country:
-          type: string
-          maxLength: 32
-          default: US
-        zip:
-          type: string
-          maxLength: 32
-          description: Zip Code or Postal Code
-        instructions:
-          type: string
-          maxLength: 256
-          description: Instructions for a pickup or delivery
-        code:
-          type: string
-          maxLength: 64
-          description: Gate code or other code required to access location
-        contactName:
-          type: string
-          maxLength: 128
-          description: Person to contact at the location for pickup or dropoff
-        contactPhone:
-          type: string
-          maxLength: 32
-          description: Phone number for the contact at the location
-        contactEmailAddress:
-          type: string
-          maxLength: 128
-          description: Email address for the contact at the location
-        dueDate:
-          type: string
-          description: Indicates when this location should be fulfilled by. Time format iso-8601
-        windows:
-          type: object
-          properties:
-            opensOn:
-              type: string
-              description: Open window datetime in format iso-8601
-            closesOn:
-              type: string
-              description: Close window datetime in format iso-8601
-        appointment:
-          type: object
-          properties:
-            durationMins:
-              type: number
-              description: The duration time in minutes (integer)
-            description:
-              type: string
-              description: The description of the appointment
-              maxLength: 255
-        physicalLocation:
-          type: object
-          properties:
-            altLocation:
-              type: object
-              properties:
-                latitude:
-                  type: number
-                longitude:
-                  type: number
-            altAddress:
-              type: object
-              properties:
-                label:
-                  type: string
-                state:
-                  type: string
-                county:
-                  type:
-                  - string
-                  - 'null'
-                street:
-                  type:
-                  - string
-                  - 'null'
-                street2:
-                  type:
-                  - string
-                  - 'null'
-                address1:
-                  type:
-                  - string
-                  - 'null'
-                address2:
-                  type:
-                  - string
-                  - 'null'
-                district:
-                  type:
-                  - string
-                  - 'null'
-                stateCode:
-                  type: string
-                postalCode:
-                  type: string
-                city:
-                  type: string
-                countryCode:
-                  type: string
-                countryName:
-                  type: string
-                houseNumber:
-                  type:
-                  - string
-                  - 'null'
-                additionalData:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      key:
-                        type: string
-                      value:
-                        type: string
-        capabilityTags:
-          $ref: '#/components/schemas/CapabilityTags'
-    HistoricalRateInfo:
-      properties:
-        deliveryId:
-          type: string
-        shipperDeliveryId:
-          type: string
-        orderId:
-          type: string
-        shipperOrderId:
-          type: string
-        shipperOrganizationId:
-          type: string
-        lpOrganizationId:
-          type: string
-        lpOrganizationName:
-          type: string
-        serviceLevelRequestedName:
-          type: string
-        serviceLevelRequestedId:
-          type: string
-        lpServiceLevelChosen:
-          type: string
-        lpServiceLevelChosenCostCents:
-          type: number
-        deliveryAttemptId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        rateData:
-          type:
-          - object
-          - 'null'
-          description: JSON blob for delivery rates.
-    DeliveryAvailabilityRequest:
-      type: object
-      required:
-      - pickUpData
-      - dropOffData
-      properties:
-        serviceLevels:
-          type: array
-          description: Optional list of service level names to check.
-          items:
-            type: string
-        notes:
-          type: string
-          maxLength: 255
-          description: Delivery Notes
-        contractId:
-          type: string
-          description: The OneRail contract to deliver this package under
-        requestLabel:
-          type: boolean
-          default: false
-          description: Request a shipping label be added to the response. Default false
-        labelType:
-          type: string
-          enum:
-          - png
-          - pdf
-          - zpl
-          default: png
-          description: Format of shipping label generated by Onerail. Represented as a base64-encoded string in the response
-        carrierLabelType:
-          type:
-          - string
-          - 'null'
-          description: Format of shipping label generated by a carrier.
-        carrierCode:
-          type:
-          - string
-          - 'null'
-          description: 'Code identifying the carrier requested to perform the delivery (e.g., FDEX, UPS). Contact OneRail to obtain a list of valid carrier codes.
-
-            '
-          example: FDEX
-        carrierServiceName:
-          type:
-          - string
-          - 'null'
-          description: 'Name of the specific carrier service level requested for the delivery. Contact OneRail to obtain a list of valid carrier service names.
-
-            '
-          example: FEDEX_EXPRESS_SAVER
-        deliveryType:
-          $ref: '#/components/schemas/DeliveryType'
-        deliveryOptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryOptions'
-        customerData:
-          $ref: '#/components/schemas/CustomerData'
-        orderData:
-          $ref: '#/components/schemas/OrderData'
-        pickUpData:
-          $ref: '#/components/schemas/AvailabilityLocationInfo'
-        dropOffData:
-          $ref: '#/components/schemas/AvailabilityLocationInfo'
-        shipperExtraData:
-          type: object
-          description: JSON blob that the customer can use to store additional info they may need.
-        state:
-          type: string
-          enum:
-          - DRAFT
-          - READY_TO_DISPATCH
-          default: READY_TO_DISPATCH
-        serviceLevel:
-          type:
-          - string
-          - 'null'
-        shipmentId:
-          type:
-          - string
-          - 'null'
-        contactPreference:
-          type:
-          - string
-          - 'null'
-          enum:
-          - EMAIL
-          - SMS
-          - BOTH
-          - null
-          default: null
-        dispatchAt:
-          type:
-          - string
-          - 'null'
-          description: datetime in ISO format
-          format: date-time
-        nmfc:
-          type:
-          - string
-          - 'null'
-          description: The national motor freight code for this delivery. This is a convenience function to set the same NMFC code for all the containers or order items in this delivery.
-          example: 82790-11
-        freightClass:
-          type:
-          - string
-          - 'null'
-          enum:
-          - '50'
-          - '55'
-          - '60'
-          - '65'
-          - '70'
-          - '77.5'
-          - '85'
-          - '92.5'
-          - '100'
-          - '110'
-          - '125'
-          - '150'
-          - '175'
-          - '200'
-          - '250'
-          - '300'
-          - '400'
-          - '500'
-          - null
-          description: The freight class for this delivery. This is a convenience function to set the same freight class for all the containers or order items in this delivery.
-        numericSystem:
-          type: string
-          default: IMPERIAL
-          enum:
-          - IMPERIAL
-          - METRIC
-        deliveryFiles:
-          $ref: '#/components/schemas/Delivery/properties/deliveryFiles'
-        emergencyContact:
-          $ref: '#/components/schemas/EmergencyContact'
-        deliveryInternationalDetails:
-          type: object
-          description: 'Export compliance information used for international shipments.
-
-
-            Only one of the fields should be provided depending on the regulatory requirements:
-
-
-            - If EEI filing in AES is required → provide `aesItn`
-
-
-            - If EEI filing is not required → provide `ftrExemption`
-
-            '
-          properties:
-            ftrExemptionCode:
-              type:
-              - string
-              - 'null'
-              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
-
-
-                Example: ''NO EEI 30.37(a)''
-
-                '
-              example: NO EEI 30.37(a)
-            aesItn:
-              type:
-              - string
-              - 'null'
-              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
-
-
-                Format: ''AES X20250427123456''
-
-                '
-              example: AES X20250427123456
-            itemCategory:
-              type:
-              - string
-              - 'null'
-              description: Represents a classification/type of items.
-              enum:
-              - merchandise
-              - returned_goods
-              - documents
-              - gift
-              - sample
-              - other
-              example: merchandise
-            itemDescription:
-              type:
-              - string
-              - 'null'
-              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
-              example: The items have air tight seals
-            shippingRestriction:
-              type:
-              - string
-              - 'null'
-              description: Represents any type of limitation (e.g., hazardous, embargoed).
-              enum:
-              - none
-              - other
-              - quarantine
-              - sanitary_phytosanitary_inspection
-              example: none
-            restrictionNotes:
-              type:
-              - string
-              - 'null'
-              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
-            isCustomsCertified:
-              type:
-              - boolean
-              - 'null'
-              description: Boolean flag indicating certification status.
-            certifyingParty:
-              type:
-              - string
-              - 'null'
-              description: Name of the person or entity signing the customs form.
-        nonDeliveryBehavior:
-          type:
-          - string
-          - 'null'
-          description: "Specifies the action to take if the shipment cannot be delivered. Accepted values are:\n  - `return`: The package will be returned to the sender.\n  - `abandon`: The package will not be returned and may be discarded or handled at the carrier's discretion.\n"
-          enum:
-          - return
-          - abandon
-    CustomContainerBase:
-      type: object
-      required:
-      - containerType
-      - length
-      - width
-      - height
-      - totalWeight
-      properties:
-        trackingInfo:
-          type:
-          - object
-          - 'null'
-          properties:
-            type:
-              type: string
-            value:
-              type: string
-        containerType:
-          type: string
-          enum:
-          - BOX
-          - BAG
-          - BALE
-          - BUCKET
-          - BUNDLE
-          - CAN
-          - CARTON
-          - CASE
-          - COIL
-          - CRATE
-          - CYLINDER
-          - DRUM
-          - PAIL
-          - PLT
-          - PIECES
-          - REEL
-          - ROLL
-          - SKID
-          - TOTE
-          - TUBE
-          - MAGAZINE
-          - POUND
-          - PIECE
-          - PACKAGE
-          - TL
-          - FTL
-          - GAYLORD
-        length:
-          type: number
-          description: Length in inches of this item
-        width:
-          type: number
-          description: Width in inches of this item
-        height:
-          type: number
-          description: Height in inches of this item
-        totalWeight:
-          type: number
-          description: Weight of container and all items inside it
-        shipperContainerId:
-          type: string
-        shipperExtraData:
-          type: object
-          description: Any additional shipping data in JSON format
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContainerOrderItem'
-        subContainerQuantity:
-          type:
-          - number
-          - 'null'
-        uniqueSubLabels:
-          type:
-          - boolean
-          - 'null'
-        nmfc:
-          type:
-          - string
-          - 'null'
-          description: The national motor freight code for this container.
-          example: 82790-11
-        hazardousMaterialDetails:
-          type:
-          - object
-          - 'null'
-          $ref: '#/components/schemas/HazardousMaterialContainerDetails'
-        freightClass:
-          type:
-          - string
-          - 'null'
-          enum:
-          - '50'
-          - '55'
-          - '60'
-          - '65'
-          - '70'
-          - '77.5'
-          - '85'
-          - '92.5'
-          - '100'
-          - '110'
-          - '125'
-          - '150'
-          - '175'
-          - '200'
-          - '250'
-          - '300'
-          - '400'
-          - '500'
-          - null
-          description: The freight class for this container.
-        doNotRotate:
-          type: boolean
-          default: false
-    DeliveryAvailabilityResponse:
-      type: object
-      properties:
-        availability:
-          type:
-          - boolean
-          - 'null'
-          description: 'High-level availability result used for minimal requests. When returned, this indicates whether pickup/dropoff is serviceable without service-level detail.
-
-            '
-        serviceLevels:
-          type: array
-          description: 'Detailed per-service-level availability. This may be omitted for minimal requests that only return the top-level availability field, but will be returned when service levels are explicitly requested.
-
-            '
-          items:
-            type: object
-            required:
-            - name
-            - available
-            properties:
-              name:
-                type: string
-                description: Service level name (e.g. "TMSDD", "2 HR", "NEXT_DAY")
-              available:
-                type: boolean
-                description: 'Whether at least one LP can fulfill this service level for the given locations and requested pickup time. Service levels are unavailable when the pickup window opens at or after the service level''s cutoff or end-of-day time. If no pickup window is provided, dispatchAt is used; if dispatchAt is also omitted, the current time is used. Incoming dispatchAt and delivery window timestamps may be UTC or offset-aware ISO date-times and are converted to local time before comparison. Cutoff times are evaluated in the pickup location''s local timezone; end-of-day times are evaluated in the dropoff location''s local timezone.
-
-                  '
-              estimatedPrice:
-                type:
-                - number
-                - 'null'
-                description: 'Total estimated shipper price for this service level (when computed). When vehicle options are enabled, this reflects the recommended (lowest-cost fitting) vehicle''s price.
-
-                  '
-              message:
-                type:
-                - string
-                - 'null'
-                description: Optional detail explaining why a service level is unavailable
-              availableVehicles:
-                type: array
-                description: 'Matched vehicle options for this service level, returned when vehicle options are enabled.
-
-                  '
-                items:
-                  type: object
-                  required:
-                  - name
-                  properties:
-                    name:
-                      type: string
-                      description: Fleet vehicle name
-                    priceInCents:
-                      type:
-                      - number
-                      - 'null'
-                      description: Estimated shipper price for this vehicle option, in cents
-                    isRecommended:
-                      type: boolean
-                      description: 'True for the lowest-cost vehicle option that fits the order within this service level. At most one option per service level is flagged.
-
-                        '
-        dataCompleteness:
-          type: string
-          enum:
-          - MINIMAL
-          - COMPLETE
-          description: 'Indicates how much data was provided and what level of accuracy the availability results represent. MINIMAL = location data only, COMPLETE = full delivery body (rates possible).
-
-            '
-    DeliveryOrderItemCreated:
-      type: object
-      properties:
-        weightLbs:
-          type: integer
-          description: Weight of the item in pounds.
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the item.
-        description:
-          type: string
-          description: Description of the item.
-        identifier:
-          type: string
-          description: Identifier for the item provided by the shipper.
-        priceCent:
-          type: integer
-          description: Price of the item in cents.
-        lengthIn:
-          type: integer
-          description: Length of the item in inches.
-        widthIn:
-          type: integer
-          description: Width of the item in inches.
-        heightIn:
-          type: integer
-          description: Height of the item in inches.
-        sortOrdinal:
-          type: integer
-          description: Ordinal value for sorting items.
-        nmfc:
-          type:
-          - string
-          - 'null'
-          description: National Motor Freight Classification (NMFC) code, if applicable.
-        freightClass:
-          type:
-          - string
-          - 'null'
-          description: Freight classification for the item, if applicable.
-        isDummy:
-          type:
-          - boolean
-          - 'null'
-          description: Indicates whether the item is a dummy entry.
-        hazardousMaterialDetails:
-          type: object
-          $ref: '#/components/schemas/HazardousMaterialOrderItemDetails'
-        doNotRotate:
-          type: boolean
-          default: false
-    AvailabilityLocationInfo:
-      type: object
-      description: 'Location data for availability check. Provide any combination of address fields and/or a geopoint.
-
-        '
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-          description: The name of the location
-        storeNumber:
-          type: string
-          maxLength: 32
-          description: Store number or store identifier
-        address1:
-          type: string
-          maxLength: 256
-        address2:
-          type: string
-          maxLength: 256
-        city:
-          type: string
-          maxLength: 64
-        state:
-          type: string
-          maxLength: 64
-        country:
-          type: string
-          maxLength: 32
-          default: US
-        zip:
-          type: string
-          maxLength: 32
-          description: Zip Code or Postal Code
-        instructions:
-          type: string
-          maxLength: 256
-          description: Instructions for a pickup or delivery
-        code:
-          type: string
-          maxLength: 64
-          description: Gate code or other code required to access location
-        contactName:
-          type: string
-          maxLength: 128
-          description: Person to contact at the location for pickup or dropoff
-        contactPhone:
-          type: string
-          maxLength: 32
-          description: Phone number for the contact at the location
-        contactEmailAddress:
-          type: string
-          maxLength: 128
-          description: Email address for the contact at the location
-        dueDate:
-          type: string
-          description: Indicates when this location should be fulfilled by. Time format iso-8601
-        windows:
-          type: object
-          properties:
-            opensOn:
-              type: string
-              description: Open window datetime in format iso-8601
-            closesOn:
-              type: string
-              description: Close window datetime in format iso-8601
-        appointment:
-          type: object
-          properties:
-            durationMins:
-              type: number
-              description: The duration time in minutes (integer)
-            description:
-              type: string
-              description: The description of the appointment
-              maxLength: 255
-        physicalLocation:
-          type: object
-          properties:
-            altLocation:
-              type: object
-              properties:
-                latitude:
-                  type: number
-                longitude:
-                  type: number
-            altAddress:
-              $ref: '#/components/schemas/LocationInfo/properties/physicalLocation/properties/altAddress'
-        capabilityTags:
-          $ref: '#/components/schemas/CapabilityTags'
-    GrandChildPredefinedContainer:
-      allOf:
-      - $ref: '#/components/schemas/PredefinedContainerBase'
-      - type: object
-      type: object
-      properties:
-        containers:
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-    Error:
-      required:
-      - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        errors:
-          type: object
-        errorDetails:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                description: A human-readable explanation specific to this occurrence of the problem
-              pointer:
-                type: string
-                description: A JSON Pointer [RFC6901] to the associated entity in the request document
-            required:
-            - detail
-    CustomContainer:
-      allOf:
-      - $ref: '#/components/schemas/CustomContainerBase'
-      - type: object
-      type: object
-      properties:
-        containers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ChildCustomContainer'
-    EmergencyContact:
-      type: object
-      properties:
-        contactName:
-          type:
-          - string
-          - 'null'
-          description: Emergency contact name
-        contactTitle:
-          type:
-          - string
-          - 'null'
-          description: Emergency contact title
-        phoneNumber:
-          type:
-          - string
-          - 'null'
-          description: Emergency contact phone number
-        email:
-          type:
-          - string
-          - 'null'
-          description: Emergency contact email
-    GrandChildCustomContainer:
-      allOf:
-      - $ref: '#/components/schemas/CustomContainerBase'
-      - type: object
-      type: object
-      properties:
-        containers:
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-    OrderData:
-      required:
-      - orderId
-      properties:
-        orderId:
-          type: string
-          description: The ID of the order from a partner's system
-          maxLength: 128
-          pattern: \S+
-        netAmount:
-          type: integer
-          description: Order amount (in cents)
-        barCode:
-          type: string
-          description: Bar/QR code for this order
-          maxLength: 256
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderItem'
-        containers:
-          $ref: '#/components/schemas/Containers'
-        status:
-          type: string
-        lpName:
-          type:
-          - string
-          - 'null'
-        nmfc:
-          type:
-          - string
-          - 'null'
-          description: The national motor freight code for this order item.
-          example: 82790-11
-        freightClass:
-          type:
-          - string
-          - 'null'
-          enum:
-          - '50'
-          - '55'
-          - '60'
-          - '65'
-          - '70'
-          - '77.5'
-          - '85'
-          - '92.5'
-          - '100'
-          - '110'
-          - '125'
-          - '150'
-          - '175'
-          - '200'
-          - '250'
-          - '300'
-          - '400'
-          - '500'
-          - null
-          description: The freight class for this order item.
-        originLocation:
-          $ref: '#/components/schemas/OriginLocation'
     Delivery:
       required:
       - deliveryType
@@ -9081,6 +7965,699 @@ components:
           - 'null'
           default: false
           description: Wait for delivery calculations to complete before returning the response.
+    HistoricalRateInfo:
+      properties:
+        deliveryId:
+          type: string
+        shipperDeliveryId:
+          type: string
+        orderId:
+          type: string
+        shipperOrderId:
+          type: string
+        shipperOrganizationId:
+          type: string
+        lpOrganizationId:
+          type: string
+        lpOrganizationName:
+          type: string
+        serviceLevelRequestedName:
+          type: string
+        serviceLevelRequestedId:
+          type: string
+        lpServiceLevelChosen:
+          type: string
+        lpServiceLevelChosenCostCents:
+          type: number
+        deliveryAttemptId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        rateData:
+          type:
+          - object
+          - 'null'
+          description: JSON blob for delivery rates.
+    ChildPredefinedContainer:
+      allOf:
+      - $ref: '#/components/schemas/PredefinedContainerBase'
+      - type: object
+      type: object
+      properties:
+        containers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GrandChildPredefinedContainer'
+    Containers:
+      type: array
+      items:
+        type: object
+        oneOf:
+        - $ref: '#/components/schemas/PredefinedContainer'
+        - $ref: '#/components/schemas/CustomContainer'
+    OrderData:
+      required:
+      - orderId
+      properties:
+        orderId:
+          type: string
+          description: The ID of the order from a partner's system
+          maxLength: 128
+          pattern: \S+
+        netAmount:
+          type: integer
+          description: Order amount (in cents)
+        barCode:
+          type: string
+          description: Bar/QR code for this order
+          maxLength: 256
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        containers:
+          $ref: '#/components/schemas/Containers'
+        status:
+          type: string
+        lpName:
+          type:
+          - string
+          - 'null'
+        nmfc:
+          type:
+          - string
+          - 'null'
+          description: The national motor freight code for this order item.
+          example: 82790-11
+        freightClass:
+          type:
+          - string
+          - 'null'
+          enum:
+          - '50'
+          - '55'
+          - '60'
+          - '65'
+          - '70'
+          - '77.5'
+          - '85'
+          - '92.5'
+          - '100'
+          - '110'
+          - '125'
+          - '150'
+          - '175'
+          - '200'
+          - '250'
+          - '300'
+          - '400'
+          - '500'
+          - null
+          description: The freight class for this order item.
+        originLocation:
+          $ref: '#/components/schemas/OriginLocation'
+    HazardousMaterialContainerDetails:
+      type: object
+      properties:
+        signatoryContactField:
+          type:
+          - string
+          - 'null'
+          description: Person responsible for hazmat shipment compliance
+        emergencyContactNumber:
+          type:
+          - string
+          - 'null'
+          description: Phone number of emergency contact for hazmat shipment
+        signatoryContactTitle:
+          type:
+          - string
+          - 'null'
+          description: Professional title of person responsible for the hazmat shipment compliance
+        signatoryContactPlace:
+          type:
+          - string
+          - 'null'
+          description: Organization (company) name or code
+        offeror:
+          type:
+          - string
+          - 'null'
+          description: Organization (company) name or code
+        dotLabeling:
+          type:
+          - string
+          - 'null'
+          description: Type of label to be placed on the container
+        authorization:
+          type:
+          - string
+          - 'null'
+          description: Part of DOT Labeling
+        fedExPackagingType:
+          type:
+          - string
+          - 'null'
+          description: Type of packaging type to be applied for fedex
+    ChildCustomContainer:
+      allOf:
+      - $ref: '#/components/schemas/CustomContainerBase'
+      - type: object
+      type: object
+      properties:
+        containers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GrandChildCustomContainer'
+    GrandChildPredefinedContainer:
+      allOf:
+      - $ref: '#/components/schemas/PredefinedContainerBase'
+      - type: object
+      type: object
+      properties:
+        containers:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+    DeliveryType:
+      type: string
+      enum:
+      - BUSINESS
+      - RESIDENTIAL
+    RatesResponse:
+      type: object
+      properties:
+        total:
+          type: number
+          description: Total price in cents
+        lpName:
+          type: string
+          description: Name of the LP Selected
+        potentialLps:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              rate:
+                type: number
+        breakdown:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: number
+              type:
+                type: string
+                description: type of charge
+        deliveryId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: id of the delivery that was created
+    CustomerData:
+      required:
+      - firstName
+      - lastName
+      - phone
+      properties:
+        firstName:
+          type: string
+          maxLength: 64
+        lastName:
+          type: string
+          maxLength: 64
+        phone:
+          type: string
+          maxLength: 32
+        emailAddress:
+          type: string
+          maxLength: 128
+    OriginLocation:
+      required:
+      - address1
+      - city
+      - state
+      - zip
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+          description: The name of the location
+        storeNumber:
+          type: string
+          maxLength: 32
+          description: Store number or store identifier
+        address1:
+          type: string
+          maxLength: 256
+        address2:
+          type: string
+          maxLength: 256
+        city:
+          type: string
+          maxLength: 64
+        state:
+          type: string
+          maxLength: 64
+        country:
+          type: string
+          maxLength: 32
+          default: US
+        zip:
+          type: string
+          maxLength: 32
+          description: Zip Code or Postal Code
+        instructions:
+          type: string
+          maxLength: 256
+          description: Instructions for a pickup or delivery
+        code:
+          type: string
+          maxLength: 64
+          description: Gate code or other code required to access location
+        contactName:
+          type: string
+          maxLength: 128
+          description: Person to contact at the location for pickup or dropoff
+        contactPhone:
+          type: string
+          maxLength: 32
+          description: Phone number for the contact at the location
+        contactEmailAddress:
+          type: string
+          maxLength: 128
+          description: Email address for the contact at the location
+    CustomContainerBase:
+      type: object
+      required:
+      - containerType
+      - length
+      - width
+      - height
+      - totalWeight
+      properties:
+        trackingInfo:
+          type:
+          - object
+          - 'null'
+          properties:
+            type:
+              type: string
+            value:
+              type: string
+        containerType:
+          type: string
+          enum:
+          - BOX
+          - BAG
+          - BALE
+          - BUCKET
+          - BUNDLE
+          - CAN
+          - CARTON
+          - CASE
+          - COIL
+          - CRATE
+          - CYLINDER
+          - DRUM
+          - PAIL
+          - PLT
+          - PIECES
+          - REEL
+          - ROLL
+          - SKID
+          - TOTE
+          - TUBE
+          - MAGAZINE
+          - POUND
+          - PIECE
+          - PACKAGE
+          - TL
+          - FTL
+          - GAYLORD
+        length:
+          type: number
+          description: Length in inches of this item
+        width:
+          type: number
+          description: Width in inches of this item
+        height:
+          type: number
+          description: Height in inches of this item
+        totalWeight:
+          type: number
+          description: Weight of container and all items inside it
+        shipperContainerId:
+          type: string
+        shipperExtraData:
+          type: object
+          description: Any additional shipping data in JSON format
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContainerOrderItem'
+        subContainerQuantity:
+          type:
+          - number
+          - 'null'
+        uniqueSubLabels:
+          type:
+          - boolean
+          - 'null'
+        nmfc:
+          type:
+          - string
+          - 'null'
+          description: The national motor freight code for this container.
+          example: 82790-11
+        hazardousMaterialDetails:
+          type:
+          - object
+          - 'null'
+          $ref: '#/components/schemas/HazardousMaterialContainerDetails'
+        freightClass:
+          type:
+          - string
+          - 'null'
+          enum:
+          - '50'
+          - '55'
+          - '60'
+          - '65'
+          - '70'
+          - '77.5'
+          - '85'
+          - '92.5'
+          - '100'
+          - '110'
+          - '125'
+          - '150'
+          - '175'
+          - '200'
+          - '250'
+          - '300'
+          - '400'
+          - '500'
+          - null
+          description: The freight class for this container.
+        doNotRotate:
+          type: boolean
+          default: false
+    DeliveryOrderItemCreated:
+      type: object
+      properties:
+        weightLbs:
+          type: integer
+          description: Weight of the item in pounds.
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the item.
+        description:
+          type: string
+          description: Description of the item.
+        identifier:
+          type: string
+          description: Identifier for the item provided by the shipper.
+        priceCent:
+          type: integer
+          description: Price of the item in cents.
+        lengthIn:
+          type: integer
+          description: Length of the item in inches.
+        widthIn:
+          type: integer
+          description: Width of the item in inches.
+        heightIn:
+          type: integer
+          description: Height of the item in inches.
+        sortOrdinal:
+          type: integer
+          description: Ordinal value for sorting items.
+        nmfc:
+          type:
+          - string
+          - 'null'
+          description: National Motor Freight Classification (NMFC) code, if applicable.
+        freightClass:
+          type:
+          - string
+          - 'null'
+          description: Freight classification for the item, if applicable.
+        isDummy:
+          type:
+          - boolean
+          - 'null'
+          description: Indicates whether the item is a dummy entry.
+        hazardousMaterialDetails:
+          type: object
+          $ref: '#/components/schemas/HazardousMaterialOrderItemDetails'
+        doNotRotate:
+          type: boolean
+          default: false
+    DeliveryAvailabilityResponse:
+      type: object
+      properties:
+        availability:
+          type:
+          - boolean
+          - 'null'
+          description: 'High-level availability result used for minimal requests. When returned, this indicates whether pickup/dropoff is serviceable without service-level detail.
+
+            '
+        serviceLevels:
+          type: array
+          description: 'Detailed per-service-level availability. This may be omitted for minimal requests that only return the top-level availability field, but will be returned when service levels are explicitly requested.
+
+            '
+          items:
+            type: object
+            required:
+            - name
+            - available
+            properties:
+              name:
+                type: string
+                description: Service level name (e.g. "TMSDD", "2 HR", "NEXT_DAY")
+              available:
+                type: boolean
+                description: 'Whether at least one LP can fulfill this service level for the given locations and requested pickup time. Service levels are unavailable when the pickup window opens at or after the service level''s cutoff or end-of-day time. If no pickup window is provided, dispatchAt is used; if dispatchAt is also omitted, the current time is used. Incoming dispatchAt and delivery window timestamps may be UTC or offset-aware ISO date-times and are converted to local time before comparison. Cutoff times are evaluated in the pickup location''s local timezone; end-of-day times are evaluated in the dropoff location''s local timezone.
+
+                  '
+              estimatedPrice:
+                type:
+                - number
+                - 'null'
+                description: 'Total estimated shipper price for this service level (when computed). When vehicle options are enabled, this reflects the recommended (lowest-cost fitting) vehicle''s price.
+
+                  '
+              message:
+                type:
+                - string
+                - 'null'
+                description: Optional detail explaining why a service level is unavailable
+              availableVehicles:
+                type: array
+                description: 'Matched vehicle options for this service level, returned when vehicle options are enabled.
+
+                  '
+                items:
+                  type: object
+                  required:
+                  - name
+                  properties:
+                    name:
+                      type: string
+                      description: Fleet vehicle name
+                    priceInCents:
+                      type:
+                      - number
+                      - 'null'
+                      description: Estimated shipper price for this vehicle option, in cents
+                    isRecommended:
+                      type: boolean
+                      description: 'True for the lowest-cost vehicle option that fits the order within this service level. At most one option per service level is flagged.
+
+                        '
+        dataCompleteness:
+          type: string
+          enum:
+          - MINIMAL
+          - COMPLETE
+          description: 'Indicates how much data was provided and what level of accuracy the availability results represent. MINIMAL = location data only, COMPLETE = full delivery body (rates possible).
+
+            '
+    HazardousMaterialOrderItemDetails:
+      type: object
+      properties:
+        identificationNumber:
+          type:
+          - string
+          - 'null'
+          description: Number to identify hazard as designated by shipper (example UN or NP numbers)
+        properShippingName:
+          description: The proper shipping name identified by the Shipping Table as desingnated by the shipper
+          type:
+          - string
+          - 'null'
+        packagingGroup:
+          type:
+          - string
+          - 'null'
+          description: designation for the group of packages provided by the shipper
+        packagingType:
+          type:
+          - string
+          - 'null'
+          description: The type of package holding the hazardous material as designated by the shipper
+        hazardClass:
+          type:
+          - string
+          - 'null'
+          description: Value from the hazard classification system
+        hazardSubClass:
+          type:
+          - string
+          - 'null'
+          description: Value from the hazard classification system for the sub class
+        technicalName:
+          type:
+          - string
+          - 'null'
+          description: Technical description given by the shipper for the hazardous item
+        dotLabeling:
+          type:
+          - string
+          - 'null'
+          description: Type of label to be placed on the items
+    CapabilityTags:
+      type: array
+      items:
+        oneOf:
+        - type: string
+        - type: object
+          properties:
+            id:
+              type:
+              - string
+              - 'null'
+              format: uuid
+            name:
+              type:
+              - string
+              - 'null'
+            quantity:
+              type: number
+    AvailabilityLocationInfo:
+      type: object
+      description: 'Location data for availability check. Provide any combination of address fields and/or a geopoint.
+
+        '
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+          description: The name of the location
+        storeNumber:
+          type: string
+          maxLength: 32
+          description: Store number or store identifier
+        address1:
+          type: string
+          maxLength: 256
+        address2:
+          type: string
+          maxLength: 256
+        city:
+          type: string
+          maxLength: 64
+        state:
+          type: string
+          maxLength: 64
+        country:
+          type: string
+          maxLength: 32
+          default: US
+        zip:
+          type: string
+          maxLength: 32
+          description: Zip Code or Postal Code
+        instructions:
+          type: string
+          maxLength: 256
+          description: Instructions for a pickup or delivery
+        code:
+          type: string
+          maxLength: 64
+          description: Gate code or other code required to access location
+        contactName:
+          type: string
+          maxLength: 128
+          description: Person to contact at the location for pickup or dropoff
+        contactPhone:
+          type: string
+          maxLength: 32
+          description: Phone number for the contact at the location
+        contactEmailAddress:
+          type: string
+          maxLength: 128
+          description: Email address for the contact at the location
+        dueDate:
+          type: string
+          description: Indicates when this location should be fulfilled by. Time format iso-8601
+        windows:
+          type: object
+          properties:
+            opensOn:
+              type: string
+              description: Open window datetime in format iso-8601
+            closesOn:
+              type: string
+              description: Close window datetime in format iso-8601
+        appointment:
+          type: object
+          properties:
+            durationMins:
+              type: number
+              description: The duration time in minutes (integer)
+            description:
+              type: string
+              description: The description of the appointment
+              maxLength: 255
+        physicalLocation:
+          type: object
+          properties:
+            altLocation:
+              type: object
+              properties:
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+            altAddress:
+              $ref: '#/components/schemas/LocationInfo/properties/physicalLocation/properties/altAddress'
+        capabilityTags:
+          $ref: '#/components/schemas/CapabilityTags'
     PredefinedContainerBase:
       type: object
       required:
@@ -9155,7 +8732,44 @@ components:
           - '500'
           - null
           description: The freight class for this container.
-    ChildCustomContainer:
+    Error:
+      required:
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        errors:
+          type: object
+        errorDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                description: A human-readable explanation specific to this occurrence of the problem
+              pointer:
+                type: string
+                description: A JSON Pointer [RFC6901] to the associated entity in the request document
+            required:
+            - detail
+    ScanData:
+      type: object
+      required:
+      - evidenceValue
+      properties:
+        evidenceType:
+          type: string
+          enum:
+          - LPN
+          - Other
+          default: Other
+        evidenceValue:
+          type: string
+    CustomContainer:
       allOf:
       - $ref: '#/components/schemas/CustomContainerBase'
       - type: object
@@ -9166,7 +8780,7 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/GrandChildCustomContainer'
+            $ref: '#/components/schemas/ChildCustomContainer'
     ContainerOrderItem:
       required:
       - description
@@ -9227,37 +8841,423 @@ components:
         doNotRotate:
           type: boolean
           default: false
-    CustomerData:
-      required:
-      - firstName
-      - lastName
-      - phone
-      properties:
-        firstName:
-          type: string
-          maxLength: 64
-        lastName:
-          type: string
-          maxLength: 64
-        phone:
-          type: string
-          maxLength: 32
-        emailAddress:
-          type: string
-          maxLength: 128
-    ScanData:
+    DeliveryOptions:
+      type: string
+      enum:
+      - REQUIRE_SIGNATURE
+      - REQUIRE_OVER_21
+      - HIPAA
+      - REQUEST_PARCEL_PICKUP
+      - REQUEST_PROOF_OF_PICKUP
+    PredefinedContainer:
+      allOf:
+      - $ref: '#/components/schemas/PredefinedContainerBase'
+      - type: object
       type: object
-      required:
-      - evidenceValue
       properties:
-        evidenceType:
+        containers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ChildPredefinedContainer'
+    EmergencyContact:
+      type: object
+      properties:
+        contactName:
+          type:
+          - string
+          - 'null'
+          description: Emergency contact name
+        contactTitle:
+          type:
+          - string
+          - 'null'
+          description: Emergency contact title
+        phoneNumber:
+          type:
+          - string
+          - 'null'
+          description: Emergency contact phone number
+        email:
+          type:
+          - string
+          - 'null'
+          description: Emergency contact email
+    DeliveryData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Delivery id
+        deliveryType:
+          description: Type of delivery
+          $ref: '#/components/schemas/DeliveryType'
+        notes:
+          type: string
+          description: Delivery Notes
+          maxLength: 255
+        state:
           type: string
           enum:
-          - LPN
-          - Other
-          default: Other
-        evidenceValue:
-          type: string
+          - DRAFT
+          - READY_TO_DISPATCH
+          default: READY_TO_DISPATCH
+        dispatchAt:
+          type:
+          - string
+          - 'null'
+          description: datetime in ISO format
+          format: date-time
+        deliveryInternationalDetails:
+          type: object
+          properties:
+            ftr:
+              type: string
+              description: 'FTR Exemption Statement indicating why EEI filing in AES is not required.
+
+
+                Example: ''NO EEI 30.37(a)''
+
+                '
+              example: NO EEI 30.37(a)
+            aes:
+              type: string
+              description: 'Automated Export System Internal Transaction Number (ITN) returned after EEI submission.
+
+
+                Format: ''AES X20250427123456''
+
+                '
+              example: AES X20250427123456
+            itemCategory:
+              type:
+              - string
+              - 'null'
+              description: Represents a classification/type of items.
+              enum:
+              - merchandise
+              - returned_goods
+              - documents
+              - gift
+              - sample
+              - other
+              example: merchandise
+            itemDescription:
+              type:
+              - string
+              - 'null'
+              description: A free-text explanation of what the contents are (only applicable if "itemCategory" is "other").
+              example: The items have air tight seals
+            shippingRestriction:
+              type:
+              - string
+              - 'null'
+              description: Represents any type of limitation (e.g., hazardous, embargoed).
+              enum:
+              - none
+              - other
+              - quarantine
+              - sanitary_phytosanitary_inspection
+              example: none
+            restrictionNotes:
+              type:
+              - string
+              - 'null'
+              description: Free-text comments clarifying or explaining the restriction (only applicable if "shippingRestriction" is not "none").
+            isCustomsCertified:
+              type:
+              - boolean
+              - 'null'
+              description: Boolean flag indicating certification status.
+            certifyingParty:
+              type:
+              - string
+              - 'null'
+              description: Name of the person or entity signing the customs form.
+        to:
+          type: object
+          properties:
+            address:
+              type: object
+              properties:
+                city:
+                  type: string
+                label:
+                  type: string
+                state:
+                  type: string
+                county:
+                  type: string
+                street:
+                  type: string
+                district:
+                  type: string
+                stateCode:
+                  type: string
+                postalCode:
+                  type: string
+                countryCode:
+                  type: string
+                countryName:
+                  type: string
+                houseNumber:
+                  type: string
+            location:
+              type: object
+              properties:
+                longitude:
+                  type: number
+                  format: float
+                latitude:
+                  type: number
+                  format: float
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            accessCode:
+              type:
+              - string
+              - 'null'
+            shippingInstructions:
+              type:
+              - string
+              - 'null'
+            receivingInstructions:
+              type:
+              - string
+              - 'null'
+            contactName:
+              type: string
+            phoneNumber:
+              type: string
+            contactEmailAddress:
+              type: string
+              format: email
+            storeNumber:
+              type:
+              - string
+              - 'null'
+            timezone:
+              type: string
+            timezoneOffset:
+              type: integer
+            timezoneAbbreviation:
+              type: string
+            msa:
+              type: string
+            cutOffTimeMins:
+              type:
+              - integer
+              - 'null'
+            version:
+              type: integer
+            hasLoadingDock:
+              type: boolean
+            primaryContact:
+              type:
+              - string
+              - 'null'
+        from:
+          type: object
+          properties:
+            address:
+              type: object
+              properties:
+                city:
+                  type: string
+                label:
+                  type: string
+                state:
+                  type: string
+                county:
+                  type: string
+                street:
+                  type: string
+                district:
+                  type: string
+                stateCode:
+                  type: string
+                postalCode:
+                  type: string
+                countryCode:
+                  type: string
+                countryName:
+                  type: string
+                houseNumber:
+                  type: string
+            location:
+              type: object
+              properties:
+                longitude:
+                  type: number
+                  format: float
+                latitude:
+                  type: number
+                  format: float
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            accessCode:
+              type:
+              - string
+              - 'null'
+            shippingInstructions:
+              type:
+              - string
+              - 'null'
+            receivingInstructions:
+              type:
+              - string
+              - 'null'
+            contactName:
+              type: string
+            phoneNumber:
+              type: string
+            contactEmailAddress:
+              type: string
+              format: email
+            storeNumber:
+              type:
+              - string
+              - 'null'
+            timezone:
+              type: string
+            timezoneOffset:
+              type: integer
+            timezoneAbbreviation:
+              type: string
+            msa:
+              type: string
+            cutOffTimeMins:
+              type:
+              - integer
+              - 'null'
+            version:
+              type: integer
+            hasLoadingDock:
+              type: boolean
+            primaryContact:
+              type:
+              - string
+              - 'null'
+        emergencyContact:
+          type: object
+          properties:
+            contactName:
+              type: string
+              description: Person responsible for questions or issues pertaining the hazmat delivery
+            phoneNumber:
+              type: string
+              description: Phone number of the emergency contact person
+            email:
+              type: string
+              format: email
+              description: Email address of the emergency contact person
+            contactTitle:
+              type: string
+              format: uuid
+              description: Professional title of the emergency contact
+        orderItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOrderItemCreated'
+        deliveryContainers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              lengthIn:
+                type: integer
+              widthIn:
+                type: integer
+              heightIn:
+                type: integer
+              deliveryId:
+                type: string
+                format: uuid
+              orderId:
+                type: string
+                format: uuid
+              totalWeightLbs:
+                type: integer
+              containerTypeId:
+                type: string
+                format: uuid
+              trackingNumber:
+                type: string
+              shipperContainerId:
+                type: string
+              shipperExtraData:
+                type: object
+              labelURL:
+                type:
+                - string
+                - 'null'
+              subContainerQuantity:
+                type: integer
+              uniqueSubLabels:
+                type: boolean
+              nmfc:
+                type:
+                - string
+                - 'null'
+              freightClass:
+                type:
+                - string
+                - 'null'
+              predefinedContainer:
+                type:
+                - string
+                - 'null'
+              containerType:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+              hazardousMaterialDetails:
+                type:
+                - object
+                - 'null'
+                $ref: '#/components/schemas/HazardousMaterialContainerDetails'
+              orderItems:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeliveryOrderItemCreated'
+              doNotRotate:
+                type: boolean
+                default: false
+        nonDeliveryBehavior:
+          type:
+          - string
+          - 'null'
+        contractedShipperCostCent:
+          type:
+          - integer
+          - 'null'
+          description: Shipper cost in cents
+    GrandChildCustomContainer:
+      allOf:
+      - $ref: '#/components/schemas/CustomContainerBase'
+      - type: object
+      type: object
+      properties:
+        containers:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
   securitySchemes:
     ApiKey:
       type: apiKey
