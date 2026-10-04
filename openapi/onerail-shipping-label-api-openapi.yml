@@ -115,6 +115,30 @@ paths:
       - Shipping Label
 components:
   schemas:
+    ContainerLabelInfo:
+      properties:
+        trackingId:
+          type: string
+        deliveryId:
+          type: string
+        type:
+          type: string
+        statusCode:
+          type: integer
+        statusDescription:
+          type: string
+        scac:
+          type: string
+        serviceCode:
+          type: string
+        label:
+          type: string
+        containerId:
+          type: string
+        containerTrackingId:
+          type: string
+        shipperContainerId:
+          type: string
     LabelInfo:
       properties:
         trackingId:
@@ -168,30 +192,6 @@ components:
                 description: A JSON Pointer [RFC6901] to the associated entity in the request document
             required:
             - detail
-    ContainerLabelInfo:
-      properties:
-        trackingId:
-          type: string
-        deliveryId:
-          type: string
-        type:
-          type: string
-        statusCode:
-          type: integer
-        statusDescription:
-          type: string
-        scac:
-          type: string
-        serviceCode:
-          type: string
-        label:
-          type: string
-        containerId:
-          type: string
-        containerTrackingId:
-          type: string
-        shipperContainerId:
-          type: string
   securitySchemes:
     ApiKey:
       type: apiKey

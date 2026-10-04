@@ -47,30 +47,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      required:
-      - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        errors:
-          type: object
-        errorDetails:
-          type: array
-          items:
-            type: object
-            properties:
-              detail:
-                type: string
-                description: A human-readable explanation specific to this occurrence of the problem
-              pointer:
-                type: string
-                description: A JSON Pointer [RFC6901] to the associated entity in the request document
-            required:
-            - detail
     OAuthCredentials:
       type: object
       required:
@@ -98,6 +74,30 @@ components:
         expires_in:
           description: Access token TTL in seconds
           type: number
+    Error:
+      required:
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        errors:
+          type: object
+        errorDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                description: A human-readable explanation specific to this occurrence of the problem
+              pointer:
+                type: string
+                description: A JSON Pointer [RFC6901] to the associated entity in the request document
+            required:
+            - detail
   securitySchemes:
     ApiKey:
       type: apiKey
