@@ -1,24 +1,22 @@
-# Kin Score artifact — onerail — 2026-08-27T132314
+# Kin Score artifact — onerail — 2026-10-03T024842
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: onerail
-  schema_version: 0.15.1
-  scored_at: '2026-08-27'
-  run_ts: 2026-08-27T132314
-  composite: 46.3
+  schema_version: 0.23.0
+  scored_at: '2026-10-03'
+  run_ts: 2026-10-03T024842
+  composite: 50.5
   band: developing
   facets:
-    discoverability: 59.3
-    contract_quality: 50.9
-    governance: 30.3
+    discoverability: 78.6
+    contract_quality: 45.7
+    contract_governance: 18.2
     operational_transparency: 23.7
     developer_ergonomics: 61.3
-    commercial_clarity: 43.4
-    contract_governance: 30.3
     access_clarity: 43.4
   agent_readiness:
-    score: 44.0
+    score: 40.8
     band: agent-native
     dimensions:
       spec_presence: true
@@ -26,7 +24,7 @@ kin_score:
       reversibility_documented: documented
       mcp_server: false
       auth_clarity: bearer
-      idempotency: verified
+      idempotency: documented
       error_semantics: verified
       openapi_examples: partial
       rate_limit_signal: false
@@ -40,13 +38,19 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 39.2
+    matched_via: fallback
   provenance:
     mcp: derived
     skills: derived
     agentic_access: derived
     conformance: first-party
     contracts:
-      total: 76
+      total: 75
       derived: 0
       coverage: 0.0
-      callable: 9.2
+      callable: 0.0
